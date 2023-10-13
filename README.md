@@ -1,27 +1,23 @@
-# React + TypeScript + Vite
+<시작>
+1. 작업 시작 전, 항상(진짜 중요) 깃허브 데스크탑에 상단의 Fetch origin 버튼을 눌러 다른 팀원들 코드 불러오기
+2. 중앙에 Open in Visual Studio Code 클릭
+3. 왼쪽 위에 터미널 버튼클릭 -> 새 터미널 클릭
+4. 현재 폴더가 react-wasd-project2 인지 확인 후, npm start 입력
+5. 3초뒤 어떤 정보들이 뜰텐데, 이때 http://어쩌구~ 써있는 링크를 ctrl + 클릭
+6. 그후 우리 웹 페이지가 브라우저에 뜹니다
+7. 이후 작업하다가, 저장만 누르면 웹 페이지에 바로 반영됌
+8. 당일 작업이 완료 되었으면, 그날 바로바로 commit, push 반드시(진짜 중요) 해주기!!! (항상 최신의 코드를 업데이트하기 위함)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+<각자 작업 폴더 위치>
+ src -> components -> 각자 페이지가 폴더이름으로 있음 -> 이 폴더 내부에 한해서 각자 자유롭게 작업 (햇갈림 방지)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+*** 만약 페이지 컴포넌트(HomePage.jsx 등)은 파일 이름 변경, 위치 이동을 했으면 저한테 바로 알려주세요!! (안그럼 오류남)***
 
-- Configure the top-level `parserOptions` property like this:
+*** 추후 제가 작업하다가, 만약 어떤 기능을 설치하면 여러분들도 이 기능을 같이 설치해줘야 오류가 안납니다!! 이때 제가 톡방에 어떻게 하면되는지 알려드릴게요!! ***
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+*** 추가하고 싶은 기능이 있거나, 안되는 것, 기타 궁금한 거 있으면 물어봐 주세요!! ***
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+*** 다들 화이팅 ***
