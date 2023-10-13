@@ -21,3 +21,13 @@
 *** 추가하고 싶은 기능이 있거나, 안되는 것, 기타 궁금한 거 있으면 물어봐 주세요!! ***
 
 *** 다들 화이팅 ***
+
+
+
+
+<사용한 라이브러리들>
+tailwind css
+antd
+zustand
+tanstack-query (전 react-query)
+react-hook-form
