@@ -8,7 +8,7 @@ const Layout: FC = () => {
     return (
         <div className='flex flex-col min-h-screen text-black'>
             <Header />                                  
-            <main className='flex-1 bg-yellow-100'>
+            <main className='flex flex-1 bg-white'>
                 <Outlet />
             </main>
             <Footer />
