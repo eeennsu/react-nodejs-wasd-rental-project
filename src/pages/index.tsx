@@ -1,10 +1,10 @@
-import HomePage from './HomePage/HomePage';
+import MainPage from './MainPage/MainPage';
 import ManagerPage from './ManagerPage/ManagerPage';
 import MyPage from './MyPage/MyPage';
 import RentPage from './RentPage/RentPage';
 
 export {
-    HomePage,
+    MainPage,
     ManagerPage,
     MyPage,
     RentPage

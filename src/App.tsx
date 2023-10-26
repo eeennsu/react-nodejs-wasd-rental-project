@@ -1,6 +1,6 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { HomePage, ManagerPage, MyPage, RentPage } from './components';
+import { MainPage, ManagerPage, MyPage, RentPage } from './components';
 import Layout from './layout/Layout';
 
 const App = () => {
@@ -8,8 +8,8 @@ const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Layout />}>
-                    <Route index element={<HomePage />} />
+                <Route index path='/'  element={<MainPage />} />
+                <Route element={<Layout />}>                    
                     <Route path='/rent' element={<RentPage />} />
                     <Route path='/my-page/:id' element={<MyPage />} />
                     <Route path='/manager' element={<ManagerPage />} />              

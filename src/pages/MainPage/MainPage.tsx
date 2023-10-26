@@ -1,14 +1,14 @@
 import type { FC } from 'react';
 
-const HomePage: FC = () => {
+const MainPage: FC = () => {
 
     const ggr =' gt';
     
     return (
         <div>
-           HomePage
+           MainPage
         </div>
     );
 };
 
-export default HomePage;
+export default MainPage;
