@@ -1,0 +1,6 @@
+# node_modules 폴더 제외
+/node_modules
+
+
+# package-lock.json 폴더 제외
+package-lock.json
