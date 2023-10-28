@@ -12,12 +12,7 @@ const Search: FC = () => {
         lectureRoomsData, setLectureRoomsData
     } = useSuppliesStore();    
 
-    const { 
-        searchTerm, setSearchTerm,
-        searchedVRs, setSearchedVRs,
-        searchedTablets, setSearchedTablets,
-        searchedLectureRooms, setSearchedLectureRooms
-    } = useSearchStore();
+    const { searchTerm, setSearchTerm, setSearchedVRs, setSearchedTablets, setSearchedLectureRooms } = useSearchStore();
 
     const defferedSearchTerm = useDeferredValue(searchTerm);
 

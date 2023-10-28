@@ -2,8 +2,6 @@ import type { FC } from 'react';
 
 const MyDetails: FC = () => {
 
-
-
     return (
         <div className='p-6 bg-yellow-200'>
             <h2>나의 연체 현황</h2>

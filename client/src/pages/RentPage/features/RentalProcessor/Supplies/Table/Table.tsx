@@ -1,56 +1,64 @@
 import type { FC } from 'react';
 import { useEffect } from 'react';
-import { tabletDummies, vrDummies, lecetureRoomDummies } from '../../../../constants/dummy';
+import { useSearchStore } from '../../../../../../zustand';
+import { useQueryClient } from '@tanstack/react-query';
+import { AxiosError, AxiosResponse } from 'axios';
+import { suppliesQueryKeys } from '../../../../constants';
+
 import useTabsStore from '../../../../../../zustand/tabsStore/useTabsStore';
 import useSuppliesStore from '../../../../../../zustand/suppliesStore/useSuppliesStore';
-import Tr from './Tr';
-import { useSearchStore } from '../../../../../../zustand';
-import EmptySearchResult from '../../Search/EmptySearchResult';
 import Thead from './Thead';
 import Tbody from './Tbody';
-
+import useFetchAllSupplies from '../../../../../../hooks/supplies/useFetchAllSupplies';
 
 const Table: FC = () => {
-
+    
+    const allSuppliesResults = useFetchAllSupplies();
+    const isLoadingAnyQuery = allSuppliesResults.some(query => query.isLoading);
     const { activeTab } = useTabsStore();
-
     const { setVRsData, setTabletsData, setLectureRoomsData, deleteAllDatas } = useSuppliesStore();
+    const { searchTerm } = useSearchStore();
 
-    const { searchTerm, searchedVRs, searchedTablets, searchedLectureRooms } = useSearchStore();
+    const queryClient = useQueryClient();
 
+    const vrsDataResponse = queryClient.getQueryData([suppliesQueryKeys[0]]) as AxiosResponse<Tablet[], AxiosError>;
+    const tabletsResponse = queryClient.getQueryData([suppliesQueryKeys[1]]) as AxiosResponse<Tablet[], AxiosError>;
+    const lectrueRoomsResponse = queryClient.getQueryData([suppliesQueryKeys[2]]) as AxiosResponse<LectureRoom[], AxiosError>;
+    
     useEffect(() => {
         deleteAllDatas();
 
         if (searchTerm.length === 0) {
             switch(activeTab) {            
                 case 0: 
-                    // 여긴 비동기 호출로 전환 예정
-                    setVRsData?.(vrDummies);
+                    setVRsData(vrsDataResponse?.data);
                     break;
     
                 case 1:
-                    // 여긴 비동기 호출로 전환 예정
-                    setTabletsData(tabletDummies);
+               
+                    setTabletsData(tabletsResponse?.data);
                     break;
     
                 case 2: 
-                    // 여긴 비동기 호출로 전환 예정
-                    setLectureRoomsData(lecetureRoomDummies);
+         
+                    setLectureRoomsData(lectrueRoomsResponse?.data);
                     break;
                 
                 default:
-                    setVRsData(vrDummies);
-                    break;            
-            }
-        }
-     
-    }, [activeTab, deleteAllDatas, setVRsData, setTabletsData, setLectureRoomsData]);
+                    throw new Error(`${activeTab} is not defined.`);   
+            }        
+        }        
+    }, [activeTab, queryClient, setVRsData, setTabletsData, setLectureRoomsData, deleteAllDatas, vrsDataResponse, tabletsResponse, lectrueRoomsResponse]);
 
     return (
-        <table className='w-full h-full text-center border-collapse table-auto table-sm'>
-            <Thead />
-            <Tbody />            
-        </table>
+        isLoadingAnyQuery ? (
+            '로딩중...'
+        ) : (
+            <table className='w-full h-full text-center border-collapse table-auto table-sm'>
+                <Thead />
+                <Tbody />                     
+            </table>
+        )        
     );
 };
 

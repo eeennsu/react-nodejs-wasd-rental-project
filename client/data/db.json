@@ -1,0 +1,160 @@
+{
+    "vrs": [
+        {
+            "SKU": 5863,
+            "itemNumber": 1,
+            "isAvailable": true
+        },
+        {
+            "SKU": 1862,
+            "itemNumber": 2,   
+            "isAvailable": true   
+        },
+        {
+            "SKU": 5862,
+            "itemNumber": 3,      
+            "isAvailable": true
+        },
+        {
+            "SKU": 5832,
+            "itemNumber": 4,    
+            "isAvailable": false
+        },
+        {
+            "SKU": 5865,
+            "itemNumber": 5,    
+            "isAvailable": false
+        },
+        {
+            "SKU": 7662,
+            "itemNumber": 6,
+            "isAvailable": true  
+        },
+        {
+            "SKU": 5868,
+            "itemNumber": 7,    
+            "isAvailable": true    
+        },
+        {
+            "SKU": 5202,
+            "itemNumber": 8,      
+            "isAvailable": false
+        },
+        {
+            "SKU": 3861,
+            "itemNumber": 9,      
+            "isAvailable": true  
+        },
+        {
+            "SKU": 4879,
+            "itemNumber": 10,   
+            "isAvailable": true    
+        }
+    ],
+
+    "tablets": [
+        {
+            "SKU": 3254,
+            "itemNumber": 1,
+            "isAvailable": true
+        },
+        {
+            "SKU": 5162,
+            "itemNumber": 2,   
+            "isAvailable": true   
+        },
+        {
+            "SKU": 4869,
+            "itemNumber": 3,      
+            "isAvailable": true
+        },
+        {
+            "SKU": 5060,
+            "itemNumber": 4,    
+            "isAvailable": false
+        },
+        {
+            "SKU": 1302,
+            "itemNumber": 5,    
+            "isAvailable": false
+        },
+        {
+            "SKU": 6812,
+            "itemNumber": 6,
+            "isAvailable": true  
+        },
+        {
+            "SKU": 4832,
+            "itemNumber": 7,    
+            "isAvailable": true    
+        },
+        {
+            "SKU": 9892,
+            "itemNumber": 8,      
+            "isAvailable": false
+        },
+        {
+            "SKU": 8812,
+            "itemNumber": 9,      
+            "isAvailable": true  
+        },
+        {
+            "SKU": 2463,
+            "itemNumber": 10,   
+            "isAvailable": true    
+        }
+    ],
+
+    "lectureRooms": [
+        {
+            "name": "더미01",
+            "desc": "Lorem Ipsum is",
+            "isAvailable": true
+        },
+        {
+            "name": "더미02",
+            "desc": "Lorem Ipsum is",
+            "isAvailable": false
+        },
+        {
+            "name": "더미03",
+            "desc": "Lorem Ipsum is",
+            "isAvailable": true
+        },
+        {
+            "name": "더미04",
+            "desc": "Lorem Ipsum is",
+            "isAvailable": true
+        },
+        {
+            "name": "더미05",
+            "desc": "Lorem Ipsum is",
+            "isAvailable": false
+        },
+        {
+            "name": "더미06",
+            "desc": "Lorem Ipsum is",
+            "isAvailable": true
+        },
+        {
+            "name": "더미07",
+            "desc": "Lorem Ipsum is",
+            "isAvailable": true
+        },
+        {
+            "name": "더미08",
+            "desc": "Lorem Ipsum is",
+            "isAvailable": true
+        },
+        {
+            "name": "더미09",
+            "desc": "Lorem Ipsum is",
+            "isAvailable": false
+        },
+        {
+            "name": "더미10",
+            "desc": "Lorem Ipsum is",
+            "isAvailable": true
+        }
+    ]
+}

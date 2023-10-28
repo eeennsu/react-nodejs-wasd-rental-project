@@ -3,3 +3,5 @@ export const tabs: Tab[] = [
     'TABLET',
     'LECTURE_ROOM',
 ]
+
+export const suppliesQueryKeys: string[] = ['fetch_vrs', 'fetch_tablets', 'fetch_lecture_rooms'];

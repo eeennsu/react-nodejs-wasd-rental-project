@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const jsonServer = 'http://localhost:3500/'
+
 const axiosInst = axios.create({
-    baseURL: '서버 주소',
+    baseURL: jsonServer,
     // headers,
 });
 

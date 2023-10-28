@@ -1,9 +1,10 @@
 import type { FC } from 'react';
-import Table from '../Table/Table';
 import { tabs } from '../../../../constants';
 import { getTabName } from '../../../../utils/tabs';
-import TabButton from './TabButton';
 import { useTabsStore } from '../../../../../../zustand/index';
+
+import Table from '../Table/Table';
+import TabButton from './TabButton';
 
 const Supplies: FC = () => {
 
