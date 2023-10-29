@@ -4,6 +4,10 @@ const http = require("http");
 const cors = require("cors");
 const bodyParser = require('body-parser'); 
 const sequelize = require('./models').sequelize;
+const ejs = require('ejs');
+const path = require('path');
+const router = require('./routes');
+
 
 
 
@@ -11,6 +15,10 @@ const sequelize = require('./models').sequelize;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
+// app.use("/", router);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use("/", router);
 
 
 // 데이터베이스 연결
