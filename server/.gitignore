@@ -4,3 +4,6 @@
 
 # package-lock.json 폴더 제외
 package-lock.json
+
+# config 폴더 제외
+/config/

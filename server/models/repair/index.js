@@ -7,7 +7,13 @@ module.exports = (sequelize, DataTypes) => {
                 autoIncrement: true,
                 type : DataTypes.INTEGER
             },
-            
+
+            //수리 부분
+            repair_part : {
+                allowNull: false,
+                type: DataTypes.STRING(255)
+            },
+
             //수리 이유
             repair_reason : {
                 allowNull: false,
