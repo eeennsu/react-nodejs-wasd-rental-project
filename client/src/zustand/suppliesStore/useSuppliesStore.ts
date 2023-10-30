@@ -9,12 +9,16 @@ const useSuppliesStore = create<SuppliesStoreType>()(
             setVRsData: (VRsData) => set(() => ({ VRsData }), false, 'SET_VRS_DATA'),
 
             tabletsData: [],
-            setTabletsData: (tabletsData) => set(() => ({ tabletsData }), false, 'SET_TABLES_DATA'),
+            setTabletsData: (tabletsData) => set(() => ({ tabletsData }), false, 'SET_TABLETS_DATA'),
 
             lectureRoomsData: [],
             setLectureRoomsData: (lectureRoomsData) => set(() => ({ lectureRoomsData }), false, 'SET_LECTURE_ROOMS_DATA'),
         
-            deleteAllDatas: () => set({ VRsData: [], tabletsData: [], lectureRoomsData: [] }, false, 'DELETE_ALL_DATAS')
+            resetAllDatas: () => set({ VRsData: [], tabletsData: [], lectureRoomsData: [] }, false, 'DELETE_ALL_DATAS'),
+
+            paginatedDats: [],
+            setPaginatedDats: (paginatedDats) => set({ paginatedDats }, false, 'SET_PAGINATED_DATAS'),
+            resetPaginatedDatas: () => set(() => ({ paginatedDats: [] }), false, 'RESET_PAGINATED_DATAS')
         })
     )
 );

@@ -3,7 +3,7 @@ import type { FC } from 'react';
 const Button_m: FC = () => {
 
     return (
-        <div className="text-3xl font-bold underline text-yellow-500">
+        <div className="text-3xl font-bold text-yellow-500 underline">
           
            <div >내 정보</div>
            <div>대여 목록</div>

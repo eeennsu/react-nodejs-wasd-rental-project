@@ -5,7 +5,7 @@ import MyRentals from './MyRentals';
 const Side: FC = () => {
 
 
-
+    
     return (
         <div className='flex flex-col items-center h-full justify-evenly'>
             <MyRentals />

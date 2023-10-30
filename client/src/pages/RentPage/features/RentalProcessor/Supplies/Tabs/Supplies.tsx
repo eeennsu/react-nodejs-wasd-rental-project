@@ -5,13 +5,19 @@ import { useTabsStore } from '../../../../../../zustand/index';
 
 import Table from '../Table/Table';
 import TabButton from './TabButton';
+import Loading from '../../../../../../components/Loading';
+import Pagination from '../../Pagination/Pagination';
 
-const Supplies: FC = () => {
+type Props = {
+    isAnyoneLoading: boolean;
+}
+
+const Supplies: FC<Props> = ({ isAnyoneLoading }) => {
 
     const { activeTab } = useTabsStore();
 
     return (
-        <div>
+        <div className='flex flex-col h-full'>
             <h2 className='text-2xl text-center'>
                 기자재 정보
             </h2>
@@ -25,8 +31,17 @@ const Supplies: FC = () => {
                 }
             </div>
             <div className='border-t-[1px] border-black p-4 h-full'>
-                <Table />
-            </div>           
+                {
+                    isAnyoneLoading ? (
+                        <Loading />
+                    ) : (
+                        <Table /> 
+                    )
+                }                
+            </div>     
+            <div className='flex justify-center w-full'>                
+                <Pagination />
+            </div>      
         </div>
     );
 };

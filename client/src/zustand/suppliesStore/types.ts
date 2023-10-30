@@ -8,7 +8,11 @@ export type SuppliesStoreType = {
     lectureRoomsData: LectureRoom[];
     setLectureRoomsData: (datas: LectureRoom[]) => void;
 
-    deleteAllDatas: () => void;
+    resetAllDatas: () => void;
+
+    paginatedDats: VR[] | Tablet[] | LectureRoom[];
+    setPaginatedDats: (datas: VR[] | Tablet[] | LectureRoom[]) => void; 
+    resetPaginatedDatas: () => void;
 }
 
 export type SearchStoreType = {

@@ -5,11 +5,11 @@ import RentalProcessor from './features/RentalProcessor';
 const RentPage: FC = () => {
 
     return (
-        <div className='flex w-full bg-slate-300'>
+        <div className='flex w-full bg-slate-500'>
             <aside className='w-1/5 bg-slate-200'>
                 <Side />
             </aside>
-            <section className='w-4/5 bg-pink-200' >
+            <section className='flex-1 w-4/5 bg-pink-200'>
                 <RentalProcessor />
             </section>
         </div>

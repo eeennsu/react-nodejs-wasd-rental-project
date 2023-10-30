@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from 'react';
-import { useSearchStore, useTabsStore } from '../../../../../../zustand';
+import { useSearchStore, useSuppliesStore, useTabsStore } from '../../../../../../zustand';
 
 type Props = {
     idx: number;
@@ -10,9 +10,12 @@ const TabButton: FC<PropsWithChildren<Props>> = ({ children, idx, isCurTab }) =>
 
     const { setActiveTab } = useTabsStore();
     const { setSearchTerm } = useSearchStore();
+    const { resetAllDatas, resetPaginatedDatas } = useSuppliesStore();
 
     const handleSetActiveTab = () => {
         setSearchTerm('');
+        resetAllDatas();
+        resetPaginatedDatas();
         setActiveTab(idx);   
     }
 
