@@ -31,3 +31,6 @@ type LectureRoom = {
     desc: string;
     isAvailable: boolean;
 }
+
+type AllSupplies = VR | Tablet | LectureRoom;
+type AllSuppliesArr = VR[] | Tablet[] | LectureRoom[];

@@ -20,56 +20,56 @@ const Search: FC = () => {
         setSearchTerm(e.target.value);
     }   
     
-    // useEffect(() => {
-    //     switch(activeTab) {
-    //         case 0: 
-    //             if (VRsData?.length >= 1) {
-    //                 const searched = VRsData.filter((vr) => vr.SKU.toString().includes(defferedSearchTerm));
-    //                 setSearchedVRs(searched);
-    //             }
+    useEffect(() => {
+        switch(activeTab) {
+            case 0: 
+                if (VRsData?.length >= 1) {
+                    const searched = VRsData.filter((vr) => vr.SKU.toString().includes(defferedSearchTerm));
+                    setSearchedVRs(searched);
+                }
 
-    //             break;
+                break;
                 
-    //         case 1:
-    //             if (tabletsData?.length >= 1) {
-    //                 const searched = tabletsData.filter((tablet) => tablet.SKU.toString().includes(defferedSearchTerm));
-    //                 setSearchedTablets(searched);
-    //             }
+            case 1:
+                if (tabletsData?.length >= 1) {
+                    const searched = tabletsData.filter((tablet) => tablet.SKU.toString().includes(defferedSearchTerm));
+                    setSearchedTablets(searched);
+                }
                 
-    //             break;
+                break;
 
-    //         case 2: 
-    //             if (lectureRoomsData?.length >= 1) {
-    //                 const searched = lectureRoomsData.filter((room) => room.name.includes(defferedSearchTerm));
-    //                 setSearchedLectureRooms(searched);
-    //             }
+            case 2: 
+                if (lectureRoomsData?.length >= 1) {
+                    const searched = lectureRoomsData.filter((room) => room.name.includes(defferedSearchTerm));
+                    setSearchedLectureRooms(searched);
+                }
               
-    //             break;
+                break;
 
-    //         default:
-    //             throw new Error(`${activeTab} is not defined.`);
-    //     }
+            default:
+                throw new Error(`${activeTab} is not defined.`);
+        }
 
-    //     if (defferedSearchTerm?.length === 0) {
-    //         switch(activeTab) {             
-    //             case 0:
-    //                 setSearchedVRs(null);
-    //                 break;
+        if (defferedSearchTerm?.length === 0) {
+            switch(activeTab) {             
+                case 0:
+                    setSearchedVRs(null);
+                    break;
 
-    //             case 1:
-    //                 setSearchedTablets(null);
-    //                 break;
+                case 1:
+                    setSearchedTablets(null);
+                    break;
                 
-    //             case 2:
-    //                 setSearchedLectureRooms(null);
-    //                 break;
+                case 2:
+                    setSearchedLectureRooms(null);
+                    break;
 
-    //             default:
-    //                 throw new Error(`${activeTab} is not defined.`);          
-    //         }
-    //     }        
+                default:
+                    throw new Error(`${activeTab} is not defined.`);          
+            }
+        }        
 
-    // }, [defferedSearchTerm, activeTab, setVRsData, setTabletsData, setLectureRoomsData]);
+    }, [defferedSearchTerm, activeTab, setVRsData, setTabletsData, setLectureRoomsData]);
 
     const placeholder = (activeTab === 0 || activeTab === 1) ? '코드를 입력해주세요' : '강의실 이름을 입력해주세요';
 

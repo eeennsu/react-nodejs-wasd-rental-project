@@ -15,8 +15,8 @@ const Pagination: FC = () => {
     const { 
         VRsData, setVRsData,
         tabletsData, setTabletsData,
-        lectureRoomsData, setLectureRoomsData,
-        setPaginatedDats, resetPaginatedDatas,
+        lectureRoomsData, setLectureRoomsData, 
+        setPaginatedDatas, resetPaginatedDatas, 
         resetAllDatas
     } = useSuppliesStore();
     const { activeTab } = useTabsStore();
@@ -68,7 +68,7 @@ const Pagination: FC = () => {
         if (VRsData.length >= 1 || tabletsData.length >= 1 || lectureRoomsData.length >= 1) {
             switch(activeTab) {
                 case 0 : 
-                    setPaginatedDats(VRsData.slice(
+                    setPaginatedDatas(VRsData.slice(
                         (curPage - 1) * itemsPerPage,
                         curPage * itemsPerPage
                     ));
@@ -76,7 +76,7 @@ const Pagination: FC = () => {
                     break;
     
                 case 1: 
-                    setPaginatedDats(tabletsData.slice(
+                    setPaginatedDatas(tabletsData.slice(
                         (curPage - 1) * itemsPerPage,
                         curPage * itemsPerPage
                     ));
@@ -84,7 +84,7 @@ const Pagination: FC = () => {
                     break;
     
                 case 2: 
-                    setPaginatedDats(lectureRoomsData.slice(
+                    setPaginatedDatas(lectureRoomsData.slice(
                         (curPage - 1) * itemsPerPage,
                         curPage * itemsPerPage
                     ));

@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { useDetailSupplyStore } from '../../../../../../zustand';
 
 type Props = {
     vrData?: VR;
@@ -8,8 +9,15 @@ type Props = {
 
 const Tr: FC<Props> = ({ vrData, tabletData, lectureRoomData }) => {
 
+    const { setIsModalOpen, setDetailSupply } = useDetailSupplyStore();
+
+    const handleClick = () => {
+        setDetailSupply(vrData || tabletData || lectureRoomData);
+        setIsModalOpen(true);
+    }
+
     return (
-        <tr className='border-b-[1px] border-b-slate-400'>
+        <tr className='border-b-[1px] border-b-slate-400 hover:bg-pink-100 cursor-pointer transition-colors' onClick={handleClick}>
             <td>
                {vrData?.SKU || tabletData?.SKU || lectureRoomData?.name} 
             </td>
