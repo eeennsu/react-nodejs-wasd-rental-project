@@ -14,32 +14,32 @@ module.exports = (sequelize, DataTypes) => {
             },
 
             img_part_1: {
-                allowNull : false,
+                allowNull : true,
                 type : DataTypes.STRING(255)
             },
 
             img_part_2: {
-                allowNull : false,
+                allowNull : true,
                 type : DataTypes.STRING(255)
             },
             
             img_part_3: {
-                allowNull : false,
+                allowNull : true,
                 type : DataTypes.STRING(255)
             },
 
             img_part_4: {
-                allowNull : false,
+                allowNull : true,
                 type : DataTypes.STRING(255)
             },
 
             img_part_5: {
-                allowNull : false,
+                allowNull : true,
                 type : DataTypes.STRING(255)
             },
             
             img_part_6: {
-                allowNull : false,
+                allowNull : true,
                 type : DataTypes.STRING(255)
             },
 
