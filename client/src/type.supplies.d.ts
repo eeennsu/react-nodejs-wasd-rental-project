@@ -34,3 +34,7 @@ type LectureRoom = {
 
 type AllSupplies = VR | Tablet | LectureRoom;
 type AllSuppliesArr = VR[] | Tablet[] | LectureRoom[];
+
+type CustomColor = 'blue' | 'red';
+
+type ModalStep = 'SUPPLY_DESC' | 'SUPPLY_REPAIR' | 'SUPPLY_RENT' | 'LR_DESC' | 'LR_RENT' ;

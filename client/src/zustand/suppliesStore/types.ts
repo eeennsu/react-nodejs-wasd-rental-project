@@ -37,4 +37,10 @@ export type DetailSupplyStoreType = {
 
     detailSupply: AllSupplies | null;
     setDetailSupply: (data: AllSupplies) => void; 
+
+    isProcessLoading: boolean;
+    setIsProcessLoading: (trigger: boolean) => void;
+
+    modalStep: ModalStep;
+    setModalStep: (step: ModalStep) => void;
 }

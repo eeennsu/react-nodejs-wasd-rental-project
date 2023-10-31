@@ -1,34 +1,42 @@
 import type { FC } from 'react';
-import { Modal as AntdModal, ModalProps } from 'antd';
-import { useDetailSupplyStore } from '../../../../zustand';
-import DetailSupply from '../RentalProcessor/Supplies/Table/DetailSupply';
-
-
+import { Modal as AntdModal } from 'antd';
+import { useDetailModalStore, useTabsStore } from '../../../../zustand';
+import ModalFooterStep1 from './Footer/ModalFooterStep1';
+import { getModalContent } from '../../utils/modal';
 
 const Modal: FC = () => {
 
-    const { isModalOpen, setIsModalOpen } = useDetailSupplyStore();
+    const { activeTab } = useTabsStore();
+    const { 
+        isModalOpen, setIsModalOpen,
+        isProcessLoading,
+        modalStep, setModalStep
+    } = useDetailModalStore();
 
-    const handleModalClose = () => {
-        setIsModalOpen(false);
+    const handleModalClose = () => {        
+        !isProcessLoading && setIsModalOpen(false);
+        switch(activeTab) {
+            case 0:
+            case 1:
+                setModalStep('SUPPLY_DESC');
+                break;
+            
+            case 2:
+                setModalStep('LR_DESC');
+        }
     }
-
-    const footer = (
-        <footer role='modal-footer' className='flex justify-end gap-3 '>
-            <button className='bg-green-300'>대여하기</button>
-            <button onClick={handleModalClose} className='bg-green-300'>종료</button>
-        </footer>
-    )
-
+ 
     return (
         <AntdModal         
-            footer={footer}
+            footer={<ModalFooterStep1 />}
             width={1000}
-            centered
+            centered            
             open={isModalOpen}
             onCancel={handleModalClose} 
         >
-            <DetailSupply />         
+            {
+                getModalContent(modalStep)
+            }         
         </AntdModal>
     );
 };

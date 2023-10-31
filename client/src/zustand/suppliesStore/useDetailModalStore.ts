@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { DetailSupplyStoreType } from './types';
 
-const useDetailSupplyStore = create<DetailSupplyStoreType>()(
+const useDetailModalStore = create<DetailSupplyStoreType>()(
     devtools(
         (set) => ({
             isModalOpen: false,
@@ -10,8 +10,14 @@ const useDetailSupplyStore = create<DetailSupplyStoreType>()(
 
             detailSupply: null,
             setDetailSupply: (detailSupply) => set(() => ({ detailSupply }), false, 'SET_DETAIL_SUPPLY'),
+
+            isProcessLoading: false,
+            setIsProcessLoading: (trigger) => set(() => ({ isProcessLoading: trigger }), false ,'SET_IS_PROCESS_LOADING'),
+            
+            modalStep: 'SUPPLY_DESC',
+            setModalStep: (modalStep: ModalStep) => set(() => ({ modalStep }), false, 'SET_MODAL_STEP')
         }),
     )
 );
 
-export default useDetailSupplyStore;
+export default useDetailModalStore;

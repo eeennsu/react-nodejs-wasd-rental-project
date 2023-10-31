@@ -23,3 +23,7 @@ export const getPropsTables = (activeTab: number, items: VR | Tablet | LectureRo
             return {};
     }
 }
+
+export const getSuppliesAvailability = (data: AllSupplies) => {
+    return data.isAvailable ? '대여 가능' : '대여 불가';
+}

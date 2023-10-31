@@ -1,5 +1,6 @@
 import type { FC } from 'react';
-import { useDetailSupplyStore } from '../../../../../../zustand';
+import { useDetailModalStore, useTabsStore } from '../../../../../../zustand';
+import { getSuppliesAvailability } from '../../../../utils/tables';
 
 type Props = {
     vrData?: VR;
@@ -9,10 +10,12 @@ type Props = {
 
 const Tr: FC<Props> = ({ vrData, tabletData, lectureRoomData }) => {
 
-    const { setIsModalOpen, setDetailSupply } = useDetailSupplyStore();
+    const { activeTab } = useTabsStore();
+    const { setIsModalOpen, setDetailSupply, setModalStep } = useDetailModalStore();
 
     const handleClick = () => {
         setDetailSupply(vrData || tabletData || lectureRoomData);
+        activeTab === 2 && setModalStep('LR_DESC');
         setIsModalOpen(true);
     }
 
@@ -26,9 +29,7 @@ const Tr: FC<Props> = ({ vrData, tabletData, lectureRoomData }) => {
             </td>
             <td>
                 {
-                    (vrData && (vrData.isAvailable ? '사용 가능' : '사용 중')) ?? 
-                    (tabletData && (tabletData.isAvailable ? '사용 가능' : '사용 중')) ?? 
-                    (lectureRoomData && (lectureRoomData.isAvailable? '사용 가능' : '사용 중'))
+                    getSuppliesAvailability(vrData || tabletData || lectureRoomData)       
                 }
             </td>
         </tr>

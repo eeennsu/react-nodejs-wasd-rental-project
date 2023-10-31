@@ -5,8 +5,6 @@ import Modal from './features/Modal/Modal';
 
 const RentPage: FC = () => {
 
-
-
     return (
         <div className='flex w-full bg-slate-500'>
             <aside className='w-1/5 bg-slate-200'>

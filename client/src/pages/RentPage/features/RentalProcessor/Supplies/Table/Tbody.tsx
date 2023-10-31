@@ -1,9 +1,9 @@
 import type { FC } from 'react';
+import { getPropsTables } from '../../../../utils/tables';
 import { useSearchStore, useSuppliesStore, useTabsStore } from '../../../../../../zustand';
 
 import Tr from './Tr';
 import EmptySearchResult from '../../Search/EmptySearchResult';
-import { getPropsTables } from '../../../../utils/tables';
 
 const Tbody: FC = () => {
 
