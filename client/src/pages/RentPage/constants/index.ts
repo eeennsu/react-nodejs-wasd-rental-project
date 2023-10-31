@@ -1,4 +1,4 @@
-export const tabs: Tab[] = [
+export const tabs: TabName[] = [
     'VR',
     'TABLET',
     'LECTURE_ROOM',

@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Pagination as AntdPagination } from 'antd';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useSuppliesStore, useTabsStore } from '../../../../../zustand';
 import { AxiosError, AxiosResponse } from 'axios';
 import { suppliesQueryKeys } from '../../../constants';
@@ -21,8 +21,8 @@ const Pagination: FC = () => {
     } = useSuppliesStore();
     const { activeTab } = useTabsStore();
     
-    const [curPage, setCurPage] = useState<number>(1); // 현재 페이지를 상태로 관리
-    const itemsPerPage = 10; // 페이지당 아이템 수
+    const [curPage, setCurPage] = useState<number>(1); 
+    const itemsPerPage = 10; 
 
     const queryClient = useQueryClient();
 
@@ -33,6 +33,19 @@ const Pagination: FC = () => {
     const handleCurPageChange = (page: number, pageSize: number) => {
         setCurPage(page);
     }
+
+    const getTotalDataLength = useCallback((activeTab: ActiveTab) => {
+        switch(activeTab) {
+            case 0: 
+                return VRsData.length;
+
+            case 1: 
+                return tabletsData.length;
+
+            case 2:
+                return lectureRoomsData.length;
+        }
+    }, [activeTab, VRsData, tabletsData, lectureRoomsData]);
 
     useEffect(() => {            
         if (vrsDataResponse && tabletsResponse && lectrueRoomsResponse) {
@@ -48,12 +61,14 @@ const Pagination: FC = () => {
                     if (tabletsResponse?.data.length >= 1) {                    
                         setTabletsData(tabletsResponse.data);
                     } 
+
                     break;
     
                 case 2: 
                     if (lectrueRoomsResponse?.data.length >= 1) {                
                         setLectureRoomsData(lectrueRoomsResponse.data);
                     }
+
                     break;
                 
                 default:
@@ -100,7 +115,7 @@ const Pagination: FC = () => {
             defaultCurrent={1}
             current={curPage}
             onChange={handleCurPageChange} 
-            total={activeTab === 0 ? VRsData.length : activeTab === 1 ? tabletsData.length : activeTab === 2 ? lectureRoomsData.length : 0}  
+            total={getTotalDataLength(activeTab)}  
         />
     );
 };

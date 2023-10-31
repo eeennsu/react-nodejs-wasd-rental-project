@@ -1,3 +1,8 @@
+export type TabsStoreType = {
+    activeTab: ActiveTab;
+    setActiveTab: (changedTab: ActiveTab) => void;
+}
+
 export type SuppliesStoreType = {
     VRsData: VR[];
     setVRsData: (datas: VR[]) => void;
@@ -27,4 +32,18 @@ export type SearchStoreType = {
 
     searchedLectureRooms: LectureRoom[] | null;
     setSearchedLectureRooms: (datas: LectureRoom[]) => void;
+}
+
+export type ModalStoreType = {
+    isModalOpen: boolean,
+    setIsModalOpen: (trigger: boolean) => void,
+
+    detailSupply: AllSupplies | null,
+    setDetailSupply: (detailSupply: AllSupplies | null) => void,
+
+    isProcessLoading: boolean,
+    setIsProcessLoading: (trigger: boolean) => void,
+    
+    modalStep: ModalStep,
+    setModalStep: (modalStep: ModalStep) => void;
 }

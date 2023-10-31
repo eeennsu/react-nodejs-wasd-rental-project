@@ -1,4 +1,7 @@
 import type { FC } from 'react';
+import { useModalStore, useTabsStore } from '../../../../../../zustand';
+import { getSuppliesAvailability } from '../../../../utils/tables';
+import { initModalStep } from '../../../../utils/modal';
 
 type Props = {
     vrData?: VR;
@@ -8,8 +11,17 @@ type Props = {
 
 const Tr: FC<Props> = ({ vrData, tabletData, lectureRoomData }) => {
 
+    const { activeTab } = useTabsStore();
+    const { setIsModalOpen, setDetailSupply, setModalStep } = useModalStore();
+
+    const handleClick = () => {
+        initModalStep(activeTab, setModalStep);
+        setDetailSupply(vrData || tabletData || lectureRoomData);
+        setIsModalOpen(true);
+    }
+
     return (
-        <tr className='border-b-[1px] border-b-slate-400'>
+        <tr className='border-b-[1px] border-b-slate-400 hover:bg-pink-100 transition-colors cursor-pointer' onClick={handleClick}>
             <td>
                {vrData?.SKU || tabletData?.SKU || lectureRoomData?.name} 
             </td>

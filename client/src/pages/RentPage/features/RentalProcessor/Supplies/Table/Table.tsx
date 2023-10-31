@@ -1,8 +1,6 @@
 import type { FC } from 'react';
-import { useSearchStore } from '../../../../../../zustand';
+import { useSearchStore, useTabsStore, useSuppliesStore } from '../../../../../../zustand';
 
-import useTabsStore from '../../../../../../zustand/tabsStore/useTabsStore';
-import useSuppliesStore from '../../../../../../zustand/suppliesStore/useSuppliesStore';
 import Thead from './Thead';
 import Tbody from './Tbody';
 
