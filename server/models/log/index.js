@@ -2,6 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     return sequelize.define(
         'logs',
         {
+            //로그 번호
             log_id: {
                 primaryKey: true,
                 autoIncrement: true,

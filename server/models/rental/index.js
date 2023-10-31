@@ -2,6 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     return sequelize.define(
         'rentals',
         {
+            //대여 번호
             rental_id : {
                 primaryKey : true,
                 autoIncrement: true,

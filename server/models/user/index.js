@@ -2,6 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     return sequelize.define(
         'users',
         {
+            
             user_id : {
                 primaryKey: true,
                 unique: true,
@@ -19,20 +20,24 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING(255)
             },
 
+            //학번
             user_student_number : {
                 type: DataTypes.STRING(255)
             },
+
 
             user_name : {
                 allowNull : false,
                 type: DataTypes.STRING(255)
             },
 
+            //생성일자
             user_created_at : {
                 allowNull : false,
                 type: DataTypes.DATE
             },
 
+            //사용자 유형
             user_license : {
                 allowNull: false,
                 type : DataTypes.INTEGER
