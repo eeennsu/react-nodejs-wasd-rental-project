@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { getPropsTables } from '../../../../utils/tables';
 import { useSearchStore, useSuppliesStore, useTabsStore } from '../../../../../../zustand';
 
 import Tr from './Tr';
@@ -7,12 +8,26 @@ import EmptySearchResult from '../../Search/EmptySearchResult';
 const Tbody: FC = () => {
 
     const { activeTab } = useTabsStore();
-    const { paginatedDats } = useSuppliesStore();
+    const { paginatedDatas } = useSuppliesStore();
     const { searchedVRs, searchedTablets, searchedLectureRooms } = useSearchStore();       
+
+    let items: Array<VR | Tablet | LectureRoom>;
+    let keyField: string;
+
+    if (activeTab === 0) {
+        items = searchedVRs ?? (paginatedDatas as VR[]);
+        keyField = 'SKU';
+    } else if (activeTab === 1) {
+        items = searchedTablets ?? (paginatedDatas as Tablet[]);
+        keyField = 'SKU';
+    } else if (activeTab === 2) {
+        items = searchedLectureRooms ?? (paginatedDatas as LectureRoom[]);
+        keyField = 'name';
+    }
 
     return (
         <tbody>
-            {
+            {/* prev_code {
                 (activeTab === 0) ? (
                     searchedVRs?.length >= 1 ? (
                         searchedVRs.map((vr) => (
@@ -21,7 +36,7 @@ const Tbody: FC = () => {
                     ) : (searchedVRs?.length === 0) ? (
                         <EmptySearchResult />
                     ) : (
-                        (paginatedDats as VR[]).map((vr) => (
+                        (paginatedDatas as VR[]).map((vr) => (
                             <Tr key={vr.SKU} vrData={vr} />
                         ))
                     )
@@ -33,8 +48,8 @@ const Tbody: FC = () => {
                     ) : (searchedTablets?.length === 0) ? (
                         <EmptySearchResult />
                     ) : (
-                        (paginatedDats as Tablet[]).map(((tablet) => (
-                            <Tr key={tablet.SKU} vrData={tablet} />
+                        (paginatedDatas as Tablet[]).map(((tablet) => (
+                            <Tr key={tablet.SKU} tabletData={tablet} />
                         )))
                     )
                 ) : (activeTab === 2) ? (
@@ -45,12 +60,21 @@ const Tbody: FC = () => {
                     ) : (searchedLectureRooms?.length === 0) ? (
                         <EmptySearchResult />
                     ) : (
-                        (paginatedDats as LectureRoom[]).map((room) => (
+                        (paginatedDatas as LectureRoom[]).map((room) => (
                             <Tr key={room.name} lectureRoomData={room} />
                         ))
                     )
                 ) : null 
-            }                
+            }                 */}
+            {
+                items?.length >= 1 ? (
+                    items.map((item) => (
+                        <Tr key={item[keyField]} {...getPropsTables(activeTab, item)} />
+                    ))
+                ) : (
+                    <EmptySearchResult />
+                )
+            }
         </tbody>  
     );
 };
