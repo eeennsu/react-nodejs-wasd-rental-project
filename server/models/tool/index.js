@@ -2,7 +2,6 @@ module.exports = (sequelize, DataTypes) => {
     return sequelize.define(
         'tools',
         {
-            //기자재 번호
             tool_id : {
                 primaryKey: true,
                 unique: true,

@@ -2,7 +2,6 @@ module.exports = (sequelize, DataTypes) => {
     return sequelize.define(
         "repairs",
         {
-            //수리 번호
             repair_id : {
                 primaryKey : true,
                 autoIncrement: true,
