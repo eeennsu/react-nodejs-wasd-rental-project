@@ -2,12 +2,14 @@ module.exports = (sequelize, DataTypes) => {
     return sequelize.define(
         'departments',
         {
+            //관리 부서 번호
             department_id : {
                 primaryKey: true,
                 autoIncrement: true,
                 type : DataTypes.INTEGER
             },
 
+            //관리 부서 이름(학과명이 들어감)
             department_name : {
                 allowNull : false,
                 type: DataTypes.STRING(255)
