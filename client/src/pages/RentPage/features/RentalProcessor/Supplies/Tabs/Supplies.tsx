@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { tabs } from '../../../../constants';
-import { getTabName } from '../../../../utils/tables';
+import { getTabName } from '../../../../utils/tabs';
 import { useTabsStore } from '../../../../../../zustand/index';
 
 import Table from '../Table/Table';

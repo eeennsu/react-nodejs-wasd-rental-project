@@ -1,9 +1,8 @@
 import type { FC } from 'react';
-import { useQueryClient } from '@tanstack/react-query';
-
 import Search from './Search/Search';
 import Supplies from './Supplies/Tabs/Supplies';
 import useFetchAllSupplies from '../../../../hooks/supplies/useFetchAllSupplies';
+import { useQueryClient } from '@tanstack/react-query';
 
 const RentalProcessor: FC = () => {
 

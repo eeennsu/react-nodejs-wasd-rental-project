@@ -1,5 +1,3 @@
-
-
 export type SuppliesStoreType = {
     VRsData: VR[];
     setVRsData: (datas: VR[]) => void;
@@ -12,8 +10,8 @@ export type SuppliesStoreType = {
 
     resetAllDatas: () => void;
 
-    paginatedDatas: AllSuppliesArr;
-    setPaginatedDatas: (datas: AllSuppliesArr) => void; 
+    paginatedDats: VR[] | Tablet[] | LectureRoom[];
+    setPaginatedDats: (datas: VR[] | Tablet[] | LectureRoom[]) => void; 
     resetPaginatedDatas: () => void;
 }
 
@@ -29,18 +27,4 @@ export type SearchStoreType = {
 
     searchedLectureRooms: LectureRoom[] | null;
     setSearchedLectureRooms: (datas: LectureRoom[]) => void;
-}
-
-export type DetailSupplyStoreType = {
-    isModalOpen: boolean;
-    setIsModalOpen: (trigger: boolean) => void;
-
-    detailSupply: AllSupplies | null;
-    setDetailSupply: (data: AllSupplies) => void; 
-
-    isProcessLoading: boolean;
-    setIsProcessLoading: (trigger: boolean) => void;
-
-    modalStep: ModalStep;
-    setModalStep: (step: ModalStep) => void;
 }

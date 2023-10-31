@@ -19,7 +19,7 @@ const Thead: FC = ({  }) => {
                     }
                 </th>
                 <th className='w-2/12'>
-                    대여 여부
+                    사용 여부
                 </th>
             </tr>
         </thead>

@@ -16,9 +16,9 @@ const useSuppliesStore = create<SuppliesStoreType>()(
         
             resetAllDatas: () => set({ VRsData: [], tabletsData: [], lectureRoomsData: [] }, false, 'DELETE_ALL_DATAS'),
 
-            paginatedDatas: [],
-            setPaginatedDatas: (paginatedDatas) => set({ paginatedDatas }, false, 'SET_PAGINATED_DATAS'),
-            resetPaginatedDatas: () => set(() => ({ paginatedDatas: [] }), false, 'RESET_PAGINATED_DATAS')
+            paginatedDats: [],
+            setPaginatedDats: (paginatedDats) => set({ paginatedDats }, false, 'SET_PAGINATED_DATAS'),
+            resetPaginatedDatas: () => set(() => ({ paginatedDats: [] }), false, 'RESET_PAGINATED_DATAS')
         })
     )
 );
