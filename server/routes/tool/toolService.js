@@ -107,6 +107,7 @@ module.exports = {
                 }
               })
               .then(async(result)=>{
+                //result라는 배열 안에 
                 let obj = {};
                 let results = [];
                 if(result[1]){
