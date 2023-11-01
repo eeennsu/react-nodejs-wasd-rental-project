@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import { useModalStore, useTabsStore } from '../../../../../../zustand';
-import { getSuppliesAvailability } from '../../../../utils/tables';
 import { initModalStep } from '../../../../utils/modal';
 
 type Props = {

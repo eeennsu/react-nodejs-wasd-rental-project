@@ -26,15 +26,12 @@ const RepairSupply: FC = () => {
                         <option>5</option>
                         <option>6</option>
                         <option>7</option>
-                        <option>8</option>
                     </select>
                 </div>
-                <div className='w-full'>
-                    <textarea className='w-full p-3 border bg-inherit h-36 border-neutral-400 rounded-xl'>
+                <textarea className='w-full p-3 resize-none h-44 bg-neutral-200' placeholder='요청할 수리 내용을 입력해주세요' ref={refRepairText}>
 
-                    </textarea>
-                </div>         
-            </div>    
+                </textarea>
+            </div>         
         </ModalTemplate>
     );
 }

@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import { useEffect, type FC } from 'react';
 import { Modal as AntdModal } from 'antd';
 import { useModalStore, useTabsStore } from '../../../../zustand';
 import { getModalContent, getModalFooter, initModalStep } from '../../utils/modal';

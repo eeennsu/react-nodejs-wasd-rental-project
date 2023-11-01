@@ -6,7 +6,7 @@ type Props = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButt
     customColor?: CustomColor
 };
 
-const Button: FC<PropsWithChildren<Props>> = ({ children, className, isLoading, customColor ='blue', ...btnProps }) => {
+const Button: FC<PropsWithChildren<Props>> = ({ children, className, isLoading, customColor = 'blue', ...btnProps }) => {
 
     const blueStyle = `${isLoading ? 'bg-blue-400/40': 'bg-blue-500 '} ${!isLoading && ' hover:bg-blue-400 active:bg-blue-600 '}`;
     const redStyle = `${isLoading ? 'bg-red-400/40' : 'bg-red-400'} ${!isLoading && ' hover:bg-red-300 active:bg-red-500 '}`;

@@ -13,7 +13,7 @@ export const getTabName = (tabName: TabName): string => {
     }
 }
 
-export const getPropsTables = (activeTab: number, items: VR | Tablet | LectureRoom) => {
+export const getPropsTables = (activeTab: ActiveTab, items: VR | Tablet | LectureRoom) => {
     switch (activeTab) {
         case 0:
             return { vrData: items as VR };

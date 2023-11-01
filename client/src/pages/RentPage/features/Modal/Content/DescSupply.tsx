@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { useModalStore, useTabsStore } from '../../../../../zustand';
 import ModalTemplate from '../Template';
 
-const DetailSupply: FC = () => {
+const DescSupply: FC = () => {
 
     const { activeTab } = useTabsStore();
     const { detailSupply } = useModalStore();    
@@ -34,4 +34,4 @@ const DetailSupply: FC = () => {
     );
 };
 
-export default DetailSupply;
+export default DescSupply;
