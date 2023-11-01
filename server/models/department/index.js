@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
                 type : DataTypes.INTEGER
             },
 
+            //하이
             //관리부서 이름(학과명이 들어감)
             department_name : {
                 allowNull : false,
