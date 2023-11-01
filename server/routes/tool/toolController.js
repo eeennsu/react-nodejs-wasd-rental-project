@@ -11,26 +11,27 @@ module.exports = {
         toolService.addTool(body, img)
           .then(result => {
             console.log(result)
+          
             
             let obj = {};
             if (result == "err") {
               obj["suc"] = false;
               obj["error"] = errorCode.E05.message;
-              res.send(obj);
+              //res.send(obj);
             } else if (result == false) {
               obj["suc"] = false;
               obj["error"] = errorCode.E00.message;;
-              res.send(obj);
+              //res.send(obj);
             } 
-            else if(result=="EXIST"){
+            else if(result=="Value Null"){
               obj['suc'] = false;
-              obj['result'] = errorCode.E06.message;
-              res.send(obj);
+              obj['result'] = "Value Null";
+             res.send(obj);
             }
             else {
               obj['suc'] = true;
               obj['result'] = result;
-              res.send(obj);
+             // res.send(obj);
             }
           })
       },
