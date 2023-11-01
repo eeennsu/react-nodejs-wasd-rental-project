@@ -17,21 +17,22 @@ module.exports = {
             if (result == "err") {
               obj["suc"] = false;
               obj["error"] = errorCode.E05.message;
-              //res.send(obj);
+              res.send(obj);
             } else if (result == false) {
               obj["suc"] = false;
               obj["error"] = errorCode.E00.message;;
-              //res.send(obj);
+              res.send(obj);
             } 
-            else if(result=="Value Null"){
+            else if(result=="Img Miss"){
               obj['suc'] = false;
-              obj['result'] = "Value Null";
+              obj['result'] = "Img Miss";
              res.send(obj);
             }
             else {
               obj['suc'] = true;
               obj['result'] = result;
-             // res.send(obj);
+              res.send(obj);
+              
             }
           })
       },

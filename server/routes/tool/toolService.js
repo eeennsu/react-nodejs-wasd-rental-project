@@ -6,7 +6,7 @@ const {
 moment.tz.setDefault("Asia/Seoul");
 
 module.exports = {
-    /*addTool: (body, img) => {
+    addTool: (body, img) => {
         return new Promise((resolve) => {
           Tool.findOrCreate({
             where: {
@@ -72,13 +72,13 @@ module.exports = {
             resolve("err")
           })
         })
-      }, */
+      }, 
 
       //이미지를 받고 이미지가 비어 있으면 이미지가 비어 있습니다를 출력
       //값이 하나라도 비어 있으면 값이 비어있습니다. 를 출력
       //id값이 중복된다면 아이디 값이 중복됩니다. 를 출력
       //기자재를 추가하면 tool DB에 추가하고 IMG DB에 사진 업로드
-      addTool: (body,img) =>{
+      /*  addTool: (body,img) =>{
         return new Promise((resolve)=>{
           if(img==undefined){
             resolve("img undefined")
@@ -107,9 +107,9 @@ module.exports = {
                 }
               })
               .then(async(result)=>{
-                //result라는 배열 안에 
                 let obj = {};
                 let results = [];
+                obj["result"]=result[0]
                 if(result[1]){
                   if(img!=undefined){
                     await Img.create({
@@ -118,12 +118,14 @@ module.exports = {
                     })
                     .then((imgResult)=>{
                       results.push(imgResult)
+                      obj["image"] = results;
+                      resolve(result)
                     })
                     .catch((err)=>{
                       resolve("err")
                     })
                   }
-                  /*else if(results[1]){
+                  else if(results[1]){
                    
                     resolve(results)
                   }
@@ -135,13 +137,13 @@ module.exports = {
                   )
                   .catch((err)=>{
                     resolve("err")
-                  }) */
+                  }) 
                   
                 }
               })
           }
         })
       }
-
-  
+*/
+     
 }
