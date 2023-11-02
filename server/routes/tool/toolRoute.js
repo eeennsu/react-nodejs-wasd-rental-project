@@ -3,6 +3,7 @@ const router = express.Router();
 const toolController = require('./toolController');
 const upload = require("../../middleware/multer");
 
+//기자재 추가
 router.post('/addTool', upload.single('image') , toolController.addTool);
 
 

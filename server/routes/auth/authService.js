@@ -9,28 +9,56 @@ moment.tz.setDefault('Asia/Seoul');
 module.exports = {
   signUp: (body, hash) => {
     return new Promise((resolve) => {
-      User.create({
-        user_id: body.user_id,
-        user_pw: hash,
-        user_name: body.user_name,
-        user_email: body.user_email,
-        user_student_number: body.user_student_number,
-        user_created_at: moment().format('YYYY-MM-DD HH:mm:ss'),
-        user_license: 0,
-        department_id: body.department_id,
+      User.findOne({
+        where: {
+          [Op.or]: [
+            { user_email: body.user_email },
+            { user_student_number: body.user_student_number },
+          ],
+        },
       })
-        .then((result) => {
-          if (result) {
-            resolve(result);
-            console.log(result);
+        .then((existingUser) => {
+          if (existingUser) {
+            const duplicateFields = [];
+            if (existingUser.user_email === body.user_email) {
+              duplicateFields.push("user_email");
+            }
+            if (existingUser.user_student_number === body.user_student_number) {
+              duplicateFields.push("user_student_number");
+            }
+
+            const errorMessage = `${duplicateFields.join(", ")}`;
+            console.log(errorMessage);
+            resolve(errorMessage);
           } else {
-            console.log(false);
-            resolve(false);
+            User.create({
+              user_id: body.user_id,
+              user_pw: hash,
+              user_name: body.user_name,
+              user_email: body.user_email,
+              user_student_number: body.user_student_number,
+              user_created_at: moment().format('YYYY-MM-DD HH:mm:ss'),
+              user_license: 0,
+              department_id: body.department_id,
+            })
+              .then((result) => {
+                if (result) {
+                  console.log(result);
+                  resolve(result);
+                } else {
+                  console.log(false);
+                  resolve(false);
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+                resolve(false);
+              });
           }
         })
         .catch((err) => {
-          resolve(false);
           console.log(err);
+          resolve(false);
         });
     });
   },
@@ -44,7 +72,11 @@ module.exports = {
         },
       })
         .then((result) => {
-          result !== null ? resolve(result) : resolve(false);
+          if (result !== null) {
+            resolve(result);
+          } else {
+            resolve(false);
+          }
         })
         .catch((err) => {
           resolve('err');
@@ -55,18 +87,22 @@ module.exports = {
 
   checkId: (body) => {
     return new Promise((resolve) => {
-      User.findOne({
-        where: {
-          user_id: body.user_id,
-        },
-      })
-        .then((result) => {
-          result !== null ? resolve(result) : resolve(false);
+      if (!body || !body.user_id) {
+        resolve("Null");
+      } else {
+        User.findOne({
+          where: {
+            user_id: body.user_id,
+          },
         })
-        .catch((error) => {
-          console.log(error);
-          resolve('err');
-        });
+          .then((result) => {
+            result !== null ? resolve(result) : resolve(false);
+          })
+          .catch((error) => {
+            console.log(error);
+            resolve('err');
+          });
+      }
     });
   },
 
@@ -150,25 +186,6 @@ module.exports = {
         const code = generateRandom(111111, 999999);
         console.log(code);
 
-         /*   let emailTemplate;
-        
-        const templatePath  = path.resolve(__dirname, "../views/register.ejs");
-        console.log(templatePath)
-        ejs.renderFile(
-         // path.join(__dirname, "../../views/register.ejs"), //ejs파일 위치
-         templatePath,
-          { email: email, code: code },
-          (err, data) => {
-            //ejs mapping
-            if (err) {
-              //console.log(err)
-              resolve(false);
-            } else {
-              emailTemplate = data;
-            }
-          }
-        ); */
-
         let emailParam = {
           toEmail: email,
           subject: '****Verify your new Recess account****',
@@ -188,7 +205,3 @@ module.exports = {
     });
   },
 };
-
-
- 
-    

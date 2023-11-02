@@ -22,9 +22,10 @@ module.exports = (sequelize, DataTypes) => {
 
             //학번
             user_student_number : {
+                allowNull : false,
+                unique: true,
                 type: DataTypes.STRING(255)
             },
-
 
             user_name : {
                 allowNull : false,

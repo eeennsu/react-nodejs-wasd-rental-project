@@ -3,6 +3,10 @@ const upload = require("../../middleware/multer");
 const router = express.Router();
 const testController =require('./testController');
 
+const verifyToken = require('../../middleware/authorization');
 
-router.post("/testUpload",upload.single('image'),testController.testUpload)
+
+//이미지 업로드 테스트
+router.post("/testUpload",verifyToken.checkToken,upload.single('image'),testController.testUpload);
+
 module.exports = router;
