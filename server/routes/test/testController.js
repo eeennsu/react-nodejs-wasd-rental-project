@@ -1,4 +1,4 @@
-const {Img}=require('../../models');
+const {Img,User}=require('../../models');
 const testService = require("./testService")
 
 module.exports = {
@@ -21,5 +21,25 @@ module.exports = {
                 res.send(obj)
             }
         })
+    },
+
+    getTest: (req,res)=>{
+
+        const userId = req.params.user_id
+        testService.getTest(userId)
+        .then((result)=>{
+            let obj = {};
+
+            if(result !=false){
+                obj["200"] = true;
+                obj["result"] = result;
+                res.send(obj);
+            }
+            else {
+                obj["err"] 
+                res.send(obj);
+            }
+        })
+
     }
 }
