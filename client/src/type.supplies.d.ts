@@ -1,36 +1,49 @@
 type TabName = 'VR' | 'TABLET' | 'LECTURE_ROOM';
 type ActiveTab = 0 | 1 | 2;
+type Division = 'VR' | 'TABLET';
 
-type CommonSupInfo = {
-    SKU: number | string;
-    itemNumber: number;
-    isAvailable: boolean;
+// api fetched type
+interface Tool {
+    tool_id: string;
+    tool_division: Division;
+    tool_code: string;
+    tool_name: string;
+    tool_purchase_division: string;
+    tool_purchase_date: Date;
+    tool_state: string;
+    tool_update_at: Data
 }
 
-// type VR = CommonSupInfo & {
+// api fetcehd type
+interface LectureRoom {
+    room_id: string;
+    room_code: string;
+    room_name: string;
+    room_state: string;
+}
 
-// }
-
-// type Tablet = CommonSupInfo & {
-
-// }
-
+// custom_type
 type VR = {
-    SKU: number | string;
-    itemNumber: number;
-    isAvailable: boolean;
+    tool_id: string;
+    tool_division: Division;
+    tool_code: string;
+    tool_name: string;
+    tool_purchase_division: string;
+    tool_purchase_date: Date;
+    tool_state: string;
+    tool_update_at: Data
 }
 
+// custom_type
 type Tablet = {
-    SKU: number | string;
-    itemNumber: number;
-    isAvailable: boolean;
-}
-
-type LectureRoom = {
-    name: string;
-    desc: string;
-    isAvailable: boolean;
+    tool_id: string;
+    tool_division: Division;
+    tool_code: string;
+    tool_name: string;
+    tool_purchase_division: string;
+    tool_purchase_date: Date;
+    tool_state: string;
+    tool_update_at: Data
 }
 
 type AllSupplies = VR | Tablet | LectureRoom;

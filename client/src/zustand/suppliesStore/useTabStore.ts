@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { TabsStoreType } from './types';
+import { ITabsStore } from './types';
 
-const useTabsStore = create<TabsStoreType>()(
+const useTabsStore = create<ITabsStore>()(
     devtools(
         (set) => ({
             activeTab: 0,

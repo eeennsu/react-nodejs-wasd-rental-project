@@ -1,6 +1,8 @@
+import type { UseQueryResult } from '@tanstack/react-query';
 import { useQueries } from '@tanstack/react-query';
-import{ getVRs_API, getTablets_API, getLectureRooms_API } from '../../api/supplies/apis';
+import{ getTools_API, getLectureRooms_API } from '../../api/supplies/apis';
 import { suppliesQueryKeys } from '../../pages/RentPage/constants';
+import { AxiosError, AxiosResponse } from 'axios';
 
 
 // const queries = [
@@ -24,30 +26,19 @@ import { suppliesQueryKeys } from '../../pages/RentPage/constants';
 
 const useFetchAllSupplies = () => {
 
-    // const queryResults = useQueries({
-    //     queries: queries.map(({ key, api }) => ({
-    //         queryKey: [key],
-    //         queryFn: api
-    //     }))
-    // });
-
-    const queryResults = useQueries({
+    const queryResults = useQueries<[UseQueryResult<AxiosResponse<Tool[], AxiosError>>, UseQueryResult<AxiosResponse<LectureRoom[], AxiosError>>]>({
         queries: [
             {
                 queryKey: [suppliesQueryKeys[0]],
-                queryFn: getVRs_API
+                queryFn: getTools_API,
             },
-            {
+            { 
                 queryKey: [suppliesQueryKeys[1]],
-                queryFn: getTablets_API
-            },
-            {
-                queryKey: [suppliesQueryKeys[2]],
-                queryFn: getLectureRooms_API
+                queryFn: getLectureRooms_API,
             }
         ]
     });
-    
+
     return queryResults;
 }
 

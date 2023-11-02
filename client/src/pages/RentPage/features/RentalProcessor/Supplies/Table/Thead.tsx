@@ -8,19 +8,32 @@ const Thead: FC = ({  }) => {
     return (
         <thead>
             <tr className='w-full'>
-                <th className='w-2/12'>
-                    {
-                        activeTab === 0 || activeTab === 1 ? '코드' : '이름'
-                    }
-                </th>
-                <th className='w-8/12'>
-                    {
-                        activeTab === 0 || activeTab === 1 ? '번호' : '설명'
-                    }
-                </th>
-                <th className='w-2/12'>
-                    사용 여부
-                </th>
+                {
+                    (activeTab === 0 || activeTab === 1) ? (
+                        <>
+                            <th className='w-2/12'>
+                                번호
+                            </th>
+                            <th className='w-2/12'>
+                                코드
+                            </th>
+                            <th className='w-2/12'>
+                                품명
+                            </th>
+                            <th>
+                                자산번호
+                            </th>
+                            <th>
+                                기자재 상태
+                            </th>
+                        </>
+                    ) : (
+                        <>
+                            
+                        </>
+                    )
+                }
+               
             </tr>
         </thead>
     );

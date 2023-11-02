@@ -1,11 +1,12 @@
 import type { FC } from 'react';
 import { useModalStore, useTabsStore } from '../../../../../zustand';
 import ModalTemplate from '../Template';
+import { getToolsAvailability, getTabName } from '../../../utils/tables';
 
 const DescSupply: FC = () => {
 
     const { activeTab } = useTabsStore();
-    const { detailSupply } = useModalStore();    
+    const { detailTool } = useModalStore();    
 
     return (
         <ModalTemplate className='grid content-center grid-cols-3 gap-6'>
@@ -15,15 +16,13 @@ const DescSupply: FC = () => {
             <div className='flex flex-col justify-center h-full col-span-2 gap-10'>
                 <div className='text-2xl'>
                     <span className='font-bold'>
-                        {activeTab === 0 ? 'VR' : activeTab === 1 ? 'Tablet' : activeTab === 2 ? '강의실' : null}
+                        {getTabName(activeTab)}
                     </span>
                     <span className='mx-4'>
                         /
                     </span>
-                    <span className={`${detailSupply.isAvailable ? 'text-blue-500' : 'text-red-300'} font-semibold text-lg`}>
-                        {
-                            detailSupply.isAvailable ? '대여 가능' : '대여 불가'
-                        }
+                    <span className={`${detailTool ? 'text-blue-500' : 'text-red-300'} font-semibold text-lg`}>
+                        {getToolsAvailability(detailTool)}
                     </span>                                             
                 </div>
                 <p className='text-lg'>

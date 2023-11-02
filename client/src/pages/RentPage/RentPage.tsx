@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import Side from './features/Side';
-import RentalProcessor from './features/RentalProcessor';
+import RentalProcessor from './features/RentalProcessor/RentalProcessor';
 import Modal from './features/Modal/Modal';
 
 const RentPage: FC = () => {

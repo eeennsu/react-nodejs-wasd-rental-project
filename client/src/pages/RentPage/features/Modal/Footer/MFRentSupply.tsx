@@ -18,7 +18,7 @@ const MFRentSupply: FC = () => {
     return (
         <footer role='modal-footer' className='flex justify-end'>
             <Button onClick={handleRentSupply}>
-                대여 하기
+                대여 완료
             </Button>    
         </footer>
     );

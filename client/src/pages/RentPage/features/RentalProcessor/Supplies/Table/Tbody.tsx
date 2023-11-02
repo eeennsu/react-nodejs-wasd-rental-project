@@ -1,18 +1,19 @@
 import type { FC } from 'react';
 import { useSearchStore, useSuppliesStore, useTabsStore } from '../../../../../../zustand';
 
-import Tr from './Tr';
 import EmptySearchResult from '../../Search/EmptySearchResult';
+import ToolTr from './ToolTr';
+import LectureRoomTr from './LectureRoomTr';
 
 const Tbody: FC = () => {
 
     const { activeTab } = useTabsStore();
-    const { paginatedDats } = useSuppliesStore();
-    const { searchedVRs, searchedTablets, searchedLectureRooms } = useSearchStore();       
+    const { VRsData, tabletsData, lectureRoomsData } = useSuppliesStore();
+    // const { searchedVRs, searchedTablets, searchedLectureRooms } = useSearchStore();       
 
     return (
         <tbody>
-            {
+            {/* 분리 검색은 보류 {
                 (activeTab === 0) ? (
                     searchedVRs?.length >= 1 ? (
                         searchedVRs.map((vr) => (
@@ -50,7 +51,22 @@ const Tbody: FC = () => {
                         ))
                     )
                 ) : null 
-            }                
+            }                 */}
+            {
+                (activeTab === 0) ? (
+                    (VRsData).map((vr) => (
+                        <ToolTr key={vr.tool_id} toolData={vr} />
+                    ))
+                ) : (activeTab === 1) ? (
+                    (tabletsData).map((tablet) => (
+                        <ToolTr key={tablet.tool_id} toolData={tablet} />
+                    ))
+                ) : (activeTab === 2) ? (
+                    (lectureRoomsData).map((room) => (
+                        <LectureRoomTr key={room.room_id} lectureRoomData={room} />
+                    ))
+                ) : null
+            }
         </tbody>  
     );
 };

@@ -1,9 +1,9 @@
-export type TabsStoreType = {
+export interface ITabsStore {
     activeTab: ActiveTab;
     setActiveTab: (changedTab: ActiveTab) => void;
 }
 
-export type SuppliesStoreType = {
+export interface ISuppliesStore {
     VRsData: VR[];
     setVRsData: (datas: VR[]) => void;
     
@@ -15,34 +15,47 @@ export type SuppliesStoreType = {
 
     resetAllDatas: () => void;
 
-    paginatedDats: VR[] | Tablet[] | LectureRoom[];
-    setPaginatedDats: (datas: VR[] | Tablet[] | LectureRoom[]) => void; 
+    paginatedDatas: VR[] | Tablet[] | LectureRoom[];
+    setPaginatedDatas: (datas: VR[] | Tablet[] | LectureRoom[]) => void; 
     resetPaginatedDatas: () => void;
 }
 
-export type SearchStoreType = {
+export interface ISearchStore {
     searchTerm: string;
     setSearchTerm: (term: string) => void; 
 
-    searchedVRs: VR[] | null;
-    setSearchedVRs: (datas: VR[]) => void;
+    // searchedVRs: VR[] | null;
+    // setSearchedVRs: (datas: VR[]) => void;
 
-    searchedTablets: Tablet[] | null;
-    setSearchedTablets: (datas: Tablet[]) => void;
+    // searchedTablets: Tablet[] | null;
+    // setSearchedTablets: (datas: Tablet[]) => void;
 
-    searchedLectureRooms: LectureRoom[] | null;
-    setSearchedLectureRooms: (datas: LectureRoom[]) => void;
+    // searchedLectureRooms: LectureRoom[] | null;
+    // setSearchedLectureRooms: (datas: LectureRoom[]) => void;
+    searchedResults: AllSuppliesArr;
+    setSearchedResults: (results: AllSuppliesArr) => void;
 }
 
-export type ModalStoreType = {
-    isModalOpen: boolean,
-    setIsModalOpen: (trigger: boolean) => void,
+export interface IModalStore {
+    isModalOpen: boolean;
+    setIsModalOpen: (trigger: boolean) => void;
 
-    detailSupply: AllSupplies | null,
-    setDetailSupply: (detailSupply: AllSupplies | null) => void,
+    detailTool: Tool | null;
+    setDetailTool: (tool: Tool) => void
 
-    isProcessLoading: boolean,
-    setIsProcessLoading: (trigger: boolean) => void,
+    // detailVR: VR | null,
+    // setDetailVR: (vr: VR) => void;
+
+    // detailTablet: Tablet | null,
+    // setDetailTablet: (tablet: Tablet) => void;
+
+    detailLectureRoom: LectureRoom | null,
+    setDetailLectureRoom: (vr: LectureRoom) => void;
+
+    resetDetailValue: () => void;
+
+    isProcessLoading: boolean;
+    setIsProcessLoading: (trigger: boolean) => void;
     
     modalStep: ModalStep,
     setModalStep: (modalStep: ModalStep) => void;

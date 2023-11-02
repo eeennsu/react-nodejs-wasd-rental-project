@@ -1,288 +1,205 @@
 {
-    "vrs": [
+    "tools": [
         {
-            "SKU": 1000,
-            "itemNumber": 1,
-            "isAvailable": true
+            "tool_id": "01",
+            "tool_division": "VR",
+            "tool_code": "1",
+            "tool_name": "234",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 1862,
-            "itemNumber": 2,   
-            "isAvailable": true   
+            "tool_id": "02",
+            "tool_division": "VR",
+            "tool_code": "2",
+            "tool_name": "234",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
+        },
+         {
+            "tool_id": "03",
+            "tool_division": "VR",
+            "tool_code": "3",
+            "tool_name": "234",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 5862,
-            "itemNumber": 3,      
-            "isAvailable": true
+            "tool_id": "04",
+            "tool_division": "VR",
+            "tool_code": "4",
+            "tool_name": "234",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 5832,
-            "itemNumber": 4,    
-            "isAvailable": false
+            "tool_id": "05",
+            "tool_division": "VR",
+            "tool_code": "5",
+            "tool_name": "234",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 5865,
-            "itemNumber": 5,    
-            "isAvailable": false
+            "tool_id": "06",
+            "tool_division": "VR",
+            "tool_code": "6",
+            "tool_name": "234",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 7662,
-            "itemNumber": 6,
-            "isAvailable": true  
+            "tool_id": "07",
+            "tool_division": "VR",
+            "tool_code": "7",
+            "tool_name": "234",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 5868,
-            "itemNumber": 7,    
-            "isAvailable": true    
+            "tool_id": "08",
+            "tool_division": "VR",
+            "tool_code": "8",
+            "tool_name": "234",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 5202,
-            "itemNumber": 8,      
-            "isAvailable": false
+            "tool_id": "09",
+            "tool_division": "VR",
+            "tool_code": "9",
+            "tool_name": "234",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 3861,
-            "itemNumber": 9,      
-            "isAvailable": true  
+            "tool_id": "10",
+            "tool_division": "VR",
+            "tool_code": "10",
+            "tool_name": "234",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 4879,
-            "itemNumber": 10,   
-            "isAvailable": true    
+            "tool_id": "01",
+            "tool_division": "TABLET",
+            "tool_code": "1",
+            "tool_name": "FFDGD",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 1111,
-            "itemNumber": 11,
-            "isAvailable": true
+            "tool_id": "02",
+            "tool_division": "TABLET",
+            "tool_code": "2",
+            "tool_name": "FFDGD",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 1112,
-            "itemNumber": 12,   
-            "isAvailable": true   
+            "tool_id": "03",
+            "tool_division": "TABLET",
+            "tool_code": "3",
+            "tool_name": "FFDGD",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 1113,
-            "itemNumber": 13,      
-            "isAvailable": true
+            "tool_id": "04",
+            "tool_division": "TABLET",
+            "tool_code": "4",
+            "tool_name": "FFDGD",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 1114,
-            "itemNumber": 14,    
-            "isAvailable": false
+            "tool_id": "05",
+            "tool_division": "TABLET",
+            "tool_code": "5",
+            "tool_name": "FFDGD",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 1115,
-            "itemNumber": 15,    
-            "isAvailable": false
+            "tool_id": "06",
+            "tool_division": "TABLET",
+            "tool_code": "6",
+            "tool_name": "FFDGD",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 1116,
-            "itemNumber": 16,
-            "isAvailable": true  
+            "tool_id": "07",
+            "tool_division": "TABLET",
+            "tool_code": "7",
+            "tool_name": "FFDGD",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 1118,
-            "itemNumber": 17,    
-            "isAvailable": true    
+            "tool_id": "08",
+            "tool_division": "TABLET",
+            "tool_code": "8",
+            "tool_name": "FFDGD",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 1119,
-            "itemNumber": 18,      
-            "isAvailable": false
+            "tool_id": "09",
+            "tool_division": "TABLET",
+            "tool_code": "9",
+            "tool_name": "FFDGD",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
         },
         {
-            "SKU": 1120,
-            "itemNumber": 19,      
-            "isAvailable": true  
-        },
-        {
-            "SKU": 1121,
-            "itemNumber": 20,   
-            "isAvailable": true    
-        },
-        {
-            "SKU": 2222,
-            "itemNumber": 21,
-            "isAvailable": true
-        },
-        {
-            "SKU": 2223,
-            "itemNumber": 22,   
-            "isAvailable": true   
-        },
-        {
-            "SKU": 2224,
-            "itemNumber": 23,      
-            "isAvailable": false
-        },
-        {
-            "SKU": 2225,
-            "itemNumber": 25,    
-            "isAvailable": false
-        },
-        {
-            "SKU": 2226,
-            "itemNumber": 26,    
-            "isAvailable": false
-        },
-        {
-            "SKU": 2227,
-            "itemNumber": 27,
-            "isAvailable": true  
-        }
-    ],
-
-    "tablets": [
-        {
-            "SKU": 2000,
-            "itemNumber": 1,
-            "isAvailable": true
-        },
-        {
-            "SKU": 5162,
-            "itemNumber": 2,   
-            "isAvailable": true   
-        },
-        {
-            "SKU": 4869,
-            "itemNumber": 3,      
-            "isAvailable": true
-        },
-        {
-            "SKU": 5060,
-            "itemNumber": 4,    
-            "isAvailable": false
-        },
-        {
-            "SKU": 1302,
-            "itemNumber": 5,    
-            "isAvailable": false
-        },
-        {
-            "SKU": 6812,
-            "itemNumber": 6,
-            "isAvailable": true  
-        },
-        {
-            "SKU": 4832,
-            "itemNumber": 7,    
-            "isAvailable": true    
-        },
-        {
-            "SKU": 9892,
-            "itemNumber": 8,      
-            "isAvailable": false
-        },
-        {
-            "SKU": 8812,
-            "itemNumber": 9,      
-            "isAvailable": true  
-        },
-        {
-            "SKU": 2463,
-            "itemNumber": 10,   
-            "isAvailable": true    
-        },
-        {
-            "SKU": 1111,
-            "itemNumber": 11,
-            "isAvailable": true
-        },
-        {
-            "SKU": 1112,
-            "itemNumber": 12,   
-            "isAvailable": true   
-        },
-        {
-            "SKU": 1113,
-            "itemNumber": 13,      
-            "isAvailable": true
-        },
-        {
-            "SKU": 1114,
-            "itemNumber": 14,    
-            "isAvailable": false
-        },
-        {
-            "SKU": 1115,
-            "itemNumber": 15,    
-            "isAvailable": false
-        },
-        {
-            "SKU": 1116,
-            "itemNumber": 16,
-            "isAvailable": true  
-        },
-        {
-            "SKU": 1117,
-            "itemNumber": 17,    
-            "isAvailable": true    
-        },
-        {
-            "SKU": 1118,
-            "itemNumber": 18,      
-            "isAvailable": false
-        },
-        {
-            "SKU": 1119,
-            "itemNumber": 19,      
-            "isAvailable": true  
-        },
-        {
-            "SKU": 1120,
-            "itemNumber": 20,   
-            "isAvailable": true    
-        },
-        {
-            "SKU": 1121,
-            "itemNumber": 21,
-            "isAvailable": true
-        },
-        {
-            "SKU": 2222,
-            "itemNumber": 22,   
-            "isAvailable": true   
-        },
-        {
-            "SKU": 2223,
-            "itemNumber": 23,      
-            "isAvailable": false
-        },
-        {
-            "SKU": 2224,
-            "itemNumber": 24,    
-            "isAvailable": false
-        },
-        {
-            "SKU": 2225,
-            "itemNumber": 25,    
-            "isAvailable": false
-        },
-        {
-            "SKU": 2226,
-            "itemNumber": 26,    
-            "isAvailable": false
-        },
-        {
-            "SKU": 2227,
-            "itemNumber": 27,
-            "isAvailable": true  
-        },
-        {
-            "SKU": 2228,
-            "itemNumber": 28,    
-            "isAvailable": false    
-        },
-        {
-            "SKU": 2229,
-            "itemNumber": 29,      
-            "isAvailable": false
-        },
-        {
-            "SKU": 2230,
-            "itemNumber": 30,      
-            "isAvailable": true  
-        }
+            "tool_id": "10",
+            "tool_division": "TABLET",
+            "tool_code": "10",
+            "tool_name": "FFDGD",
+            "tool_purchase_division": "01010101",
+            "tool_purchase_date": "2023-05-05",
+            "tool_state": "대여 가능",
+            "tool_update_at": "2023-11-01"
+        }        
     ],
 
     "lectureRooms": [

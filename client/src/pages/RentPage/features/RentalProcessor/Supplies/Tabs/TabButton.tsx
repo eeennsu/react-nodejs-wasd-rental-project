@@ -17,8 +17,8 @@ const TabButton: FC<PropsWithChildren<Props>> = ({ children, idx, isCurTab }) =>
 
     const handleSetActiveTab = () => {
         setSearchTerm('');
-        resetAllDatas();
-        resetPaginatedDatas();
+        // resetAllDatas();
+        // resetPaginatedDatas();
         initModalStep(idx as ActiveTab, setModalStep);
         setActiveTab(idx as ActiveTab);   
     }

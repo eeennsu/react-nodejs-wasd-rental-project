@@ -10,7 +10,6 @@ const Table: FC = () => {
     const { setVRsData, setTabletsData, setLectureRoomsData } = useSuppliesStore();
     const { searchTerm } = useSearchStore();
 
-
     // 검색어는 잠깐 생략
     // useEffect(() => {
     //     deleteAllDatas();
