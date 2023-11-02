@@ -12,3 +12,6 @@ router.post('/changePw',authController.changePw) //비밀번호 변경
 router.post('/sendMail',authController.sendMail) //메일 보내기
 
 module.exports = router;
+
+
+//http://125.248.162.81:80/

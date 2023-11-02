@@ -14,7 +14,10 @@ let sequelize = new Sequelize(
           charset: 'utf8',
           collate: 'utf8_general_ci',
       }
-  }
+      
+  },
+  
+  
 );
 
 db.sequelize = sequelize;
