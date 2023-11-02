@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import Modal from '../pages/RentPage/features/Modal/Modal';
 
 const Layout: FC = () => {
 
@@ -12,6 +13,7 @@ const Layout: FC = () => {
                 <Outlet />
             </main>
             <Footer />
+            <Modal />
         </div>
     );
 };

@@ -1,18 +1,44 @@
 import type { FC } from 'react';
 import Button from '../../../../../components/Button';
+import { useModalStore, useTabsStore } from '../../../../../zustand';
+import { message } from 'antd';
+import { initModalStep } from '../../../utils/modal';
 
 const MFRentLR: FC = () => {
 
-    const handleRepairStep = () => {
-        
+    const { activeTab } = useTabsStore();
+
+    const { 
+        setIsModalOpen, setModalStep,
+        setText,
+        selectedRoom, setSelectedRoom 
+    } = useModalStore();
+
+    
+
+    const handleRentLectureRoom = () => {
+        try {
+            // API 호출
+
+            //
+            message.success('대여가 완료되었습니다');    
+        } catch (error) {
+            console.log(error);
+            message.error('알수 없는 에러가 발생했습니다. 괸라자에게 문의해주세요');
+        } finally {
+            setIsModalOpen(false);
+            initModalStep(activeTab, setModalStep);  
+            setText('');
+            setSelectedRoom('');
+        }
     }
 
     return (
-        <footer role='modal-footer' className='flex justify-end gap-3'>
-            <Button onClick={handleRepairStep}>
-                예약 하기
-            </Button>           
-        </footer>
+      <footer role='modal-footer' className='flex justify-end'>
+          <Button onClick={handleRentLectureRoom}>
+              대여 하기
+          </Button>    
+      </footer>
     );
 };
 

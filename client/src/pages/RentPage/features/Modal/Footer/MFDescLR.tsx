@@ -3,16 +3,16 @@ import Button from '../../../../../components/Button';
 
 const MFDescLR: FC = () => {
 
-    const handleRentLectureRoom = () => {
-
+    const handleRepairStep = () => {
+        
     }
 
     return (
-      <footer role='modal-footer' className='flex justify-end'>
-          <Button onClick={handleRentLectureRoom}>
-              대여 하기
-          </Button>    
-      </footer>
+        <footer role='modal-footer' className='flex justify-end gap-3'>
+            <Button onClick={handleRepairStep} className='invisible'>
+                예약 하기
+            </Button>           
+        </footer>
     );
 };
 

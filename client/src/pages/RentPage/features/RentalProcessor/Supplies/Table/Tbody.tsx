@@ -10,7 +10,7 @@ const Tbody: FC = () => {
     const { activeTab } = useTabsStore();
     const { VRsData, tabletsData, lectureRoomsData } = useSuppliesStore();
     // const { searchedVRs, searchedTablets, searchedLectureRooms } = useSearchStore();       
-
+   
     return (
         <tbody>
             {/* 분리 검색은 보류 {

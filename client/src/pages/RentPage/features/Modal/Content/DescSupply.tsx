@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useModalStore, useTabsStore } from '../../../../../zustand';
-import ModalTemplate from '../Template';
+import ModalTemplate from '../ModalTemplate';
 import { getToolsAvailability, getTabName } from '../../../utils/tables';
 
 const DescSupply: FC = () => {

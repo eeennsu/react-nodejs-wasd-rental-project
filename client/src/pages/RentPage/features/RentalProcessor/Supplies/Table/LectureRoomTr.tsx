@@ -2,6 +2,8 @@ import type { FC } from 'react';
 import { useModalStore, useTabsStore } from '../../../../../../zustand';
 import { initModalStep } from '../../../../utils/modal';
 import { getLectureRoomAvailability } from '../../../../utils/tables';
+import { memo } from 'react';
+import TrTemplate from './TrTemplate';
 
 type Props = {
     lectureRoomData: LectureRoom;
@@ -21,7 +23,7 @@ const LectureRoomTr: FC<Props> = ({ lectureRoomData }) => {
     }
 
     return (
-        <tr className='border-b-[1px] border-b-slate-400 hover:bg-pink-100 transition-colors cursor-pointer' onClick={handleClick}>
+        <TrTemplate onClick={handleClick}>
             <td>
                 {lectureRoomData.room_name}
             </td>
@@ -31,8 +33,8 @@ const LectureRoomTr: FC<Props> = ({ lectureRoomData }) => {
             <td>
                 {getLectureRoomAvailability(lectureRoomData)}
             </td>
-        </tr>
+        </TrTemplate>    
     );
 };
 
-export default LectureRoomTr;
+export default memo(LectureRoomTr);

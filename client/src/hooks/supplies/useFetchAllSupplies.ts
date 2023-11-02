@@ -4,7 +4,6 @@ import{ getTools_API, getLectureRooms_API } from '../../api/supplies/apis';
 import { suppliesQueryKeys } from '../../pages/RentPage/constants';
 import { AxiosError, AxiosResponse } from 'axios';
 
-
 // const queries = [
 //     {
 //         key: 'fetch_vrs',

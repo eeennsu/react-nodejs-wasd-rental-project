@@ -2,6 +2,8 @@ import type { FC } from 'react';
 import { useModalStore, useTabsStore } from '../../../../../../zustand';
 import { initModalStep } from '../../../../utils/modal';
 import { getToolsAvailability } from '../../../../utils/tables';
+import { memo } from 'react';
+import TrTemplate from './TrTemplate';
 
 type Props = {
     toolData: Tool;
@@ -21,7 +23,7 @@ const ToolTr: FC<Props> = ({ toolData }) => {
     }
 
     return (
-        <tr className='border-b-[1px] border-b-slate-400 hover:bg-pink-100 transition-colors cursor-pointer' onClick={handleClick}>
+        <TrTemplate onClick={handleClick}>
             <td>
                 {toolData.tool_id}
             </td>
@@ -37,8 +39,8 @@ const ToolTr: FC<Props> = ({ toolData }) => {
             <td>
                 {getToolsAvailability(toolData)}
             </td>
-        </tr>
+        </TrTemplate>
     );
 };
 
-export default ToolTr;
+export default memo(ToolTr);

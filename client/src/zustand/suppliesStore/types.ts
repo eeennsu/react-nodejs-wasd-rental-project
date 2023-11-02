@@ -54,6 +54,15 @@ export interface IModalStore {
 
     resetDetailValue: () => void;
 
+    returnDate: Date | null;
+    setReturnDate: (date: Date | null) => void;
+
+    text: string;
+    setText: (text: string) => void;
+
+    selectedRoom: string;
+    setSelectedRoom: (selctedRoom: string) => void;
+
     isProcessLoading: boolean;
     setIsProcessLoading: (trigger: boolean) => void;
     

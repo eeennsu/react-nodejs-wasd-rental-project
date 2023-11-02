@@ -1,12 +1,12 @@
-import DescLR from "../features/Modal/Content/DescLR";
 import DetailSupply from "../features/Modal/Content/DescSupply"
 import RentLR from "../features/Modal/Content/RentLR";
 import RentSupply from "../features/Modal/Content/RentSupply";
 import RepairSupply from "../features/Modal/Content/RepairSupply";
-import MFDescLR from '../features/Modal/Footer/MFDescLR';
 import MFDescSupply from '../features/Modal/Footer/MFDescSupply';
 import MFRentSupply from '../features/Modal/Footer/MFRentSupply';
 import MFRepairSupply from '../features/Modal/Footer/MFRepairSupply';
+import MFRentLR from '../features/Modal/Footer/MFRentLR';
+import MFDescLR from '../features/Modal/Footer/MFDescLR';
 
 export const getModalContent = (step: ModalStep) => {
     switch (step) {
@@ -20,10 +20,9 @@ export const getModalContent = (step: ModalStep) => {
             return <RepairSupply />
 
         case 'LR_DESC': 
-            return <DescLR />
-
         case 'LR_RENT':
             return <RentLR />
+
 
         default: throw new Error(`Unknown step value : ${step}`);
     } 
@@ -41,10 +40,10 @@ export const getModalFooter = (step: ModalStep) => {
             return <MFRepairSupply />
 
         case 'LR_DESC': 
-            return null;
+            return <MFDescLR />
 
         case 'LR_RENT':
-            return <MFDescLR />
+            return <MFRentLR />
 
         default: throw new Error(`Unknown step value : ${step}`);
     }

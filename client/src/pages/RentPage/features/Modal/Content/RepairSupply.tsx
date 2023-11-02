@@ -1,10 +1,12 @@
 import type { FC } from 'react';
 import { useRef } from 'react';
-import ModalTemplate from '../Template';
+import ModalTemplate from '../ModalTemplate';
+import { Input } from 'antd';
+
+const { TextArea } = Input;
 
 const RepairSupply: FC = () => {
     
-    const refRepairText = useRef<HTMLTextAreaElement | null>(null);
 
     return (
         <ModalTemplate className='flex flex-col justify-center w-full gap-10'>
@@ -28,9 +30,7 @@ const RepairSupply: FC = () => {
                         <option>7</option>
                     </select>
                 </div>
-                <textarea className='w-full p-3 resize-none h-44 bg-neutral-200' placeholder='요청할 수리 내용을 입력해주세요' ref={refRepairText}>
-
-                </textarea>
+                <TextArea rows={6} style={{ resize: 'none' }} className='p-3' placeholder='수리할 내용을 입력해주세요' />           
             </div>         
         </ModalTemplate>
     );

@@ -204,154 +204,64 @@
 
     "lectureRooms": [
         {
-            "name": "더미01",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
+            "room_id": "01",
+            "room_code": "1",
+            "room_name": "공학관 315",
+            "room_state": "대여 가능"
         },
         {
-            "name": "더미02",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": false
+            "room_id": "02",
+            "room_code": "2",
+            "room_name": "공학관 316",
+            "room_state": "대여 가능"
         },
         {
-            "name": "더미03",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
+            "room_id": "03",
+            "room_code": "3",
+            "room_name": "공학관 317",
+            "room_state": "대여 가능"
         },
         {
-            "name": "더미04",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
+            "room_id": "04",
+            "room_code": "4",
+            "room_name": "공학관 318",
+            "room_state": "대여 가능"
         },
         {
-            "name": "더미05",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": false
+            "room_id": "05",
+            "room_code": "5",
+            "room_name": "공학관 319",
+            "room_state": "대여 가능"
         },
         {
-            "name": "더미06",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
+            "room_id": "06",
+            "room_code": "6",
+            "room_name": "공학관 320",
+            "room_state": "대여 가능"
         },
         {
-            "name": "더미07",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
+            "room_id": "07",
+            "room_code": "7",
+            "room_name": "본관 501",
+            "room_state": "대여 가능"
         },
         {
-            "name": "더미08",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
+            "room_id": "08",
+            "room_code": "8",
+            "room_name": "본관 502",
+            "room_state": "대여 가능"
         },
         {
-            "name": "더미09",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": false
+            "room_id": "09",
+            "room_code": "9",
+            "room_name": "본관 503",
+            "room_state": "대여 가능"
         },
         {
-            "name": "더미10",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
-        },
-        {
-            "name": "더미11",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
-        },
-        {
-            "name": "더미12",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": false
-        },
-        {
-            "name": "더미13",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
-        },
-        {
-            "name": "더미14",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
-        },
-        {
-            "name": "더미15",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": false
-        },
-        {
-            "name": "더미16",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
-        },
-        {
-            "name": "더미17",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
-        },
-        {
-            "name": "더미18",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
-        },
-        {
-            "name": "더미19",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": false
-        },
-        {
-            "name": "더미20",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
-        },
-        {
-            "name": "더미21",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
-        },
-        {
-            "name": "더미22",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": false
-        },
-        {
-            "name": "더미23",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
-        },
-        {
-            "name": "더미24",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
-        },
-        {
-            "name": "더미25",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": false
-        },
-        {
-            "name": "더미26",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
-        },
-        {
-            "name": "더미27",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
-        },
-        {
-            "name": "더미28",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
-        },
-        {
-            "name": "더미29",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": false
-        },
-        {
-            "name": "더미30",
-            "desc": "Lorem Ipsum is",
-            "isAvailable": true
+            "room_id": "10",
+            "room_code": "10",
+            "room_name": "본관 504",
+            "room_state": "대여 가능"
         }
     ]
 }
