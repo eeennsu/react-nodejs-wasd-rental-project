@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
                 type : DataTypes.STRING(255)
             },
 
-            //기자재 종류
-            tool_division : {
+            //기자재 종류(교육용기자재)
+            tool_division : { 
                 allowNull : false,
                 type: DataTypes.STRING(255)
                 
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING(255)
             },
 
-            //품명
+            //품명(VR실습장비)
             tool_name : { 
                 allowNull : false,
                 type: DataTypes.STRING(255)
@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
             //     type: DataTypes.STRING(255)
             // },
             
-            //기자재 상태
+            //기자재 상태("대여가능/ 대여불가능")
             tool_state : { 
                 allowNull : false,
                 type: DataTypes.STRING(255)

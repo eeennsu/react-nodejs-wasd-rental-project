@@ -160,7 +160,7 @@ module.exports = {
         },
         {
           where: {
-            user_id: body.user_id,
+            //user_id: body.user_id,
             user_pw: {
               [Op.ne]: hash,
             },
@@ -189,7 +189,7 @@ module.exports = {
         let emailParam = {
           toEmail: email,
           subject: '****Verify your new Recess account****',
-          text: code,
+          code: code,
         };
 
         mailer.sendGmail(emailParam);
