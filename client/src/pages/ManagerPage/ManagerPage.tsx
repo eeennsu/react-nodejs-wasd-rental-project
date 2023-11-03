@@ -5,11 +5,12 @@ import Button_m from './Button_m';
 const ManagerPage: FC = () => {
 
     return (
-        <div>
-          
-           <ManagerInformation/>
+        <div >
+           <ManagerInformation />
            <Button_m/>
 
+          
+          
         </div>
     );
 };
