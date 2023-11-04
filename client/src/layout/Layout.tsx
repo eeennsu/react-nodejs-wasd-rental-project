@@ -7,9 +7,9 @@ import Modal from '../pages/RentPage/features/Modal/Modal';
 const Layout: FC = () => {
 
     return (
-        <div className='flex flex-col min-h-screen text-black'>
+        <div className='flex flex-col min-h-screen'>
             <Header />                                  
-            <main className='flex flex-1 bg-white'>
+            <main className='flex flex-1'>
                 <Outlet />
             </main>
             <Footer />

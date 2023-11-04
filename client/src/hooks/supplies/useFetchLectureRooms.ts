@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import{ getLectureRooms_API } from '../../api/supplies/apis';
+import{ getLectureRooms_API } from '../../api/supplies/suppliesApis';
 
 const useFetchLectureRooms = () => {
     const { data, isLoading, isError, error } = useQuery(

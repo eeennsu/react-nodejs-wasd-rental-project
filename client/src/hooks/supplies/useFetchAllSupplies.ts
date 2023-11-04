@@ -1,6 +1,6 @@
 import type { UseQueryResult } from '@tanstack/react-query';
 import { useQueries } from '@tanstack/react-query';
-import{ getTools_API, getLectureRooms_API } from '../../api/supplies/apis';
+import{ getTools_API, getLectureRooms_API } from '../../api/supplies/suppliesApis';
 import { suppliesQueryKeys } from '../../pages/RentPage/constants';
 import { AxiosError, AxiosResponse } from 'axios';
 

@@ -10,21 +10,17 @@ const RentLR: FC = () => {
     const { modalStep } = useModalStore();
 
     return (
-        <ModalTemplate>
+        <ModalTemplate className='flex flex-col gap-7'>
             <Schedule />
-            <div className='mt-6'>
-                {
-                    modalStep === 'LR_DESC' ? (
-                        <RoomList />
-                    ) : (
-                        <RentalRoomForm />
-                    )
-                }
-            </div>
+            {
+                modalStep === 'LR_DESC' ? (
+                    <RoomList />
+                ) : (
+                    <RentalRoomForm />
+                )
+            }
         </ModalTemplate>
     );
 };
 
 export default RentLR;
-
-// testes

@@ -23,7 +23,6 @@ export const getModalContent = (step: ModalStep) => {
         case 'LR_RENT':
             return <RentLR />
 
-
         default: throw new Error(`Unknown step value : ${step}`);
     } 
 }   
