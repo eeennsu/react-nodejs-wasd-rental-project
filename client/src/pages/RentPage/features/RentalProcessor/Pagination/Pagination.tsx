@@ -1,10 +1,11 @@
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { Pagination as AntdPagination } from 'antd';
 import { useState, useEffect, useCallback } from 'react';
 import { useSuppliesStore, useTabsStore } from '../../../../../zustand';
 import { AxiosError, AxiosResponse } from 'axios';
 import { suppliesQueryKeys } from '../../../constants';
 import { useQueryClient } from '@tanstack/react-query';
+import PGButton from './PGButton';
 
 // const onShowSizeChange: PaginationProps['onShowSizeChange'] = (current, pageSize) => {
 //     console.log(current, pageSize);
@@ -23,8 +24,8 @@ const Pagination: FC = () => {
     // } = useSuppliesStore();
     // const { activeTab } = useTabsStore();
     
-    // const [curPage, setCurPage] = useState<number>(1); 
-    // const itemsPerPage = 10; 
+    const [curPage, setCurPage] = useState<number>(1); 
+    const itemsPerPage = 10; 
 
     // const queryClient = useQueryClient();
 
@@ -32,9 +33,9 @@ const Pagination: FC = () => {
     // const tabletsResponse = queryClient.getQueryData([suppliesQueryKeys[1]]) as AxiosResponse<Tablet[], AxiosError>;
     // const lectrueRoomsResponse = queryClient.getQueryData([suppliesQueryKeys[2]]) as AxiosResponse<LectureRoom[], AxiosError>;
 
-    // const handleCurPageChange = (page: number, pageSize: number) => {
-    //     setCurPage(page);
-    // }
+    const handleCurPageChange = (page: number, pageSize: number) => {
+        setCurPage(page);
+    }
 
     // const getTotalDataLength = useCallback((activeTab: ActiveTab) => {
     //     switch(activeTab) {
@@ -112,16 +113,32 @@ const Pagination: FC = () => {
 
     // }, [curPage, VRsData, tabletsData, lectureRoomsData]);
 
-    // return (
-    //     <AntdPagination 
-    //         defaultCurrent={1}
-    //         current={curPage}
-    //         onChange={handleCurPageChange} 
-    //         total={getTotalDataLength(activeTab)}  
-    //     />
-    // );
+    const itemRender = (page: number, type: "page" | "prev" | "next" | "jump-prev" | "jump-next", element: ReactNode): ReactNode => {
 
-    return null;
+        if (type === 'page') {
+     
+            return (
+                <PGButton curPage={curPage}>
+                    {page}
+                </PGButton>
+            )
+        }
+
+        return element;
+    }
+
+    return (
+        <AntdPagination 
+            defaultCurrent={1}
+            current={curPage}
+            onChange={handleCurPageChange} 
+            total={100}
+            itemRender={itemRender}  
+            showQuickJumper={false}
+            showSizeChanger={false}
+            showLessItems
+         />      
+    );
 };
 
 export default Pagination;

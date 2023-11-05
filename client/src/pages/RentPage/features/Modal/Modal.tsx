@@ -19,7 +19,6 @@ const Modal: FC = () => {
         setIsModalOpen(false);      
     }
 
-    /// test33333
     return (
         <AntdModal         
             footer={getModalFooter(modalStep)}

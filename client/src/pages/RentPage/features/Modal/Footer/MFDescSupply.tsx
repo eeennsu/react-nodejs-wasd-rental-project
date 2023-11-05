@@ -30,10 +30,10 @@ const MFDescSupply: FC = () => {
  
     return (
         <footer role='modal-footer' className='flex justify-end gap-3'>
-            <Button onClick={handleRepairStep}>
+            <Button onClick={handleRepairStep} bgColor='01'>
                 수리 요청
             </Button>
-            <Button onClick={handleRentStep}>
+            <Button onClick={handleRentStep} bgColor='01'>
                 대여 하기
             </Button>
         </footer>

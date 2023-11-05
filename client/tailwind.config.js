@@ -10,11 +10,16 @@ export default {
         '02': '#A6B1C0',
         '03': '#D5E1F2',
         '04': '#F2F4F7',
+        '01-hover': '#5f80a3',
+        '01-active': '#334961',
+        '02-hover': '#adbacc',
+        '02-active': '#939ead',
       },
       minWidth: {
         '7xl': '1280px'
       },
       borderRadius: {
+        'sm2': '4px',
         '2lg': '10px'
       },
       boxShadow: {

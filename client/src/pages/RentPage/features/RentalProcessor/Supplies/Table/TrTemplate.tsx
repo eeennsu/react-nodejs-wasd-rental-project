@@ -5,7 +5,7 @@ type Props = DetailedHTMLProps<HtmlHTMLAttributes<HTMLTableRowElement>, HTMLTabl
 const TrTemplate: FC<PropsWithChildren<Props>> = ({ children, ...trProps }) => {
 
     return (
-        <tr {...trProps} className='flex items-center justify-center text-sm font-semibold text-black transition-colors cursor-pointer h-9 bg-02 rounded-[4px]'> 
+        <tr {...trProps} className='flex items-center justify-center h-8 text-sm font-semibold text-black transition-colors cursor-pointer cursor-pointe bg-02 hover:bg-slate-300 active:bg-slate-400 rounded-sm2'> 
             {children}
         </tr>
     );

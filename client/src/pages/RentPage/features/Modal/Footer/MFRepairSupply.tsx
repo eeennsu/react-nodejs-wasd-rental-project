@@ -28,7 +28,7 @@ const MFRepairSupply: FC = () => {
 
     return (
         <footer role='modal-footer' className='flex justify-end gap-3'>
-            <Button onClick={handleRepairRequest}>
+            <Button onClick={handleRepairRequest} bgColor='01'>
                 요청 하기
             </Button>    
         </footer>

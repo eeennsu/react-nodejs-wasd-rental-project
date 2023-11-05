@@ -20,3 +20,8 @@
     border-bottom: 35px solid #3F5D7D;   
     line-height: 1.5;
 }
+
+.ant-pagination-item-active {
+    background-color: inherit !important; /* 덮어쓰기를 위해 !important 사용 */
+    border: none !important;
+}

@@ -14,19 +14,17 @@ type Props = {
 const Supplies: FC<Props> = ({ isAnyoneLoading }) => {
 
     return (
-        <div className='flex flex-col h-full'>
+        <div className='flex flex-col h-full gap-5'>
             <Tabs />
-            <div className='border-t-[1px] border-black p-4 h-full'>
-                {
-                    isAnyoneLoading ? (
-                        <Loading />
-                    ) : (
-                        <Table /> 
-                    )
-                }                
-            </div>     
-            <div className='flex justify-center w-full'>                
-                <Pagination />
+            {
+                isAnyoneLoading ? (
+                    <Loading />
+                ) : (
+                    <Table /> 
+                )
+            }         
+            <div className='flex justify-center w-full mt-5'>                
+                <Pagination />            
             </div>      
         </div>
     );

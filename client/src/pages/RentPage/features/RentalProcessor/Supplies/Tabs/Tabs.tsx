@@ -10,15 +10,15 @@ const Tabs: FC = () => {
     const { activeTab } = useTabsStore();
 
     return (
-        <div className='flex bg-01'>
+        <div className='flex mt-4 bg-01'>
             {
                 tabs.map((tab, i) => {
                     return i === activeTab ? (
-                        <CurTabButton idx={i}>
+                        <CurTabButton key={tab} idx={i}>
                             {getTabName(tab)}
                         </CurTabButton>
                     ) : (
-                        <TabButton idx={i}>
+                        <TabButton key={tab} idx={i}>
                             {getTabName(tab)}
                         </TabButton>
                     )
