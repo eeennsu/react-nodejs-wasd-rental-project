@@ -8,6 +8,9 @@ const Side: FC = () => {
     
     return (
         <div className='flex flex-col items-center h-full justify-evenly'>
+            <h3>
+                나의 대여 목록
+            </h3>
             <MyRentals />
             <MyDetails />  
         </div>

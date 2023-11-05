@@ -1,8 +1,6 @@
 import type { FC } from 'react';
 
 const MainPage: FC = () => {
-
-    const ggr =' gt';
     
     return (
         <div>

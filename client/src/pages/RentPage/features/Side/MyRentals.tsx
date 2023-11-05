@@ -3,7 +3,7 @@ import type { FC } from 'react';
 const MyRentals: FC = () => {
 
     return (
-        <div className='p-6 bg-yellow-200'>
+        <div className='bg-yellow-200 '>
             <h2>나의 대여 현황</h2>
             <ul className='list-disc list-inside'>
                 <li>Lorem ipsum dolor sit.</li>
