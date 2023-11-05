@@ -8,7 +8,7 @@ router.post('/addTool', upload.single('image') , toolController.addTool);
 
 
 module.exports = router;
-/*  1.기자재 추가
+/*  1.기자재 추가 
     2.기자재 수정
     3.기자재 삭제
     4.기자재 전체 조회(페이지네이션 10개까지)
@@ -18,6 +18,7 @@ module.exports = router;
     8.vr 순으로 정렬
     9.타블렛 순으로 정렬
     10.강의실 순으로 정렬
+    11.대여 가능  / 대여 중인 3개의 기자재 정보
     */
 
     //테스트드가자

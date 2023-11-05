@@ -16,6 +16,7 @@ module.exports = {
             !body.tool_division ||
             !body.tool_code ||
             !body.tool_name ||
+            !body.tool_standard||
             !body.tool_purchase_division ||
             !body.department_id
           ) {
@@ -34,6 +35,7 @@ module.exports = {
                 tool_name: body.tool_name,
                 tool_purchase_division: body.tool_purchase_division,
                 tool_purchase_date: moment().format("YYYY-MM-DD"),
+                tool_standard:body.tool_standard,
                 tool_update_at: moment().format("YYYY-MM-DD"),
                 tool_state: "대여가능",
                 department_id: body.department_id
@@ -72,5 +74,11 @@ module.exports = {
             });
           }
         });
+      },
+
+      updateTool:(body)=>{
+        return new Promise((resolve)=>{
+
+        })
       }
 }

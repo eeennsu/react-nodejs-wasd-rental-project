@@ -2,9 +2,9 @@ module.exports = (sequelize, DataTypes) => {
     return sequelize.define(
         'tools',
         {
-            //기자재 번호
+            //기자재 번호(자산번호)
             tool_id : {
-                primaryKey: true,
+                primaryKey : true,
                 unique: true,
                 type : DataTypes.STRING(255)
             },
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING(255)
             },
 
-            //자산번호
+            //구입 구분
             tool_purchase_division : { 
                 allowNull : false,
                 type: DataTypes.STRING(255)
@@ -40,10 +40,11 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.DATE
             },
 
-            // tool_standard : {
-            //     allowNull : false,
-            //     type: DataTypes.STRING(255)
-            // },
+            //품목 규격
+            tool_standard : {
+                allowNull : false,
+                type: DataTypes.STRING(255)
+            },
             
             //기자재 상태("대여가능/ 대여불가능")
             tool_state : { 

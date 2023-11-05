@@ -5,7 +5,7 @@ module.exports = {
 
     addTool: async (req, res) => {
         const body = req.body;
-       console.log(body)
+        console.log(body)
         const img = req.file;
         
         toolService.addTool(body, img)
@@ -39,6 +39,11 @@ module.exports = {
             }
           })
       },
+
+      updateTool: (req,res) =>{
+        let body = req.body 
+        
+      }
 
 }
 
