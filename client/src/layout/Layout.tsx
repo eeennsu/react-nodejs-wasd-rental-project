@@ -11,7 +11,7 @@ const Layout: FC = () => {
         <div className='flex flex-col min-h-screen'>
             <Header />                    
             <MainLogo />              
-            <main className='flex flex-1 w-full mx-auto max-w-7xl'>
+            <main className='flex flex-1 w-full max-w-6xl mx-auto'>
                 <Outlet />
             </main>        
             <Footer />

@@ -3,8 +3,8 @@
         {
             "tool_id": "01",
             "tool_division": "VR",
-            "tool_code": "1",
-            "tool_name": "234",
+            "tool_code": "1번",
+            "tool_name": "오큘러스",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -13,8 +13,8 @@
         {
             "tool_id": "02",
             "tool_division": "VR",
-            "tool_code": "2",
-            "tool_name": "234",
+            "tool_code": "2번",
+            "tool_name": "오큘러스",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -23,8 +23,8 @@
          {
             "tool_id": "03",
             "tool_division": "VR",
-            "tool_code": "3",
-            "tool_name": "234",
+            "tool_code": "3번",
+            "tool_name": "오큘러스",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -33,8 +33,8 @@
         {
             "tool_id": "04",
             "tool_division": "VR",
-            "tool_code": "4",
-            "tool_name": "234",
+            "tool_code": "4번",
+            "tool_name": "오큘러스",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -43,8 +43,8 @@
         {
             "tool_id": "05",
             "tool_division": "VR",
-            "tool_code": "5",
-            "tool_name": "234",
+            "tool_code": "5번",
+            "tool_name": "오큘러스",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -53,8 +53,8 @@
         {
             "tool_id": "06",
             "tool_division": "VR",
-            "tool_code": "6",
-            "tool_name": "234",
+            "tool_code": "6번",
+            "tool_name": "오큘러스",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -63,8 +63,8 @@
         {
             "tool_id": "07",
             "tool_division": "VR",
-            "tool_code": "7",
-            "tool_name": "234",
+            "tool_code": "7번",
+            "tool_name": "오큘러스",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -73,8 +73,8 @@
         {
             "tool_id": "08",
             "tool_division": "VR",
-            "tool_code": "8",
-            "tool_name": "234",
+            "tool_code": "8번",
+            "tool_name": "오큘러스",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -83,8 +83,8 @@
         {
             "tool_id": "09",
             "tool_division": "VR",
-            "tool_code": "9",
-            "tool_name": "234",
+            "tool_code": "9번",
+            "tool_name": "오큘러스",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -93,8 +93,8 @@
         {
             "tool_id": "10",
             "tool_division": "VR",
-            "tool_code": "10",
-            "tool_name": "234",
+            "tool_code": "10번",
+            "tool_name": "오큘러스",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -103,8 +103,8 @@
         {
             "tool_id": "01",
             "tool_division": "TABLET",
-            "tool_code": "1",
-            "tool_name": "FFDGD",
+            "tool_code": "1번",
+            "tool_name": "타블렛",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -113,8 +113,8 @@
         {
             "tool_id": "02",
             "tool_division": "TABLET",
-            "tool_code": "2",
-            "tool_name": "FFDGD",
+            "tool_code": "2번",
+            "tool_name": "타블렛",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -123,8 +123,8 @@
         {
             "tool_id": "03",
             "tool_division": "TABLET",
-            "tool_code": "3",
-            "tool_name": "FFDGD",
+            "tool_code": "3번",
+            "tool_name": "타블렛",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -133,8 +133,8 @@
         {
             "tool_id": "04",
             "tool_division": "TABLET",
-            "tool_code": "4",
-            "tool_name": "FFDGD",
+            "tool_code": "4번",
+            "tool_name": "타블렛",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -143,8 +143,8 @@
         {
             "tool_id": "05",
             "tool_division": "TABLET",
-            "tool_code": "5",
-            "tool_name": "FFDGD",
+            "tool_code": "5번",
+            "tool_name": "타블렛",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -153,8 +153,8 @@
         {
             "tool_id": "06",
             "tool_division": "TABLET",
-            "tool_code": "6",
-            "tool_name": "FFDGD",
+            "tool_code": "6번",
+            "tool_name": "타블렛",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -163,8 +163,8 @@
         {
             "tool_id": "07",
             "tool_division": "TABLET",
-            "tool_code": "7",
-            "tool_name": "FFDGD",
+            "tool_code": "7번",
+            "tool_name": "타블렛",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -173,8 +173,8 @@
         {
             "tool_id": "08",
             "tool_division": "TABLET",
-            "tool_code": "8",
-            "tool_name": "FFDGD",
+            "tool_code": "8번",
+            "tool_name": "타블렛",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -183,8 +183,8 @@
         {
             "tool_id": "09",
             "tool_division": "TABLET",
-            "tool_code": "9",
-            "tool_name": "FFDGD",
+            "tool_code": "9번",
+            "tool_name": "타블렛",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -193,8 +193,8 @@
         {
             "tool_id": "10",
             "tool_division": "TABLET",
-            "tool_code": "10",
-            "tool_name": "FFDGD",
+            "tool_code": "10번",
+            "tool_name": "타블렛",
             "tool_purchase_division": "01010101",
             "tool_purchase_date": "2023-05-05",
             "tool_state": "대여 가능",
@@ -205,61 +205,61 @@
     "lectureRooms": [
         {
             "room_id": "01",
-            "room_code": "1",
+            "room_code": "1번",
             "room_name": "공학관 315",
             "room_state": "대여 가능"
         },
         {
             "room_id": "02",
-            "room_code": "2",
+            "room_code": "2번",
             "room_name": "공학관 316",
             "room_state": "대여 가능"
         },
         {
             "room_id": "03",
-            "room_code": "3",
+            "room_code": "3번",
             "room_name": "공학관 317",
             "room_state": "대여 가능"
         },
         {
             "room_id": "04",
-            "room_code": "4",
+            "room_code": "4번",
             "room_name": "공학관 318",
             "room_state": "대여 가능"
         },
         {
             "room_id": "05",
-            "room_code": "5",
+            "room_code": "5번",
             "room_name": "공학관 319",
             "room_state": "대여 가능"
         },
         {
             "room_id": "06",
-            "room_code": "6",
+            "room_code": "6번",
             "room_name": "공학관 320",
             "room_state": "대여 가능"
         },
         {
             "room_id": "07",
-            "room_code": "7",
+            "room_code": "7번",
             "room_name": "본관 501",
             "room_state": "대여 가능"
         },
         {
             "room_id": "08",
-            "room_code": "8",
+            "room_code": "8번",
             "room_name": "본관 502",
             "room_state": "대여 가능"
         },
         {
             "room_id": "09",
-            "room_code": "9",
+            "room_code": "9번",
             "room_name": "본관 503",
             "room_state": "대여 가능"
         },
         {
             "room_id": "10",
-            "room_code": "10",
+            "room_code": "10번",
             "room_name": "본관 504",
             "room_state": "대여 가능"
         }

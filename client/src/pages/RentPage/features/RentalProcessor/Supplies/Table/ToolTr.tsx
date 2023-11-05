@@ -25,16 +25,16 @@ const ToolTr: FC<Props> = ({ toolData }) => {
     return (
         <TrTemplate onClick={handleClick}>
             <td>
-                {toolData.tool_id}
-            </td>
-            <td>
                 {toolData.tool_code}
             </td>
-            <td>
-                {toolData.tool_name}
-            </td>
-            <td>
-                {toolData.tool_purchase_division}
+            <td className='flex gap-1 mx-1'>               
+                <span>
+                    /
+                </span>
+                {toolData.tool_name}             
+                <span>
+                    /
+                </span>                   
             </td>
             <td>
                 {getToolsAvailability(toolData)}

@@ -8,8 +8,8 @@ const Thead: FC = ({  }) => {
     return (
         <thead>
             <tr className='w-full'>
-                {
-                    (activeTab === 0 || activeTab === 1) ? (
+                {/* {
+                    (activeTab === 1 || activeTab === 2) ? (
                         <>
                             <th className='w-1/5'>
                                 번호
@@ -27,7 +27,7 @@ const Thead: FC = ({  }) => {
                                 기자재 상태
                             </th>
                         </>
-                    ) : (
+                    ) : (activeTab === 3) && (
                         <>
                             <th className='w-1/3'>
                                 이름
@@ -40,7 +40,16 @@ const Thead: FC = ({  }) => {
                             </th> 
                         </>
                     )
-                }               
+                }                */}
+                <th className='w-1/3'>
+                    번호
+                </th>
+                <th className='w-1/3'>
+                    이름
+                </th>
+                <th className='w-1/3'>
+                    대여여부
+                </th>
             </tr>
         </thead>
     );

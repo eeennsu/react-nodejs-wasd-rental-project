@@ -1,5 +1,5 @@
-type TabName = 'VR' | 'TABLET' | 'LECTURE_ROOM';
-type ActiveTab = 0 | 1 | 2;
+type TabName = '전체' | 'VR' | 'TABLET' | 'LECTURE_ROOM';
+type ActiveTab = 0 | 1 | 2 | 3;
 type Division = 'VR' | 'TABLET';
 
 // api fetched type

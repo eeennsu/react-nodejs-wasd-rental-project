@@ -12,7 +12,7 @@ const Tbody: FC = () => {
     // const { searchedVRs, searchedTablets, searchedLectureRooms } = useSearchStore();       
    
     return (
-        <tbody>
+        <tbody className='flex flex-col gap-2.5'>
             {/* 분리 검색은 보류 {
                 (activeTab === 0) ? (
                     searchedVRs?.length >= 1 ? (
@@ -54,18 +54,20 @@ const Tbody: FC = () => {
             }                 */}
             {
                 (activeTab === 0) ? (
+                    null
+                ) : (activeTab === 1) ? (
                     (VRsData).map((vr) => (
                         <ToolTr key={vr.tool_id} toolData={vr} />
                     ))
-                ) : (activeTab === 1) ? (
+                ) : (activeTab === 2) ? (
                     (tabletsData).map((tablet) => (
                         <ToolTr key={tablet.tool_id} toolData={tablet} />
                     ))
-                ) : (activeTab === 2) ? (
+                ) : (activeTab === 3) ? (
                     (lectureRoomsData).map((room) => (
                         <LectureRoomTr key={room.room_id} lectureRoomData={room} />
                     ))
-                ) : null
+                ) : null        
             }
         </tbody>  
     );

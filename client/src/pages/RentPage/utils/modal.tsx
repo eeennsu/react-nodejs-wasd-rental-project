@@ -50,12 +50,13 @@ export const getModalFooter = (step: ModalStep) => {
 
 export const initModalStep = (activeTab: ActiveTab, setModalStep: (step: ModalStep) => void) => {
     switch(activeTab) {
-        case 0:
+        case 0: return;
         case 1:
+        case 2:
             setModalStep('SUPPLY_DESC');
             break;
         
-        case 2:
+        case 3:
             setModalStep('LR_DESC');
             break;
 

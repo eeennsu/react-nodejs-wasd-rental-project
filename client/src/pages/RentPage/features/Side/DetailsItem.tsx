@@ -7,7 +7,7 @@ type Props = {
 const DetailsItem: FC<Props> = ({ item }) => {
 
     return (
-        <li className='pl-3 font-[500] text-sm border-t bg-03 border-t-[#00000080] h-[30px] flex items-center'>
+        <li className='flex items-center w-full h-[29px] pl-3 text-sm border-t border-t-[#00000080] font-[500]  bg-03'>
             {item}
         </li>
     );

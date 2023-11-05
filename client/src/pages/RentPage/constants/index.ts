@@ -1,4 +1,5 @@
 export const tabs: TabName[] = [
+    '전체',
     'VR',
     'TABLET',
     'LECTURE_ROOM',

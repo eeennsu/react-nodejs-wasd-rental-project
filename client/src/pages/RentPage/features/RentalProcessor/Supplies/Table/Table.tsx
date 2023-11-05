@@ -63,8 +63,8 @@ const Table: FC = () => {
     // }, [activeTab, queryClient, vrsDataResponse, tabletsResponse, lectrueRoomsResponse]);
     
     return (
-        <table className='w-full text-center border-collapse table-auto table-sm '>
-            <Thead />
+        <table className='w-full border-collapse'>
+            {/* <Thead /> */}
             <Tbody />                            
         </table>      
     );

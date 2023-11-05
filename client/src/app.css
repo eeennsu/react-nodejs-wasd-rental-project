@@ -13,3 +13,10 @@
 .bg-04 {
     background-color: #F2F4F7;
 }
+
+.trapezoid {
+    border-left: 20px solid white; 
+    border-right: 20px solid white; 
+    border-bottom: 35px solid #3F5D7D;   
+    line-height: 1.5;
+}
