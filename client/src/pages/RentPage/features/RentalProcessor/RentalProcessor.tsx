@@ -33,11 +33,11 @@ const RentalProcessor: FC = () => {
     // }, [VRsData, tabletsData, lectureRoomsData]);
 
     return (
-        <div className='flex flex-col w-full h-full'>
+        <div className='flex flex-col justify-center w-full h-full '>
             <section className='flex justify-end'>
                 <Search />
             </section>          
-            <section className='w-full h-full mt-16'>
+            <section className='w-full '>
                 <Supplies isAnyoneLoading={isAnyoneLoading} />
             </section>        
         </div>

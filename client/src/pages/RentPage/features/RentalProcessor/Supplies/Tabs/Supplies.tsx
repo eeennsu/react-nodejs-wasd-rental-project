@@ -18,9 +18,6 @@ const Supplies: FC<Props> = ({ isAnyoneLoading }) => {
 
     return (
         <div className='flex flex-col h-full'>
-            <h2 className='text-2xl text-center'>
-                기자재 정보
-            </h2>
             <div className='flex gap-1'>
                 {
                     tabs.map((tab, i) => (

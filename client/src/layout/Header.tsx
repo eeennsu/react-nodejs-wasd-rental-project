@@ -9,7 +9,7 @@ const Header: FC = () => {
                 <ul className='flex justify-end gap-6'>
                     <li>
                         <UserButton>
-                            이연우님
+                            방은수님
                         </UserButton>
                     </li>
                     <li>

@@ -13,7 +13,7 @@ const Layout: FC = () => {
             <MainLogo />              
             <main className='flex flex-1 w-full mx-auto max-w-7xl'>
                 <Outlet />
-            </main>
+            </main>        
             <Footer />
             <Modal />
         </div>

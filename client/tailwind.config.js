@@ -16,7 +16,13 @@ export default {
       },
       borderRadius: {
         '2lg': '10px'
-      }    
+      },
+      boxShadow: {
+        'left': '-6px 4px 4px 0 rgba(0, 0, 0, 0.25)'
+      },
+      borderColor: {
+        '01': '#3F5D7D',
+      }
     },
   },
   plugins: [require('@tailwindcss/line-clamp'), require('daisyui')],

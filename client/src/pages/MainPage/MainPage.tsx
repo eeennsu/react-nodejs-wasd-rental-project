@@ -4,7 +4,7 @@ const MainPage: FC = () => {
     
     return (
         <div>
-           MainPage
+           MainPage    
         </div>
     );
 };
