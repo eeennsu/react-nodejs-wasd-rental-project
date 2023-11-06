@@ -56,6 +56,19 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull : false,
                 type: DataTypes.DATE
             },
+
+            //기자재 설명(오큘러스 같은 경우는 몇번 기기 인지)
+            tool_content : {
+                allowNull : false,
+                type: DataTypes.STRING(255)
+            },
+
+            //기자재 사양
+            tool_spec : {
+                allowNull : false,
+                type: DataTypes.STRING(255)
+            },
+
         },
         {
             charset: "utf8",

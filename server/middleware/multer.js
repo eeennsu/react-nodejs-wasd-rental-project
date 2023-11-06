@@ -18,6 +18,15 @@ const upload = multer({
   }),
 })
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // 파일이 저장될 로컬 디렉토리
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname); // 파일명 생성
+  },
+});
+
 
 
 module.exports = upload;

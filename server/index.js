@@ -29,12 +29,19 @@ sequelize.sync()
     console.log(err);
   });
 
-  //http://125.248.162.89:80/Test/getTest/dbsxo149
+  
+
+  app.get('/images/:imageFileName', (req, res) => {
+    const imageFileName = req.params.imageFileName;
+    // 이미지 파일을 클라이언트에 전송
+    res.sendFile(`${__dirname}/images/${imageFileName}`);
+  });
+  
 
 
 // 서버 실행
 app.set('port', process.env.PORT || 80);
-
+//"img_url": "images\\20220428-rentaltool-test2.jpg
 const server = http.createServer(app);
 server.listen(app.get('port'), () => {
   console.log(app.get('port'), '번 포트에서 대기중');
