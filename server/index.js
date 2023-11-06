@@ -10,7 +10,7 @@ const router = require('./routes');
 
 
 
-
+// 테스트용 업로드
 // 미들웨어 설정
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
