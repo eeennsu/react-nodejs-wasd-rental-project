@@ -2,11 +2,11 @@ module.exports = (sequelize, DataTypes) => {
     return sequelize.define(
         'imgs',
         {
-            //이미지 번호
+            //이미지 id
             img_id : {
                 primaryKey: true,
-                autoIncrement: true,
-                type : DataTypes.INTEGER
+                unique: true,
+                type : DataTypes.STRING(255)
             },
             //이미지 url
             img_url: {

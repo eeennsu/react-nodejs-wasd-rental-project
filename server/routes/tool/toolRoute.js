@@ -2,17 +2,20 @@ const express = require('express');
 const router = express.Router();
 const toolController = require('./toolController');
 const upload = require("../../middleware/multer");
+const upload2= require("../../middleware/upload")
 
 //기자재 추가
-router.post('/addTool', upload.single('image') , toolController.addTool);
-
+router.post('/addTool', upload2.single('image') , toolController.addTool);
+router.post('/updateTool',upload2.single('image') ,toolController.updateTool);
+router.get('/viewTool/:tool_id',toolController.viewTool)
+router.get('/deleteTool/:tool_id',toolController.deleteTool)
 
 module.exports = router;
 /*  1.기자재 추가 
     2.기자재 수정
     3.기자재 삭제
-    4.기자재 전체 조회(페이지네이션 10개까지)
-    5.기자재 하나만 조회(클릭 했을 때 정보 나오게 하기위함)
+    4.기자재 전체 조회(페이지네이션 10개까지) viewTools
+    5.기자재 하나만 조회(클릭 했을 때 정보 나오게 하기위함) viewTool
     6.강의실 정보 하나만 가지고 오기(클릭 했을 때 정보 나오게 하기위함)
     7.검색기능
     8.vr 순으로 정렬

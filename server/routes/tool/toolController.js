@@ -5,13 +5,13 @@ module.exports = {
 
     addTool: async (req, res) => {
         const body = req.body;
-        console.log(body)
+        //console.log(body)
         const img = req.file;
         
         toolService.addTool(body, img)
           .then(result => {
-          console.log(result)
-          
+          //console.log(result)
+        
             let obj = {};
             if (result == "EXIST") { 
               obj["suc"] = false;
@@ -30,6 +30,7 @@ module.exports = {
             else if(result===false){
               obj['suc'] = false;
               obj['result'] = errorCode.E00.message;
+              res.send(obj);
             }
             else {
               obj['suc'] = true;
@@ -41,9 +42,87 @@ module.exports = {
       },
 
       updateTool: (req,res) =>{
-        let body = req.body 
+        const body = req.body 
+        const img = req.file;
+        toolService.updateTool(body,img)
+        .then((result)=>{
+          //console.log(result)
+          let obj = {}
+          if(result>0){
+            obj["200"] = "OK"
+            obj["result"] = result;
+            res.send(obj)
+          }
+          else if(result=="Null"){
+            obj["200"] = "OK"
+            obj["result"] = errorCode.E07.message;
+            res.send(obj);
+          }
+
+          else if(result=="Tool not found"){
+            obj["200"] = "O2K"
+            obj["result"] = errorCode.E12.message;
+            res.send(obj);
+          }
+          else if(result=="Image not found"){
+            obj["200"] = "OK"
+            obj["result"] = "선택된 이미지가 그대로 입니다.";
+            res.send(obj);
+          }
+          
+        })
         
-      }
+      },
+
+      viewTool:(req,res)=>{
+        const toolId = req.params.tool_id
+
+        toolService.viewTool(toolId)
+        .then((result)=>{
+          console.log(result)
+          let obj = {}
+          if(result){
+            obj["200"] ="OK";
+            obj["result"] = result;
+            res.send(obj)
+          }
+          else if(result==false){
+            obj["200"] ="OK";
+            obj["result"] = errorCode.E13.message;
+            res.send(obj)
+          }
+          else{
+            obj["200"] ="OK";
+            obj["result"] = errorCode.E00.message;
+            res.send(obj)
+          }
+        })
+      },
+
+      
+
+      deleteTool:(req,res)=>{
+        const toolId = req.params.tool_id
+        console.log(toolId)
+        
+        toolService.deleteTool(toolId)
+        .then((result)=>{
+          let obj = {};
+          if(result.tool > 0 || result.img > 0){
+            obj["200"] ="OK";
+            obj["result"] = result;
+            res.send(obj)
+          }
+
+          else {
+            obj["200"] ="OK";
+            obj["result"] = errorCode.E00.message;
+            res.send(obj)
+          }
+           
+          
+        })
+      },
 
 }
 
