@@ -188,6 +188,34 @@ module.exports = {
     });
   },
 
+  viewTools: (page, pageLimit, toolName) => {
+    const pageOffset =parseInt((page - 1) * pageLimit);
+    const searchCondition = {
+      where: {},
+      limit: pageLimit,
+      offset: pageOffset,
+    };
+  
+    if (toolName !== null) {
+      searchCondition.where[Op.or] = [
+        { tool_id: { [Op.like]: "%" + toolName + "%" } },
+        // 추가적인 검색 조건을 필요에 따라 더 추가할 수 있습니다.
+      ];
+    }
+  
+    return new Promise((resolve) => {
+      Tool.findAll(searchCondition)
+        .then((result) => {
+          resolve(result);
+        })
+        .catch((error) => {
+           console.error('데이터 조회 중 오류 발생:', error);
+          resolve(false);
+        });
+    });
+  },
+  
+
   deleteTool: (toolId) => {
     return new Promise(async (resolve) => {
       try {

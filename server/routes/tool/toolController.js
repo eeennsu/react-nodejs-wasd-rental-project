@@ -99,6 +99,21 @@ module.exports = {
         })
       },
 
+      viewTools: (req,res) =>{
+        const page = req.params.page 
+        const toolName = req.params.tool_name
+        const pageLimit = req.params.pageLimit
+
+        console.log(page)
+        console.log(typeof(pageLimit))
+        console.log(pageLimit)
+        
+        toolService.viewTools(page,toolName,pageLimit)
+        .then((result)=>{
+          
+        })
+      },
+
       
 
       deleteTool:(req,res)=>{
