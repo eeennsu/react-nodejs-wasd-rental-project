@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import { useSearchStore, useTabsStore, useSuppliesStore } from '../../../../../../zustand';
-
 import Thead from './Thead';
 import Tbody from './Tbody';
 

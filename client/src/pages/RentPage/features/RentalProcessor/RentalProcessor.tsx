@@ -5,7 +5,6 @@ import { useSuppliesStore } from '../../../../zustand';
 import { useEffect } from 'react';
 import useFetchAllSupplies from '../../../../hooks/test/useFetchAllSupplies';
 
-
 const RentalProcessor: FC = () => {
 
     const { VRsData, setVRsData, tabletsData, setTabletsData, lectureRoomsData, setLectureRoomsData } = useSuppliesStore();
@@ -22,8 +21,7 @@ const RentalProcessor: FC = () => {
                 setTabletsData(tools?.filter((tool) => tool.tool_division === 'TABLET'));
                 setLectureRoomsData(lectureRooms);
             }
-        }       
-     
+        }      
     }, [isAnyoneLoading]);
 
     // useEffect(() => {

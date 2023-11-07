@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Side from './features/Side/Side';
 import RentalProcessor from './features/RentalProcessor/RentalProcessor';
 import { login_API } from '../../api/auth/authApis';
+import './features/app.css';
 
 const RentPage: FC = () => {
 
@@ -13,8 +14,7 @@ const RentPage: FC = () => {
     }
 
     return (
-        <div className='flex w-full gap-10'>
-            
+        <div className='flex w-full gap-10'>            
             <aside className='w-1/5'>
                 <Side />
             </aside>

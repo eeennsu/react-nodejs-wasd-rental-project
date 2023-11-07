@@ -1,19 +1,22 @@
 import type { FC, ChangeEvent } from 'react';
 import { useModalStore, useTabsStore } from '../../../../../zustand';
 import { getTabName } from '../../../utils/tables';
-import {  Input } from 'antd';
-import ModalTemplate from '../ModalTemplate';
+import {  Input, message } from 'antd';
+import ModalTemplate from '../templates/ModalTemplate';
+import Button from '../../../../../components/Button';
+import { initModalStep } from '../../../utils/modal';
 
 const { TextArea } = Input;
 
 const RentSupply: FC = () => { 
 
     const { activeTab } = useTabsStore();
-    const { detailTool, text, setText } = useModalStore();
 
     const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setText(e.target.value);
     }
+
+    const { detailTool, setIsModalOpen ,setModalStep, text, setText } = useModalStore();
 
     return (
         <ModalTemplate className='flex items-center justify-center gap-4'>
@@ -27,7 +30,7 @@ const RentSupply: FC = () => {
                             {getTabName(activeTab)}
                         </h3>
                         <p className='flex items-center justify-center w-full px-4'>
-                            {detailTool.tool_name}
+                            {detailTool?.tool_name}
                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat ullam atque officia totam laborum corporis et excepturi sunt voluptatem quia!
                         </p>
                     </div>
@@ -38,13 +41,13 @@ const RentSupply: FC = () => {
                     </h2>
                     <div className='grid w-full h-full grid-cols-3 place-items-center bg-slate-500'>
                         <div>
-                            {detailTool.tool_id}   
+                            {detailTool?.tool_id}   
                         </div>
                         <div>
-                            {detailTool.tool_name}
+                            {detailTool?.tool_name}
                         </div>
                         <div>
-                            {detailTool.tool_purchase_division}
+                            {detailTool?.tool_purchase_division}
                         </div>
                     </div>
                 </div>
@@ -78,7 +81,7 @@ const RentSupply: FC = () => {
                         value={text} 
                         onChange={handleTextChange}
                     />                      
-                </div>
+                </div>   
             </div> 
         </ModalTemplate>
     );

@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useModalStore } from '../../../../../zustand';
-import ModalTemplate from '../ModalTemplate';
+import ModalTemplate from '../templates/ModalTemplate';
 import Schedule from './Schedule/Schedule';
 import RoomList from './RoomList';
 import RentalRoomForm from './RentalRoomForm';

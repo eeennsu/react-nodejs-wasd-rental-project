@@ -9,8 +9,7 @@ const MFRentSupply: FC = () => {
     const { activeTab } = useTabsStore();
     const { setIsModalOpen ,setModalStep, text, setText } = useModalStore();
 
-    const handleRentSupply = () => {
-        
+    const handleRentSupply = () => {        
         try {
             // API 호출
 

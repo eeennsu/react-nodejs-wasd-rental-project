@@ -1,12 +1,12 @@
-import DetailSupply from "../features/Modal/Content/DescSupply"
+import DetailSupply from "../features/Modal/Content/DescTool"
 import RentLR from "../features/Modal/Content/RentLR";
-import RentSupply from "../features/Modal/Content/RentSupply";
-import RepairSupply from "../features/Modal/Content/RepairSupply";
-import MFDescSupply from '../features/Modal/Footer/MFDescSupply';
-import MFRentSupply from '../features/Modal/Footer/MFRentSupply';
-import MFRepairSupply from '../features/Modal/Footer/MFRepairSupply';
-import MFRentLR from '../features/Modal/Footer/MFRentLR';
-import MFDescLR from '../features/Modal/Footer/MFDescLR';
+import RentSupply from "../features/Modal/Content/RentTool";
+import RepairSupply from "../features/Modal/Content/RepairTool";
+import MFDescSupply from '../features/Modal/footer/MFDescSupply';
+import MFRentSupply from '../features/Modal/footer/MFRentSupply';
+import MFRepairSupply from '../features/Modal/footer/MFRepairSupply';
+import MFRentLR from '../features/Modal/footer/MFRentLR';
+import MFDescLR from '../features/Modal/footer/MFDescLR';
 
 export const getModalContent = (step: ModalStep) => {
     switch (step) {

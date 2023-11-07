@@ -7,9 +7,9 @@ type Props = {
 const ModalTemplate: FC<PropsWithChildren<Props>> = ({ children, className }) => {
 
     return (
-        <main className={`px-10 py-6 w-full md:h-[560px] ${className}`}>
+        <section className={`md:h-[480px] ${className}`}>
             {children}
-        </main>
+        </section>
     );
 };
 

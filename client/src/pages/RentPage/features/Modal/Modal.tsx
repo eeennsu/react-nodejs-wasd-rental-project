@@ -20,12 +20,12 @@ const Modal: FC = () => {
     }
 
     return (
-        <AntdModal         
-            footer={getModalFooter(modalStep)}
-            width={1000}
+        <AntdModal        
             centered            
             open={isModalOpen}
             onCancel={handleModalClose} 
+            width={800}
+            footer={null}
         >
             {
                 getModalContent(modalStep)
