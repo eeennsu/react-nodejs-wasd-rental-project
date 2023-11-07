@@ -9,7 +9,7 @@ const MFDescLR: FC = () => {
 
     return (
         <footer role='modal-footer' className='flex justify-end gap-3'>
-            <Button onClick={handleRepairStep} className='invisible'>
+            <Button onClick={handleRepairStep} className='invisible' bgColor='01'>
                 예약 하기
             </Button>           
         </footer>

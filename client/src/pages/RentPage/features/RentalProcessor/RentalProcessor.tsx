@@ -3,7 +3,7 @@ import Search from './Search/Search';
 import Supplies from './Supplies/Tabs/Supplies';
 import { useSuppliesStore } from '../../../../zustand';
 import { useEffect } from 'react';
-import useFetchAllSupplies from '../../../../hooks/supplies/useFetchAllSupplies';
+import useFetchAllSupplies from '../../../../hooks/test/useFetchAllSupplies';
 
 
 const RentalProcessor: FC = () => {

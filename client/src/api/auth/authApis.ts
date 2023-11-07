@@ -1,6 +1,6 @@
 import axiosInst from '../axiosInst';
 
-export const signUp_API = (detailUser: DetailUser) => axiosInst.post<ISignUpRes>('/auth/signUp', detailUser);
+export const signUp_API = (detailUser: SignUpUser) => axiosInst.post<ISignUpRes>('/auth/signUp', detailUser);
 
 export const login_API = (user: LoginUser) => axiosInst.post<ILoginRes>('/auth/login', user);
 

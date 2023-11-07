@@ -1,5 +1,5 @@
 // signUp API의 매개변수
-interface DetailUser extends LoginUser {
+interface SignUpUser extends LoginUser {
     user_name: string;
     user_email: string;
     user_student_number: string;

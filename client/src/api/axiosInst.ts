@@ -8,7 +8,9 @@ export const axiosInstJsonServer = axios.create({
 
 const axiosInst = axios.create({
     baseURL: import.meta.env.VITE_LOCAL_SERVER_URL,
-    // headers,
+    headers: {
+        "Content-Type": 'application/json',
+    }
 });
 
 export default axiosInst;

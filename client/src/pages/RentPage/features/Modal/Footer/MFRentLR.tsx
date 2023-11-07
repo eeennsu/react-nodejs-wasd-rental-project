@@ -35,7 +35,7 @@ const MFRentLR: FC = () => {
 
     return (
       <footer role='modal-footer' className='flex justify-end'>
-          <Button onClick={handleRentLectureRoom}>
+          <Button onClick={handleRentLectureRoom} bgColor='01'>
               대여 하기
           </Button>    
       </footer>
