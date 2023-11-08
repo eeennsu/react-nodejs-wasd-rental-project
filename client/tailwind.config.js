@@ -15,6 +15,12 @@ export default {
         '02-hover': '#bac6d6',
         '02-active': '#939ead',
       },
+      textColor: {
+        '01': '#3F5D7D',
+        '02': '#A6B1C0',
+        '03': '#D5E1F2',
+        '04': '#F2F4F7',
+      },
       minWidth: {
         '7xl': '1280px'
       },
