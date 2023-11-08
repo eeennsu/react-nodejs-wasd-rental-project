@@ -2,8 +2,9 @@ const { resolve } = require('path');
 const {
   Tool, Img, Department, Rental, User, Sequelize: { Op }
 } = require('../../models');
-const moment = require("moment");
+
 const e = require('express');
+const moment = require("moment");
 require("moment-timezone");
 moment.tz.setDefault("Asia/Seoul");
 
@@ -259,5 +260,30 @@ module.exports = {
         resolve(result)
       })
     })
-  }
+  },
+
+  rangeTool: (page, pageLimit, toolName) => {
+    page = parseInt(page);
+    pageLimit = parseInt(pageLimit);
+    return new Promise((resolve) => {
+      Tool.findAll({
+        where: { tool_name: toolName }, // tool_name을 사용하여 조건을 설정
+        limit: pageLimit,
+        offset: pageOffset,   
+        //order: [['tool_content', 'ASC']], // tool_content 열을 오름차순으로 정렬
+        order: [
+          [Sequelize.fn('CAST', Sequelize.fn('SUBSTRING', Sequelize.col('tool_content'), 10), 'UNSIGNED'), 'ASC']
+        ],
+      })
+
+        .then((result) => {
+          resolve(result);
+        })
+        .catch((error) => {
+          console.error('데이터 조회 중 오류 발생:', error);
+          resolve(false);
+        });
+    });
+  },
+  
 }

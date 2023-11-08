@@ -16,10 +16,11 @@ router.get('/viewTools/:tool_name/:page/:pageLimit',toolController.viewTools)
 //기자재 삭제
 router.get('/deleteTool/:tool_id',toolController.deleteTool)
 
-//검색 기능(미완성)
+//검색 기능(미완성[검색정렬 부분만 수정하면 됨])
 router.get('/searchTool/:tool_content/:page/:pageLimit',toolController.searchTool)
 
-
+//기자재 유형에 따른 정렬(미완성[오름차순 부분, 오류처리만 해결 하면 됨])
+router.get('/rangeTool/:tool_name/:page/:pageLimit',toolController.searchTool)
 
 module.exports = router;
 /*  1.기자재 추가 

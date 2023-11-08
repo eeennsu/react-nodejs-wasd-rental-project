@@ -152,7 +152,7 @@ module.exports = {
         })
       },
 
-      searchTool:(req,res,search)=>{
+      searchTool:(req,res)=>{
         const page = req.params.page 
         const toolSearch = req.params.search
         const pageLimit = req.params.pageLimit 
@@ -161,6 +161,17 @@ module.exports = {
         .then((result)=>{
           res.send(result)
         })
-      }
+      },
+
+      rangeTool:(req,res)=>{
+        const page = req.params.page 
+        const toolName = req.params.tool_name                                   
+        const pageLimit = req.params.pageLimit 
+        .then((result)=>{
+          res.send(result)
+        })
+      },
+
+      
 }
 
