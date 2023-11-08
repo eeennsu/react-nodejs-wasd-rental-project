@@ -102,15 +102,28 @@ module.exports = {
       viewTools: (req,res) =>{
         const page = req.params.page 
         const toolName = req.params.tool_name
-        const pageLimit = req.params.pageLimit
-
-        console.log(page)
-        console.log(typeof(pageLimit))
+        const pageLimit = req.params.pageLimit 
         console.log(pageLimit)
         
-        toolService.viewTools(page,toolName,pageLimit)
+
+        toolService.viewTools(page,pageLimit,toolName)
         .then((result)=>{
-          
+           
+            let obj = {}
+
+            if(result){
+              obj["200"] = "OK";
+              obj["result"] = result;
+              res.send(obj)
+            }
+            else if (result==false){
+              res.send("실패")
+            }
+            else{
+              obj["200"] = "OK";
+              obj["result"] = errorCode.E00.message;
+              res.send(obj)
+            }
         })
       },
 
@@ -139,5 +152,15 @@ module.exports = {
         })
       },
 
+      searchTool:(req,res,search)=>{
+        const page = req.params.page 
+        const toolSearch = req.params.search
+        const pageLimit = req.params.pageLimit 
+
+        toolService.searchTool(page,pageLimit,toolSearch)
+        .then((result)=>{
+          res.send(result)
+        })
+      }
 }
 

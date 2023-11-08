@@ -85,8 +85,6 @@ module.exports = {
     });
   },
 
-  
-    
   updateTool: async (body, img) => {
   return new Promise(async (resolve) => {
     try {
@@ -189,31 +187,31 @@ module.exports = {
   },
 
   viewTools: (page, pageLimit, toolName) => {
-    const pageOffset =parseInt((page - 1) * pageLimit);
-    const searchCondition = {
-      where: {},
-      limit: pageLimit,
-      offset: pageOffset,
-    };
-  
-    if (toolName !== null) {
-      searchCondition.where[Op.or] = [
-        { tool_id: { [Op.like]: "%" + toolName + "%" } },
-        // 추가적인 검색 조건을 필요에 따라 더 추가할 수 있습니다.
-      ];
-    }
+    page = parseInt(page);
+    pageLimit = parseInt(pageLimit);
+    const pageOffset = (page - 1) * pageLimit; // 페이지 번호를 기반으로 오프셋 계산
   
     return new Promise((resolve) => {
-      Tool.findAll(searchCondition)
+      Tool.findAll({
+        where: {
+          tool_name: {
+            [Op.like]: `%${toolName}%`, // toolName에 해당하는 항목 검색 (부분 일치)
+          },
+        },
+        limit: pageLimit,
+        offset: pageOffset,
+        order: [['tool_content', 'ASC']], // tool_content 기준으로 내림차순 정렬
+      })
         .then((result) => {
           resolve(result);
         })
         .catch((error) => {
-           console.error('데이터 조회 중 오류 발생:', error);
+          console.error('데이터 조회 중 오류 발생:', error);
           resolve(false);
         });
     });
   },
+  
   
 
   deleteTool: (toolId) => {
@@ -240,4 +238,26 @@ module.exports = {
       }
     });
   },
+
+  searchTool:(page,pageLimit,toolSearch)=>{
+    page = parseInt(page);
+    pageLimit = parseInt(pageLimit);
+    console.log(page)
+    console.log(pageLimit)
+    console.log(toolSearch)
+    const pageOffset = (page - 1) * pageLimit;
+    return new Promise((resolve)=>{
+      Tool.findAll({
+        tool_content: {
+          [Op.like]: `%${toolSearch}%`, // toolName에 해당하는 항목 검색 (부분 일치)
+        },
+        limit: pageLimit,
+        offset: pageOffset,
+        order: [['tool_content', 'DESC']],
+      })
+      .then((result)=>{
+        resolve(result)
+      })
+    })
+  }
 }

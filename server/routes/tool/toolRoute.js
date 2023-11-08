@@ -10,10 +10,16 @@ router.post('/addTool', upload2.single('image') , toolController.addTool);
 router.post('/updateTool',upload2.single('image') ,toolController.updateTool);
 //기자재 1개 조회
 router.get('/viewTool/:tool_id',toolController.viewTool)
+//기자재 조회
+router.get('/viewTools/:tool_name/:page/:pageLimit',toolController.viewTools)
+
 //기자재 삭제
 router.get('/deleteTool/:tool_id',toolController.deleteTool)
 
-router.get('/viewTools/:tool_name/:page/:pageLimit',toolController.viewTools)
+//검색 기능(미완성)
+router.get('/searchTool/:tool_content/:page/:pageLimit',toolController.searchTool)
+
+
 
 module.exports = router;
 /*  1.기자재 추가 
