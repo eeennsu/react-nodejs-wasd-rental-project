@@ -10,17 +10,17 @@
     border: none !important;
 }
 
-.my-rentals::-webkit-scrollbar {
+.my-scr::-webkit-scrollbar {
     width: 8px;
     height: 5px;
 }
 
-.my-rentals::-webkit-scrollbar-thumb {
+.my-scr::-webkit-scrollbar-thumb {
     background-color: rgb(166, 177, 192);
     border-radius: 10px;
 }
 
-.my-rentals::-webkit-scrollbar-track {
+.my-scr::-webkit-scrollbar-track {
     background-color: rgb(224,224,224);
     border-bottom-right-radius: 4px;
 }

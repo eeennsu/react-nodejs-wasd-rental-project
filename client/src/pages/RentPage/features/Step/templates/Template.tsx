@@ -7,7 +7,7 @@ type Props = {
 const Template: FC<PropsWithChildren<Props>> = ({ className, children }) => {
 
     return (
-        <section className={`flex flex-col w-full h-full justify-evenly ${className}`}>
+        <section className={`flex flex-col w-full h-full ${className} `}>
             {children}
         </section>
     );

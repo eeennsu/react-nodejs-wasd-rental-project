@@ -68,7 +68,7 @@ const RepairSupply: FC = () => {
     })
 
     return (
-        <Template className=''>
+        <Template>
             {/* <div className='flex items-center w-full '>
                 <div className='w-2/5'>
                     <img src='http://via.placeholder.com/300x200' className='object-contain' />  
