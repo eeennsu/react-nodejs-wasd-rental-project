@@ -3,6 +3,8 @@ const router = express.Router();
 const rentalController = require('./rentalController');
 
 
+router.post("/rentalTool",rentalController.rentalTool);
+router.post("/returnTool",rentalController.returnTool);
 module.exports = router;
 
 // 필요한 api

@@ -1,14 +1,68 @@
 const rentalService = require("./rentalService")
-
+const errorCode = require('../../config/errorCode')
 module.exports={
 
-    rentalTool:(req,res)=>{
-    const body = req.body
+    rentalTool: (req, res) => {
+        const body = req.body;
 
-    rentalService.rentalTool(body)
-    .then((result)=>{
-        console.log(result)
-    })
+        
 
-    }
+        rentalService.rentalTool(body)
+            .then(result => {
+                let obj = {};
+                if (result == false) {
+                    obj["suc"] = false;
+                    obj["error"] = errorCode.E07.message;
+                    res.send(obj);
+                } else if (result == "err") {
+                    obj["suc"] = false;
+                    obj["error"] = errorCode.E06.message;
+                    res.send(obj);
+                } else if (result == errorCode.E05.message) {
+                    obj["suc"] = false;
+                    obj["error"] = result;
+                    res.send(obj);
+                } else {
+                    obj['suc'] = true;
+                    obj['rental'] = result;
+                    res.send(obj);
+                }
+            })
+        //}
+    },
+
+    returnTool: (req, res) => {
+        const body = req.body;
+
+        let obj = {};
+
+        if (req.user_license >= 3) {
+            obj["suc"] = false;
+            obj["result"] = errorCode.E04.message;
+            obj["code"] = "E04"
+            res.send(obj);
+        } else {
+            rentalService.returnTool(body)
+                .then(result => {
+                    if (result == false) {
+                        obj["suc"] = false;
+                        obj["error"] = "errorCode.E06.message";
+                        res.send(obj);
+                    } else if (result == "err") {
+                        obj["suc"] = false;
+                        obj["error"] = "errorCode.E07.message";
+                        res.send(obj);
+                    } else if (result == "E07") {
+                        obj["suc"] = false;
+                        obj["error"] = "errorCode.E08.message";
+                        res.send(obj);
+                    } else {
+                        obj['suc'] = true;
+                        obj['return'] = result;
+                        res.send(obj);
+                    }
+                })
+        }
+    },
+
 }
