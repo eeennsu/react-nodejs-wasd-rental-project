@@ -6,12 +6,12 @@ import { classRoom } from '../../../constants';
 const RoomList: FC = () => {
 
     const { 
-        setModalStep, setSelectedRoom
+        setSystemStep, setSelectedRoom
     } = useModalStore();
 
     const handleRentStep = (roomName: string) => {
         setSelectedRoom(roomName);
-        setModalStep('LR_RENT');
+        setSystemStep('LR_RENT');
     }
 
     const topButtons = classRoom.enginerringBuilding.map((room) => {
@@ -19,7 +19,7 @@ const RoomList: FC = () => {
         const [building, roomNumber] = room.split(' ');
         const handleRentStep = () => {
             setSelectedRoom(room);
-            setModalStep('LR_RENT');
+            setSystemStep('LR_RENT');
         }
 
         return (

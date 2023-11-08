@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import { useModalStore, useTabsStore } from '../../../../../../zustand';
-import { initModalStep } from '../../../../utils/modal';
 import { getToolsAvailability } from '../../../../utils/tables';
 import { memo } from 'react';
 import TrTemplate from './TrTemplate';
@@ -12,10 +11,10 @@ type Props = {
 const ToolTr: FC<Props> = ({ toolData }) => {
 
     const { activeTab } = useTabsStore();
-    const { setIsModalOpen, setDetailTool, setModalStep } = useModalStore();
+    const { setIsModalOpen, setDetailTool, setSystemStep } = useModalStore();
 
     const handleClick = () => {
-        initModalStep(activeTab, setModalStep);
+        // initModalStep(activeTab, setSystemStep);
 
         setDetailTool(toolData);
 

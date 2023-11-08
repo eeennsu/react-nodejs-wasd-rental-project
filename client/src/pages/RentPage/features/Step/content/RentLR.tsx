@@ -1,25 +1,24 @@
 import type { FC } from 'react';
 import { useModalStore } from '../../../../../zustand';
-import ModalTemplate from '../templates/ModalTemplate';
-import Schedule from './Schedule/Schedule';
+import Schedule from './schedule/Schedule';
 import RoomList from './RoomList';
 import RentalRoomForm from './RentalRoomForm';
 
 const RentLR: FC = () => {
 
-    const { modalStep } = useModalStore();
+    const { systemStep } = useModalStore();
 
     return (
-        <ModalTemplate className='flex flex-col gap-7'>
+        <section className='flex flex-col gap-7'>
             <Schedule />
             {
-                modalStep === 'LR_DESC' ? (
+                systemStep === 'LR_DESC' ? (
                     <RoomList />
                 ) : (
                     <RentalRoomForm />
                 )
             }
-        </ModalTemplate>
+        </section>
     );
 };
 

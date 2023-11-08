@@ -58,4 +58,4 @@ type AllSupplies = VR | Tablet | LectureRoom;
 type AllSuppliesArr = VR[] | Tablet[] | LectureRoom[];
 
 type CustomColor = 'blue' | 'red';
-type ModalStep = 'SUPPLY_DESC' | 'SUPPLY_REPAIR' | 'SUPPLY_RENT' | 'LR_DESC' | 'LR_RENT' ;
+type SystemStep = 'INIT' | 'TOOL_REPAIR' | 'TOOL_RENT' | 'LR_DESC' | 'LR_RENT' ;

@@ -4,14 +4,14 @@ import { useModalStore } from '../../../../../zustand';
 
 const MFDescSupply: FC = () => {
 
-    const { setModalStep } = useModalStore();
+    const { setSystemStep } = useModalStore();
  
     const handleRepairStep = () => {        
-        setModalStep('SUPPLY_REPAIR');
+        setSystemStep('TOOL_REPAIR');
     }
 
     const handleRentStep = () => {
-        setModalStep('SUPPLY_RENT');
+        setSystemStep('TOOL_RENT');
     }
 
     // const hangleRent = async () => {

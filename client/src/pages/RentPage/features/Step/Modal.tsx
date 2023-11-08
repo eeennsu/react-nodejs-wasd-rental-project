@@ -1,7 +1,8 @@
 import type { FC } from 'react';
 import { Modal as AntdModal } from 'antd';
 import { useModalStore, useTabsStore } from '../../../../zustand';
-import { getModalContent, getModalFooter, initModalStep } from '../../utils/modal';
+
+import DescTool from './content/DescTool';
 
 const Modal: FC = () => {
 
@@ -9,13 +10,15 @@ const Modal: FC = () => {
     const { 
         isModalOpen, setIsModalOpen,
         isProcessLoading,
-        modalStep, setModalStep
+        systemStep, setSystemStep, 
+        setText
     } = useModalStore();
 
     const handleModalClose = () => {        
         if (isProcessLoading) return;
 
-        initModalStep(activeTab, setModalStep);
+        // handleInit(setSystemStep, setText); 필x
+
         setIsModalOpen(false);      
     }
 
@@ -27,9 +30,7 @@ const Modal: FC = () => {
             width={800}
             footer={null}
         >
-            {
-                getModalContent(modalStep)
-            }         
+            <DescTool />
         </AntdModal>
     );
 };

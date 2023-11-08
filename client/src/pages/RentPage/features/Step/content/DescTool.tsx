@@ -1,27 +1,27 @@
 import type { FC } from 'react';
 import { useModalStore, useTabsStore } from '../../../../../zustand';
-import ModalTemplate from '../templates/ModalTemplate';
 import { getToolsAvailability, getTabName } from '../../../utils/tables';
 import { message } from 'antd';
-import { initModalStep } from '../../../utils/modal';
 import Button from '../../../../../components/Button';
 import ToolState from '../templates/ToolState';
 
-const DescSupply: FC = () => {
+const DescTool: FC = () => {
 
     const { activeTab } = useTabsStore();
-    const { detailTool, setIsModalOpen ,setModalStep, text, setText } = useModalStore();
+    const { detailTool, setIsModalOpen ,setSystemStep, text, setText } = useModalStore();
  
     const handleRepairStep = () => {        
-        setModalStep('SUPPLY_REPAIR');
+        setSystemStep('TOOL_REPAIR');
+        setIsModalOpen(false);
     }
 
     const handleRentStep = () => {
-        setModalStep('SUPPLY_RENT');
+        setSystemStep('TOOL_RENT');
+        setIsModalOpen(false);
     }
 
     return (
-        <ModalTemplate className='grid grid-cols-2 gap-5'>
+        <section className='md:h-[480px] grid grid-cols-2 gap-5'>
             <div className='bg-slate-200'>
                 {/* <img src='http://via.placeholder.com/418x524' className='object-cover' />    */}
             </div>              
@@ -44,8 +44,8 @@ const DescSupply: FC = () => {
                     </Button>
                 </footer>              
             </div>
-        </ModalTemplate>
+        </section>
     );
 };
 
-export default DescSupply;
+export default DescTool;

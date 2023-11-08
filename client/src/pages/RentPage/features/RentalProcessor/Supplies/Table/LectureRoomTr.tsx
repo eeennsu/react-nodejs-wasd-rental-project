@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import { useModalStore, useTabsStore } from '../../../../../../zustand';
-import { initModalStep } from '../../../../utils/modal';
 import { getLectureRoomAvailability } from '../../../../utils/tables';
 import { memo } from 'react';
 import TrTemplate from './TrTemplate';
@@ -12,10 +11,10 @@ type Props = {
 const LectureRoomTr: FC<Props> = ({ lectureRoomData }) => {
 
     const { activeTab } = useTabsStore();
-    const { setIsModalOpen, setDetailLectureRoom, setModalStep } = useModalStore();
+    const { setIsModalOpen, setDetailLectureRoom, setSystemStep } = useModalStore();
 
     const handleClick = () => {
-        initModalStep(activeTab, setModalStep);
+        // initModalStep(activeTab, setSystemStep);
 
         setDetailLectureRoom(lectureRoomData);
 

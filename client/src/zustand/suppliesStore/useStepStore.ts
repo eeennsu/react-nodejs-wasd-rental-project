@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { IModalStore } from './types';
+import { IStepStore } from './types';
 
-const useModalStore = create<IModalStore>()(
+const useModalStore = create<IStepStore>()(
     devtools(
         (set) => ({
             isModalOpen: false,
@@ -37,8 +37,8 @@ const useModalStore = create<IModalStore>()(
             isProcessLoading: false,
             setIsProcessLoading: (trigger) => set(() => ({ isProcessLoading: trigger }), false ,'SET_IS_PROCESS_LOADING'),
             
-            modalStep: 'SUPPLY_DESC',
-            setModalStep: (modalStep) => set(() => ({ modalStep }), false, 'SET_MODAL_STEP')
+            systemStep: 'INIT',
+            setSystemStep: (systemStep) => set(() => ({ systemStep }), false, 'SET_SYSTEM_STEP')
         }),
     )
 );

@@ -1,13 +1,12 @@
 import type { FC } from 'react';
 import { message } from 'antd';
 import { useModalStore, useTabsStore } from '../../../../../zustand';
-import { initModalStep } from '../../../utils/modal';
 import Button from '../../../../../components/Button';
 
 const MFRentSupply: FC = () => {
 
     const { activeTab } = useTabsStore();
-    const { setIsModalOpen ,setModalStep, text, setText } = useModalStore();
+    const { setIsModalOpen ,setSystemStep, text, setText } = useModalStore();
 
     const handleRentSupply = () => {        
         try {
@@ -20,7 +19,7 @@ const MFRentSupply: FC = () => {
             message.error('알수 없는 에러가 발생했습니다. 괸라자에게 문의해주세요');
         } finally {
             setIsModalOpen(false);
-            initModalStep(activeTab, setModalStep);  
+            // initModalStep(activeTab, setSystemStep);  
             setText('');
         }
     }

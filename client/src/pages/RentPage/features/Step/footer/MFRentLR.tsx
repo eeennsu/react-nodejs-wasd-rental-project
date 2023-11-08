@@ -2,14 +2,13 @@ import type { FC } from 'react';
 import Button from '../../../../../components/Button';
 import { useModalStore, useTabsStore } from '../../../../../zustand';
 import { message } from 'antd';
-import { initModalStep } from '../../../utils/modal';
 
 const MFRentLR: FC = () => {
 
     const { activeTab } = useTabsStore();
 
     const { 
-        setIsModalOpen, setModalStep,
+        setIsModalOpen, setSystemStep,
         setText,
         selectedRoom, setSelectedRoom 
     } = useModalStore();
@@ -27,7 +26,7 @@ const MFRentLR: FC = () => {
             message.error('알수 없는 에러가 발생했습니다. 괸라자에게 문의해주세요');
         } finally {
             setIsModalOpen(false);
-            initModalStep(activeTab, setModalStep);  
+            // initModalStep(activeTab, setSystemStep);  
             setText('');
             setSelectedRoom('');
         }

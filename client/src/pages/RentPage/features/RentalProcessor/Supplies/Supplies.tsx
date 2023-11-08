@@ -1,8 +1,8 @@
 import type { FC } from 'react';
-import Table from '../Table/Table'
-import Loading from '../../../../../../components/Loading';
-import Pagination from '../../Pagination/Pagination';
-import Tabs from './Tabs';
+import Table from './Table/Table'
+import Loading from '../../../../../components/Loading';
+import Pagination from '../Pagination/Pagination';
+import Tabs from './Tabs/Tabs';
 
 type Props = {
     isAnyoneLoading: boolean;

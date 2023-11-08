@@ -2,9 +2,7 @@ import type { FC, ChangeEvent } from 'react';
 import { useModalStore, useTabsStore } from '../../../../../zustand';
 import { getTabName } from '../../../utils/tables';
 import {  Input, message } from 'antd';
-import ModalTemplate from '../templates/ModalTemplate';
 import Button from '../../../../../components/Button';
-import { initModalStep } from '../../../utils/modal';
 
 const { TextArea } = Input;
 
@@ -16,10 +14,10 @@ const RentSupply: FC = () => {
         setText(e.target.value);
     }
 
-    const { detailTool, setIsModalOpen ,setModalStep, text, setText } = useModalStore();
+    const { detailTool, setIsModalOpen, setSystemStep, text, setText } = useModalStore();
 
     return (
-        <ModalTemplate className='flex items-center justify-center gap-4'>
+        <section className='flex items-center justify-center gap-4'>
             <div className='grid w-1/2 h-full grid-rows-3 bg-red-600'>
                 <div className='flex w-full '>
                     <div className='w-1/2'>
@@ -83,7 +81,7 @@ const RentSupply: FC = () => {
                     />                      
                 </div>   
             </div> 
-        </ModalTemplate>
+        </section>
     );
 };
 

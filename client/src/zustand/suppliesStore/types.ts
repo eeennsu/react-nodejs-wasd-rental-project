@@ -36,7 +36,7 @@ export interface ISearchStore {
     setSearchedResults: (results: AllSuppliesArr) => void;
 }
 
-export interface IModalStore {
+export interface IStepStore {
     isModalOpen: boolean;
     setIsModalOpen: (trigger: boolean) => void;
 
@@ -66,6 +66,6 @@ export interface IModalStore {
     isProcessLoading: boolean;
     setIsProcessLoading: (trigger: boolean) => void;
     
-    modalStep: ModalStep,
-    setModalStep: (modalStep: ModalStep) => void;
+    systemStep: SystemStep,
+    setSystemStep: (systemStep: SystemStep) => void;
 }

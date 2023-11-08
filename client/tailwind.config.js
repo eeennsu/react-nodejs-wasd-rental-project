@@ -12,7 +12,7 @@ export default {
         '04': '#F2F4F7',
         '01-hover': '#5f80a3',
         '01-active': '#334961',
-        '02-hover': '#adbacc',
+        '02-hover': '#bac6d6',
         '02-active': '#939ead',
       },
       minWidth: {

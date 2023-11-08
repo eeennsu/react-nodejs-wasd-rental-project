@@ -1,7 +1,6 @@
 import type { FC, PropsWithChildren } from 'react';
 import { useSearchStore, useSuppliesStore, useTabsStore } from '../../../../../../zustand';
-import { initModalStep } from '../../../../utils/modal';
-import useModalStore from '../../../../../../zustand/suppliesStore/useModalStore';
+import useModalStore from '../../../../../../zustand/suppliesStore/useStepStore';
 
 type Props = {
     idx: number;
@@ -12,13 +11,13 @@ const TabButton: FC<PropsWithChildren<Props>> = ({ children, idx }) => {
     const { setActiveTab } = useTabsStore();
     const { setSearchTerm } = useSearchStore();
     const { resetAllDatas, resetPaginatedDatas } = useSuppliesStore();
-    const { setModalStep } = useModalStore();
+    const { setSystemStep } = useModalStore();
 
     const handleSetActiveTab = () => {
         setSearchTerm('');
         // resetAllDatas();
         // resetPaginatedDatas();
-        initModalStep(idx as ActiveTab, setModalStep);
+        // initModalStep(idx as ActiveTab, setSystemStep);
         setActiveTab(idx as ActiveTab);   
     }
 

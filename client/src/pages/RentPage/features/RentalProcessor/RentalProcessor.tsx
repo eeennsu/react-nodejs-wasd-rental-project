@@ -1,9 +1,10 @@
 import type { FC } from 'react';
 import Search from './Search/Search';
-import Supplies from './Supplies/Tabs/Supplies';
+import Supplies from './Supplies/Supplies';
 import { useSuppliesStore } from '../../../../zustand';
 import { useEffect } from 'react';
 import useFetchAllSupplies from '../../../../hooks/test/useFetchAllSupplies';
+import Template from '../Step/templates/Template';
 
 const RentalProcessor: FC = () => {
 
@@ -31,14 +32,14 @@ const RentalProcessor: FC = () => {
     // }, [VRsData, tabletsData, lectureRoomsData]);
 
     return (
-        <div className='flex flex-col w-full h-full -space-y-16 justify-evenly '>
+        <Template className='-space-y-16'>
             <section className='flex justify-end'>
                 <Search />
             </section>          
             <section className='w-full '>
                 <Supplies isAnyoneLoading={isAnyoneLoading} />
             </section>        
-        </div>
+        </Template>
     );
 };
 
