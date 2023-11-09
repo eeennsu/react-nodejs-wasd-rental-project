@@ -4,7 +4,7 @@ import UserButton from '../components/UserButton';
 const Header: FC = () => {
 
     return (
-        <header className='flex items-center h-[60px] bg-01'>
+        <header className='flex items-center h-[48px] bg-01'>
             <nav className='w-full max-w-6xl mx-auto ' role='navigation' aria-label='header-nav'>
                 <ul className='flex justify-end gap-6'>
                     <li>

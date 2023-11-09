@@ -5,7 +5,7 @@ const EmptySearchResult: FC = () => {
 
 
     return (
-        <tr>
+        <tr className='h-full'>
             <td colSpan={3}>
                 검색 결과가 없습니다.
             </td>        

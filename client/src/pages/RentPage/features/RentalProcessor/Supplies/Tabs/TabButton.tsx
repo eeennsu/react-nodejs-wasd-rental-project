@@ -22,7 +22,7 @@ const TabButton: FC<PropsWithChildren<Props>> = ({ children, idx }) => {
     }
 
     return (
-        <button className='h-9 text-sm font-bold w-[132px] bg-01 whitespace-nowrap text-white/60' onClick={handleSetActiveTab}>
+        <button className='w-[148px] h-10 text-sm font-semibold bg-01 whitespace-nowrap text-white/60' onClick={handleSetActiveTab}>
             {children}
         </button>
     );

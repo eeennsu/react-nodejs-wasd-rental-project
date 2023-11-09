@@ -1,13 +1,16 @@
 import type { FC } from 'react';
 import { useSearchStore, useTabsStore, useSuppliesStore } from '../../../../../../zustand';
-import Thead from './Thead';
-import Tbody from './Tbody';
+
+import EmptySearchResult from '../../Search/EmptySearchResult';
+import ToolTr from './ToolTr';
+import LectureRoomTr from './LectureRoomTr';
 
 const Table: FC = () => {
     
     const { activeTab } = useTabsStore();
     const { setVRsData, setTabletsData, setLectureRoomsData } = useSuppliesStore();
     const { searchTerm } = useSearchStore();
+    const { VRsData, tabletsData, lectureRoomsData } = useSuppliesStore();
 
     // 검색어는 잠깐 생략
     // useEffect(() => {
@@ -62,9 +65,26 @@ const Table: FC = () => {
     // }, [activeTab, queryClient, vrsDataResponse, tabletsResponse, lectrueRoomsResponse]);
     
     return (
-        <table className='w-full border-collapse'>
-            {/* <Thead /> */}
-            <Tbody />                            
+        <table className='w-full h-full border-collapse'>
+            <tbody className='flex flex-col gap-3'>
+                {
+                    (activeTab === 0) ? (
+                        <EmptySearchResult />
+                    ) : (activeTab === 1) ? (
+                        (VRsData).map((vr) => (
+                            <ToolTr key={vr.tool_id} toolData={vr} />
+                        ))
+                    ) : (activeTab === 2) ? (
+                        (tabletsData).map((tablet) => (
+                            <ToolTr key={tablet.tool_id} toolData={tablet} />
+                        ))
+                    ) : (activeTab === 3) ? (
+                        (lectureRoomsData).map((room) => (
+                            <LectureRoomTr key={room.room_id} lectureRoomData={room} />
+                        ))
+                    ) : null        
+                }
+            </tbody>                         
         </table>      
     );
 };

@@ -125,83 +125,85 @@ const RentSupply: FC = () => {
         //         </div>   
         //     </div> 
         // </section>
-        <Template className='gap-12 py-12 justify-evenly'>
-            <div className='grid w-full h-full grid-rows-3 gap-12'>
-                <div className='row-span-2 '>
-                    <div className='grid h-full grid-cols-3 gap-7'>
-                        <div className='h-full col-span-1'> 
-                            <div className='h-2/3'>
-                                <img src='' alt='이미지' className='h-full bg-slate-200 rounded-sm2' />
-                            </div>                 
-                            <div className='flex flex-col h-1/3'>
-                                <h3 className='mt-2 text-xl font-semibold'>
-                                    {getTabName(activeTab)}
-                                </h3>
-                                <p className='mt-2 overflow-auto font-semibold leading-4 text-ellipsis my-scr'> 
-                                    {detailTool?.tool_spec}
-                                    Lorem ipsum dolor sit, amet conse Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem explicabo incidunt accusantium laudantium, dolores tenetur recusandae reicien             
-                                    Lorem ipsum dolor sit, amet conse Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem explicabo incidunt accusantium  
-                                </p>
-                            </div>                                               
-                        </div>
-                        <div className='grid col-span-2 grid-rows-2 gap-8'>
-                            <div className='flex flex-col w-full border border-01'>
-                                <h4 className='py-2 text-lg font-semibold text-center text-black bg-02'>
-                                    기자재 설명
-                                </h4>
-                                <div className='grid grid-cols-3 w-full h-full font-semibold border-t-[1px] border-01 bg-04 place-items-center'>
-                                    <div className='flex items-center justify-center w-full h-full'>
-                                        기자재
-                                    </div>
-                                    <div className='flex items-center justify-center h-full w-full border-x-[1px] border-01'>
-                                        품명
-                                    </div>
-                                    <div className='flex items-center justify-center w-full h-full'>
-                                        규격
+        <Template className='h-full'>
+            <div className='flex flex-col w-full h-full'>
+                <div className='grid h-full gap-4'>
+                    <div className='row-span-3'>
+                        <div className='grid h-full grid-cols-3 gap-5'>
+                            <div className='h-full col-span-1'> 
+                                <div className='h-2/3'>
+                                    <img src='' alt='이미지' className='h-full bg-slate-200 rounded-sm2' />
+                                </div>                 
+                                <div className='flex flex-col h-1/3'>
+                                    <h3 className='mt-2 text-xl font-semibold'>
+                                        {getTabName(activeTab)}
+                                    </h3>
+                                    <p className='mt-2 overflow-auto font-semibold leading-4 text-ellipsis my-scr'> 
+                                        {detailTool?.tool_spec}
+                                        Lorem ipsum dolor sit, amet conse Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem explicabo incidunt accusantium laudantium, dolores tenetur recusandae reicien             
+                                        Lorem ipsum dolor sit, amet conse Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem explicabo incidunt accusantium  
+                                    </p>
+                                </div>                                               
+                            </div>
+                            <div className='grid col-span-2 grid-rows-2 gap-5'>
+                                <div className='flex flex-col w-full border border-01'>
+                                    <h4 className='py-2 text-lg font-semibold text-center text-black bg-02'>
+                                        기자재 설명
+                                    </h4>
+                                    <div className='grid grid-cols-3 w-full h-full font-semibold border-t-[1px] border-01 bg-04 place-items-center'>
+                                        <div className='flex items-center justify-center w-full h-full'>
+                                            기자재
+                                        </div>
+                                        <div className='flex items-center justify-center h-full w-full border-x-[1px] border-01'>
+                                            품명
+                                        </div>
+                                        <div className='flex items-center justify-center w-full h-full'>
+                                            규격
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className='flex flex-col w-full border border-01'>
-                                <h4 className='py-2 text-lg font-semibold text-center text-black bg-02'>
-                                    반출자 설명
-                                </h4>   
-                                <div className='grid grid-cols-3 w-full h-full font-semibold border-t-[1px] border-01 bg-04 text-sm'>
-                                    <div className='flex items-center justify-center w-full h-full'>
-                                        <input className='w-full text-center outline-none placeholder:text-02/80 bg-inherit' placeholder='소속을 입력해 주세요' ref={refUserType} />
-                                    </div>
-                                    <div className=' w-full h-full flex items-center justify-cente border-x-[1px] border-01'>
-                                        <input className='w-full text-center outline-none placeholder:text-02/80 bg-inherit' placeholder='학번을 입력해 주세요' ref={refClassNum} />
-                                    </div>
-                                    <div className='flex items-center justify-center w-full h-full'>
-                                        <input className='w-full text-center outline-none placeholder:text-02/80 bg-inherit' placeholder='이름을 입력해 주세요' ref={refUserName} />
+                                <div className='flex flex-col w-full border border-01'>
+                                    <h4 className='py-2 text-lg font-semibold text-center text-black bg-02'>
+                                        반출자 설명
+                                    </h4>   
+                                    <div className='grid grid-cols-3 w-full h-full font-semibold border-t-[1px] border-01 bg-04 text-sm'>
+                                        <div className='flex items-center justify-center w-full h-full'>
+                                            <input className='w-full text-center outline-none placeholder:text-02/80 bg-inherit' placeholder='소속을 입력해 주세요' ref={refUserType} />
+                                        </div>
+                                        <div className=' w-full h-full flex items-center justify-cente border-x-[1px] border-01'>
+                                            <input className='w-full text-center outline-none placeholder:text-02/80 bg-inherit' placeholder='학번을 입력해 주세요' ref={refClassNum} />
+                                        </div>
+                                        <div className='flex items-center justify-center w-full h-full'>
+                                            <input className='w-full text-center outline-none placeholder:text-02/80 bg-inherit' placeholder='이름을 입력해 주세요' ref={refUserName} />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className='flex justify-center w-full'>
-                                <RangePicker />
+                                <div className='flex justify-center w-full'>
+                                    <RangePicker />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className='h-full row-span-1'>
-                    <TextArea 
-                        className='h-full p-4 border-2 rounded-none bg-04 border-01 placeholder:text-02/80'
-                        style={{ resize: 'none' }}
-                        rows={6}
-                        placeholder='대여 사유를 기입해 주세요'
-                        value={text}
-                        onChange={handleTextChange}
-                    />
-                </div>
-            </div>
-            <footer role='modal-footer' className='flex justify-end gap-4'>
-                <Button onClick={handleBack} bgColor='02'>
-                    뒤로 가기
-                </Button>
-                <Button onClick={handleRentRequest} bgColor='01'>
-                    대여 하기
-                </Button>    
-            </footer>
+                    <div className='row-span-1'>
+                        <TextArea 
+                            className='h-full p-4 border-2 rounded-none bg-04 border-01 placeholder:text-02/80'
+                            style={{ resize: 'none' }}
+                            rows={6}
+                            placeholder='대여 사유를 기입해 주세요'
+                            value={text}
+                            onChange={handleTextChange}
+                        />
+                    </div>       
+                    <footer className='flex justify-end h-full gap-4'>
+                        <Button onClick={handleBack} bgColor='02'>
+                            뒤로 가기
+                        </Button>
+                        <Button onClick={handleRentRequest} bgColor='01'>
+                            대여 하기
+                        </Button>    
+                    </footer>      
+                </div>                    
+            </div>            
         </Template>
     );
 };

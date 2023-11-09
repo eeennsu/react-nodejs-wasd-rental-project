@@ -10,7 +10,7 @@ const Tabs: FC = () => {
     const { activeTab } = useTabsStore();
 
     return (
-        <div className='flex mt-4 bg-01'>
+        <div className='flex mt-2.5 bg-01'>
             {
                 tabs.map((tab, i) => {
                     return i === activeTab ? (

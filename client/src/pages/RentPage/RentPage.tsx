@@ -18,11 +18,11 @@ const RentPage: FC = () => {
     const { systemStep , setSystemStep } = useModalStore();
 
     return (
-        <div className='flex w-full gap-10'>            
-            <aside className='w-1/5'>
+        <div className='flex w-full h-full gap-5 mt-12'>            
+            <aside className='flex-1 w-1/5'>
                 <Side />
             </aside>
-            <section className='flex-1 w-4/5'>
+            <section className='w-4/5'>
                 {getContent(systemStep)}
                 {/* <span onClick={handleTest}>테스트</span> */}
             </section>        

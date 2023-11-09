@@ -32,11 +32,11 @@ const RentalProcessor: FC = () => {
     // }, [VRsData, tabletsData, lectureRoomsData]);
 
     return (
-        <Template className='-space-y-16 justify-evenly'>
+        <Template className='mt-14'>
             <section className='flex justify-end'>
                 <Search />
             </section>          
-            <section className='w-full '>
+            <section className='w-full'>
                 <Supplies isAnyoneLoading={isAnyoneLoading} />
             </section>        
         </Template>
