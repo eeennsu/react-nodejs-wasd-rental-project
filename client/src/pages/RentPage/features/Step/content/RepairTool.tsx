@@ -101,7 +101,7 @@ const RepairSupply: FC = () => {
                         {detailTool?.tool_spec}  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque nulla eligendi natus repellendus aliquam, placeat quisquam debitis! Ea facilis officiis ex omnis officia, fugit dicta rerum quasi numquam fuga a!
                     </p>
                 </div>
-                <div className='flex flex-col gap-14'>
+                <div className='flex flex-col gap-10'>
                     <div className='flex flex-col items-end bg-01 rounded-[4px]'>
                         <div className='w-28 h-full my-3.5 mr-3.5'>
                             <Select                      

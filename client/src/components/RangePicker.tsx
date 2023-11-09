@@ -32,7 +32,6 @@ const RangePicker: FC = () => {
             presets={rangePresets} 
             onChange={handleRangeChange}
             defaultValue={[now, now.add(1, 'w')]} 
-            disabled={[true, false]} 
         />
     );
 };
