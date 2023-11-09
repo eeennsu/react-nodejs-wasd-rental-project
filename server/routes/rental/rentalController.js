@@ -65,4 +65,35 @@ module.exports={
         }
     },
 
+    extensionTool: (req, res) => {
+        const body = req.body;
+
+        let obj = {};
+
+        if (body.rental_extend == true) {
+            obj["suc"] = false;
+            obj["result"] = "연장은 한번까지 가능합니다. "
+            // obj["result"] = errorCode.E04.message;
+            // obj["code"] = "E04"
+            res.send(obj);
+        } else {
+            rentalService.extensionTool(body)
+                .then(result => {
+                    if (result == false) {
+                        obj["suc"] = false;
+                        obj["error"] = errorCode.E07.message;
+                        res.send(obj);
+                    } else if (result == "err") {
+                        obj["suc"] = false;
+                        obj["error"] = errorCode.E06.message;
+                        res.send(obj);
+                    } else {
+                        obj['suc'] = true;
+                        obj['extension'] = result;
+                        res.send(obj);
+                    }
+                })
+        }
+    },
+
 }

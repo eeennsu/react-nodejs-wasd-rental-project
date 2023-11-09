@@ -4,7 +4,11 @@ const rentalController = require('./rentalController');
 
 
 router.post("/rentalTool",rentalController.rentalTool);
+
 router.post("/returnTool",rentalController.returnTool);
+
+router.post("/extensionTool",rentalController.extensionTool);
+
 module.exports = router;
 
 // 필요한 api

@@ -22,6 +22,7 @@ module.exports={
                             rental_date: moment().format("YYYY-MM-DD"), // now
                             rental_due_date: dueDate.format("YYYY-MM-DD"),
                             rental_state: "대여",
+                            rental_extend: false,
                             
                         })
                             .then((createResult) => {
@@ -148,6 +149,47 @@ module.exports={
                     console.log(err);
                     resolve(false);
                 });
+        })
+    },
+
+    extensionTool: (body) => {
+        return new Promise((resolve) => {
+            Rental.findOne({
+                where: { rental_id: body.rental_id }
+            })
+                .then((result) => {
+                    const dueDate = moment(result.rental_due_date).add(7, 'days');
+                    Rental.update({
+                        rental_due_date: dueDate,
+                        rental_extend: true
+                    },
+                        { where: { rental_id: result.rental_id }, }
+                    )
+                        .then(() => {
+                            Log.create({
+                                log_type: 2,
+                                log_title: "연장",
+                                log_content: `${result.user_id}님께서 ${result.tool_id} 기자재 반납 기간을 ${dueDate}까지 연장했습니다. `,
+                                log_create_at: moment().format("YYYY-MM-DD"),
+                                department_id: result.department_id
+                            })
+                                .then((logResult) => {
+                                    resolve(logResult.log_content);
+                                })
+                                .catch((err) => {
+                                    console.log(err);
+                                    resolve("err");
+                                });
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            resolve("err");
+                        });
+                })
+                .catch((err) => {
+                    console.log(err);
+                    resolve(false);
+                })
         })
     },
 

@@ -25,7 +25,12 @@ module.exports = (sequelize, DataTypes) => {
             rental_state : {
                 allowNull: false,
                 type : DataTypes.STRING(255)
-            }
+            },
+
+            rental_extend : {
+                allowNull: false,
+                type : DataTypes.BOOLEAN,  
+            },
         },
         {
             charset: "utf8",
