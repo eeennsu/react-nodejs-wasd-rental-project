@@ -1,14 +1,13 @@
 import type { FC } from 'react';
-import { useModalStore } from '../../../../../../zustand';
 import { classRoom } from '../../../../constants';
-import RoomButton from './RoomButton';
+import RoomButton from './SelectRoomButton';
 
 const RoomList: FC = () => {
 
     const { enginerringBuilding, room_mainBuilding } = classRoom;
 
     return (
-        <section className='flex items-center justify-center w-full h-full text-center '>
+        <section className='flex flex-col items-center justify-center w-full py-[56px] text-center'>
             <table className='w-10/12 border-collapse h-3/5 bg-04'>
                 <tbody>
                     <tr>

@@ -1,13 +1,14 @@
 import type { FC } from 'react';
 import Button from '../../../../../../components/Button';
-import useStepStore from '../../../../../../zustand/suppliesStore/useStepStore';
+import { useStepStore } from '../../../../../../zustand';
 
 const DescRoomButtons: FC = () => {
 
-    const { setSystemStep } = useStepStore();
+    const { setSystemStep, selectedRoom, setSelectedRoom } = useStepStore();
 
     const handleInitStep = () => {
         setSystemStep('INIT');
+        selectedRoom && setSelectedRoom(null);
     }
 
     const handleRentStep = () => {
@@ -15,12 +16,12 @@ const DescRoomButtons: FC = () => {
     } 
 
     return (
-        <footer className='flex justify-end gap-3'>
-            <Button onClick={handleInitStep}  bgColor='02'>
+        <footer className='flex justify-end gap-3 p-4'>
+            <Button onClick={handleInitStep} bgColor='02'>
                 돌아 가기
             </Button> 
-            <Button onClick={handleRentStep}  bgColor='01'>
-                예약 하기
+            <Button onClick={handleRentStep} bgColor='01' disabled={!Boolean(selectedRoom)}>
+                대여 하기
             </Button>           
         </footer>
     );

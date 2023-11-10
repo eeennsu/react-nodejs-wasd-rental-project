@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import Button from '../../../../../components/Button';
-import { useModalStore, useTabsStore } from '../../../../../zustand';
+import { useStepStore, useTabsStore } from '../../../../../zustand';
 import { message } from 'antd';
 
 const MFRentLR: FC = () => {
@@ -11,7 +11,7 @@ const MFRentLR: FC = () => {
         setIsModalOpen, setSystemStep,
         setText,
         selectedRoom, setSelectedRoom 
-    } = useModalStore();
+    } = useStepStore();
 
     
 

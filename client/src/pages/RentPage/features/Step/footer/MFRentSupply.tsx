@@ -1,12 +1,12 @@
 import type { FC } from 'react';
 import { message } from 'antd';
-import { useModalStore, useTabsStore } from '../../../../../zustand';
+import { useStepStore, useTabsStore } from '../../../../../zustand';
 import Button from '../../../../../components/Button';
 
 const MFRentSupply: FC = () => {
 
     const { activeTab } = useTabsStore();
-    const { setIsModalOpen ,setSystemStep, text, setText } = useModalStore();
+    const { setIsModalOpen ,setSystemStep, text, setText } = useStepStore();
 
     const handleRentSupply = () => {        
         try {

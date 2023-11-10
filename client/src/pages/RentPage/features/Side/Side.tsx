@@ -27,7 +27,7 @@ const Side: FC = () => {
                     나의 대여 목록
                 </h2>
             </div>  
-            <div className='flex flex-col gap-5'>
+            <div className='flex flex-col gap-5 '>
                 <MyDetails title='대여 현황' datas={myRentals} />
                 <MyDetails title='연체 현황' datas={myStatus} /> 
             </div>            

@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Modal as AntdModal } from 'antd';
-import { useModalStore, useTabsStore } from '../../../../zustand';
+import { useStepStore, useTabsStore } from '../../../../zustand';
 
 import DescTool from './content/DescTool/DescTool';
 
@@ -12,7 +12,7 @@ const Modal: FC = () => {
         isProcessLoading,
         systemStep, setSystemStep, 
         setText
-    } = useModalStore();
+    } = useStepStore();
 
     const handleModalClose = () => {        
         if (isProcessLoading) return;

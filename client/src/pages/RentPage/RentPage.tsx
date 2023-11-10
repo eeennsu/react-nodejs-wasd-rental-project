@@ -4,7 +4,7 @@ import Side from './features/Side/Side';
 import RentalProcessor from './features/RentalProcessor/RentalProcessor';
 import { login_API } from '../../api/auth/authApis';
 import './features/app.css';
-import { useModalStore } from '../../zustand';
+import { useStepStore } from '../../zustand';
 import { getContent } from './utils/step';
 
 const RentPage: FC = () => {
@@ -15,11 +15,11 @@ const RentPage: FC = () => {
         console.log(response);
     }
 
-    const { systemStep , setSystemStep } = useModalStore();
+    const { systemStep , setSystemStep } = useStepStore();
 
     return (
         <div className='flex w-full h-full gap-5 mt-12'>            
-            <aside className='flex-1 w-1/5'>
+            <aside className='w-1/5 '>
                 <Side />
             </aside>
             <section className='w-4/5'>

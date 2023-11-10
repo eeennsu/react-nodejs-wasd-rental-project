@@ -1,5 +1,5 @@
 import type { FC, ChangeEvent } from 'react';
-import { useModalStore, useTabsStore } from '../../../../../../zustand';
+import { useStepStore, useTabsStore } from '../../../../../../zustand';
 import { getTabName } from '../../../../utils/tables';
 import {  Input, message } from 'antd';
 import { useRef } from 'react';
@@ -21,7 +21,12 @@ const RentSupply: FC = () => {
         setText(e.target.value);
     }
 
-    const { detailTool, setSystemStep, text, setText } = useModalStore();
+    const { 
+        detailTool, setSystemStep, 
+        text, setText, 
+        rentDate, setRentDate, 
+        returnDate, setReturnDate
+    } = useStepStore();
 
     const handleRentRequest = () => {        
 
@@ -56,7 +61,10 @@ const RentSupply: FC = () => {
     const handleBack = () => {
         setSystemStep('INIT');
         setActiveTab(1);
-        setText('');
+        text.length >= 1 && setText('');
+        
+        rentDate && setRentDate(null);
+        returnDate && setReturnDate(null);
     }
 
     return (
@@ -183,7 +191,7 @@ const RentSupply: FC = () => {
                 </div>   
                 <div className='mt-4 3xl:mt-8'>
                     <TextArea 
-                        className='h-full p-4 border-2 rounded-none bg-04 border-01 placeholder:text-02/80'
+                        className='h-full p-3 border-2 rounded-none bg-04 border-01 placeholder:text-02/80'
                         style={{ resize: 'none' }}
                         rows={6}
                         placeholder='대여 사유를 기입해 주세요'

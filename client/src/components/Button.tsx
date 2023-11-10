@@ -6,12 +6,12 @@ type Props = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButt
     bgColor: '01' | '02';
 };
 
-const Button: FC<PropsWithChildren<Props>> = ({ children, className, bgColor, isLoading, ...btnProps }) => {
+const Button: FC<PropsWithChildren<Props>> = ({ children, className, bgColor, isLoading, disabled, ...btnProps }) => {
     
-    const _bgColor = bgColor === '01' ? 'bg-01 hover:bg-01-hover active:bg-01-active' : 'bg-02 hover:bg-02-hover active:bg-02-active';
+    const _bgColor = bgColor === '01' ? `bg-01 ${!disabled && 'hover:bg-01-hover active:bg-01-active'}` : `bg-02 ${!disabled && 'hover:bg-02-hover active:bg-02-active'}`;
 
     return (
-        <button {...btnProps} className={`min-w-[103px] h-9 ${_bgColor} text-white rounded-sm2 transition-colors text-sm ` + className} disabled={isLoading}>
+        <button {...btnProps} className={`min-w-[103px] h-9 ${_bgColor} text-white rounded-sm2 transition-colors text-sm ${disabled && 'bg-01/75'} ` + className} disabled={isLoading || disabled}>
             {
                 isLoading ? (
                     <Spinner />

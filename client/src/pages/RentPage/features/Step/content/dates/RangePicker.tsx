@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { DatePicker } from 'antd';
-import { useModalStore } from '../../../../../../zustand';
+import { useStepStore } from '../../../../../../zustand';
 import { disabledDate, rangePresets } from '../../../../utils/rangePicker';
 import dayjs, { type Dayjs } from 'dayjs';
 
@@ -12,7 +12,7 @@ const RangePicker: FC = () => {
     const { 
         rentDate, setRentDate, 
         returnDate, setReturnDate 
-    } = useModalStore();
+    } = useStepStore();
 
     const handleRangeChange = (dates: null | Array<Dayjs | null>, dateStrings: string[]) => {
         if (dates) {         

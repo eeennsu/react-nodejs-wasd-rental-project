@@ -1,10 +1,10 @@
 import type { FC } from 'react';
 import Button from '../../../../../components/Button';
-import { useModalStore } from '../../../../../zustand';
+import { useStepStore } from '../../../../../zustand';
 
 const MFDescSupply: FC = () => {
 
-    const { setSystemStep } = useModalStore();
+    const { setSystemStep } = useStepStore();
  
     const handleRepairStep = () => {        
         setSystemStep('TOOL_REPAIR');

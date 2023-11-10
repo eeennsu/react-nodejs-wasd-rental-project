@@ -65,8 +65,8 @@ export interface IStepStore {
     text: string;
     setText: (text: string) => void;
 
-    selectedRoom: string;
-    setSelectedRoom: (selctedRoom: string) => void;
+    selectedRoom: string | null;
+    setSelectedRoom: (selctedRoom: string | null) => void;
 
     isProcessLoading: boolean;
     setIsProcessLoading: (trigger: boolean) => void;

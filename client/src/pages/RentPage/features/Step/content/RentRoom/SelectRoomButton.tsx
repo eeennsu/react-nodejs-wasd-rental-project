@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import useStepStore from '../../../../../../zustand/suppliesStore/useStepStore';
+import { useStepStore } from '../../../../../../zustand';
 
 type Props = {
     room: string
@@ -11,7 +11,7 @@ const RoomButton: FC<Props> = ({ room }) => {
 
     const [building, roomNumber] = room.split(' ');
     const handleRentStep = () => {
-        setSelectedRoom(room);
+        setSelectedRoom(room === selectedRoom ? null : room);
     }
 
     return (

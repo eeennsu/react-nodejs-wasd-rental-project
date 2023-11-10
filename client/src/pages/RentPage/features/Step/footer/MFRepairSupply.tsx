@@ -1,13 +1,12 @@
 import type { FC } from 'react';
 import Button from '../../../../../components/Button';
 import { message } from 'antd';
-import { useTabsStore } from '../../../../../zustand';
-import useModalStore from '../../../../../zustand/suppliesStore/useStepStore';
+import { useTabsStore, useStepStore } from '../../../../../zustand';
 
 const MFRepairSupply: FC = () => {
 
     const { activeTab } = useTabsStore();
-    const { setIsModalOpen, setSystemStep, text, setText  } = useModalStore();
+    const { setIsModalOpen, setSystemStep, text, setText } = useStepStore();
 
     const handleRepairRequest = () => {
         try {

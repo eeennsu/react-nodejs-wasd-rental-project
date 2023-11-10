@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { useModalStore, useTabsStore } from '../../../../../../zustand';
+import { useStepStore, useTabsStore } from '../../../../../../zustand';
 import { getToolsAvailability, getTabName } from '../../../../utils/tables';
 import { message } from 'antd';
 import Button from '../../../../../../components/Button';
@@ -8,7 +8,7 @@ import ToolState from '../../templates/ToolState';
 const DescTool: FC = () => {
 
     const { activeTab } = useTabsStore();
-    const { detailTool, setIsModalOpen ,setSystemStep, text, setText } = useModalStore();
+    const { detailTool, setIsModalOpen ,setSystemStep, text, setText } = useStepStore();
  
     const handleRepairStep = () => {        
         setSystemStep('TOOL_REPAIR');

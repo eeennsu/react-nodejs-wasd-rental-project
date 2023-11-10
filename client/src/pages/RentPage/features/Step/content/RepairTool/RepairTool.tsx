@@ -1,7 +1,7 @@
 import type { ChangeEvent, FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { Input, Select, message } from 'antd';
-import { useModalStore, useTabsStore } from '../../../../../../zustand';
+import { useStepStore, useTabsStore } from '../../../../../../zustand';
 import { repairResons } from '../../../../constants';
 import { TextAreaRef } from 'antd/lib/input/TextArea';
 import Template from '../../templates/Template';
@@ -14,7 +14,7 @@ const RepairSupply: FC = () => {
     const textRef = useRef<TextAreaRef | null>(null);
 
     const { activeTab, setActiveTab } = useTabsStore();
-    const { detailTool, setIsModalOpen ,setSystemStep, text, setText } = useModalStore();
+    const { detailTool, setIsModalOpen ,setSystemStep, text, setText } = useStepStore();
 
     const [resonSelect, setResonSelect] = useState<string | null>(null);
 
