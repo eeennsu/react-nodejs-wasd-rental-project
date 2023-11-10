@@ -1,14 +1,8 @@
-import DetailSupply from "../features/Step/content/DescTool"
-import RentLR from "../features/Step/content/RentLR";
-import RentSupply from "../features/Step/content/RentTool";
-import RepairSupply from "../features/Step/content/RepairTool";
-import MFDescSupply from '../features/Step/footer/MFDescSupply';
-import MFRentSupply from '../features/Step/footer/MFRentSupply';
-import MFRepairSupply from '../features/Step/footer/MFRepairSupply';
-import MFRentLR from '../features/Step/footer/MFRentLR';
-import MFDescLR from '../features/Step/footer/MFDescLR';
+
+import RentSupply from "../features/Step/content/RentTool/RentTool";
+import RepairSupply from "../features/Step/content/RepairTool/RepairTool";
 import RentalProcessor from '../features/RentalProcessor/RentalProcessor';
-import type { IStepStore } from '../../../zustand/suppliesStore/types';
+import RentRoom from '../features/Step/content/RentRoom/RentRoom';
 
 export const getContent = (step: SystemStep) => {
     switch (step) {
@@ -22,8 +16,8 @@ export const getContent = (step: SystemStep) => {
             return <RentSupply />
 
         case 'LR_DESC': 
-        case 'LR_RENT':
-            return <RentLR />
+        case 'LR_RENT': 
+            return <RentRoom />
 
         default: throw new Error(`Unknown step value : ${step}`);
     } 

@@ -1,6 +1,6 @@
 import type { FC, ChangeEvent } from 'react';
-import { useModalStore } from '../../../../../zustand';
-import RangePicker from './schedule/RangePicker';
+import { useModalStore } from '../../../../../../zustand';
+import RangePicker from '../dates/RangePicker';
 import { Input } from 'antd';
 
 const { TextArea } = Input;

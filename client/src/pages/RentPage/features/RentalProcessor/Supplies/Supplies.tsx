@@ -11,7 +11,7 @@ type Props = {
 const Supplies: FC<Props> = ({ isAnyoneLoading }) => {
 
     return (
-        <div className=''>
+        <>
             <div className='flex flex-col min-h-[550px] gap-7'>
                 <Tabs />
                 {
@@ -25,7 +25,7 @@ const Supplies: FC<Props> = ({ isAnyoneLoading }) => {
             <div className='flex justify-center w-full my-12'>                
                 <Pagination />            
             </div>   
-        </div> 
+        </> 
     );
 };
 

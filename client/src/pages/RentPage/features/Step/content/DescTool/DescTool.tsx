@@ -1,9 +1,9 @@
 import type { FC } from 'react';
-import { useModalStore, useTabsStore } from '../../../../../zustand';
-import { getToolsAvailability, getTabName } from '../../../utils/tables';
+import { useModalStore, useTabsStore } from '../../../../../../zustand';
+import { getToolsAvailability, getTabName } from '../../../../utils/tables';
 import { message } from 'antd';
-import Button from '../../../../../components/Button';
-import ToolState from '../templates/ToolState';
+import Button from '../../../../../../components/Button';
+import ToolState from '../../templates/ToolState';
 
 const DescTool: FC = () => {
 

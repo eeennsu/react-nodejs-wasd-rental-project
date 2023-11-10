@@ -1,11 +1,11 @@
 import type { FC, ChangeEvent } from 'react';
-import { useModalStore, useTabsStore } from '../../../../../zustand';
-import { getTabName } from '../../../utils/tables';
+import { useModalStore, useTabsStore } from '../../../../../../zustand';
+import { getTabName } from '../../../../utils/tables';
 import {  Input, message } from 'antd';
 import { useRef } from 'react';
-import Button from '../../../../../components/Button';
-import Template from '../templates/Template';
-import RangePicker from './schedule/RangePicker';
+import Button from '../../../../../../components/Button';
+import Template from '../../templates/Template';
+import RangePicker from '../dates/RangePicker';
 
 const { TextArea } = Input;
 
@@ -181,7 +181,7 @@ const RentSupply: FC = () => {
                         </div>
                     </div>
                 </div>   
-                <div className='mt-8 '>
+                <div className='mt-4 3xl:mt-8'>
                     <TextArea 
                         className='h-full p-4 border-2 rounded-none bg-04 border-01 placeholder:text-02/80'
                         style={{ resize: 'none' }}
@@ -191,7 +191,7 @@ const RentSupply: FC = () => {
                         onChange={handleTextChange}
                     />
                 </div>       
-                <footer className='flex justify-end gap-4 h-max'>
+                <footer className='flex justify-end gap-4 mb-6 3xl:mb-0'>
                     <Button onClick={handleBack} bgColor='02'>
                         뒤로 가기
                     </Button>

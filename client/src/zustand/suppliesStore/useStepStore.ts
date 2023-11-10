@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { IStepStore } from './types';
 
-const useModalStore = create<IStepStore>()(
+const useStepStore = create<IStepStore>()(
     devtools(
         (set) => ({
             isModalOpen: false,
@@ -46,4 +46,4 @@ const useModalStore = create<IStepStore>()(
     )
 );
 
-export default useModalStore;
+export default useStepStore;

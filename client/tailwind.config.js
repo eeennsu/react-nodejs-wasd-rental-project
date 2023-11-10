@@ -5,6 +5,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        '3xl': '1700px'
+      },
       backgroundColor: {
         '01': '#3F5D7D',
         '02': '#A6B1C0',

@@ -16,9 +16,8 @@ const LectureRoomTr: FC<Props> = ({ lectureRoomData }) => {
     const handleClick = () => {
         // initModalStep(activeTab, setSystemStep);
 
+        setSystemStep('LR_DESC');
         setDetailLectureRoom(lectureRoomData);
-
-        setIsModalOpen(true);
     }
 
     return (

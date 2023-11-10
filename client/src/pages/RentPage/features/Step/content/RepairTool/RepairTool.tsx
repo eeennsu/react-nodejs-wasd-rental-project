@@ -1,11 +1,11 @@
 import type { ChangeEvent, FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { Input, Select, message } from 'antd';
-import { useModalStore, useTabsStore } from '../../../../../zustand';
-import { repairResons } from '../../../constants';
+import { useModalStore, useTabsStore } from '../../../../../../zustand';
+import { repairResons } from '../../../../constants';
 import { TextAreaRef } from 'antd/lib/input/TextArea';
-import Template from '../templates/Template';
-import Button from '../../../../../components/Button';
+import Template from '../../templates/Template';
+import Button from '../../../../../../components/Button';
 
 const { TextArea } = Input;
 
@@ -125,7 +125,7 @@ const RepairSupply: FC = () => {
                             />
                         </div>      
                     </div>                
-                    <footer role='modal-footer' className='flex justify-end gap-4'>
+                    <footer className='flex justify-end gap-4'>
                         <Button onClick={handleBack} bgColor='02'>
                             뒤로 가기
                         </Button>
