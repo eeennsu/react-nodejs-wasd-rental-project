@@ -26,8 +26,14 @@ const LectureRoomTr: FC<Props> = ({ lectureRoomData }) => {
             <td>
                 {lectureRoomData.room_name}
             </td>
-            <td>
-                {lectureRoomData.room_id}
+            <td className='flex gap-1 mx-1'>               
+                <span>
+                    /
+                </span>
+                {lectureRoomData.room_id}         
+                <span>
+                    /
+                </span>                   
             </td>
             <td>
                 {getLectureRoomAvailability(lectureRoomData)}

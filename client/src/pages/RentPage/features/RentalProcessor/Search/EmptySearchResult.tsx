@@ -1,15 +1,12 @@
+import { Empty } from 'antd';
 import type { FC } from 'react';
 
 const EmptySearchResult: FC = () => {
 
-
-
     return (
-        <tr className='h-full'>
-            <td colSpan={3}>
-                검색 결과가 없습니다.
-            </td>        
-        </tr>
+        <div className='flex items-center justify-center flex-1'>
+            <Empty description='검색 결과가 없습니다.' className='font-bold' />
+        </div>
     );
 };
 

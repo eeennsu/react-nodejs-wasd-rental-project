@@ -25,6 +25,9 @@ const useModalStore = create<IStepStore>()(
                 detailLectureRoom: null
             }), false, 'SET_RESET_DETAIL_VALUE'),
 
+            rentDate: null,
+            setRentDate: (date) => set(() => ({ rentDate: date }), false, 'SET_RENT_DATE'),
+
             returnDate: null,
             setReturnDate: (date) => set(() => ({ returnDate: date }), false, 'SET_RETURN_DATE'),
 

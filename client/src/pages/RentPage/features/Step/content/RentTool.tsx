@@ -5,7 +5,7 @@ import {  Input, message } from 'antd';
 import { useRef } from 'react';
 import Button from '../../../../../components/Button';
 import Template from '../templates/Template';
-import RangePicker from '../../../../../components/RangePicker';
+import RangePicker from './schedule/RangePicker';
 
 const { TextArea } = Input;
 
@@ -145,7 +145,7 @@ const RentSupply: FC = () => {
                     </div>
                     <div className='grid col-span-2 grid-rows-2 gap-9'>
                         <div className='flex flex-col w-full border border-01'>
-                            <h4 className='py-2 text-lg font-semibold text-center text-black bg-02'>
+                            <h4 className='py-2.5 text-lg font-semibold text-center text-black bg-02'>
                                 기자재 설명
                             </h4>
                             <div className='grid grid-cols-3 w-full h-full font-semibold border-t-[1px] border-01 bg-04 place-items-center'>
@@ -161,7 +161,7 @@ const RentSupply: FC = () => {
                             </div>
                         </div>
                         <div className='flex flex-col w-full border border-01'>
-                            <h4 className='py-2 text-lg font-semibold text-center text-black bg-02'>
+                            <h4 className='py-2.5 text-lg font-semibold text-center text-black bg-02'>
                                 반출자 설명
                             </h4>   
                             <div className='grid grid-cols-3 w-full h-full font-semibold border-t-[1px] border-01 bg-04 text-sm'>
@@ -169,7 +169,7 @@ const RentSupply: FC = () => {
                                     <input className='w-full text-center outline-none placeholder:text-02/80 bg-inherit' placeholder='소속을 입력해 주세요' ref={refUserType} />
                                 </div>
                                 <div className=' w-full h-full flex items-center justify-cente border-x-[1px] border-01'>
-                                    <input className='w-full text-center outline-none placeholder:text-02/80 bg-inherit' placeholder='학번을 입력해 주세요' ref={refClassNum} />
+                                    <input className='w-full text-center outline-none placeholder:text-02/80 bg-inherit input-classnumber' type='number' placeholder='학번을 입력해 주세요' ref={refClassNum} />
                                 </div>
                                 <div className='flex items-center justify-center w-full h-full'>
                                     <input className='w-full text-center outline-none placeholder:text-02/80 bg-inherit' placeholder='이름을 입력해 주세요' ref={refUserName} />

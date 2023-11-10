@@ -24,3 +24,35 @@
     background-color: rgb(224,224,224);
     border-bottom-right-radius: 4px;
 }
+
+.input-classnumber::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.ant-picker-suffix {
+    padding-inline: 20px;
+    width: max-content; 
+    height: 100%;
+    background-color: #3F5D7D;
+    color: white !important;
+}
+
+.ant-picker-clear {
+    padding-inline: 9px;
+    width: max-content; 
+    background-color: #3F5D7D !important;
+    color: white !important;
+}
+
+
+
+.ant-picker-range input {
+    padding: 4px 8px !important;
+}
+
+
+div.ant-picker-range {
+    padding: 0 !important;
+}

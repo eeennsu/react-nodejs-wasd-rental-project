@@ -65,27 +65,31 @@ const Table: FC = () => {
     // }, [activeTab, queryClient, vrsDataResponse, tabletsResponse, lectrueRoomsResponse]);
     
     return (
-        <table className='w-full h-full border-collapse'>
-            <tbody className='flex flex-col gap-3'>
-                {
-                    (activeTab === 0) ? (
-                        <EmptySearchResult />
-                    ) : (activeTab === 1) ? (
-                        (VRsData).map((vr) => (
-                            <ToolTr key={vr.tool_id} toolData={vr} />
-                        ))
-                    ) : (activeTab === 2) ? (
-                        (tabletsData).map((tablet) => (
-                            <ToolTr key={tablet.tool_id} toolData={tablet} />
-                        ))
-                    ) : (activeTab === 3) ? (
-                        (lectureRoomsData).map((room) => (
-                            <LectureRoomTr key={room.room_id} lectureRoomData={room} />
-                        ))
-                    ) : null        
-                }
-            </tbody>                         
-        </table>      
+        (
+            activeTab === 0 ? (
+                <EmptySearchResult />
+            ) : (
+                <table className='w-full h-full border-collapse'>
+                    <tbody className='flex flex-col gap-3'>
+                        {
+                            (activeTab === 1) ? (
+                                VRsData?.map((vr) => (
+                                    <ToolTr key={vr.tool_id} toolData={vr} />
+                                ))
+                            ) : (activeTab === 2) ? (
+                                tabletsData?.map((tablet) => (
+                                    <ToolTr key={tablet.tool_id} toolData={tablet} />
+                                ))
+                            ) : (activeTab === 3) ? (
+                                lectureRoomsData?.map((room) => (
+                                    <LectureRoomTr key={room.room_id} lectureRoomData={room} />
+                                ))
+                            ) : null        
+                        }
+                    </tbody>                         
+                </table>    
+            )
+        )  
     );
 };
 
