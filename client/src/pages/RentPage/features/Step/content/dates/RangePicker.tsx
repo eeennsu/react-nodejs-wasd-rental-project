@@ -1,18 +1,14 @@
 import type { FC } from 'react';
+import type { Dayjs } from 'dayjs';
 import { DatePicker } from 'antd';
 import { useStepStore } from '../../../../../../zustand';
 import { disabledDate, rangePresets } from '../../../../utils/rangePicker';
-import dayjs, { type Dayjs } from 'dayjs';
 
 const { RangePicker: AntdRangePicker } = DatePicker;
 
 const RangePicker: FC = () => {
 
-    const now = dayjs();
-    const { 
-        rentDate, setRentDate, 
-        returnDate, setReturnDate 
-    } = useStepStore();
+    const { setRentDate, setReturnDate } = useStepStore();
 
     const handleRangeChange = (dates: null | Array<Dayjs | null>, dateStrings: string[]) => {
         if (dates) {         
@@ -30,7 +26,7 @@ const RangePicker: FC = () => {
             disabledDate={disabledDate} 
             onChange={handleRangeChange}          
             placeholder={['대여 날짜를 선택해 주세요', '반납날짜를 선택해 주세요']}
-            format={'YY-MM-DD / ddd'}
+            format={'MM-DD  dddd'}
             className='w-[464px] border rounded-none border-01 bg-04'
         />
     );

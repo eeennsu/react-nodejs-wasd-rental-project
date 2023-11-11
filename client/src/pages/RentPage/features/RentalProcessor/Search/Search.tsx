@@ -75,9 +75,9 @@ const Search: FC = () => {
 
     return (
         <div className='flex border-4 border-01 '>
-            <input className='flex-1 w-56 px-3 py-1 bg-white border-black rounded-sm outline-none placeholder:text-sm placeholder:text-gray-300' value={searchTerm} onChange={handleChange} 
+            <input className='flex-1 px-3 py-1 bg-white border-black rounded-sm outline-none w-52 placeholder:text-sm placeholder:text-gray-300' value={searchTerm} onChange={handleChange} 
             placeholder={placeholder}/>
-            <button type='submit' className='px-8 py-2 text-white bg-01 whitespace-nowrap'>
+            <button type='submit' className='py-2 text-white px-7 bg-01 whitespace-nowrap'>
                 검색
             </button>          
         </div>
