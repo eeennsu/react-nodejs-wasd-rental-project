@@ -2,16 +2,30 @@ const express = require('express');
 const router = express.Router();
 const rentalController = require('./rentalController');
 
-
+//기자재 대여
 router.post("/rentalTool",rentalController.rentalTool);
 
+//기자재 반납
 router.post("/returnTool",rentalController.returnTool);
 
+//기자재 연장
 router.post("/extensionTool",rentalController.extensionTool);
 
-module.exports = router;
+//사용자의 현재 대여 목록
+router.get("/myRentalList/:user_id",rentalController.myRentalList)
 
-// 필요한 api
-// 1. 대여버튼을 누르면 대여 db에 그 값이 저장 되면서 로그 db에도 저장됨
-// 반납신청(로그생성)
-// 연장신청(로그생성)
+//사용자의 역대 대여 목록
+router.get("/myAllRentalList/:user_id",rentalController.myAllRentalList);
+
+//사용자의 현재 연체 목록
+router.get("/myLateRentalList/:user_id",rentalController.myLateRentalList);
+
+//연체 중인 사용자 목록
+router.get("/LateRentalList",rentalController.LateRentalList);
+
+//rental DB에 있는 모든 정보 불러오기
+router.get("/rentalTableAll",rentalController.rentalTableAll);
+
+
+
+module.exports = router;

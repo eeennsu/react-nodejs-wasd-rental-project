@@ -1,19 +1,55 @@
-const {Rental,Log,Tool} = require('../../models')
+const {Rental,Log,Tool,Img} = require('../../models');
+const { Op } = require('sequelize');
 const moment = require("moment");
 require("moment-timezone");
 moment.tz.setDefault("Asia/Seoul");
 
+const schedule = require('node-schedule');
+// update at 00:00
+schedule.scheduleJob({ hour: 0, minute: 1 }, () => {
+    const currentTime = moment().format("YYYY-MM-DD");
+
+    Rental.findAll({
+        where: {
+            rental_state: "대여",
+            rental_due_date: {
+                [Op.lt]: currentTime
+            }
+        },
+        attributes: ['rental_id']
+    })
+        .then((result) => {
+            console.log(result)
+
+            for (let i = 0; i < result.length; i++) {
+                Rental.update({
+                    rental_state: "미반납"
+                },
+                    {
+                        where: { rental_id: result[i].rental_id }
+                    })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
 module.exports={
     rentalTool: (body) => {
         return new Promise((resolve) => {
-            // find the tool
             Tool.findOne({
                 where: { tool_id: body.tool_id }
             })
                 .then((result) => {
-                    // if the tool could be rentaled
                     console.log(result.tool_state)
-                    if (result.tool_state == "대여가능") {
+                    if(result.tool_state=="대여불가"){
+                        resolve("대여불가")
+                    }
+                   else if (result.tool_state == "대여가능") {
                         const dueDate = moment().add(7, 'days');
                         // create rentalDB
                         Rental.create({
@@ -77,7 +113,6 @@ module.exports={
     },
 
     returnTool: (body) => {
-
         return new Promise((resolve) => {
             Tool.findOne({
                 include: [
@@ -89,10 +124,13 @@ module.exports={
                 ],
                 where: { tool_id: body.tool_id }
             },
+            
             )
                 .then((result) => {
-                    // if the tool has been rentaled
-                    if (result.tool_state == "대여중") {
+                 if(result==null){
+                    resolve("null")
+                 }
+                    else if (result.tool_state == "대여중") {
                         // change rental_state "대여" to "반납"
                         Rental.update({
                             rental_state: "반납"
@@ -142,12 +180,12 @@ module.exports={
                                 resolve("err");
                             });
                     } else {
-                        resolve(errorCode.E05.message);
+                        resolve("extension");
                     }
                 })
                 .catch((err) => {
                     console.log(err);
-                    resolve(false);
+                    resolve("err");
                 });
         })
     },
@@ -155,42 +193,206 @@ module.exports={
     extensionTool: (body) => {
         return new Promise((resolve) => {
             Rental.findOne({
-                where: { rental_id: body.rental_id }
+                where: { tool_id: body.tool_id }
             })
-                .then((result) => {
+            .then((result) => {
+                if (result.rental_extend == true) {
+                    resolve("extension");
+                } else {
                     const dueDate = moment(result.rental_due_date).add(7, 'days');
                     Rental.update({
                         rental_due_date: dueDate,
                         rental_extend: true
-                    },
-                        { where: { rental_id: result.rental_id }, }
-                    )
-                        .then(() => {
-                            Log.create({
-                                log_type: 2,
-                                log_title: "연장",
-                                log_content: `${result.user_id}님께서 ${result.tool_id} 기자재 반납 기간을 ${dueDate}까지 연장했습니다. `,
-                                log_create_at: moment().format("YYYY-MM-DD"),
-                                department_id: result.department_id
-                            })
-                                .then((logResult) => {
-                                    resolve(logResult.log_content);
-                                })
-                                .catch((err) => {
-                                    console.log(err);
-                                    resolve("err");
-                                });
+                    }, { where: { rental_id: result.rental_id } })
+                    .then(() => {
+                        Log.create({
+                            log_type: 2,
+                            log_title: "연장",
+                            log_content: `${result.user_id}님께서 ${result.tool_id} 기자재 반납 기간을 ${dueDate}까지 연장했습니다.`,
+                            log_create_at: moment().format("YYYY-MM-DD"),
+                            department_id: result.department_id
+                        })
+                        .then((logResult) => {
+                            resolve(logResult.log_content);
                         })
                         .catch((err) => {
                             console.log(err);
                             resolve("err");
                         });
-                })
-                .catch((err) => {
-                    console.log(err);
-                    resolve(false);
-                })
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        resolve("err");
+                    });
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+                resolve(false);
+            });
+        });
+    },
+
+    myRentalList: (userId) => {
+        return new Promise((resolve) => {
+            Rental.findAll({
+                where: {
+                    user_id: userId,
+                    rental_state: "대여" // "대여" 상태인 레코드만 조회
+                },
+                include: [
+                    {
+                    model: Tool,
+                    attributes: ['tool_content',"tool_state","tool_name"] // 'Tool' 테이블에서 불러올 컬럼 지정
+                },
+            ]
+            })
+            .then((result) => {
+
+                let objs = [];
+
+                let days;
+                let Dday;
+
+                for (i = 0; i < result.length; i++) {
+
+                    let obj = {};
+
+                    days = moment(result[i].rental_due_date).diff(moment(), 'days');
+
+                    if (days > 0) {
+                        Dday = "D - " + days;
+                    } else if (days == 0) {
+                        Dday = "TODAY"
+                    } else {
+                        Dday = "미반납"
+                    }
+
+                    obj['D_day'] = Dday;
+                    obj['result'] = result[i];
+
+                    objs.push(obj);
+
+                }
+            
+                result !== null ? resolve(objs) : resolve(false);
+
+            })
+            .catch((err) => {
+                console.log(err);
+                resolve("err");
+            });
+        });
+    },
+
+    myAllRentalList:(userId)=>{
+        return new Promise((resolve) => {
+            Rental.findAll({
+                where: {
+                    user_id: userId,
+                    rental_state: { [Op.or]: ["대여", "반납"]} // "대여" 상태인 레코드만 조회
+                },
+                include: [
+                    {
+                    model: Tool,
+                    attributes: ['tool_content',"tool_state","tool_name"] // 'Tool' 테이블에서 불러올 컬럼 지정
+                },
+            ]
+            })
+            .then((result) => {
+                resolve(result);
+            })
+            .catch((err) => {
+                console.log(err);
+                resolve("err");
+            });
+        });
+    },
+
+    myLateRentalList: (userId) => {
+        return new Promise((resolve) => {
+            Rental.findAll({
+                where: {
+                    user_id: userId,
+                    rental_state: "미반납" // "미반납" 상태인 레코드만 조회
+                },
+                include: [
+                    {
+                        model: Tool,
+                        attributes: ['tool_content', 'tool_state', 'tool_name'] // 'Tool' 테이블에서 불러올 컬럼 지정
+                    }
+                ]
+            })
+            .then((result) => {
+                let objs = [];
+    
+                for (let i = 0; i < result.length; i++) {
+                    let obj = {};
+                    let days = moment().diff(moment(result[i].rental_due_date), 'days');
+    
+                    obj['D_day'] = "D+" + days; // 연체 일수 계산하여 "D+일수" 형태로 저장
+                    obj['result'] = result[i];
+    
+                    objs.push(obj);
+                }
+    
+                resolve(objs);
+            })
+            .catch((err) => {
+                console.log(err);
+                resolve("err");
+            });
         })
     },
+
+    LateRentalList:()=>{
+        return new Promise((resolve) => {
+            Rental.findAll({
+                where: {
+                    rental_state: "미반납" // "미반납" 상태인 레코드만 조회
+                },
+                include: [
+                    {
+                        model: Tool,
+                        attributes: ['tool_content', 'tool_state', 'tool_name'] // 'Tool' 테이블에서 불러올 컬럼 지정
+                    }
+                ]
+            })
+            .then((result) => {
+                let objs = [];
+    
+                for (let i = 0; i < result.length; i++) {
+                    let obj = {};
+                    let days = moment().diff(moment(result[i].rental_due_date), 'days');
+    
+                    obj['D_day'] = "D+" + days; // 연체 일수 계산하여 "D+일수" 형태로 저장
+                    obj['result'] = result[i];
+    
+                    objs.push(obj);
+                }
+    
+                resolve(objs);
+            })
+            .catch((err) => {
+                console.log(err);
+                resolve("err");
+            });
+        })
+    },
+
+    rentalTableAll:()=>{
+        return new Promise((resolve)=>{ 
+            Rental.findAll(
+      
+            )
+            .then((result)=>{
+              resolve(result)
+            })
+            .catch((err)=>{
+              resolve("err")
+            })
+      
+          })
+        },
 
 }
