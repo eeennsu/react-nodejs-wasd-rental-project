@@ -1,7 +1,14 @@
+const express = require('express');
+const router = express.Router();
+const userController = require('./userController')
 
-//개인정보 수정
-//내 현재 대여목록
-//내 현재 연체목록
-//나의 수리
-//내 역대 대여목록
-//내 역대 연체목록
+
+router.get('/viewInfo/:user_id',userController.viewInfo);
+router.post('/changeInfo',userController.changeInfo);
+
+module.exports = router;
+
+// 개인정보 수정 changeInfo
+// 개인정보 조회 viewInfo
+
+
