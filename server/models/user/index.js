@@ -42,7 +42,14 @@ module.exports = (sequelize, DataTypes) => {
             user_license : {
                 allowNull: false,
                 type : DataTypes.INTEGER
-            }
+            },
+
+            manager_approval : {
+                allowNull: false,
+                type : DataTypes.BOOLEAN
+            },
+
+            
         },
         {
             charset: "utf8",
