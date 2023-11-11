@@ -15,23 +15,24 @@ module.exports = {
             let obj = {};
 
             if(result=="user_email"){
-                obj["suc"] = false;
-                obj["error"] = errorCode.E09.message;
+                obj["200"]= "OK";
+                obj["err"] = errorCode.E09.message;
                 res.send(obj);
             } else if(result=="user_student_number") {
-                obj["suc"] = false;
-                obj["error"] = errorCode.E10.message;
+                obj["200"]= "OK";
+                obj["err"] = errorCode.E10.message;
                 res.send(obj);
             } else if(result=="user_email, user_student_number"){
-                obj["suc"] = false;
-                obj["error"] = "학번,이메일이 모두 중복된 값 입니다.";
+                obj["200"]= "OK";
+                obj["err"] = "학번,이메일이 모두 중복된 값 입니다.";
                 res.send(obj);
             } else if (result == "err" || result == false) {
-                obj["suc"] = false;
-                obj["error"] = errorCode.E00.message;
+                obj["200"]= "OK";
+                obj["err"] = errorCode.E00.message;
                 res.send(obj);
             } else {
-                obj['suc'] = "회원가입에 성공하였습니다.";
+                obj["200"]= "OK";
+                obj['suc'] = "회원가입에 성공하였습니다. 관리자 승인 후 로그인 가능합니다";
                 obj['result'] = result;
                 res.send(obj);
             }
@@ -47,22 +48,82 @@ module.exports = {
             console.log(result);
 
             if (result == "err") {
-                obj['suc'] = false;
+                obj["200"]= "OK";
                 obj['err'] = errorCode.E00.message;
                 res.send(obj);
-            } else if (result == false) {
-                obj['suc'] = false;
+            } else if (result == "false") {
+                obj["200"]= "OK";
                 obj['err'] = errorCode.E02.message;
                 res.send(obj);
-            } else {
+            } 
+            else if (result=="approval false") {
+                obj["200"]= "OK";
+                obj['err'] = errorCode.E17.message;
+                res.send(obj);
+            }
+            else {
                 console.log(result);
-                obj['suc'] = true;
+                obj["200"]= "OK";
                 obj['login'] = result;
                 const token = jwt.sign(result);
                 obj['token'] = token;
                 res.send(obj);
             }
+        })
+        .catch((error) => {
+            console.error("Error in checkRepair controller:", error);
+            res.status(500).send({ suc: "Error", message: "서버 내부 오류 발생" });
         });
+    },
+
+    approveUser:(req,res)=>{
+        const body = req.body
+        authService.approveUser(body)
+        .then((result)=>{
+
+            let obj = {};
+
+            if(result=="err"){
+                obj["200"]= "OK";
+                obj['err'] = errorCode.E00.message;
+                res.send(obj);
+            }
+            else if(result){
+                obj["200"]= "OK";
+                obj['result'] = "회원가입이 승인되었습니다";
+                res.send(obj);
+            }
+        })
+    },
+
+    listPendingUsers: (req,res)=>{
+        const page = req.params.page 
+        const pageLimit = req.params.pageLimit 
+        const userId = req.params.user_id
+        
+        authService.listPendingUsers(page,pageLimit)
+        .then((result)=>{
+            let obj = {};
+            console.log(result.length)
+            
+            if(result.length !==0){
+                obj["200"]= "OK";
+                obj["result"] = result;
+                res.send(obj)
+            }
+            else if(result.length===0){
+                obj["200"]= "OK";
+                obj["result"] = "회원가입을 요청한 사용자가 없습니다.";
+                res.send(obj)
+            }
+
+            else{
+                obj["200"]= "OK";
+                obj["err"] =errorCode.E00.message;
+                res.send(obj)
+            }
+            
+        })
     },
 
     checkId: (req, res) => {
@@ -71,15 +132,15 @@ module.exports = {
         .then(result => {
             let obj = {};
             if(result == "Null"){
-                obj["200"] = "OK";
-                obj["result"] = errorCode.E11.message;
+                obj["200"]= "OK";
+                obj["err"] = errorCode.E11.message;
                 res.send(obj);
             } else if (result) { //아이디가 중복되는 코드
-                obj["200"] = "OK";
-                obj["result"] = errorCode.E03.message;
+                obj["200"]= "OK";
+                obj["err"] = errorCode.E03.message;
                 res.send(obj);
             } else {
-                obj["200"] = "OK";
+                obj["200"]= "OK";
                 obj["result"] = "아이디가 중복되지 않습니다.";
                 res.send(obj);
             }
@@ -94,16 +155,16 @@ module.exports = {
             console.log(result);
             let obj = {};
             if (result != false) {
-                obj["200"] = "OK";
+                obj["200"]= "OK";
                 obj["result"] = `${result.user_name}님의 아이디는 ${result.user_id}입니다`;
                 res.send(obj);
             } else if (result === false) {
-                obj["200"] = "OK";
-                obj["result"] = errorCode.E04.message;
+                obj["200"]= "OK";
+                obj["err"] = errorCode.E04.message;
                 res.send(obj);
             } else {
-                obj["200"] = "OK";
-                obj["result"] = errorCode.E00.message;
+                obj["200"]= "OK";
+                obj["err"] = errorCode.E00.message;
                 res.send(obj);
             }
         });
@@ -116,16 +177,16 @@ module.exports = {
             console.log(result);
             let obj = {};
             if (result != false) {
-                obj["200"] = "OK";
+                obj["200"]= "OK";
                 obj["result"] = "인증 성공 비밀번호를 변경하여 주세요";
                 res.send(obj);
             } else if (result === false) {
-                obj["200"] = "OK";
-                obj["result"] = errorCode.E00.message;
+                obj["200"]= "OK";
+                obj["err"] = errorCode.E00.message;
                 res.send(obj);
             } else {
-                obj["200"] = "OK";
-                obj["result"] = errorCode.E00.message;
+                obj["200"]= "OK";
+                obj["err"] = errorCode.E00.message;
                 res.send(obj);
             }
         });
@@ -140,16 +201,16 @@ module.exports = {
             let obj = {};
 
             if (result != false) {
-                obj["200"] = "OK";
+                obj["200"]= "OK";
                 obj["result"] = `비밀번호가 성공적으로 변경되었습니다.`;
                 res.send(obj);
             } else if (result === false) {
-                obj["200"] = "OK";
-                obj["result"] = errorCode.E00.message;
+                obj["200"]= "OK";
+                obj["err"] = errorCode.E00.message;
                 res.send(obj);
             } else {
-                obj["200"] = "OK";
-                obj["result"] = errorCode.E00.message;
+                obj["200"]= "OK";
+                obj["err"] = errorCode.E00.message;
                 res.send(obj);
             }
         });
@@ -162,14 +223,40 @@ module.exports = {
             console.log(result);
             let obj = {};
             if (result == false) {
-                obj["200"] = "OK";
-                obj["result"] = errorCode.E00.message;
+                obj["200"]= "OK";
+                obj["err"] = errorCode.E00.message;
                 res.send(obj);
             } else {
-                obj["200"] = "OK";
+                obj["200"]= "OK";
                 obj["result"] = result;
                 res.send(obj);
             }
         });
     },
+
+    UserTableAll:(req,res)=>{
+        authService.UserListAll()
+        .then((result)=>{
+            let obj = {}
+
+            if(result.length!==0){
+                obj["200"]= "OK";
+                obj["result"] = result
+                res.send(obj);
+            }
+
+            else if(result.length==0){
+                obj["200"]= "OK";
+                obj["result"] = "회원정보 데이터베이스의 값에 등록된 값이 없습니다"
+                res.send(obj);
+            }
+
+            else{
+                obj["200"]= "OK";
+                obj["err"] = errorCode.E00.message;
+                res.send(obj);
+            }
+            
+        })
+    }
 };

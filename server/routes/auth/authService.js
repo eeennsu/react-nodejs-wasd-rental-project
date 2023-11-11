@@ -40,6 +40,7 @@ module.exports = {
               user_created_at: moment().format('YYYY-MM-DD HH:mm:ss'),
               user_license: 0,
               department_id: body.department_id,
+              manager_approval: false,
             })
               .then((result) => {
                 if (result) {
@@ -71,19 +72,65 @@ module.exports = {
           user_pw: hash,
         },
       })
-        .then((result) => {
-          if (result !== null) {
-            resolve(result);
+      .then((result) => {
+        if (result !== null) {
+          if (result.manager_approval) {
+            resolve(result); // 로그인 성공
           } else {
-            resolve(false);
+            resolve("approval false"); // 관리자 승인 필요
           }
-        })
-        .catch((err) => {
-          resolve('err');
-          console.log(err);
-        });
+        } else {
+          resolve("false"); // 아이디 또는 비밀번호 불일치
+        }
+      })
+      .catch((err) => {
+        resolve('err');
+        console.log(err);
+      });
     });
   },
+
+  approveUser: (body) => {
+    return new Promise((resolve) => {
+      User.update(
+        { manager_approval: true },
+        { where: { user_id: body.user_id } }
+      )
+      .then((result) => {
+        resolve(result); // 승인 성공
+      })
+      .catch((err) => {
+        console.log(err);
+        resolve("err"); // 승인 실패
+      });
+    });
+  },
+
+  listPendingUsers: (page, pageLimit) => {
+    page = parseInt(page);
+    pageLimit = parseInt(pageLimit);
+    const pageOffset = (page - 1) * pageLimit;
+
+    return new Promise((resolve) => {
+        User.findAll({
+            where: {
+                manager_approval: false
+            },
+            limit: pageLimit,
+            offset: pageOffset,
+            order: [['user_created_at', 'ASC']] // 가장 최근에 가입한 사용자부터 보여주기 위해
+        })
+        .then((result)=>{
+        
+          resolve(result)
+        })
+        .catch((error) => {
+          console.log(error);
+          resolve('err');
+        });
+    });
+},
+
 
   checkId: (body) => {
     return new Promise((resolve) => {
@@ -203,5 +250,20 @@ module.exports = {
         }
       }
     });
+  },
+
+  UserTableAll:()=>{
+    return new Promise((resolve)=>{ 
+      User.findAll(
+
+      )
+      .then((result)=>{
+        resolve(result)
+      })
+      .catch((err)=>{
+        resolve("err")
+      })
+
+    })
   },
 };
