@@ -37,10 +37,10 @@ module.exports = (sequelize, DataTypes) => {
              //구매 날짜
             tool_purchase_date : {
                 allowNull : false,
-                type: DataTypes.DATE
+                type: DataTypes.STRING(255)
             },
 
-            //품목 규격
+            //품목 규격(Qculus Quest2 128GB)
             tool_standard : {
                 allowNull : false,
                 type: DataTypes.STRING(255)
