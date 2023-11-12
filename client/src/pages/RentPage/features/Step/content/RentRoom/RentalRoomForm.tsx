@@ -1,6 +1,6 @@
 import type { FC, ChangeEvent } from 'react';
 import { useStepStore } from '../../../../../../zustand';
-import RangePicker from '../dates/RangePicker';
+import Picker from '../dates/Picker';
 import { Input } from 'antd';
 
 const { TextArea } = Input;
@@ -36,7 +36,7 @@ const RentalRoomForm: FC = () => {
                 {selectedRoom}
             </h3>
             <div className='flex justify-start'>
-                <RangePicker />
+                <Picker type='date' />
             </div>
             <div>
                 시간 선택 공간 <br />

@@ -42,7 +42,11 @@
 }
 
 .ant-picker-suffix:hover {
-    background-color: #5f80a3;
+    background-color: #5f80a3 !important;
+}
+
+.ant-picker-suffix:hover + .ant-picker-clear {
+    background-color: #5f80a3 !important;
 }
 
 .ant-picker-suffix:active {
@@ -50,10 +54,10 @@
 }
 
 .ant-picker-clear {
-    padding-inline: 9px;
-    width: max-content; 
     background-color: #3F5D7D !important;
     color: white !important;
+    width: 14px !important;
+    margin-right: 9px;
 }
 
 .ant-picker-range input {
@@ -63,4 +67,20 @@
 
 div.ant-picker-range {
     padding: 0 !important;
+}
+
+div.ant-picker-input > input {
+    height: 100% !important;
+    display: flex;
+    padding: 10px !important;
+}
+
+:where(.css-dev-only-do-not-override-xu9wm8).ant-picker .ant-picker-input {
+    display: flex !important;
+    height: 100% !important;
+    width: 100%;
+}
+
+.ant-picker-input > .ant-picker-clear {
+    margin-right: 20px;
 }

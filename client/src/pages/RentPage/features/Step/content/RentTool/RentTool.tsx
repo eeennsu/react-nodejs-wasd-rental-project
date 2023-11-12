@@ -5,7 +5,7 @@ import {  Input, message } from 'antd';
 import { useRef } from 'react';
 import Button from '../../../../../../components/Button';
 import Template from '../../templates/Template';
-import RangePicker from '../dates/RangePicker';
+import Picker from '../dates/Picker';
 
 const { TextArea } = Input;
 
@@ -185,7 +185,7 @@ const RentSupply: FC = () => {
                             </div>
                         </div>
                         <div className='flex justify-start w-full'>
-                            <RangePicker />
+                            <Picker type='range' />
                         </div>
                     </div>
                 </div>   
