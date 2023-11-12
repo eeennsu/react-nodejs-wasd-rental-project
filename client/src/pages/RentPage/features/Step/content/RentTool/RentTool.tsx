@@ -1,11 +1,11 @@
 import type { FC, ChangeEvent } from 'react';
-import { useStepStore, useTabsStore } from '../../../../../../zustand';
+import { useStepStore, useTabsStore, useTimeStore } from '../../../../../../zustand';
 import { getTabName } from '../../../../utils/tables';
 import {  Input, message } from 'antd';
 import { useRef } from 'react';
 import Button from '../../../../../../components/Button';
 import Template from '../../templates/Template';
-import Picker from '../dates/Picker';
+import Picker from '../dates/DatePicker';
 
 const { TextArea } = Input;
 
@@ -24,9 +24,12 @@ const RentSupply: FC = () => {
     const { 
         detailTool, setSystemStep, 
         text, setText, 
+    } = useStepStore();
+
+    const {
         rentDate, setRentDate, 
         returnDate, setReturnDate
-    } = useStepStore();
+    } = useTimeStore();
 
     const handleRentRequest = () => {        
 
@@ -40,8 +43,8 @@ const RentSupply: FC = () => {
             return;
         }
 
-        if (text.length <= 4) {
-            message.warning('반출 사유를 5자 이상 입력해 주세요.');
+        if (text.length <= 0) {
+            message.warning('반출 사유를 이상 입력해 주세요.');
             return;
         }
 
@@ -189,7 +192,7 @@ const RentSupply: FC = () => {
                         </div>
                     </div>
                 </div>   
-                <div className='mt-4 3xl:mt-8'>
+                <div className='mt-6 3xl:mt-2'>
                     <TextArea 
                         className='h-full p-3 border-2 rounded-none bg-04 border-01 placeholder:text-02/80'
                         style={{ resize: 'none' }}

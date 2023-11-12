@@ -21,7 +21,7 @@ const Side: FC = () => {
     }, []);
 
     return (
-        <div className='flex flex-col items-center gap-10 mb-10 h-max'>
+        <div className='flex flex-col items-center gap-10 h-max'>
             <div className='flex items-center justify-center w-40 h-40 rounded-full bg-03 shadow-left'>
                 <h2 className='font-[800]'>
                     나의 대여 목록

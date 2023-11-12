@@ -1,18 +1,18 @@
 import type { FC } from 'react';
 import type { Dayjs } from 'dayjs';
-import { DatePicker } from 'antd';
-import { useStepStore } from '../../../../../../zustand';
+import { DatePicker as AntdDatePicker } from 'antd';
+import { useTimeStore } from '../../../../../../zustand';
 import { disabledDate, rangePresets } from '../../../../utils/rangePicker';
 
 type Props = {
     type: 'range' | 'date'
 }
 
-const { RangePicker } = DatePicker;
+const { RangePicker } = AntdDatePicker;
 
-const Picker: FC<Props> = ({ type }) => {
+const DatePicker: FC<Props> = ({ type }) => {
 
-    const { setRentDate, setReturnDate } = useStepStore();
+    const { setRentDate, setReturnDate } = useTimeStore();
 
     const handleDateChange = (date: null | Dayjs, dateString: string) => {
         if (date) {
@@ -38,11 +38,11 @@ const Picker: FC<Props> = ({ type }) => {
 
     if (type === 'date') {
         return (
-            <DatePicker 
+            <AntdDatePicker 
                 onChange={handleDateChange}
                 disabledDate={disabledDate}
                 placeholder='대여 날짜를 선택해 주세요'
-                format='MM-DD  dddd'
+                format='MM-DD / ddd'
                 className='w-[260px] border rounded-none border-01 bg-04 p-0'
             />  
         );
@@ -55,11 +55,11 @@ const Picker: FC<Props> = ({ type }) => {
                 disabledDate={disabledDate} 
                 onChange={handleRangeChange}          
                 placeholder={['대여 날짜를 선택해 주세요', '반납날짜를 선택해 주세요']}
-                format='MM-DD  dddd'
+                format='MM-DD / ddd'
                 className='w-[464px] border rounded-none border-01 bg-04'
             />
         );
     }
 };
 
-export default Picker;
+export default DatePicker;

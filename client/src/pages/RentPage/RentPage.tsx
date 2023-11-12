@@ -18,7 +18,7 @@ const RentPage: FC = () => {
     const { systemStep , setSystemStep } = useStepStore();
 
     return (
-        <div className='flex w-full h-full gap-5 mt-12'>            
+        <div className='flex w-full h-full gap-x-6 mt-7'>            
             <aside className='w-1/5 '>
                 <Side />
             </aside>

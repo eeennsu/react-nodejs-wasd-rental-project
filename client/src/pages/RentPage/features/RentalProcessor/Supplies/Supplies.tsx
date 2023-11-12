@@ -12,7 +12,7 @@ const Supplies: FC<Props> = ({ isAnyoneLoading }) => {
 
     return (
         <>
-            <div className='flex flex-col min-h-[550px] gap-7'>
+            <div className='flex flex-col min-h-[520px] 3xl:min-h-[526px] gap-7'>
                 <Tabs />
                 {
                     isAnyoneLoading ? (
@@ -22,7 +22,7 @@ const Supplies: FC<Props> = ({ isAnyoneLoading }) => {
                     )
                 }         
             </div>
-            <div className='flex justify-center w-full my-12'>                
+            <div className='flex justify-center w-full my-6'>                
                 <Pagination />            
             </div>   
         </> 

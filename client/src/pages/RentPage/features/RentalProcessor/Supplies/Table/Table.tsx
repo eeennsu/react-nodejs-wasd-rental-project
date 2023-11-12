@@ -70,7 +70,7 @@ const Table: FC = () => {
                 <EmptySearchResult />
             ) : (
                 <table className='w-full h-full border-collapse'>
-                    <tbody className='flex flex-col gap-3'>
+                    <tbody className='flex flex-col gap-[11px]'>
                         {
                             (activeTab === 1) ? (
                                 VRsData?.map((vr) => (

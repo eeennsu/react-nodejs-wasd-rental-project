@@ -38,8 +38,8 @@ const RepairSupply: FC = () => {
             return;
         }
 
-        if (text.length <= 4) {
-            message.warning('수리 사유를 5자 이상 입력해주세요.');
+        if (text.length <= 0) {
+            message.warning('수리 사유를 입력해주세요.');
 
             return;
         }

@@ -7,7 +7,7 @@ type Props = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButt
 const PGButton: FC<PropsWithChildren<Props>> = ({ curPage, children, ...btnProps }) => {
 
     return (
-        <button {...btnProps} className={`w-6 h-8 text-white ${curPage === children ? 'bg-01' : 'bg-02'} rounded-sm2`} >
+        <button {...btnProps} className={`w-6 h-8 text-white ${curPage === children ? 'bg-01' : 'bg-02'} rounded-sm2 font-[500]`} >
             {children}
         </button>
     );

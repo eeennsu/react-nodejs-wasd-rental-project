@@ -1,7 +1,8 @@
 import type { FC, ChangeEvent } from 'react';
 import { useStepStore } from '../../../../../../zustand';
-import Picker from '../dates/Picker';
 import { Input } from 'antd';
+import DatePicker from '../dates/DatePicker';
+import TimePicker from '../dates/PickableTime/TimePicker';
 
 const { TextArea } = Input;
 
@@ -14,7 +15,7 @@ const RentalRoomForm: FC = () => {
     }
 
     return (
-        <section className='flex flex-col w-full gap-4 py-5 mt-5 px-9 bg-04'>
+        <section className='flex flex-col w-full gap-4 px-[50px] py-[22px] mt-4 bg-04'>
             {/* <div className='flex items-center gap-4'>
                 <RangePicker />
                 <div>
@@ -36,12 +37,10 @@ const RentalRoomForm: FC = () => {
                 {selectedRoom}
             </h3>
             <div className='flex justify-start'>
-                <Picker type='date' />
+                <DatePicker type='date' />
             </div>
             <div>
-                시간 선택 공간 <br />
-                시간 선택 공간 <br />
-                시간 선택 공간 <br />
+                <TimePicker />
             </div>
             <div>
                 <TextArea 

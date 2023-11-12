@@ -14,7 +14,7 @@ const RentRoom: FC = () => {
     return (
         <Template className='h-full mb-5 3xl:mb-0'>
             <Schedule />
-            <div className='h-[348px]'>
+            <div className='h-[348px] '>
                 {
                     systemStep === 'LR_DESC' ? (
                         <RoomList />

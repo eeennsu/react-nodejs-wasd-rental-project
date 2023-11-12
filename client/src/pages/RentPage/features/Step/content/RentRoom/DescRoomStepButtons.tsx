@@ -18,7 +18,7 @@ const DescRoomButtons: FC = () => {
     return (
         <footer className='flex justify-end gap-3 p-4'>
             <Button onClick={handleInitStep} bgColor='02'>
-                돌아 가기
+                돌아가기
             </Button> 
             <Button onClick={handleRentStep} bgColor='01' disabled={!Boolean(selectedRoom)}>
                 대여 하기

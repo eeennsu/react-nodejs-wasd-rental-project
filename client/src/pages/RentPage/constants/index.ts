@@ -21,3 +21,6 @@ export const repairResons: string[] = [
     '이유 06 LROROERE',
     '이유 07 LROROERE',
 ];
+
+export const minutes: number[] = [0, 1, 2, 3, 4, 5];
+export const hours: number[] = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
