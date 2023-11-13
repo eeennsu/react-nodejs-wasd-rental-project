@@ -21,11 +21,7 @@ module.exports={
                 } 
                 else if (result == "err") {
                     obj["200"] = "OK"
-                    obj["err"] = errorCode.E06.message;
-                    res.send(obj);
-                } else if (result == errorCode.E05.message) {
-                    obj["200"] = "OK"
-                    obj["err"] = result;
+                    obj["err"] = "이미 대여된 기자재 입니다.";
                     res.send(obj);
                 } else {
                     obj["200"] = "OK"
@@ -107,6 +103,7 @@ module.exports={
                 obj["err"] = errorCode.E00.message;
                 res.send(obj);
             } else {
+                console.log("이거찎힘?")
                 obj["200"]= "OK";
                 obj["result"] = result;
                 res.send(result);

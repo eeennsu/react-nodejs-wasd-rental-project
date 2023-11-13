@@ -22,6 +22,7 @@ module.exports={
             }
             else{
                 obj["200"] = "OK"
+                obj["suc"] = "수리 요청이 완료되었습니다"
                 obj['result'] = result;
                 res.send(obj);
             }

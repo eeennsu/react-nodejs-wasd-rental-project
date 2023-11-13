@@ -225,18 +225,24 @@ module.exports = {
 
         toolService.rentalToolCount(toolName)
         .then((result)=>{
-
+          console.log(result)
           let obj = {};
 
-          if(result){
+          if(result=="err"){
             obj["200"] ="OK";
-            obj["result"]= `${result.length}개`;
+            obj["err"]= errorCode.E00.message;
+            res.send(obj);
+          }
+          else if (result=="Null"){
+            obj["200"] ="OK";
+            obj["result"]= `tool_name의 입력값이 잘못되었습니다.`;
             res.send(obj);
           }
           else {
             obj["200"] ="OK";
-            obj["err"]= errorCode.E00.message;
+            obj["result"]= `${result.length}개`;
             res.send(obj);
+            
           }
           
 
@@ -246,22 +252,27 @@ module.exports = {
       notRentalToolCount:(req,res)=>{
   
         const toolName = req.params.tool_name
-        console.log(toolName)
 
         toolService.notRentalToolCount(toolName)
         .then((result)=>{
-
+          
           let obj = {};
 
-          if(result){
+          if(result=="err"){
             obj["200"] ="OK";
-            obj["result"]= `${result.length}개`;
+            obj["err"]= errorCode.E00.message;
+            res.send(obj);
+          }
+          else if (result=="Null"){
+            obj["200"] ="OK";
+            obj["result"]= `tool_name의 입력값이 잘못되었습니다.`;
             res.send(obj);
           }
           else {
             obj["200"] ="OK";
-            obj["err"]= errorCode.E00.message;
+            obj["result"]= `${result.length}개`;
             res.send(obj);
+            
           }
           
 
@@ -287,7 +298,7 @@ module.exports = {
           }
           else{
             obj["200"] ="OK";
-            obj["result"]= result;
+            obj["result"]= `${result.tool_content}가 ${result.tool_state} 처리 되었습니다. `;
             res.send(obj);
           }
         })
@@ -298,8 +309,9 @@ module.exports = {
         
         toolService.canRental(toolId)
         .then((result) => {
+
           let obj = {};
-          console.log(result)
+
           if (result=="err") {
             obj["200"] ="OK";
             obj["err"]= errorCode.E00.message;
@@ -312,7 +324,7 @@ module.exports = {
           }
           else{
             obj["200"] ="OK";
-            obj["result"]= result;
+            obj["result"]= `${result.tool_content}가 ${result.tool_state} 처리 되었습니다.`
             res.send(obj);
           }
         })

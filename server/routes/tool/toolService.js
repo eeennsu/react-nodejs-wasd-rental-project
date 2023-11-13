@@ -93,7 +93,7 @@ module.exports = {
     try {
       const toolId = body.tool_id;
       const updateFields = {};
-
+      
       if (img && Object.keys(body).length === 1) {
         // 1. 이미지만 수정
         console.log("1번이찍힘");
@@ -103,7 +103,7 @@ module.exports = {
         );
         resolve(imgResult);
       } else if (!img && body) {
-        console.log("2번이찍힘");
+       
         // 2. 내용만 수정
         const keys = Object.keys(body);
         const values = Object.values(body);
@@ -115,6 +115,8 @@ module.exports = {
         for (let i = 0; i < keys.length; i++) {
           updateFields[keys[i]] = values[i];
         }
+        console.log("2번이찍힘");
+        console.log(updateFields)
 
         const toolResult = await Tool.update(updateFields, {
           where: { tool_id: toolId }
@@ -205,6 +207,7 @@ module.exports = {
         order: [['tool_id', 'ASC']], // tool_content 기준으로 내림차순 정렬
       })
         .then((result) => {
+          console.log(result)
           resolve(result);
         })
         .catch((error) => {
@@ -271,19 +274,16 @@ module.exports = {
   },
 
   rangeTool: (toolName,page,pageLimit) => {
-    page = parseInt(page);
-    pageLimit = parseInt(pageLimit);
+    page = parseInt(page); //2
+    pageLimit = parseInt(pageLimit); //10
     const pageOffset = (page - 1) * pageLimit;
+    console.log(pageOffset)
 
     return new Promise((resolve) => {
       Tool.findAll({
         where: { tool_name: toolName }, // tool_name을 사용하여 조건을 설정
         limit: pageLimit,
         offset: pageOffset,   
-       // order: [['tool_content', 'DESC']], // tool_content 열을 오름차순으로 정렬
-        // order: [
-        //   [Sequelize.fn('CAST', Sequelize.fn('SUBSTRING', Sequelize.col('tool_content'), 10), 'UNSIGNED'), 'ASC']
-        // ],
       })
 
       .then((result) => {
@@ -301,41 +301,61 @@ module.exports = {
     });
   },
 
-  rentalToolCount:(toolName)=>{
-       return new Promise((resolve)=>{
-        Tool.findAll({
-          where: {
-            tool_name:toolName,
-            tool_state: "대여가능",
-          }
-        })
-        .then((result)=>{
-          resolve(result)
-        })
-        .catch((err)=>{
-          console.log(err)
-          resolve("err")
-        })
-       }) 
-  },
-
-  notRentalToolCount:(toolName)=>{
-    return new Promise((resolve)=>{
-      Tool.findAll({
-        where: {
-          tool_name:toolName,
-          tool_state: "대여중",
+  rentalToolCount: (toolName) => {
+    return new Promise((resolve) => {
+        if (!toolName) {
+            resolve("Null");
+           
         }
+
+        Tool.findAll({
+            where: {
+                tool_name: toolName,
+                tool_state: "대여가능",
+            }
+        })
+        .then((result) => {
+            if (result.length === 0) {
+                resolve("Null");
+            } else {
+                resolve(result);
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            resolve("err");
+        });
+    });
+},
+
+notRentalToolCount: (toolName) => {
+  return new Promise((resolve) => {
+      if (!toolName) {
+          resolve("Null");
+      }
+      console.log(toolName)
+      Tool.findAll({
+          where: {
+              tool_name: toolName,
+              tool_state: "대여중",
+          }
       })
-      .then((result)=>{
-        resolve(result)
+      .then((result) => {
+        console.log(result)
+          if (result.length === 0) {
+              resolve("Null");
+          } else {
+              resolve(result);
+          }
       })
-      .catch((err)=>{
-        console.log(err)
-        resolve("err")
-      })
-     }) 
-  },
+      .catch((err) => {
+          //console.error(err);
+          resolve("err");
+      });
+  });
+},
+
+
 
   cannotRental: (toolId) => {
     return new Promise((resolve) => {
