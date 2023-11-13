@@ -1,7 +1,5 @@
 import type { FC } from 'react';
-import { useEffect } from 'react';
 import Side from './features/Side/Side';
-import RentalProcessor from './features/RentalProcessor/RentalProcessor';
 import { login_API } from '../../api/auth/authApis';
 import './features/app.css';
 import { useStepStore } from '../../zustand';
