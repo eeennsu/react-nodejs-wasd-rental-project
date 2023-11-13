@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('./authController');
+const checkToken = require("../../middleware/authorization").checkToken
+const checkOne = require("../../middleware/authorization").checkOne
+const checkMaster = require("../../middleware/authorization").checkMaster
 
 // 회원가입
 router.post('/signup',authController.signUp); 
@@ -9,10 +12,10 @@ router.post('/signup',authController.signUp);
 router.post('/login',authController.login); 
 
 //회원가입 승인
-router.post('/approveUser',authController.approveUser);
+router.post('/approveUser',checkToken,checkMaster,authController.approveUser);
 
 //회원가입 신청 목록 불러오기
-router.get('/listPendingUsers/:page/:pageLimit',authController.listPendingUsers);
+router.get('/listPendingUsers/:page/:pageLimit',checkToken,checkMaster,authController.listPendingUsers);
 
 //아이디 중복확인
 router.post('/checkId',authController.checkId);
@@ -27,7 +30,7 @@ router.post('/changePw',authController.changePw);
 router.post('/sendMail',authController.sendMail);
 
 //User DB에 있는 모든 정보 불러오기
-router.get('/UserTableAll',authController.UserTableAll);
+router.get('/UserTableAll',checkToken,checkMaster,authController.UserTableAll);
 
 //router.post('/searchPw',authController.searchPw) 
 
