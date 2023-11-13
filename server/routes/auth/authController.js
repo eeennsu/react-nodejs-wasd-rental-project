@@ -100,6 +100,7 @@ module.exports = {
         const page = req.params.page 
         const pageLimit = req.params.pageLimit 
         const userId = req.params.user_id
+        console.log(typeof(page))
         
         authService.listPendingUsers(page,pageLimit)
         .then((result)=>{
@@ -235,7 +236,7 @@ module.exports = {
     },
 
     UserTableAll:(req,res)=>{
-        authService.UserListAll()
+        authService.UserTableAll()
         .then((result)=>{
             let obj = {}
 

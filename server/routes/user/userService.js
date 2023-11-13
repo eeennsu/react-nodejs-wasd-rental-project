@@ -14,8 +14,8 @@ module.exports = {
                     model: Department,
                     attributes: ['department_name'],
                     include: {
-                        model: University, // 'University' 모델 이름으로 가정
-                        attributes: ['university_name'] // 'University' 모델의 원하는 속성
+                        model: University, 
+                        attributes: ['university_name'] 
                     }
                 }
             })
