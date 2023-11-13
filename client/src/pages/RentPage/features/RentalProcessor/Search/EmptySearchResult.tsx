@@ -1,5 +1,5 @@
-import { Empty } from 'antd';
 import type { FC } from 'react';
+import { Empty } from 'antd';
 
 const EmptySearchResult: FC = () => {
 

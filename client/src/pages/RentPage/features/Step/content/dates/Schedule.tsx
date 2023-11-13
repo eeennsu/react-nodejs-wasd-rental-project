@@ -20,8 +20,6 @@ const Tr: FC<PropsWithChildren> = ({ children }) => (
 
 const Schedule: FC = () => {
 
-
-
     return (
         // <table className='w-full text-xs text-center border border-collapse border-gray-800 table-sm bg-slate-200'>
         //     <thead className='py-4 bg-slate-100'>

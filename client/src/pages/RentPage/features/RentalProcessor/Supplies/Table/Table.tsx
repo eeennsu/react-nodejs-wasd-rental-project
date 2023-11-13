@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import { useSearchStore, useTabsStore, useSuppliesStore } from '../../../../../../zustand';
-
 import EmptySearchResult from '../../Search/EmptySearchResult';
 import ToolTr from './ToolTr';
 import LectureRoomTr from './LectureRoomTr';

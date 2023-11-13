@@ -1,22 +1,27 @@
-import type { ChangeEvent, FC } from 'react';
+import type { FC, ChangeEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { Input, Select, message } from 'antd';
-import { useStepStore, useTabsStore } from '../../../../../../zustand';
+import { useStepStore } from '../../../../../../zustand';
 import { repairResons } from '../../../../constants';
 import { TextAreaRef } from 'antd/lib/input/TextArea';
 import Template from '../../templates/Template';
 import Button from '../../../../../../components/Button';
+import useStepController from '../../../../../../hooks/commons/useStepController';
 
 const { TextArea } = Input;
 
 const RepairSupply: FC = () => {
-    
-    const textRef = useRef<TextAreaRef | null>(null);
 
-    const { activeTab, setActiveTab } = useTabsStore();
-    const { detailTool, setIsModalOpen ,setSystemStep, text, setText } = useStepStore();
+    const { detailTool, text, setText } = useStepStore();
+    const { handleStepInit } = useStepController();
 
     const [resonSelect, setResonSelect] = useState<string | null>(null);
+    const textRef = useRef<TextAreaRef | null>(null);
+
+    const renderOptions = repairResons.map((reson) => ({
+        label: reson,
+        value: reson
+    }));
 
     const handleSelectChange = (value: string) => {
         setResonSelect(value);
@@ -26,14 +31,9 @@ const RepairSupply: FC = () => {
         setText(e.target.value);
     }
 
-    const renderOptions = repairResons.map((reson) => ({
-        label: reson,
-        value: reson
-    }));
-
     const handleRepairRequest = () => {
         if (!resonSelect) {
-            message.warning('목록을 선택해주세요.');
+            message.warning('수리 목록을 선택해주세요.');
 
             return;
         }
@@ -53,44 +53,16 @@ const RepairSupply: FC = () => {
             console.log(error);
             message.error('알수 없는 에러가 발생했습니다. 괸라자에게 문의해주세요');
         } finally {
-            handleBack();
+            handleStepInit();
         }
-    }
-
-    const handleBack = () => {
-        setSystemStep('INIT');
-        setActiveTab(1);
-        setText('');
     }
 
     useEffect(() => {
         textRef.current?.focus();
-    })
+    }, []);
 
     return (
         <Template className='mt-[74px]'>
-            {/* <div className='flex items-center w-full '>
-                <div className='w-2/5'>
-                    <img src='http://via.placeholder.com/300x200' className='object-contain' />  
-                </div>
-                <p className='w-3/5'>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore nulla veniam facilis laboriosam fuga amet enim obcaecati quis, consectetur molestiae placeat iusto dolores quibusdam neque. Cumque est eos laudantium delectus ratione excepturi deserunt dolorum illum blanditiis enim, amet officia quam maiores qui voluptatibus perspiciatis, voluptatem eaque praesentium? Molestias, dolorem iure!             
-                </p>                 
-            </div>                
-            <div className='flex flex-col gap-4'>
-                <div className='w-full'>
-                    <select className='w-24 border border-neutral-400 bg-inherit'>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                    </select>
-                </div>
-                <TextArea rows={6} style={{ resize: 'none' }} className='p-3' placeholder='수리할 내용을 입력해주세요' />           
-            </div>    */}
             <div className='grid grid-cols-2 gap-10'>
                 <div className='flex flex-col gap-4'>
                     <div className='relative h-2/3'>
@@ -126,7 +98,7 @@ const RepairSupply: FC = () => {
                         </div>      
                     </div>                
                     <footer className='flex justify-end gap-4'>
-                        <Button onClick={handleBack} bgColor='02'>
+                        <Button onClick={handleStepInit} bgColor='02'>
                             뒤로 가기
                         </Button>
                         <Button onClick={handleRepairRequest} bgColor='01'>

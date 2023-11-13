@@ -33,6 +33,9 @@ const useTimeStore = create<ITimeStore>()(
                 lastSelectHour: null,
                 lastSelectMin: null,
             }), false, 'RESET_TIMES'),
+
+            timeBtnsResetTrigger: false,
+            setTimeBtnsResetTrigger: () => set((prev) => ({ timeBtnsResetTrigger: !prev.timeBtnsResetTrigger }), false, 'SET_TIME_BTNS_RESET_TRIGGER'),
         }),
     )
 );

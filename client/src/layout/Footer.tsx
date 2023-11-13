@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import logo2 from '../assets/images/logo2.png';
 import { useLocation } from 'react-router-dom';
+import logo2 from '../assets/images/logo2.png';
 
 const Footer: FC = () => {
     

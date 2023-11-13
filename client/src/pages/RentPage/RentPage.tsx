@@ -18,11 +18,11 @@ const RentPage: FC = () => {
     const { systemStep , setSystemStep } = useStepStore();
 
     return (
-        <div className='flex w-full h-full gap-x-6 mt-7'>            
-            <aside className='w-1/5 '>
+        <div className='w-full h-full md:flex gap-x-6 mt-7'>            
+            <aside className='md:w-1/5 '>
                 <Side />
             </aside>
-            <section className='w-4/5'>
+            <section className='md:w-4/5'>
                 {getContent(systemStep)}
                 {/* <span onClick={handleTest}>테스트</span> */}
             </section>        

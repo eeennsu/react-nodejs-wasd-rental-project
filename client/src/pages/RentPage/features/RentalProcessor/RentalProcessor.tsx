@@ -1,8 +1,8 @@
 import type { FC } from 'react';
+import { useEffect } from 'react';
+import { useSuppliesStore } from '../../../../zustand';
 import Search from './Search/Search';
 import Supplies from './Supplies/Supplies';
-import { useSuppliesStore } from '../../../../zustand';
-import { useEffect } from 'react';
 import useFetchAllSupplies from '../../../../hooks/test/useFetchAllSupplies';
 import Template from '../Step/templates/Template';
 
@@ -32,7 +32,7 @@ const RentalProcessor: FC = () => {
     // }, [VRsData, tabletsData, lectureRoomsData]);
 
     return (
-        <Template className='mt-14'>
+        <Template className='flex flex-col-reverse md:flex-col mt-14'>
             <section className='flex justify-end'>
                 <Search />
             </section>          

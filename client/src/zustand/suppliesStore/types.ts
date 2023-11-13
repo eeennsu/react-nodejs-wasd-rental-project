@@ -90,4 +90,7 @@ export interface ITimeStore {
     setLastSelectMin: (lastMin: number) => void;
 
     resetTimes: () => void;
+    
+    timeBtnsResetTrigger: boolean;
+    setTimeBtnsResetTrigger: () => void;
 }

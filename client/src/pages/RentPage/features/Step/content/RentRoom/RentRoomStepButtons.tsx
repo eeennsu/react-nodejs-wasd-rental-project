@@ -1,11 +1,11 @@
 import type { FC } from 'react';
 import Button from '../../../../../../components/Button';
 import { message } from 'antd';
-import { useTabsStore, useStepStore, useTimeStore } from '../../../../../../zustand';
+import { useStepStore, useTimeStore } from '../../../../../../zustand';
+import useStepController from '../../../../../../hooks/commons/useStepController';
 
 const RentRoomStepButtons: FC = () => {
 
-    const { setActiveTab } = useTabsStore();
     const { 
         text, setText, 
         selectedRoom, 
@@ -13,7 +13,7 @@ const RentRoomStepButtons: FC = () => {
     } = useStepStore();
 
     const {
-        rentDate, setRentDate,
+        rentDate,
         firstSelectHour, firstSelectMin,
         lastSelectHour, lastSelectMin,
         resetTimes
@@ -21,8 +21,11 @@ const RentRoomStepButtons: FC = () => {
 
     const handleDescRoomStep = () => {
         setSystemStep('LR_DESC');    
-        handleBack();
+        text.length >= 1 && setText('');     
+        resetTimes();
     }
+    
+    const { handleStepInit, handleDateInit } = useStepController();
 
     const handleRentRoomRequest = () => {
         if (!selectedRoom) {
@@ -69,14 +72,8 @@ const RentRoomStepButtons: FC = () => {
     }
 
     const handleInit = () => {
-        setSystemStep('INIT');
-        setActiveTab(1);
-        handleBack();
-    }
-
-    const handleBack = () => {
-        text.length >= 1 && setText('');        
-        rentDate && setRentDate(null);
+        handleStepInit();
+        handleDateInit();
         resetTimes();
     }
 

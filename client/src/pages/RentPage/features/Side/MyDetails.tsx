@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import DetailsItem from './DetailsItem';
-import { useState, useEffect } from 'react';
 
 type Props = {
     title: string;

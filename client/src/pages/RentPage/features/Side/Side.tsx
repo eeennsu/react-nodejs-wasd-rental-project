@@ -1,7 +1,6 @@
 import type { FC } from 'react';
-import MyDetails from './MyDetails';
 import { useState, useEffect } from 'react';
-
+import MyDetails from './MyDetails';
 
 const Side: FC = () => {
 
@@ -22,12 +21,12 @@ const Side: FC = () => {
 
     return (
         <div className='flex flex-col items-center gap-10 h-max'>
-            <div className='flex items-center justify-center w-40 h-40 rounded-full bg-03 shadow-left'>
+            <div className='items-center justify-center hidden w-40 h-40 rounded-full md:flex bg-03 shadow-left'>
                 <h2 className='font-[800]'>
                     나의 대여 목록
                 </h2>
             </div>  
-            <div className='flex flex-col gap-5 '>
+            <div className='flex gap-5 md:flex-col '>
                 <MyDetails title='대여 현황' datas={myRentals} />
                 <MyDetails title='연체 현황' datas={myStatus} /> 
             </div>            

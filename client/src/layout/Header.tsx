@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import UserButton from '../components/UserButton';
 import { Link } from 'react-router-dom';
+import UserButton from '../components/UserButton';
 
 const Header: FC = () => {
 
