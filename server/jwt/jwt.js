@@ -11,9 +11,9 @@ module.exports = {
         const payload = { 
             idx: user.user_id,
             license:user.user_license,
-            exp: Math.floor(Date.now() / 1000) + 10  //3초 (테스트용)
+            //exp: Math.floor(Date.now() / 1000) + 10  //3초 (테스트용)
             //exp: Math.floor(Date.now() / 1000) + (60 * 1) // 1분
-            //exp: Math.floor(Date.now() / 1000) + 900 // 15분
+            exp: Math.floor(Date.now() / 1000) + 900 // 15분
             //exp: Math.floor(Date.now() / 1000) + 600 // 10분
         };
 

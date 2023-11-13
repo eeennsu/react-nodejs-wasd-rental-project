@@ -1,7 +1,8 @@
 module.exports= {
-    ET1: { message: "not have token" },
-    ET2: { message: "expired token" },
-    ET3: { message: "invalid token" },
+    ET1: { message: "토큰을 가지고 있지 않습니다." },
+    ET2: { message: "토큰이 만료되었습니다." },
+    ET3: { message: "유효하지 않은 토큰입니다." },
+    ET4: { message: "사용 권한이 없습니다" },
     
     E00: { message: "서버관리자에게 문의하세요" },
     E01: { message: "회원정보가 누락되었습니다." },
@@ -24,8 +25,4 @@ module.exports= {
     E18: { message: "등록된 기자재가 없습니다."},
     E19: { message: "이미 대여불가 처리되었습니다."},
     E20: { message: "이미 대여가능 처리되었습니다."},
-
-  
-  
-    
 }

@@ -11,7 +11,7 @@ const verifyToken = {
         if (!token){ //토큰이 없을 경우
             return res.status(500).json({
                 result: false,
-                code: "E11",
+                code: "ET1",
                 message: errorCode.ET1.message
             });
         }
@@ -23,7 +23,7 @@ const verifyToken = {
         if (user === TOKEN_EXPIRED){ 
             return res.status(500).json({
                 result: false,
-                code: "E12",
+                code: "ET2",
                 message: errorCode.ET2.message
             });
         }
@@ -32,7 +32,7 @@ const verifyToken = {
         if(user === TOKEN_INVALID){
             return res.status(500).json({
                 result: false,
-                code: "E13",
+                code: "ET3",
                 message: errorCode.ET3.message,
             })
         }
@@ -40,8 +40,8 @@ const verifyToken = {
         if(user === undefined) {
             return res.status(500).json({
                 result: false,
-                code: "E14",
-                message: errorCode.E13.message,
+                code: "ET1",
+                message: errorCode.ET1.message,
             });
         }
 
@@ -56,8 +56,8 @@ const verifyToken = {
         if(!token){
             return res.status(500).json({
                 result: false,
-                code: "E11",
-                message: errorCode.E11.message,
+                code: "ET1",
+                message: errorCode.ET1.message,
             });
         }
         const user = await jwt.verify(token);
@@ -69,12 +69,36 @@ const verifyToken = {
             
             return res.status(400).json({
                 result: false,
-                code: "E11",
-                message: errorCode.E12.message,
+                code: "ET4",
+                message: errorCode.ET4.message,
             })
         }
     },
 
+    checkMaster: async (req, res, next) => {
+        let token = req.headers.token;
+        console.log("token:",token);
+        
+        if(!token){
+            return res.status(500).json({
+                result: false,
+                code: "ET1",
+                message: errorCode.ET1.message,
+            });
+        }
+        const user = await jwt.verify(token);
+
+        if(user.license > 3){
+            next();
+        } else {
+            return res.status(400).json({
+                result: false,
+                code: "ET4",
+                message: errorCode.ET4.message,
+            })
+        }
+    },
+    
     // checkTwo: async (req, res, next) => {
     //     let token = req.headers.token;
     //     console.log("token:",token);
@@ -123,29 +147,7 @@ const verifyToken = {
     //     }
     // },
 
-    checkMaster: async (req, res, next) => {
-        let token = req.headers.token;
-        console.log("token:",token);
-        
-        if(!token){
-            return res.status(500).json({
-                result: false,
-                code: "E11",
-                message: errorCode.E11.message,
-            });
-        }
-        const user = await jwt.verify(token);
-
-        if(user.license > 3){
-            next();
-        } else {
-            return res.status(400).json({
-                result: false,
-                code: "E11",
-                message: errorCode.E12.message,
-            })
-        }
-    },
+   
 
 
     
