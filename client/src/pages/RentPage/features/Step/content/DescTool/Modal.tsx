@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import { Modal as AntdModal } from 'antd';
-import { useStepStore, useTabsStore } from '../../../../zustand';
+import { useStepStore, useTabsStore } from '../../../../../../zustand';
 
-import DescTool from './content/DescTool/DescTool';
+import DescTool from './DescTool';
 
 const Modal: FC = () => {
 

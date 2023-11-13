@@ -9,7 +9,7 @@ type Props = {
 const MyDetails: FC<Props> = ({ title, datas }) => {
 
     return (
-        <div className='flex flex-col items-center shadow-left w-[150px]'>
+        <div className='flex flex-col items-center shadow-left w-[130px] md:w-[150px]'>
             <h2 className='w-full flex items-center justify-center h-[29px] text-sm font-semibold  rounded-t-[4px] text-white bg-01'>
                 {title}
             </h2>

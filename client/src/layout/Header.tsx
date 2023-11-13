@@ -6,11 +6,11 @@ const Header: FC = () => {
 
     return (
         <header className='relative flex items-center h-[48px] bg-01'>
-            <Link className='absolute pl-4 text-white' to='/'>
+            <Link className='absolute hidden pl-4 text-white md:block' to='/'>
                 임시 내비게이션 페이지 가기
             </Link>
             <nav className='w-full max-w-6xl mx-auto ' role='navigation' aria-label='header-nav'>
-                <ul className='flex justify-end gap-6'>
+                <ul className='flex justify-center gap-6 md:justify-end'>
                     <li>
                         <UserButton>
                             이연우님

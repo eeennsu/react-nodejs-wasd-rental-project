@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import Modal from '../pages/RentPage/features/Step/Modal';
+import Modal from '../pages/RentPage/features/Step/content/DescTool/Modal';
 import MainLogo from '../components/MainLogo';
 
 const Layout: FC = () => {

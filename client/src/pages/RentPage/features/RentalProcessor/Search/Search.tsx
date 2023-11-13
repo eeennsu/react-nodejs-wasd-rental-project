@@ -74,10 +74,10 @@ const Search: FC = () => {
     const placeholder = activeTab === 0 ? '검색어를 입력해 주세요' : (activeTab === 1 || activeTab === 2) ? '기자재를 입력해주세요' : '강의실 이름을 입력해주세요';
 
     return (
-        <div className='flex border-4 border-01 '>
+        <div className='flex w-full border-4 border-01 md:w-auto'>
             <input className='flex-1 px-3 py-1 bg-white border-black rounded-sm outline-none w-52 placeholder:text-sm placeholder:text-gray-300' value={searchTerm} onChange={handleChange} 
             placeholder={placeholder}/>
-            <button type='submit' className='py-2 text-white px-7 bg-01 whitespace-nowrap'>
+            <button type='submit' className='px-3.5 md:py-2 text-white md:px-7 bg-01 whitespace-nowrap text-sm md:text-base'>
                 검색
             </button>          
         </div>

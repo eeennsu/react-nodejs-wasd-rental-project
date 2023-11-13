@@ -22,12 +22,12 @@ const CurTabButton: FC<PropsWithChildren<Props>> = ({ children, idx }) => {
 
     return (
         <div className='relative'>
-            <button className='absolute w-[148px] h-10 -top-10 trapezoid' onClick={handleSetActiveTab}>
+            <button className='absolute md:w-[148px] w-[100px] h-10 -top-10 trapezoid' onClick={handleSetActiveTab}>
                 <span className='flex items-center justify-center mt-4 text-sm font-semibold text-white'>
                     {children}
                 </span>
             </button>
-            <div className='w-[148px]'>
+            <div className='md:w-[148px] w-[100px]'>
                 
             </div>
         </div>
