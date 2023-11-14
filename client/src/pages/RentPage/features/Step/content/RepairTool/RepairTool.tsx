@@ -1,4 +1,4 @@
-import type { FC, ChangeEvent } from 'react';
+import type { FC, ChangeEvent, FormEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { Input, Select, message } from 'antd';
 import { useStepStore } from '../../../../../../zustand';
@@ -31,7 +31,9 @@ const RepairSupply: FC = () => {
         setText(e.target.value);
     }
 
-    const handleRepairRequest = () => {
+    const handleRepairRequest = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+            
         if (!resonSelect) {
             message.warning('수리 목록을 선택해주세요.');
 
@@ -63,7 +65,7 @@ const RepairSupply: FC = () => {
 
     return (
         <Template className='mt-[74px]'>
-            <div className='grid grid-cols-2 gap-10'>
+            <form className='grid grid-cols-2 gap-10' onSubmit={handleRepairRequest}>
                 <div className='flex flex-col gap-4'>
                     <div className='relative h-2/3'>
                         <img src='' alt='이미지' className='w-full h-full bg-slate-300 rounded-[4px]' />   
@@ -101,12 +103,12 @@ const RepairSupply: FC = () => {
                         <Button onClick={handleStepInit} bgColor='02'>
                             뒤로 가기
                         </Button>
-                        <Button onClick={handleRepairRequest} bgColor='01'>
+                        <Button type='submit' bgColor='01'>
                             수리 요청
                         </Button>    
                     </footer>
                 </div>            
-            </div>              
+            </form>              
         </Template>
     );
 }

@@ -1,4 +1,4 @@
-import type { FC, ChangeEvent } from 'react';
+import type { FC, ChangeEvent, FormEvent } from 'react';
 import { useStepStore, useTabsStore, useTimeStore } from '../../../../../../zustand';
 import { getTabName } from '../../../../utils/tables';
 import { Input, message } from 'antd';
@@ -9,6 +9,7 @@ import Picker from '../dates/DatePicker';
 import useStepController from '../../../../../../hooks/commons/useStepController';
 
 const { TextArea } = Input;
+const regClassNum = /^\d{10}$/;
 
 const RentSupply: FC = () => { 
     
@@ -25,7 +26,9 @@ const RentSupply: FC = () => {
         setText(e.target.value);
     }
 
-    const handleRentRequest = () => {        
+    const handleRentRequest = (e: FormEvent<HTMLFormElement>) => {   
+             
+        e.preventDefault();
         
         const valUserType = refUserType.current?.value;
         const valClassNum = refClassNum.current?.value;
@@ -33,6 +36,12 @@ const RentSupply: FC = () => {
 
         if (valUserType!.length <= 0 || valClassNum!.length <=0 || valUserName!.length <= 0) {
             message.warning('반출자 정보를  입력해 주세요.');
+            
+            return;
+        }
+
+        if (valClassNum && !regClassNum.test(valClassNum)) {
+            message.warning('잘못된 형식의 학번입니다.');
             
             return;
         }
@@ -79,7 +88,7 @@ const RentSupply: FC = () => {
 
     return (  
         <Template className='h-full mt-2'>
-             <div className='flex flex-col h-full gap-8'>    
+             <form className='flex flex-col h-full gap-8' onSubmit={handleRentRequest}>    
                 <div className='grid flex-1 grid-cols-3 gap-8'>
                     <div className='h-full col-span-1'> 
                         <div className='h-2/3'>
@@ -122,7 +131,7 @@ const RentSupply: FC = () => {
                                     <input className='w-full text-center outline-none placeholder:text-02/80 bg-inherit' placeholder='소속을 입력해 주세요' ref={refUserType} />
                                 </div>
                                 <div className=' w-full h-full flex items-center justify-cente border-x-[1px] border-01'>
-                                    <input className='w-full text-center outline-none placeholder:text-02/80 bg-inherit input-classnumber' type='number' placeholder='학번을 입력해 주세요' ref={refClassNum} />
+                                    <input className='w-full text-center outline-none placeholder:text-02/80 bg-inherit input-classnumber' minLength={10} maxLength={10} type='number' placeholder='학번을 입력해 주세요' ref={refClassNum} />
                                 </div>
                                 <div className='flex items-center justify-center w-full h-full'>
                                     <input className='w-full text-center outline-none placeholder:text-02/80 bg-inherit' placeholder='이름을 입력해 주세요' ref={refUserName} />
@@ -144,15 +153,15 @@ const RentSupply: FC = () => {
                         onChange={handleTextChange}
                     />
                 </div>       
-                <footer className='flex justify-end gap-4 mb-6 3xl:mb-0'>
+                <footer className='flex justify-end gap-4'>
                     <Button onClick={handleBack} bgColor='02'>
                         뒤로 가기
                     </Button>
-                    <Button onClick={handleRentRequest} bgColor='01'>
+                    <Button bgColor='01' type='submit'>
                         대여 하기
                     </Button>    
                 </footer>      
-            </div>                     
+            </form>                     
         </Template>
     );
 };

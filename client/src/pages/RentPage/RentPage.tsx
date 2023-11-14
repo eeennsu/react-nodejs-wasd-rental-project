@@ -20,7 +20,7 @@ const RentPage: FC = () => {
             <aside className='md:w-1/5 '>
                 <Side />
             </aside>
-            <section className='md:w-4/5'>
+            <section className='mb-10 md:w-4/5 3xl:mb-0'>
                 {getContent(systemStep)}
                 {/* <span onClick={handleTest}>테스트</span> */}
             </section>        
