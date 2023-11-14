@@ -38,7 +38,7 @@ module.exports = {
               user_email: body.user_email,
               user_student_number: body.user_student_number,
               user_created_at: moment().format('YYYY-MM-DD HH:mm:ss'),
-              user_license: 0,
+              user_license: 1,
               department_id: body.department_id,
               manager_approval: false,
             })
