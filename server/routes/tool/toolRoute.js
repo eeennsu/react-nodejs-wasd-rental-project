@@ -4,6 +4,7 @@ const toolController = require('./toolController');
 //const upload = require("../../middleware/multer");
 const upload= require("../../middleware/upload");
 const tool = require('../../models/tool');
+const toolService = require('./toolService');
 const checkToken = require("../../middleware/authorization").checkToken
 const checkOne = require("../../middleware/authorization").checkOne
 const checkMaster = require("../../middleware/authorization").checkMaster
@@ -22,7 +23,7 @@ router.get('/viewTool/:tool_id',checkToken,checkOne,toolController.viewTool);
 router.get('/viewTools/:page/:pageLimit',checkToken,checkOne,toolController.viewTools);
 
 //기자재 삭제
-router.get('/deleteTool/:tool_id',checkToken,checkMaster,toolController.deleteTool);
+router.post('/deleteTool',checkToken,checkMaster,toolController.deleteTool);
 
 //검색 기능
 router.get('/searchTool/:toolSearch/:page/:pageLimit',checkToken,checkOne,toolController.searchTool);
@@ -41,5 +42,8 @@ router.get('/cannotRental/:tool_id',checkToken,checkMaster,toolController.cannot
 
 //기자재 대여가능처리
 router.get('/canRental/:tool_id',checkToken,checkMaster,toolController.canRental);
+
+//기자재 DB에 있는 모든 내용 불러오기
+router.get('/toolList',checkToken,checkMaster,toolController.toolList);
 
 module.exports = router;

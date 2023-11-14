@@ -219,7 +219,7 @@ module.exports = {
   
   
 
-  deleteTool: (toolId) => {
+ /* deleteTool: (toolId) => {
     return new Promise(async (resolve) => {
       try {
         const [toolResult, imgResult] = await Promise.all([
@@ -242,7 +242,46 @@ module.exports = {
         resolve("err");
       }
     });
-  },
+  }, */
+  deleteTool: (body) => {
+    return new Promise(async (resolve) => {
+      if(console.log(Object.keys(body).length===0)){
+        resolve("Null")
+        return;
+      }
+        try {
+            const results = [];
+            const toolIds = Array.isArray(body.tool_id) ? body.tool_id : [body.tool_id]; // 배열로 변환
+
+            for (const toolId of toolIds) {
+                // 먼저 Tool.destroy 실행
+                const toolResult = await Tool.destroy({ where: { tool_id: toolId } });
+
+                // 그 다음 Img.destroy 실행
+                const imgResult = await Img.destroy({ where: { img_id: toolId } });
+
+                if (toolResult !== null && imgResult !== null) {
+                    const combinedResult = {
+                        tool: toolResult,
+                        img: imgResult
+                    };
+                    results.push(combinedResult);
+                } else {
+                    results.push(false);
+                }
+            }
+            resolve(results);
+        } catch (error) {
+            console.error(error);
+            resolve("err");
+        }
+    });
+},
+
+  
+
+
+  
 
   searchTool:(page,pageLimit,toolSearch)=>{
     page = parseInt(page);
@@ -421,6 +460,21 @@ notRentalToolCount: (toolName) => {
           resolve("err");
         })
     })
+  },
+
+  toolList:()=>{
+   return new Promise((resolve)=>{
+    Tool.findAll(
+      )
+      .then((result)=>{
+        console.log(result)
+        resolve(result)
+      })
+      .catch((err)=>{
+        console.log(err)
+        resolve("err")
+      })
+   })
   },
   
 }

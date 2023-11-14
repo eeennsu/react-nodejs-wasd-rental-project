@@ -131,13 +131,12 @@ module.exports = {
         })
       },
 
+    
+     /* deleteTool:(req,res)=>{
+        const body =req.body
+        console.log(body)
       
-
-      deleteTool:(req,res)=>{
-        const toolId = req.params.tool_id
-        console.log(toolId)
-        
-        toolService.deleteTool(toolId)
+        toolService.deleteTool(body)
         .then((result)=>{
           let obj = {};
           if(result.tool > 0 || result.img > 0){
@@ -151,10 +150,46 @@ module.exports = {
             obj["err"] = errorCode.E00.message;
             res.send(obj)
           }
-           
-          
         })
-      },
+      },*/
+      deleteTool: (req, res) => {
+        const body = req.body;
+        console.log(!body)
+        console.log(Object.keys(body).length===0)
+        toolService.deleteTool(body)
+            .then((results) => {
+                let obj = {};
+                const toolSuccessCount = results.filter((result) => result.tool > 0).length;
+                const imgSuccessCount = results.filter((result) => result.img > 0).length;
+    
+                if (toolSuccessCount > 0 || imgSuccessCount > 0) {
+                    obj["200"] = "OK";
+                    obj["suc"] = "삭제되었습니다."
+                    obj["result"] = results;
+                    res.send(obj);
+                } 
+                else if (results=="err"){
+                  obj["200"] = "OK"
+                  obj["err"] = errorCode.E00.message;
+                  res.send(obj)
+                }
+                else if(results=="Null"){
+                  obj["200"] = "OK"
+                  obj["err"] ="빈값이다"
+                  res.send(obj)
+                }
+                else {
+                    obj["200"] = "OK";
+                    obj["err"] = errorCode.E00.message;
+                    res.send(obj);
+                }
+            })
+            .catch((error) => {
+              console.error(error);
+              res.status(500).send("빈값이다");
+          });
+    },
+    
 
       searchTool:(req,res)=>{
         const toolSearch = req.params.toolSearch
@@ -329,6 +364,24 @@ module.exports = {
           }
         })
       },
-      
+
+      toolList:(req,res)=>{
+        toolService.toolList()
+        .then((result)=>{
+
+          console.log(result)
+          let obj = {};
+          if(result=="err"){
+            obj["200"] = "OK";
+            obj["err"] = errorCode.E00.message;
+            res.send(obj)
+          }
+          else{
+            obj["200"] = "OK"
+            obj["result"] =result;
+            res.send(obj)
+          }
+        })
+      },
 }
 
