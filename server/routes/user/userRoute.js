@@ -13,6 +13,14 @@ router.post('/changeInfo',checkToken,checkOne,userController.changeInfo);
 // 개인정보 조회 
 router.get('/viewInfo/:user_id',checkToken,checkOne,userController.viewInfo);
 
+// 이메일 중복 조회
+router.post('/checkEmail',checkToken,checkOne,userController.checkEmail);
+
+//학번 중복 조회
+router.post('/checkStudentNum',checkToken,checkOne,userController.checkStudentNum);
+
+
+
 
 module.exports = router;
 
