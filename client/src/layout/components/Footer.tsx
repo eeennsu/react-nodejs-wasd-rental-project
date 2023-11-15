@@ -1,12 +1,7 @@
 import type { FC } from 'react';
-import { useLocation } from 'react-router-dom';
-import logo2 from '../assets/images/logo2.png';
+import logo2 from '../../assets/images/logo2.png';
 
 const Footer: FC = () => {
-    
-    const { pathname } = useLocation();
-  
-    if (pathname !== '/main') return;
     
     // 이미지 60? 40?
     return (
