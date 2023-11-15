@@ -17,6 +17,9 @@ const SampleNav: FC = () => {
             <li className='underline'>
                 <Link to='/manager'>관리자 페이지</Link>
             </li>
+            <li className='underline'>
+                <Link to='/example'>메인 페이지 예시</Link>
+            </li>
         </ul>
     );
 };

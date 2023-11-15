@@ -5,6 +5,7 @@ import MainLayout from './layout/MainLayout';
 import SampleNav from './layout/components/SampleNav';
 import OtherLayout from './layout/OtherLayout';
 import RootLayout from './layout/RootLayout';
+import ExamplePage from './pages/ExamplePage/ExamplePage';
 
 const App = () => {
     
@@ -15,6 +16,7 @@ const App = () => {
                 <Route element={<RootLayout />}>
                     <Route element={<MainLayout />}>
                         <Route index path='/main' element={<MainPage />} />       
+                        <Route path='/example' element={<ExamplePage />} />     
                     </Route>
                     <Route element={<OtherLayout />}>            
                         <Route path='/rent' element={<RentPage />} />

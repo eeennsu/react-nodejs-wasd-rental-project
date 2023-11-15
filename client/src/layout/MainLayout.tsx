@@ -6,7 +6,7 @@ const MainLayout: FC = () => {
 
     return (
         <>
-            <main className='flex flex-1 bg-yellow-300'>
+            <main className='flex flex-1'>
                 <Outlet />
             </main>        
             <Footer />
