@@ -6,7 +6,7 @@ const RentalLogComponent: FC = () =>{
 
 
     return(
-        <div className="w-[400px] h-14 absolute right-[422px] top-96 bg-01 rounded-t-lg rounded-tr-lg text-2xl text-center">
+        <div className="w-[400px] h-14 absolute ml-[820px] top-96 bg-01 rounded-t-lg rounded-tr-lg text-2xl text-center">
       <div className='text-white font-bold p-3'>
       기자재 대여 로그
       </div>
