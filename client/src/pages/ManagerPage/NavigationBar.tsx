@@ -7,7 +7,7 @@ interface NavigationBarProps {
 
 const NavigationBar: FC<NavigationBarProps> = ({ currentPage, onPageChange }) => {
   return (
-    <div className="-mx-96">
+    <div className="-mx-96 text-xl p-6">
       <div>
         {/* 페이지 변경 버튼들 */}
         <div onClick={() => onPageChange('내 정보')}>내 정보</div>

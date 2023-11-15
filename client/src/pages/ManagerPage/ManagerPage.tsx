@@ -1,19 +1,31 @@
 import type { FC } from 'react';
 import MyInfoComponent from './MyInfoComponent';
-import Button_m from './Button_m';
-import ContentComponent from './ContentComponent';
 import RenderedComponent from './NavigationBar';
 import { BrowserRouter } from "react-router-dom";
-
+import RepairRequestComponent from './RepairRequset/RepairRequestComponen';
+import RentalListComponent from './RentalList/RentalListComponent';
+import ApprovalComponent from './ApprovalComponent';
+import RentalLogComponent from './RentalLogComponent';
+import EquipmentStatusComponent from './EquipmentStatus/EquipmentStatusComponent';
 
 
 const ManagerPage: FC = () => {
 
     return (
-        <div className='w-full bg-slate-500'>
+        <div className='overscroll-auto'>
 
 
-           <Button_m/> 
+           <MyInfoComponent/>
+           <ApprovalComponent/>
+          
+           <RepairRequestComponent/>
+          
+           <RentalListComponent/>
+          <RentalLogComponent/>
+          <EquipmentStatusComponent/>
+          
+          
+          
        
         
            

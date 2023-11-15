@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import NavigationBar from './NavigationBar';
 
 import MyInfoComponent from './MyInfoComponent';
-import RentalListComponent from './RentalListComponent';
+import RentalListComponent from './RentalList/RentalListComponent';
 import RentalLogComponent from './RentalLogComponent';
-import EquipmentStatusComponent from './EquipmentStatusComponent';
-import RepairRequestComponent from './RepairRequestComponen';
+import EquipmentStatusComponent from './EquipmentStatus/EquipmentStatusComponent';
+import RepairRequestComponent from './RepairRequset/RepairRequestComponen';
 import AddEquipmentComponent from './AddEquipmentComponent';
 import ApprovalComponent from './ApprovalComponent';
 
@@ -22,7 +22,7 @@ const Button_m: FC = () => {
   return (
         <div>
      <NavigationBar currentPage={currentPage} onPageChange={handlePageChange} />
-        <div className="text-center">
+        <div >
                   {/* 현재 페이지에 따라 다른 컴포넌트를 렌더링 */}
         {currentPage === '내 정보' && <MyInfoComponent />}
         {currentPage === '대여 목록' && <RentalListComponent />}
