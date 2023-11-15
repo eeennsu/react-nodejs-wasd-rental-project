@@ -10,7 +10,6 @@ const TooltipComponent: FC<TooltipProps> = ({ showTooltip, toggleTooltip }) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleOnClick = () => {
-    // 툴팁을 토글하고 클릭 상태를 변경
     toggleTooltip();
     setIsClicked(!isClicked);
   };

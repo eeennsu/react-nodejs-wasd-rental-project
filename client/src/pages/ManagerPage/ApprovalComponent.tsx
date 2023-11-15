@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import React from 'react';
+import Button from '../../components/Button';
 
 
 const ApprovalComponent : FC = () =>{
