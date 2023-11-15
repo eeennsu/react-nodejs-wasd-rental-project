@@ -6,7 +6,7 @@ import { useRef, useEffect } from 'react';
 import Button from '../../../../../../components/Button';
 import Template from '../../templates/Template';
 import Picker from '../dates/DatePicker';
-import useStepController from '../../../../../../hooks/commons/useStepController';
+import useStoreController from '../../../../../../hooks/commons/useStoreController';
 
 const { TextArea } = Input;
 const regClassNum = /^\d{10}$/;
@@ -20,7 +20,7 @@ const RentSupply: FC = () => {
     const { activeTab } = useTabsStore();
     const { detailTool, text, setText, } = useStepStore();
     const { rentDate, returnDate } = useTimeStore();
-    const { handleStepInit, handleDateInit } = useStepController();
+    const { handleStepInit, handleDateInit } = useStoreController();
 
     const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setText(e.target.value);

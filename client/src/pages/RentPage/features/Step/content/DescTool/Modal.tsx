@@ -6,18 +6,13 @@ import DescTool from './DescTool';
 
 const Modal: FC = () => {
 
-    const { activeTab } = useTabsStore();
     const { 
         isModalOpen, setIsModalOpen,
         isProcessLoading,
-        systemStep, setSystemStep, 
-        setText
     } = useStepStore();
 
     const handleModalClose = () => {        
         if (isProcessLoading) return;
-
-        // handleInit(setSystemStep, setText); 필x
 
         setIsModalOpen(false);      
     }

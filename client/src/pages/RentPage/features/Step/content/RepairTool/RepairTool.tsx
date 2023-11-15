@@ -6,14 +6,14 @@ import { repairResons } from '../../../../constants';
 import { TextAreaRef } from 'antd/lib/input/TextArea';
 import Template from '../../templates/Template';
 import Button from '../../../../../../components/Button';
-import useStepController from '../../../../../../hooks/commons/useStepController';
+import useStoreController from '../../../../../../hooks/commons/useStoreController';
 
 const { TextArea } = Input;
 
 const RepairSupply: FC = () => {
 
     const { detailTool, text, setText } = useStepStore();
-    const { handleStepInit } = useStepController();
+    const { handleStepInit } = useStoreController();
 
     const [resonSelect, setResonSelect] = useState<string | null>(null);
     const textRef = useRef<TextAreaRef | null>(null);

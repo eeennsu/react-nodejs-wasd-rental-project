@@ -38,7 +38,7 @@ type VR = {
     tool_spec: string;
 }
 
-// custom_type
+custom_type
 type Tablet = {
     tool_id: string;
     tool_division: Division;

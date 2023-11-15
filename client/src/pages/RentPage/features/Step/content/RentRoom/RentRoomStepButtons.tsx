@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import Button from '../../../../../../components/Button';
 import { message } from 'antd';
 import { useStepStore, useTimeStore } from '../../../../../../zustand';
-import useStepController from '../../../../../../hooks/commons/useStepController';
+import useStoreController from '../../../../../../hooks/commons/useStoreController';
 
 const RentRoomStepButtons: FC = () => {
 
@@ -25,7 +25,7 @@ const RentRoomStepButtons: FC = () => {
         resetTimes();
     }
     
-    const { handleStepInit, handleDateInit } = useStepController();
+    const { handleStepInit, handleDateInit } = useStoreController();
 
     const handleRentRoomRequest = () => {
         if (!selectedRoom) {

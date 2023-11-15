@@ -21,6 +21,7 @@ const useTimeStore = create<ITimeStore>()(
             firstSelectMin: null,
             lastSelectHour: null,
             lastSelectMin: null,
+            
             setFirstSelectHour: (firstHour: number) => set((prev) => ({ firstSelectHour: firstHour }), false, 'SET_FIRST_SELECT_HOUR'),
             setFirstSelectMin: (firstMin: number) => set(() => ({ firstSelectMin: firstMin }), false, 'SET_FIRST_SELECT_MIN'),
             setLastSelectHour: (lastHour: number) => set(() => ({ lastSelectHour: lastHour }), false, 'SET_LAST_SELECT_HOUR'),

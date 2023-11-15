@@ -13,4 +13,6 @@ const axiosInst = axios.create({
     }
 });
 
+export const PAGE_LIMIT = 10;
+
 export default axiosInst;

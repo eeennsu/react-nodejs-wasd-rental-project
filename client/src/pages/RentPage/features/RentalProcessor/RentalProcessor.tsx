@@ -30,7 +30,7 @@ const RentalProcessor: FC = () => {
     //     console.log('tabletsData', tabletsData);
     //     console.log('lectureRoomsData', lectureRoomsData);
     // }, [VRsData, tabletsData, lectureRoomsData]);
-
+   
     return (
         <Template className='flex flex-col-reverse mt-8 md:flex-col md:mt-14'>
             <section className='flex justify-end px-6 pb-6 md:p-0'>

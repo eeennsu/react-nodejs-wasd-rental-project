@@ -20,10 +20,10 @@ const useStepStore = create<IStepStore>()(
             detailLectureRoom: null,
             setDetailLectureRoom: (detailLectureRoom) => set(() => ({ detailLectureRoom }), false, 'SET_DETAIL_VR'),
 
-            resetDetailValue: () => set(() => ({ 
-                detailTool: null,
-                detailLectureRoom: null
-            }), false, 'SET_RESET_DETAIL_VALUE'),
+            // resetDetailValue: () => set(() => ({ 
+            //     detailTool: null,
+            //     detailLectureRoom: null
+            // }), false, 'RESET_DETAIL_VALUE'),
 
             text: '',
             setText: (text) => set(() => ({ text: text }), false, 'SET_TEXT'),
@@ -35,7 +35,7 @@ const useStepStore = create<IStepStore>()(
             setIsProcessLoading: (trigger) => set(() => ({ isProcessLoading: trigger }), false ,'SET_IS_PROCESS_LOADING'),
             
             systemStep: 'INIT',
-            setSystemStep: (systemStep) => set(() => ({ systemStep }), false, 'SET_SYSTEM_STEP')
+            setSystemStep: (systemStep) => set(() => ({ systemStep }), false, 'SET_SYSTEM_STEP'),
         }),
     )
 );

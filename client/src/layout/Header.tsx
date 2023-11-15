@@ -1,15 +1,13 @@
 import type { FC } from 'react';
-import { Link } from 'react-router-dom';
 import UserButton from '../components/UserButton';
+import ExNavMenu from './components/ExNavMenu';
 
 const Header: FC = () => {
 
     return (
         <header className='relative flex items-center h-[48px] bg-01'>
-            <Link className='absolute hidden pl-4 text-white md:block' to='/'>
-                임시 내비게이션 페이지 가기
-            </Link>
-            <nav className='w-full max-w-6xl mx-auto ' role='navigation' aria-label='header-nav'>
+            <ExNavMenu />
+            <nav className='w-full max-w-6xl mx-auto'>
                 <ul className='flex justify-center gap-6 md:justify-end'>
                     <li>
                         <UserButton>

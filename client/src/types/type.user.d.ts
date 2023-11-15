@@ -1,4 +1,4 @@
-// signUp API의 매개변수
+// signUp API의 매개변수 회원가입할 때 필요한 유저 정보를 담고 있음
 interface SignUpUser extends LoginUser {
     user_name: string;
     user_email: string;
@@ -6,22 +6,24 @@ interface SignUpUser extends LoginUser {
     department_id: string;
 }
 
+// 서버에서 응답받는 모든 유저에 대한 속성이 담겨 있음
+interface DetailUser {
+    user_id: string;
+    user_pw: string;
+    user_email: string;
+    user_name: string;
+    user_student_number: string;
+    user_created_at: string;
+    user_license: number;
+    department_id: number;
+    manager_approval: boolean;
+}
+
 // signUp API의 response
-interface ISignUpRes {
-    suc: boolean;
-    login: {
-        user_id: string;
-        user_pw: string;
-        user_email: string;
-        user_student_number: string;
-        user_name: string;
-        user_created_at: string;
-        user_license: number;
-        department_id: number;
-    };
-    token: {
-        token: string;
-    };
+interface ResSignUp {
+    "200": OK;
+    suc: string | boolean;
+    result: DetailUser;
     error?: string;
 }
 
@@ -32,10 +34,10 @@ interface LoginUser {
 }
 
 // login API의 response
-interface ILoginRes {
+interface ResLogin {
     suc: boolean;
     login:{
-        user_id: stringl
+        user_id: string;
         user_pw: string;
         user_email: string;
         user_student_number: number;
@@ -50,17 +52,6 @@ interface ILoginRes {
     err?: string;
 }
 
-// checkId API의 매개변수
-interface CheckId {
-    user_id: string;
-}
-
-// checkId API의 response
-interface ICheckIdRes {
-    '200': string;
-    result: string;
-}
-
 // searchId API의 매개변수
 interface SearchId {
     user_name: string;
@@ -69,8 +60,28 @@ interface SearchId {
 }
 
 // searchID API의 response
-interface ISearchIdRes {
-    '200': string;
+interface ResSearchId {
+    '200': OK;
+    result: string;
+}
+
+// checkId API의 매개변수
+interface CheckId {
+    user_id: string;
+}
+
+// checkId API의 response
+interface ResCheckId {
+    '200': OK;
+    result: string;
+}
+
+interface ApproveUser {
+    user_id: string;
+}
+
+interface ResApproveUser {
+    '200': OK;
     result: string;
 }
 
@@ -80,9 +91,14 @@ interface ChangePw {
 }
 
 // changePW API의 response
-interface IChangePwRes {
-    '200': string;
+interface ResChangePw {
+    '200': OK;
     result: string;
+}
+
+interface ResListPendingUsers {
+    '200': OK;
+    result: DetailUser[];           // DetailUser의 배열
 }
 
 // sendMail API의 매개변수
@@ -91,10 +107,16 @@ interface SendMail {
 }
 
 // sendMail API의 response
-interface ISendMailRes {
-    '200': string,
+interface ResSendMail {
+    '200': OK,
     result: {
         toEmail: string;
         code: number;
     }
+}
+
+// 유저 디비에 있는 모든 정보 불러오기 api의 response
+interface ResUserTableAll {
+    '200': OK;
+    result: DetailUser[];           // DetailUser의 배열
 }

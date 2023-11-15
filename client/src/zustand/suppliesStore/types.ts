@@ -41,7 +41,7 @@ export interface IStepStore {
     setIsModalOpen: (trigger: boolean) => void;
 
     detailTool: Tool | null;
-    setDetailTool: (tool: Tool) => void
+    setDetailTool: (tool: Tool | null) => void
 
     // detailVR: VR | null,
     // setDetailVR: (vr: VR) => void;
@@ -50,9 +50,9 @@ export interface IStepStore {
     // setDetailTablet: (tablet: Tablet) => void;
 
     detailLectureRoom: LectureRoom | null,
-    setDetailLectureRoom: (vr: LectureRoom) => void;
-
-    resetDetailValue: () => void;
+    setDetailLectureRoom: (vr: LectureRoom | null) => void;
+ 
+    // resetDetailValue: () => void;
 
     text: string;
     setText: (text: string) => void;
