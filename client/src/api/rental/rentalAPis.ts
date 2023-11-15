@@ -7,25 +7,28 @@ import axiosInst from '../axiosInst';
 */
 
 // 유저 토큰 필요 / 기자재 대여
-export const rentalTool_API = (rentalToolInfo: RentalTool) => axiosInst.post('/rental/rentalTool', rentalToolInfo);
+export const rentalTool_API = (rentalToolInfo: RentalTool) => axiosInst.post<ResRentalTool>('/rental/rentalTool', rentalToolInfo);
 
 // 유저 토큰 필요 / 기자재 반납
-export const returnTool_API = (returnToolInfo: ReturnTool) => axiosInst.post('/rental/returnTool', returnToolInfo);
+export const returnTool_API = (returnToolInfo: ReturnTool) => axiosInst.post<ResReturnTool>('/rental/returnTool', returnToolInfo);
 
 // 유저 토큰 필요 / 기자재 연장
-export const extensionTool_API = (extensionTool: ExtensionTool) => axiosInst.post('/rental/extensionTool', extensionTool);
+export const extensionTool_API = (extensionTool: ExtensionTool) => axiosInst.post<ResExtensionTool>('/rental/extensionTool', extensionTool);
 
-// 유저 토큰 필요 / 현재 대여 목록 확인
-export const myRentalList_API = (user_id: string) => axiosInst.get(`/rental/myRentalList/${user_id}`);
+// 유저 토큰 필요 / 사용자의 현재 대여 목록 확인
+export const myRentalList_API = (user_id: string) => axiosInst.get<ResMyRentalList>(`/rental/myRentalList/${user_id}`);
 
 // 마스터 토큰 필요 / 기자재 삭제 / (오류 수정중이라고 함)
-export const deleteTool_API = (tool_id: string) => axiosInst.get(`/tool/deleteTool/${tool_id}`);
+export const deleteTool_API = (tool_id: string) => axiosInst.get<ResDeleteTool>(`/tool/deleteTool/${tool_id}`);
 
 // 유저 토큰 필요 / 사용자의 역대 대여 목록
-export const myAllRentalList_API = (user_id: string) => axiosInst.get(`/rental/myAllRentalList/${user_id}`); 
+export const myAllRentalList_API = (user_id: string) => axiosInst.get<ResMyAllRentalList>(`/rental/myAllRentalList/${user_id}`); 
 
-// 마스터 토큰 필요 / 사용자의 연체 목록
-export const myLateRentalList_API = () => axiosInst.get('/rental/LateRentalList');
+// 유저 토큰 필요 / 사용자의 연체 목록
+export const myLateRentalList_API = (user_id: string) => axiosInst.get<ResMyLateRentalList>(`/rental/myLateRentalList/${user_id}`);
+
+// 마스터 토큰 필요 / 연체 중인 사용자의 목록
+export const lateRentalList_API = () => axiosInst.get<ResLateRentalList>('/rental/LateRentalList');
 
 // 마스터 토큰 필요 / rentalDB에 있는 모든 정보 불러오기
-export const rentalTableAll_API = () => axiosInst.post('/rental/rentalTableAll');
+export const rentalTableAll_API = (user_id: string) => axiosInst.post<ResRentalTableAll>('/rental/rentalTableAll');
