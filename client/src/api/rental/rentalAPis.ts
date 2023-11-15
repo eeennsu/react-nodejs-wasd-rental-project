@@ -31,4 +31,4 @@ export const myLateRentalList_API = (user_id: string) => axiosInst.get<ResMyLate
 export const lateRentalList_API = () => axiosInst.get<ResLateRentalList>('/rental/LateRentalList');
 
 // 마스터 토큰 필요 / rentalDB에 있는 모든 정보 불러오기
-export const rentalTableAll_API = (user_id: string) => axiosInst.post<ResRentalTableAll>('/rental/rentalTableAll');
+export const rentalTableAll_API = () => axiosInst.post<ResRentalTableAll>('/rental/rentalTableAll');

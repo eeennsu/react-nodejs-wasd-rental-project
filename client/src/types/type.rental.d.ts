@@ -66,12 +66,12 @@ interface ResMyLateRentalList {
     result: RentalInfo | string;
 }
 
-type ResLateRentalList = Array<{
-    D_day: string;
-    result: RentalInfo | string;
-}> | {
+interface ResLateRentalList {
     '200': OK;
-    result: string;
+    result: Array<{
+        '200': OK;
+        result: RentalInfo | string;
+    }> | string;
 }
 
 interface ResRentalTableAll {
