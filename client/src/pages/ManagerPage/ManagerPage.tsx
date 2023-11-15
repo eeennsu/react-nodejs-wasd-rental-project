@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import MyInfoComponent from './MyInfoComponent';
-import RenderedComponent from './NavigationBar';
 import { BrowserRouter } from "react-router-dom";
 import RepairRequestComponent from './RepairRequset/RepairRequestComponen';
 import RentalListComponent from './RentalList/RentalListComponent';
