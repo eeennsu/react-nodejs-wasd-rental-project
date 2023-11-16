@@ -1,8 +1,10 @@
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import { MainPage, ManagerPage, ManagerToolStatus, MyPage, RentPage } from './pages';
 import Layout from './layout/Layout';
 import SampleNav from './layout/SampleNav';
+
+
 
 const App = () => {
     
