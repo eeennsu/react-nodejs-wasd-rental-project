@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import UserButton from '../components/UserButton';
-import ExNavMenu from './components/ExNavMenu';
+import UserButton from '../../components/UserButton';
+import ExNavMenu from './ExNavMenu';
 
 const Header: FC = () => {
 
