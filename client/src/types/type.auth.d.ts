@@ -19,11 +19,11 @@ interface DetailUser {
     manager_approval: boolean;
 }
 
-// signUp API의 response
+// signUp API의 response           200, suc 타입 조정 필요
 interface ResSignUp {
-    "200": OK;
+    "200"?: OK;
     suc: string | boolean;
-    result: DetailUser;
+    result?: DetailUser;
     error?: string;
 }
 
@@ -36,7 +36,7 @@ interface LoginUser {
 // login API의 response
 interface ResLogin {
     suc: boolean;
-    login:{
+    login?: {
         user_id: string;
         user_pw: string;
         user_email: string;
@@ -45,8 +45,8 @@ interface ResLogin {
         user_created_at: string;
         user_license: number;
         department_id: number;
-    },
-    token:{
+    }, 
+    token?: {
         token: string
     }
     err?: string;
@@ -65,22 +65,8 @@ interface ResSearchId {
     result: string;
 }
 
-// checkId API의 매개변수
-interface CheckId {
-    user_id: string;
-}
-
 // checkId API의 response
 interface ResCheckId {
-    '200': OK;
-    result: string;
-}
-
-interface ApproveUser {
-    user_id: string;
-}
-
-interface ResApproveUser {
     '200': OK;
     result: string;
 }
@@ -96,6 +82,7 @@ interface ResChangePw {
     result: string;
 }
 
+// 회원가입 신청 목록 API의 response, result 타입 조정 필요
 interface ResListPendingUsers {
     '200': OK;
     result: DetailUser[];           // DetailUser의 배열
@@ -115,8 +102,22 @@ interface ResSendMail {
     }
 }
 
-// 유저 디비에 있는 모든 정보 불러오기 api의 response
+// 유저 디비에 있는 모든 정보 불러오기 api의 response,   result 타입 조정 필요
 interface ResUserTableAll {
     '200': OK;
     result: DetailUser[];           // DetailUser의 배열
+}
+
+interface ApproveUser {
+    user_id: string;
+}
+
+interface ResApproveUser {
+    '200': OK;
+    result: string;
+}
+
+// checkId API의 매개변수
+interface CheckId {
+    user_id: string;
 }

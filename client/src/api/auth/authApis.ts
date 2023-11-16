@@ -15,9 +15,6 @@ export const login_API = (user: LoginUser) => axiosInst.post<ResLogin>('/auth/lo
 // 아이디 검색
 export const searchId_API = (userId: SearchId) => axiosInst.post<ResSearchId>('/auth/searchId', userId);
 
-// 아이디 중복 확인
-export const checkId_API = (userId: CheckId) => axiosInst.post<ResCheckId>('/auth/checkId', userId);
-
 // 마스터 토큰 필요 / 회원가입 승인 
 export const approveUser_API = (approveUser: ApproveUser) => axiosInst.post<ResApproveUser>('/auth/approveUser', approveUser); 
 
@@ -32,3 +29,6 @@ export const sendMail = (email: SendMail) => axiosInst.post<ResSendMail>('/auth/
 
 // 마스터 토큰 필요 / userDB에 있는 모든 정보 불러오기
 export const userTableAll_API = () => axiosInst.post<ResUserTableAll>('/auth/UserTableAll');
+
+// 아이디 중복 확인
+export const checkId_API = (userId: CheckId) => axiosInst.post<ResCheckId>('/auth/checkId', userId);
