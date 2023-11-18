@@ -16,7 +16,7 @@ export const updateTool_API = (tool: Tool) => axiosInst.post<ResUpdateTool>('/to
 export const oneViewTool_API = (tool_id: string) => axiosInst.get<ResOneViewTool>(`/tool/viewTool/${tool_id}`);  
 
 // 유저 토큰 필요 / 기자재 전체 조회 
-export const viewTools_API = (page: number) => axiosInst.get<ResViewTools>(`/tool/viewTools/${page}/${PAGE_LIMIT}`);
+export const viewTools_API = (page: number) => axiosInst.get<ResViewTools>(`/tool/viewTools/${page}/100`);
 
 // 유저 토큰 필요 / 기자재 검색 
 export const searchTool_API = (toolSearch: string, page: number) => axiosInst.get<ResToolSearch>(`/tool/searchTool/${toolSearch}/${page}/${PAGE_LIMIT}`); 

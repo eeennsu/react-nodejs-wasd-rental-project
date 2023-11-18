@@ -3,9 +3,11 @@ import UserButton from '../../components/UserButton';
 import ExNavMenu from './ExNavMenu';
 import { useUserStore } from '../../zustand';
 import { message } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 const Header: FC = () => {
 
+    const navigate = useNavigate();
     const { isLogin, name, setLogout, setLoginInfo,setToken } = useUserStore(state => ({
         isLogin: state.isLogin,
         name: state.login?.user_name,
@@ -20,6 +22,7 @@ const Header: FC = () => {
         setToken('');
 
         message.info('로그아웃하였습니다.');
+        navigate('/sampleLogin');
     }
 
     return (

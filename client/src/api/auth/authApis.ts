@@ -28,7 +28,7 @@ export const listPendingUsers_API = (page: number) => axiosInst.post<ResListPend
 export const sendMail = (email: SendMail) => axiosInst.post<ResSendMail>('/auth/sendMail', email);
 
 // 마스터 토큰 필요 / userDB에 있는 모든 정보 불러오기
-export const userTableAll_API = () => axiosInst.post<ResUserTableAll>('/auth/UserTableAll');
+export const userTableAll_API = () => axiosInst.get<ResUserTableAll>('/auth/UserTableAll');
 
 // 아이디 중복 확인
 export const checkId_API = (userId: CheckId) => axiosInst.post<ResCheckId>('/auth/checkId', userId);
