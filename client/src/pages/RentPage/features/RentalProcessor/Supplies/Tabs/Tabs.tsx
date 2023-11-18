@@ -7,7 +7,7 @@ import CurTabButton from './CurTabButton';
 
 const Tabs: FC = () => {
 
-    const { activeTab } = useTabsStore();
+    const activeTab  = useTabsStore(state => state.activeTab);
 
     return (
         <div className='flex mt-2.5 bg-01'>

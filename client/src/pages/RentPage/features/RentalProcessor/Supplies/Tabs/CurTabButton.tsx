@@ -7,16 +7,11 @@ type Props = {
 
 const CurTabButton: FC<PropsWithChildren<Props>> = ({ children, idx }) => {
 
-    const { setActiveTab } = useTabsStore();
-    const { setSearchTerm } = useSearchStore();
-    const { resetAllDatas, resetPaginatedDatas } = useSuppliesStore();
-    const { setSystemStep } = useStepStore();
+    const setActiveTab  = useTabsStore(state => state.setActiveTab);
+    const setSearchTerm  = useSearchStore(state => state.setSearchTerm);
 
     const handleSetActiveTab = () => {
         setSearchTerm('');
-        // resetAllDatas();
-        // resetPaginatedDatas();
-       //  initModalStep(idx as ActiveTab, setSystemStep);
         setActiveTab(idx as ActiveTab);   
     }
 
@@ -27,13 +22,8 @@ const CurTabButton: FC<PropsWithChildren<Props>> = ({ children, idx }) => {
                     {children}
                 </span>
             </button>
-            <div className='md:w-[148px] w-[100px]'>
-                
-            </div>
+            <div className='md:w-[148px] w-[100px]' />
         </div>
-        // <button className='w-[132px] text-sm font-bold text-white bg-01' onClick={handleSetActiveTab}>
-        //     {children}
-        // </button>
     );
 };
 

@@ -6,8 +6,7 @@ import './features/app.css';
 
 const RentPage: FC = () => {
 
-    const { systemStep } = useStepStore();
-    const handleLoginTest = async () => {
+    const systemStep  = useStepStore(state => state.systemStep);
 
     return (
         <div className='flex flex-col-reverse w-full h-full mt-6 md:flex-row gap-x-6 md:mt-7'>            
