@@ -1,14 +1,11 @@
 export type UserStoreType = {
-    // id: string;
-    // setId: (id: string) => void;
-    
-    // password: string;
-    // setPassword: (password: string) => void;
-
     isLogin: boolean;
     setLogin: () => void;
     setLogout: () => void;
 
-    loginResponse: ResLogin | null,
-    setLoginResponse: (loginResponse: ResLogin) => void;
+    login: ResLogin['login'] | null,
+    setLoginInfo: (login: ResLogin['login'] | null) => void;
+
+    token: string;
+    setToken: (token: string) => void;
 }

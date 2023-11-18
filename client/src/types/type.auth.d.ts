@@ -1,3 +1,5 @@
+type UserLicense = 1 | 4;
+
 // signUp API의 매개변수 회원가입할 때 필요한 유저 정보를 담고 있음
 interface SignUpUser extends LoginUser {
     user_name: string;
@@ -14,7 +16,7 @@ interface DetailUser {
     user_name: string;
     user_student_number: string;
     user_created_at: string;
-    user_license: number;
+    user_license: UserLicense;
     department_id: number;
     manager_approval: boolean;
 }
@@ -35,7 +37,7 @@ interface LoginUser {
 
 // login API의 response
 interface ResLogin {
-    suc: boolean;
+    "200"?: OK;
     login?: {
         user_id: string;
         user_pw: string;
@@ -43,7 +45,7 @@ interface ResLogin {
         user_student_number: number;
         user_name: string;
         user_created_at: string;
-        user_license: number;
+        user_license: UserLicense;
         department_id: number;
     }, 
     token?: {

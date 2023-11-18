@@ -8,18 +8,14 @@ const useUserStore = create<UserStoreType>()(
     devtools(
         persist(
             (set) => ({
-                // id: '',
-                // setId: (id) => set(() => ({ id }), false, 'SET_ID'),
-
-                // password: '',
-                // setPassword: (password) => set(() => ({ password }), false, 'SET_PASSWORD'),
-
                 isLogin: false,
-                setLogin: () => set(() => ({ isLogin: false }), false, 'SET_LOGIN'),
-                setLogout: () => set(() => ({ isLogin: true }), false, 'SET_LOGOUT'),
+                setLogin: () => set(() => ({ isLogin: true }), false, 'SET_LOGIN'),
+                setLogout: () => set(() => ({ isLogin: false }), false, 'SET_LOGOUT'),
 
-                loginResponse: null,
-                setLoginResponse: (loginResponse) => set(() => ({ loginResponse }), false, 'SET_LOGIN_RESPONSE')
+                login: null,
+                setLoginInfo: (login) => set(() => ({ login }), false, 'SET_LOGIN_'),                
+                token: '',
+                setToken: (token) => set(() => ({ token }), false, 'SET_TOKEN'),
             }),
             {
                 name: LOGIN_SESSION_STORAGE,

@@ -17,7 +17,7 @@ interface RentalInfo {
     }
 }
 
-interface RentalTool{
+interface RentalTool {
     tool_id: string;
     user_id: string;
 }
