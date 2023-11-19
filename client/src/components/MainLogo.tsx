@@ -1,15 +1,19 @@
 import type { FC } from 'react';
 import logo from '../assets/images/logo3.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const MainLogo: FC = () => {
 
+    const { pathname } = useLocation();
+
     return (
-        <div className='flex justify-center w-full mt-3'>
-            <Link to='/main'>
-                <img src={logo} className='object-contain h-10'/> 
-            </Link>
-        </div>
+        !pathname.startsWith('/my-page') && (
+            <div className='flex justify-center w-full mt-3'>
+                <Link to='/main'>
+                    <img src={logo} className='object-contain h-10'/> 
+                </Link>
+            </div>
+        )
     );
 };
 
