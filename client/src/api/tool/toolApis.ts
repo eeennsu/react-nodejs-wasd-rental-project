@@ -20,7 +20,7 @@ export const oneViewTool_API = (tool_id: string) => axiosPr.get<ResOneViewTool>(
 export const viewTools_API = (page: number) => axiosPr.get<ResViewTools>(`/tool/viewTools/${page}/100`);
 
 // 유저 토큰 필요 / 기자재 검색 
-export const searchTool_API = (toolSearch: string, page: number) => axiosPr.get<ResToolSearch>(`/tool/searchTool/${toolSearch}/${page}/${PAGE_LIMIT}`); 
+export const searchTool_API = (toolSearch: string, page: number) => axiosPr.get<ResSearchTool>(`/tool/searchTool/${toolSearch}/${page}/${PAGE_LIMIT}`); 
 
 // 유저 토큰 필요 / 기자재 유형에 따른 정렬 
 export const rangeTool_API = (tool_name: string, page: number) => axiosPr.get<ResRangeTool>(`/tool/rangeTool/${tool_name}/${page}/${PAGE_LIMIT}`);

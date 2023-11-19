@@ -1,20 +1,22 @@
 import type { FC } from 'react';
 import { useState } from 'react';
-import Button from '../../components/Button';
 import { message } from 'antd';
 import { login_API } from '../../api/auth/authApis';
 import { useUserStore } from '../../zustand';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
+import Button from '../../components/Button';
 
 const SampleLogin: FC = () => {
 
-    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [id, setId] = useState<string>('');
     const [pw, setPw] = useState<string>('');
 
     const { isLogin, setLogin, setToken, login, setLoginInfo } = useUserStore();
 
     const handleLoginTest = async () => {
+        setIsLoading(true);
+        
         try {
             const response = await login_API({
                 user_id: id,
@@ -27,25 +29,31 @@ const SampleLogin: FC = () => {
                 
                 if (response.data.err) {
                     message.error('아이디 혹은 비밀번호가 올바르지 않습니다.');
+                    
                     return;
                 }
     
                 else if (!response.data.token?.token) {
                     message.error('인증 토큰 받기에 실패하였습니다. 관리자에게 문의해주세요.');
+                    
                     return;
                 }
     
                 setLogin();
                 setLoginInfo(response.data.login);
-                setToken(response.data.token?.token);
+                setToken(response.data.token.token);
              
-                message.success('로그인에 성공하였습니다');
+                message.success('로그인에 성공하였습니다!');
             } else {
                 message.error('서버 오류가 발생하였습니다. 관리자에게 문의해 주세요.');
             }
+            
         } catch (error) {
             console.log(error);
-            message.error('서버 오류가 발생하였습니다. 관리자에게 문의해 주세요.');
+            message.error('서버 오류 or 안 켜진듯 윤태한테 얘기바람');
+
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -101,7 +109,7 @@ const SampleLogin: FC = () => {
                             <input type='password' value={pw} onChange={(e) => setPw(e.target.value)} />
                         </div>
                         <div className='mt-9'>
-                            <Button bgColor='01' onClick={handleLoginTest}>
+                            <Button bgColor='01' onClick={handleLoginTest} isLoading={isLoading}>
                                 로그인
                             </Button>
                         </div>

@@ -70,7 +70,7 @@ const Table: FC = () => {
             ) : (
                 <table className='w-full h-full border-collapse'>
                     <tbody className='flex flex-col gap-[11px]'>
-                        {
+                        {/* {
                             (activeTab === 1) ? (
                                 VRsData?.map((vr) => (
                                     <ToolTr key={vr.tool_id} toolData={vr} />
@@ -84,7 +84,7 @@ const Table: FC = () => {
                                     <LectureRoomTr key={room.room_id} lectureRoomData={room} />
                                 ))
                             ) : null        
-                        }
+                        } */}
                     </tbody>                         
                 </table>    
             )

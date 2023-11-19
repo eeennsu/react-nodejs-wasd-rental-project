@@ -76,7 +76,7 @@ interface ResViewTools {
 }
 
 // 기자재 검색 response 
-interface ResToolSearch {
+interface ResSearchTool {
     '200': OK;
     result: DetailTool[];
 }
