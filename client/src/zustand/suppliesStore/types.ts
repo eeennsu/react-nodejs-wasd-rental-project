@@ -3,21 +3,25 @@ export interface ITabsStore {
     setActiveTab: (changedTab: ActiveTab) => void;
 }
 
-export interface ISuppliesStore {
-    VRsData: VR[];
-    setVRsData: (datas: VR[]) => void;
+export interface IToolStore {
+    // VRsData: VR[];
+    // setVRsData: (datas: VR[]) => void;
     
-    tabletsData: Tablet[];
-    setTabletsData: (datas: Tablet[]) => void;
+    // tabletsData: Tablet[];
+    // setTabletsData: (datas: Tablet[]) => void;
 
-    lectureRoomsData: LectureRoom[];
-    setLectureRoomsData: (datas: LectureRoom[]) => void;
+    // lectureRoomsData: LectureRoom[];
+    // setLectureRoomsData: (datas: LectureRoom[]) => void;
 
-    resetAllDatas: () => void;
+    // resetAllDatas: () => void;
 
-    paginatedDatas: VR[] | Tablet[] | LectureRoom[];
-    setPaginatedDatas: (datas: VR[] | Tablet[] | LectureRoom[]) => void; 
-    resetPaginatedDatas: () => void;
+    // paginatedDatas: VR[] | Tablet[] | LectureRoom[];
+    // setPaginatedDatas: (datas: VR[] | Tablet[] | LectureRoom[]) => void; 
+    // resetPaginatedDatas: () => void;
+    
+    page: number;
+    setPage: (page: number) => void;
+    
 }
 
 export interface ISearchStore {

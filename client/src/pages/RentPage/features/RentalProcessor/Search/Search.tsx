@@ -1,5 +1,5 @@
 import { useDeferredValue, type ChangeEvent, type FC, type FormEvent, type KeyboardEvent, useState } from 'react';
-import { useTabsStore, useSearchStore, useSuppliesStore } from '../../../../../zustand';
+import { useTabsStore, useSearchStore, useToolStore } from '../../../../../zustand';
 import { useEffect } from 'react';
 
 const Search: FC = () => {
@@ -7,10 +7,10 @@ const Search: FC = () => {
     const { activeTab } = useTabsStore();
 
     const {         
-        VRsData, setVRsData,
-        tabletsData, setTabletsData,
-        lectureRoomsData, setLectureRoomsData
-    } = useSuppliesStore();    
+        // VRsData, setVRsData,
+        // tabletsData, setTabletsData,
+        // lectureRoomsData, setLectureRoomsData
+    } = useToolStore();    
 
     const { searchTerm, setSearchTerm } = useSearchStore();
 

@@ -8,17 +8,17 @@ import { useNavigate } from 'react-router-dom';
 const Header: FC = () => {
 
     const navigate = useNavigate();
-    const { isLogin, name, setLogout, setLoginInfo,setToken } = useUserStore(state => ({
+    const { isLogin, name, setLogout, setUser,setToken } = useUserStore(state => ({
         isLogin: state.isLogin,
-        name: state.login?.user_name,
+        name: state.user?.user_name,
         setLogout: state.setLogout,
-        setLoginInfo: state.setLoginInfo,
+        setUser: state.setUser,
         setToken: state.setToken,
     }));
 
     const handleLogout = () => {
         setLogout();
-        setLoginInfo(null);
+        setUser(null);
         setToken('');
 
         message.info('로그아웃하였습니다.');

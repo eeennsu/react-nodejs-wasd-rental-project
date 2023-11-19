@@ -23,4 +23,4 @@ const Button: FC<PropsWithChildren<Props>> = ({ children, className, bgColor, is
     );
 }
 
-export default Button
+export default Button;

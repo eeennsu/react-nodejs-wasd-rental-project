@@ -5,6 +5,14 @@
     line-height: 1.5;
 }
 
+.ant-pagination-item:hover {
+    background: none !important;
+}
+
+:where(.css-dev-only-do-not-override-xu9wm8).ant-pagination .ant-pagination-item{
+    height: auto !important;
+}
+
 .ant-pagination-item-active {
     background-color: inherit !important;
     border: none !important;

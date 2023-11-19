@@ -14,7 +14,7 @@ const SampleLogin: FC = () => {
     const [id, setId] = useState<string>('');
     const [pw, setPw] = useState<string>('');
 
-    const { isLogin, setLogin, setToken, login, setLoginInfo } = useUserStore();
+    const { isLogin, setLogin, setToken, user, setUser} = useUserStore();
 
     const handleLoginTest = async () => {
         setIsLoading(true);
@@ -42,16 +42,17 @@ const SampleLogin: FC = () => {
                 }
     
                 setLogin();
-                setLoginInfo(response.data.login);
+                setUser(response.data.login);
                 setToken(response.data.token.token);
              
                 message.success('로그인에 성공하였습니다!');
-
+                
                 const from = state?.from;
 
                 if (from) {
                     navigate(from.pathname);
                 }
+                
             } else {
                 message.error('서버 오류가 발생하였습니다. 관리자에게 문의해 주세요.');
             }
@@ -82,10 +83,10 @@ const SampleLogin: FC = () => {
                             로그인에 성공하였습니다! 
                             </p>
                             <p>
-                                {login?.user_name}님 안녕하세요! 
+                                {user?.user_name}님 안녕하세요! 
                             </p>
                             <p>
-                                당신은 {login?.user_license === 1 ? '일반 유저' : '관리자'} 입니다                         
+                                당신은 {user?.user_license === 1 ? '일반 유저' : '관리자'}입니다                         
                             </p>                      
                             <p className='underline'>
                                 <Link to='/'>

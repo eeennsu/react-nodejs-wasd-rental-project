@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from 'react';
 import { Pagination as AntdPagination } from 'antd';
 import { useState, useEffect, useCallback } from 'react';
-import { useSuppliesStore, useTabsStore } from '../../../../../zustand';
+import { useToolStore, useTabsStore } from '../../../../../zustand';
 import { AxiosError, AxiosResponse } from 'axios';
 import { suppliesQueryKeys } from '../../../constants';
 import { useQueryClient } from '@tanstack/react-query';
@@ -11,8 +11,6 @@ import PGButton from './PGButton';
 //     console.log(current, pageSize);
 // };
 
-
-// 테스트 끝, 서버 api로 변경 예정
 const Pagination: FC = () => {
 
     // const { 
@@ -21,21 +19,15 @@ const Pagination: FC = () => {
     //     lectureRoomsData, setLectureRoomsData,
     //     setPaginatedDatas, resetPaginatedDatas,
     //     resetAllDatas
-    // } = useSuppliesStore();
+    // } = useToolStore();
     // const { activeTab } = useTabsStore();
     
-    const [curPage, setCurPage] = useState<number>(1); 
-    const itemsPerPage = 10; 
-
+    
     // const queryClient = useQueryClient();
-
+    
     // const vrsDataResponse = queryClient.getQueryData([suppliesQueryKeys[0]]) as AxiosResponse<VR[], AxiosError>;
     // const tabletsResponse = queryClient.getQueryData([suppliesQueryKeys[1]]) as AxiosResponse<Tablet[], AxiosError>;
     // const lectrueRoomsResponse = queryClient.getQueryData([suppliesQueryKeys[2]]) as AxiosResponse<LectureRoom[], AxiosError>;
-
-    const handleCurPageChange = (page: number, pageSize: number) => {
-        setCurPage(page);
-    }
 
     // const getTotalDataLength = useCallback((activeTab: ActiveTab) => {
     //     switch(activeTab) {
@@ -113,10 +105,15 @@ const Pagination: FC = () => {
 
     // }, [curPage, VRsData, tabletsData, lectureRoomsData]);
 
-    const itemRender = (page: number, type: "page" | "prev" | "next" | "jump-prev" | "jump-next", element: ReactNode): ReactNode => {
+    const { activeTab } = useTabsStore();
 
+    const { page: curPage, setPage } = useToolStore();
+    const handleCurPageChange = (page: number, pageSize: number) => {
+        setPage(page);
+    }
+
+    const itemRender = (page: number, type: "page" | "prev" | "next" | "jump-prev" | "jump-next", element: ReactNode): ReactNode => {
         if (type === 'page') {
-     
             return (
                 <PGButton curPage={curPage}>
                     {page}
@@ -132,7 +129,7 @@ const Pagination: FC = () => {
             defaultCurrent={1}
             current={curPage}
             onChange={handleCurPageChange} 
-            total={100}
+            total={activeTab === 0 ? 48 : activeTab === 1 ? 21 : activeTab === 2 ? 19 : 8}
             itemRender={itemRender}  
             showQuickJumper={false}
             showSizeChanger={false}

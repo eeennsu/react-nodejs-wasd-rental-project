@@ -3,8 +3,8 @@ export type UserStoreType = {
     setLogin: () => void;
     setLogout: () => void;
 
-    login: ResLogin['login'] | null,
-    setLoginInfo: (login: ResLogin['login'] | null) => void;
+    user: ResLogin['login'] | null,
+    setUser: (login: ResLogin['login'] | null) => void;
 
     token: string;
     setToken: (token: string) => void;

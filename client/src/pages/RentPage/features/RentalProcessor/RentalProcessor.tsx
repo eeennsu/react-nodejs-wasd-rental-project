@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import Search from './Search/Search';
-import Supplies from './Supplies/Supplies';
+import Main from './Main/Main';
 import Template from '../Step/templates/Template';
 
 const RentalProcessor: FC = () => {
@@ -11,7 +11,7 @@ const RentalProcessor: FC = () => {
                 <Search />
             </section>          
             <section className='w-11/12 mx-auto md:w-full md:mx-0'>
-                <Supplies />
+                <Main />
             </section>        
         </Template>
     );
