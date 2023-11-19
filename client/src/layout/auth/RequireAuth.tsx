@@ -11,7 +11,7 @@ const RequireAuth: FC<Props> = ({ allowedRoles }) => {
     const location = useLocation();
     const { isLogin, user_license } = useUserStore(state => ({
         isLogin: state.isLogin,
-        user_license: state.login?.user_license
+        user_license: state.user?.user_license
     }));
 
     return (

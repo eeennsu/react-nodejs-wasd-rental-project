@@ -12,8 +12,9 @@ const useUserStore = create<UserStoreType>()(
                 setLogin: () => set(() => ({ isLogin: true }), false, 'SET_LOGIN'),
                 setLogout: () => set(() => ({ isLogin: false }), false, 'SET_LOGOUT'),
 
-                login: null,
-                setLoginInfo: (login) => set(() => ({ login }), false, 'SET_LOGIN_INFO'),                
+                user: null,
+                setUser: (user) => set(() => ({ user }), false, 'SET_LOGIN_INFO'),                
+
                 token: '',
                 setToken: (token) => set(() => ({ token }), false, 'SET_TOKEN'),
             }),

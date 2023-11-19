@@ -6,7 +6,7 @@ import MyRentalInfo from './MyRentalInfo';
 
 const Side: FC = () => {
 
-    const user_id = useUserStore(state => state.login?.user_id);
+    const user_id = useUserStore(state => state.user?.user_id);
     const curRental = useMyRentalList(user_id!);
     const lateRental = useMyLateRentalList(user_id!);
 

@@ -27,7 +27,7 @@ const ManagerToolStatus: FC = () => {
 
     // 아래 주석 처리된 Link 컴포넌트를 링크 다고 싶은곳에서 가져다 쓰면 됨
     return (
-        <div className='flex items-center justify-center w-[1400px] h-[700px] mt-[20px] bg-02'>
+        <div className='flex items-center justify-center w-[1400px] h-[700px] mr-[30px] mt-[20px] bg-02'>
             ManagerToolStatus
         </div>
     );

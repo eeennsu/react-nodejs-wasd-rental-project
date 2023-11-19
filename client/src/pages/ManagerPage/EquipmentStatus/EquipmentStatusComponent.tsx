@@ -11,10 +11,9 @@ const EquipmentStatusComponent: FC = () => {
 
   
     return (
-      <div className='w-[400px] h-[160px] bg-01 rounded-md p-14 absolute top-[840px] -ml-[40px]'>
-        <div className=''
-       >
-     <Link to='/manager/tool-status' className='text-4xl text-center p-11 text-04 font-bold'>
+      <div className='w-[400px] h-[160px] bg-01 rounded-md absolute top-[840px] -ml-[40px]'>
+        <div className='mt-[50px] ml-[110px]'>
+     <Link to='/manager/tool-status' className=' text-[36px] text-04 font-bold'>
                 기자재 현황
       </Link>  </div>
     

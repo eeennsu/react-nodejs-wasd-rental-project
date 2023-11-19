@@ -14,10 +14,10 @@ const DetailsItem: FC<Props> = ({ item }) => {
             {
                 item && (
                     <>
-                        <span className='text-center'>
+                        <span>
                             {name}
                         </span>
-                        <span className={`text-center  ${item.D_day === 'TODAY' && 'text-red-400'}`}>
+                        <span className={`${(item.D_day === 'TODAY' || item.D_day === 'D+1') && 'font-extrabold'}`}>
                             {item.D_day} 
                         </span>
                     </>

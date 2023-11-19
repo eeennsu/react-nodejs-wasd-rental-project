@@ -43,7 +43,7 @@ const MyRentalInfo: FC<Props> = ({ title, data, isLoading, error }) => {
                         <RentalList>
                             {
                                 minItems?.map((rental, i) => (
-                                    <ListItem key={`${rental?.result.rental_id}-${rental?.result.user_id}` || i} item={rental} />
+                                    <ListItem key={`${rental ? rental.result.rental_id + rental.result.user_id: i}}`} item={rental} />
                                 ))
                             }
                         </RentalList>
