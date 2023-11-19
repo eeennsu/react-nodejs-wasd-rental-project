@@ -62,12 +62,6 @@ const Table: FC = () => {
     //     }
        
     // }, [activeTab, queryClient, vrsDataResponse, tabletsResponse, lectrueRoomsResponse]);
-    
-
-    
-    useEffect(() => {
-
-    }, [activeTab]);
 
     return (
         <table className='w-full h-full border-collapse'>

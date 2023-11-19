@@ -1,13 +1,15 @@
 import type { FC } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { message } from 'antd';
 import { login_API } from '../../api/auth/authApis';
 import { useUserStore } from '../../zustand';
-import { Link, } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 
 const SampleLogin: FC = () => {
 
+    const { state } = useLocation();
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [id, setId] = useState<string>('');
     const [pw, setPw] = useState<string>('');
@@ -44,6 +46,12 @@ const SampleLogin: FC = () => {
                 setToken(response.data.token.token);
              
                 message.success('로그인에 성공하였습니다!');
+
+                const from = state?.from;
+
+                if (from) {
+                    navigate(from.pathname);
+                }
             } else {
                 message.error('서버 오류가 발생하였습니다. 관리자에게 문의해 주세요.');
             }
@@ -56,6 +64,14 @@ const SampleLogin: FC = () => {
             setIsLoading(false);
         }
     }
+
+    useEffect(() => {
+        console.log('state', state);
+        
+        if (state) {
+            message.info('로그인이 필요합니다');
+        }
+    }, [state]);
 
     return (
         <div className='flex flex-col items-center justify-center flex-1 w-full gap-3 ounded-sm bg-slate-300'>
