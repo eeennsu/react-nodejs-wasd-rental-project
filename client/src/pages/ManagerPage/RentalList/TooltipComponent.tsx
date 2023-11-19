@@ -17,7 +17,7 @@ const TooltipComponent: FC<TooltipProps> = ({ showTooltip, toggleTooltip }) => {
   return (
     <div className="w-[400px] h-[560px] top-416 rounded-8 bg-02 p-4 pl-10 rounded-b-lg relative">
       <div
-        className={`w-80 h-11 top-91 bg-03 rounded-md text-sm p-2.5 ${isClicked ? 'bg-01' : ''}`}
+        className={`w-80 h-11 top-91 bg-03 rounded-md text-[18px] p-1 ${isClicked ? 'bg-01' : ''}`}
         onClick={handleOnClick}
       >
         기자재 대여 목록1

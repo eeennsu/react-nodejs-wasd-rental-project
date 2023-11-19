@@ -1,42 +1,51 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { FC } from 'react';
+import Button from "../../../components/Button";
+import { myRepairView_API } from "../../../api/repair/repair";
+import { useUserStore } from "../../../zustand";
 
 interface ModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-  }
+  isOpen: boolean;
+  onClose: () => void;
+}
 
-const ModalComponent: FC<ModalProps> = ({ isOpen, onClose }) =>{
+const ModalComponent: FC<ModalProps> = ({ isOpen, onClose }) => {
 
-    if(!isOpen){
-        return null;
+  const { user } = useUserStore();
+
+  const test = async () => {
+    try {
+      const response = await myRepairView_API(user!.user_id, 'repair_part')
+
+      console.log(response.data)
     }
+catch(err){
+  console.log(err)
+}
+  };
 
-    return (
-        <div className="fixed top-[190px] left-[583px] w-[980px] h-[590px]  bg-04 z-[900] rounded-md">
-          <div className="mt-[20px] ml-[-780px] text-3xl font-bold">
-          건의사항
-          </div>
-          <div className="mt-[3px] ml-[-780px] text-sm text-02">
-            : 기자재정보
-          </div>
-         
-          
-          <div className="fixed w-[920px] h-[246px] top-[400px] left-[1073px] text-03 transform -translate-x-1/2 -translate-y-1/2 bg-02 p-4 rounded-lg ">
-            <h2>수리 건의사항 모달</h2>   
-            </div>
+  return (
+    <div className={`fixed top-[190px] left-[583px] w-[980px] h-[460px] bg-04 z-[900] rounded-md ${isOpen ? 'visible' : 'invisible'}`}>
+      <div className="mt-[20px] ml-[-780px] text-[36px] font-bold">
+        건의사항
+      </div>
+      <div className="mt-[8px] mr-[820px] text-[16px] text-02">
+        : 기자재정보
+      </div>
 
-            <div className="w-[920px] h-[194px] bg-03 mt-[270px] ml-[30px] text-02 rounded-md">
-                답변내용
-               
-            </div>
-            <button onClick={onClose} className=" ml-[880px] mt-[-100px] cursor-pointer">
-               닫기
-            </button>
-         
-        </div>
-      );
+      <div className="fixed w-[920px] h-[246px] top-[410px] left-[1073px] text-03 transform -translate-x-1/2 -translate-y-1/2 bg-02 p-4  ">
+        <h2></h2>
+      </div>
 
+      <Button onClick={onClose} bgColor='01' className=" w-[120px] h-[45px] ml-[660px] mt-[280px]">
+        수리중
+      </Button>
+
+      <Button onClick={onClose} bgColor='01' className=" w-[120px] h-[45px] ml-[20px] ">
+        수리완료
+      </Button>
+    </div>
+  );
 };
 
-export default  ModalComponent;
+export default ModalComponent;
