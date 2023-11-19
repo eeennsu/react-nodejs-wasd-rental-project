@@ -1,3 +1,4 @@
+type ToolName = 'VR 실습기기' |  'x';
 type ToolState = '대여가능' | '대여불가능';
 
 interface Tool {

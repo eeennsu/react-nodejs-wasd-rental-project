@@ -2,18 +2,23 @@ type RoomStatus = 'DISABLED' | 'SELECTABLE';
 type SelectStatus = 'NONE' | 'FIRST_SELECT' | 'LAST_SELECT';
 type RentalState = '대여' | '미반납' | '반납';
 
+type ExistCurRental = {
+    D_day: string;
+    result: RentalInfo
+}
+
 interface RentalInfo {
     rental_id: number;
     rental_date: string;
     rental_due_date: string;
-    rental_state: string;
+    rental_state: RentalState;
     rental_extend: false;
     user_id: string;
     tool_id: string;
     tool: {
         tool_content: string;   // 오큘러스 퀘스트2 7번 기기
         tool_state: string;     // 대여중
-        tool_name: string;      // "VR 실습기기"
+        tool_name: ToolName;      // "VR 실습기기"
     }
 }
 
@@ -46,9 +51,9 @@ interface ResExtensionTool {
     err?: string;
 }
 
-interface ResMyRentalList {
-    D_day: string;
-    result: RentalInfo | string;
+type ResMyRentalList = ExistCurRental[] | {
+    "200": OK;
+    result: string;
 }
 
 // 오류 수정 중
@@ -61,9 +66,9 @@ interface ResMyAllRentalList {
     result: RentalInfo | string;
 }
 
-interface ResMyLateRentalList {
-    D_day: string;
-    result: RentalInfo | string;
+type ResMyLateRentalList = ExistCurRental[] | {
+    "200": OK;
+    result: string;
 }
 
 interface ResLateRentalList {

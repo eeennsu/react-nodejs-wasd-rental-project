@@ -64,30 +64,31 @@ const Table: FC = () => {
     // }, [activeTab, queryClient, vrsDataResponse, tabletsResponse, lectrueRoomsResponse]);
 
     return (
-        <table className='w-full h-full border-collapse'>
-            <tbody className='flex flex-col gap-[11px]'>
-                {/* {
-                    (activeTab === 1) ? (
-                        VRsData?.map((vr) => (
-                            <ToolTr key={vr.tool_id} toolData={vr} />
-                        ))
-                    ) : (activeTab === 2) ? (
-                        tabletsData?.map((tablet) => (
-                            <ToolTr key={tablet.tool_id} toolData={tablet} />
-                        ))
-                    ) : (activeTab === 3) ? (
-                        lectureRoomsData?.map((room) => (
-                            <LectureRoomTr key={room.room_id} lectureRoomData={room} />
-                        ))
-                    ) : null        
-                } */}
-                {
-                    activeTab === 0 ? (
-                        'ㄴㅁㅇ'
-                    ) : 'ㄱㄷ'
-                }
-            </tbody>                         
-        </table>   
+        // <table className='w-full h-full border-collapse'>
+        //     <tbody className='flex flex-col gap-[11px]'>
+        //         {/* {
+        //             (activeTab === 1) ? (
+        //                 VRsData?.map((vr) => (
+        //                     <ToolTr key={vr.tool_id} toolData={vr} />
+        //                 ))
+        //             ) : (activeTab === 2) ? (
+        //                 tabletsData?.map((tablet) => (
+        //                     <ToolTr key={tablet.tool_id} toolData={tablet} />
+        //                 ))
+        //             ) : (activeTab === 3) ? (
+        //                 lectureRoomsData?.map((room) => (
+        //                     <LectureRoomTr key={room.room_id} lectureRoomData={room} />
+        //                 ))
+        //             ) : null        
+        //         } */}
+        //         {
+        //             activeTab === 0 ? (
+        //                 'ㄴㅁㅇ'
+        //             ) : 'ㄱㄷ'
+        //         }
+        //     </tbody>                         
+        // </table>   
+        '잠시 숨김'
     );
 };
 
