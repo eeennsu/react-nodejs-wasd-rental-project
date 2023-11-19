@@ -1,3 +1,4 @@
+type ToolName = 'VR 실습기기' |  'x';
 type ToolState = '대여가능' | '대여불가능';
 
 interface Tool {
@@ -6,24 +7,24 @@ interface Tool {
     tool_code: string;
     tool_name: string;
     tool_purchase_division: string;
-    tool_purchase_date: Date;
+    tool_purchase_date: string;
     tool_spec: string;
     tool_content: string;
-    tool_state: string;
+    tool_state: ToolState;
     department_id: number;
     image: string;
 }
 
 interface DetailTool {
     tool_id: string;
-    tool_division: string;
+    tool_division: Division;
     tool_code: string;
     tool_name: string;
     tool_purchase_division: string;
     tool_purchase_date: string;
     tool_standard: string;
     tool_update_at: string;
-    tool_state:string;
+    tool_state:ToolState;
     department_id: string;
     tool_content: string;
     tool_spec: string;
@@ -76,7 +77,7 @@ interface ResViewTools {
 }
 
 // 기자재 검색 response 
-interface ResToolSearch {
+interface ResSearchTool {
     '200': OK;
     result: DetailTool[];
 }

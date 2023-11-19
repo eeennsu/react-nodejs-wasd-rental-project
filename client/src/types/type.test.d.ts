@@ -29,27 +29,25 @@ type VR = {
     tool_code: string;
     tool_name: string;
     tool_purchase_division: string;
-    tool_purchase_date: Date;
+    tool_purchase_date: string;
     tool_standard: string;
     tool_state: ToolState;
     tool_update_at: Data;
-    tool_update_at: Date;
     tool_content: string;
     tool_spec: string;
 }
 
-custom_type
+// custom_type
 type Tablet = {
     tool_id: string;
     tool_division: Division;
     tool_code: string;
     tool_name: string;
     tool_purchase_division: string;
-    tool_purchase_date: Date;
+    tool_purchase_date: string;
     tool_standard: string;
     tool_state: ToolState;
     tool_update_at: Data;
-    tool_update_at: Date;
     tool_content: string;
     tool_spec: string;
 }

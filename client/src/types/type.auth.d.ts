@@ -1,3 +1,5 @@
+type UserLicense = 1 | 4;
+
 // signUp API의 매개변수 회원가입할 때 필요한 유저 정보를 담고 있음
 interface SignUpUser extends LoginUser {
     user_name: string;
@@ -14,16 +16,16 @@ interface DetailUser {
     user_name: string;
     user_student_number: string;
     user_created_at: string;
-    user_license: number;
+    user_license: UserLicense;
     department_id: number;
     manager_approval: boolean;
 }
 
-// signUp API의 response
+// signUp API의 response           200, suc 타입 조정 필요
 interface ResSignUp {
-    "200": OK;
+    "200"?: OK;
     suc: string | boolean;
-    result: DetailUser;
+    result?: DetailUser;
     error?: string;
 }
 
@@ -35,18 +37,18 @@ interface LoginUser {
 
 // login API의 response
 interface ResLogin {
-    suc: boolean;
-    login:{
+    "200"?: OK;
+    login?: {
         user_id: string;
         user_pw: string;
         user_email: string;
         user_student_number: number;
         user_name: string;
         user_created_at: string;
-        user_license: number;
+        user_license: UserLicense;
         department_id: number;
-    },
-    token:{
+    }, 
+    token?: {
         token: string
     }
     err?: string;
@@ -65,22 +67,8 @@ interface ResSearchId {
     result: string;
 }
 
-// checkId API의 매개변수
-interface CheckId {
-    user_id: string;
-}
-
 // checkId API의 response
 interface ResCheckId {
-    '200': OK;
-    result: string;
-}
-
-interface ApproveUser {
-    user_id: string;
-}
-
-interface ResApproveUser {
     '200': OK;
     result: string;
 }
@@ -96,6 +84,7 @@ interface ResChangePw {
     result: string;
 }
 
+// 회원가입 신청 목록 API의 response, result 타입 조정 필요
 interface ResListPendingUsers {
     '200': OK;
     result: DetailUser[];           // DetailUser의 배열
@@ -115,8 +104,22 @@ interface ResSendMail {
     }
 }
 
-// 유저 디비에 있는 모든 정보 불러오기 api의 response
+// 유저 디비에 있는 모든 정보 불러오기 api의 response,   result 타입 조정 필요
 interface ResUserTableAll {
     '200': OK;
     result: DetailUser[];           // DetailUser의 배열
+}
+
+interface ApproveUser {
+    user_id: string;
+}
+
+interface ResApproveUser {
+    '200': OK;
+    result: string;
+}
+
+// checkId API의 매개변수
+interface CheckId {
+    user_id: string;
 }

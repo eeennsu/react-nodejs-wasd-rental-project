@@ -25,7 +25,7 @@ import { AxiosError, AxiosResponse } from 'axios';
 
 const useFetchAllSupplies = () => {
 
-    const queryResults = useQueries<[UseQueryResult<AxiosResponse<Tool[], AxiosError>>, UseQueryResult<AxiosResponse<LectureRoom[], AxiosError>>]>({
+    const queryResults = useQueries<[UseQueryResult<AxiosResponse<DetailTool[], AxiosError>>, UseQueryResult<AxiosResponse<LectureRoom[], AxiosError>>]>({
         queries: [
             {
                 queryKey: [suppliesQueryKeys[0]],

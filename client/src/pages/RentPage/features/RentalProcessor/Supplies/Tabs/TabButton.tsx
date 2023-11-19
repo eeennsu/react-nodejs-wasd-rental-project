@@ -7,16 +7,11 @@ type Props = {
 
 const TabButton: FC<PropsWithChildren<Props>> = ({ children, idx }) => {
 
-    const { setActiveTab } = useTabsStore();
-    const { setSearchTerm } = useSearchStore();
-    const { resetAllDatas, resetPaginatedDatas } = useSuppliesStore();
-    const { setSystemStep } = useStepStore();
+    const setActiveTab  = useTabsStore(state => state.setActiveTab);
+    const setSearchTerm  = useSearchStore(state => state.setSearchTerm);
 
     const handleSetActiveTab = () => {
         setSearchTerm('');
-        // resetAllDatas();
-        // resetPaginatedDatas();
-        // initModalStep(idx as ActiveTab, setSystemStep);
         setActiveTab(idx as ActiveTab);   
     }
 

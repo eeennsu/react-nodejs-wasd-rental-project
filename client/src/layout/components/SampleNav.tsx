@@ -20,6 +20,9 @@ const SampleNav: FC = () => {
             <li className='underline'>
                 <Link to='/example'>메인 페이지 예시</Link>
             </li>
+            <li className='underline'>
+                <Link to='/sampleLogin'>임시 로그인</Link>
+            </li>
         </ul>
     );
 };
