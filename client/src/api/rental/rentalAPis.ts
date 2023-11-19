@@ -1,34 +1,34 @@
-import axiosInst from '../axiosInst';
+import axiosPri from '../config/axiosPr';
 
 /* 
-    1. 유저 토큰 필요, 마스터 토큰 필요 이거는 일단 무시
+    1. 유저 토큰 필요, 마스터 토큰 필요 이런거는 무시
     2. page 매개변수에는 현재 페이지정보가 담긴 number값이 매개변수로 들어가면 됨 ex) 1, 2, 3 등등..
-    3. 모든 함수에 들어가는 매개변수 형태는 컨트롤 + 우클릭해서 어떤 타입이 필요한지 확인 가능.
+    3. 모든 함수에 들어가는 매개변수 형태는 컨트롤 + 우클릭해서 어떤 타입이 필요한지 확인 가능
 */
 
 // 유저 토큰 필요 / 기자재 대여
-export const rentalTool_API = (rentalToolInfo: RentalTool) => axiosInst.post<ResRentalTool>('/rental/rentalTool', rentalToolInfo);
+export const rentalTool_API = (rentalToolInfo: RentalTool) => axiosPri.post<ResRentalTool>('/rental/rentalTool', rentalToolInfo);
 
 // 유저 토큰 필요 / 기자재 반납
-export const returnTool_API = (returnToolInfo: ReturnTool) => axiosInst.post<ResReturnTool>('/rental/returnTool', returnToolInfo);
+export const returnTool_API = (returnToolInfo: ReturnTool) => axiosPri.post<ResReturnTool>('/rental/returnTool', returnToolInfo);
 
 // 유저 토큰 필요 / 기자재 연장
-export const extensionTool_API = (extensionTool: ExtensionTool) => axiosInst.post<ResExtensionTool>('/rental/extensionTool', extensionTool);
+export const extensionTool_API = (extensionTool: ExtensionTool) => axiosPri.post<ResExtensionTool>('/rental/extensionTool', extensionTool);
 
 // 유저 토큰 필요 / 사용자의 현재 대여 목록 확인
-export const myRentalList_API = (user_id: string) => axiosInst.get<ResMyRentalList>(`/rental/myRentalList/${user_id}`);
+export const myRentalList_API = (user_id: string) => axiosPri.get<ResMyRentalList>(`/rental/myRentalList/${user_id}`);
 
 // 마스터 토큰 필요 / 기자재 삭제 / (오류 수정중이라고 함)
-export const deleteTool_API = (tool_id: string) => axiosInst.get<ResDeleteTool>(`/tool/deleteTool/${tool_id}`);
+export const deleteTool_API = (tool_id: string) => axiosPri.get<ResDeleteTool>(`/tool/deleteTool/${tool_id}`);
 
 // 유저 토큰 필요 / 사용자의 역대 대여 목록
-export const myAllRentalList_API = (user_id: string) => axiosInst.get<ResMyAllRentalList>(`/rental/myAllRentalList/${user_id}`); 
+export const myAllRentalList_API = (user_id: string) => axiosPri.get<ResMyAllRentalList>(`/rental/myAllRentalList/${user_id}`); 
 
 // 유저 토큰 필요 / 사용자의 연체 목록
-export const myLateRentalList_API = (user_id: string) => axiosInst.get<ResMyLateRentalList>(`/rental/myLateRentalList/${user_id}`);
+export const myLateRentalList_API = (user_id: string) => axiosPri.get<ResMyLateRentalList>(`/rental/myLateRentalList/${user_id}`);
 
 // 마스터 토큰 필요 / 연체 중인 사용자의 목록
-export const lateRentalList_API = () => axiosInst.get<ResLateRentalList>('/rental/LateRentalList');
+export const lateRentalList_API = () => axiosPri.get<ResLateRentalList>('/rental/LateRentalList');
 
 // 마스터 토큰 필요 / rentalDB에 있는 모든 정보 불러오기
-export const rentalTableAll_API = () => axiosInst.post<ResRentalTableAll>('/rental/rentalTableAll');
+export const rentalTableAll_API = () => axiosPri.post<ResRentalTableAll>('/rental/rentalTableAll');
