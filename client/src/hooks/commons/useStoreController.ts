@@ -1,8 +1,9 @@
-import { useStepStore, useTabsStore, useTimeStore } from '../../zustand';
+import { useStepStore, useTabsStore, useTimeStore, useToolStore } from '../../zustand';
 
 const useStoreController = () => {
 
     const { activeTab, setActiveTab } = useTabsStore();
+    const { page, setPage } = useToolStore();
     const { 
         systemStep, setSystemStep, 
         text, setText,  
@@ -32,10 +33,15 @@ const useStoreController = () => {
         systemStep === 'LR_RENT' && resetTimes();
     }
 
+    const handleToolInit = () => {
+        page !== 1 && setPage(1);
+    }
+
     const handleAllStoreInit = () => {
         handleStepInit();
         handleDateInit();
         handleDataInit();
+        handleToolInit();
     }
 
     return {

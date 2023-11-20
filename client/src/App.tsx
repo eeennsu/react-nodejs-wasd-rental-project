@@ -1,6 +1,6 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { MainPage, ManagerPage, ManagerToolStatus, MyPage, RentPage } from './pages';
+import { MainPage, ManagerPage, ManagerToolStatus, MyPage, RentalPage } from './pages';
 import { MainLayout, OtherLayout, RootLayout } from './layout';
 import { ROLES } from './layout/auth/roles';
 import ExamplePage from './pages/ExamplePage/ExamplePage';
@@ -27,8 +27,8 @@ const App = () => {
                     </Route>
                   
                     <Route element={<OtherLayout />}>       
-                        <Route element={<RequireAuth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />}>
-                            <Route path='/rent' element={<RentPage />} />
+                        <Route element={<RequireAuth allowedRoles={[]} />}>
+                            <Route path='/rental' element={<RentalPage />} />
                         </Route>    
                         <Route path='/my-page/:id' element={<MyPage />} />
                         <Route path='/manager' element={<ManagerPage />}>
@@ -41,7 +41,7 @@ const App = () => {
                 {/* <Route element={<RequireAuth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />} >
                     <Route element={<RootLayout />}>
                         <Route element={<OtherLayout />}>
-                            <Route path='/rent' element={<RentPage />} />
+                            <Route path='/rental' element={<RentalPage />} />
                             <Route path='/my-page/:id' element={<MyPage />} />
                         </Route>
                     </Route>                   
