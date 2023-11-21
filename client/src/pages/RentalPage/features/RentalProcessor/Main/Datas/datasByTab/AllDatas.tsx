@@ -3,6 +3,7 @@ import { useToolStore } from '../../../../../../../zustand';
 import DataRow from '../teplate/DataRow';
 import useViewTool from '../../../../../queries/tool/useViewTools';
 import DataLoading from '../teplate/DataLoading';
+import FetchDatasError from '../teplate/FetchDatasError';
 
 const AllDatas: FC = () => {
 
@@ -17,7 +18,7 @@ const AllDatas: FC = () => {
 
     if (error) {
         return (
-            'error...'
+            <FetchDatasError />
         );
     }
 

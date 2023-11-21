@@ -1,6 +1,6 @@
 
-import RentSupply from "../features/Step/content/RentalTool/RentalTool";
-import RepairSupply from "../features/Step/content/RepairTool/RepairTool";
+import RentalTool from "../features/Step/content/RentalTool/RentalTool";
+import RepairTool from "../features/Step/content/RepairTool/RepairTool";
 import RentalProcessor from '../features/RentalProcessor/RentalProcessor';
 import RentRoom from '../features/Step/content/RentalRoom/RentalRoom';
 
@@ -10,10 +10,10 @@ export const getContent = (step: SystemStep) => {
             return <RentalProcessor />
 
         case 'TOOL_REPAIR':
-            return <RepairSupply />
+            return <RepairTool />
         
         case 'TOOL_RENT':
-            return <RentSupply />
+            return <RentalTool />
 
         case 'LR_DESC': 
         case 'LR_RENT': 
@@ -71,7 +71,7 @@ export const dateFormmat = (date?: string): string => {
     return new Intl.DateTimeFormat('ko-KR', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(date));
 }
 
-export const getImgSrc = (url: string): string => {
+export const getImgURL = (url: string): string => {
 
     return new URL(url, import.meta.env.VITE_LOCAL_SERVER_URL).href;
 }

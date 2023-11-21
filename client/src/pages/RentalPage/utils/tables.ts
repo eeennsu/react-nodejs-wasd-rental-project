@@ -48,6 +48,6 @@ export const getToolsAvailability = (data: VR | Tablet) => {
     return data?.tool_state === '대여가능' ? '대여 가능' : '대여 불가';
 }
 
-export const getLectureRoomAvailability = (roomName: LectureRoom) => {
+export const getLectureRoomAvailability = (roomName: ClassRoom) => {
     return roomName.room_state === '대여 가능' ? '대여 가능' : '대여 불가';
 }

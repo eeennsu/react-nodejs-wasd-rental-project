@@ -3,6 +3,7 @@ import { useToolStore } from '../../../../../../../zustand';
 import DataRow from '../teplate/DataRow';
 import useRangeTool from '../../../../../queries/tool/useRangeTool';
 import DataLoading from '../teplate/DataLoading';
+import FetchDatasError from '../teplate/FetchDatasError';
 
 const TabletDatas: FC = () => {
 
@@ -17,7 +18,7 @@ const TabletDatas: FC = () => {
 
     if (error) {
         return (
-            'error...'
+            <FetchDatasError />
         );
     }
 

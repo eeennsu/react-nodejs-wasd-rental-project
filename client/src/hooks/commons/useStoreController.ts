@@ -23,9 +23,9 @@ const useStoreController = () => {
         resetTimes 
     } = useTimeStore();
 
-    const handleStepInit = () => {      
+    const handleStepInit = (activeTab: ActiveTab = 0) => {      
         systemStep !== 'INIT' && setSystemStep('INIT');  
-        activeTab !== 1 && setActiveTab(1);
+        activeTab !== 1 && setActiveTab(activeTab);
         text.length >= 1 && setText('');    
     }
 
