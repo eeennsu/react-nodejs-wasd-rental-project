@@ -1,6 +1,5 @@
 type TabName = '전체' | 'VR' | 'TABLET' | 'LECTURE_ROOM';
 type ActiveTab = 0 | 1 | 2 | 3;
-type Division = 'VR' | 'TABLET';
 
 // api fetched type
 // interface Tool {
@@ -15,7 +14,7 @@ type Division = 'VR' | 'TABLET';
 // }
 
 // api fetcehd type
-interface LectureRoom {
+interface ClassRoom {
     room_id: string;
     room_code: string;
     room_name: string;

@@ -1,9 +1,10 @@
 import type { FC, ChangeEvent, FormEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { Input, Select, message } from 'antd';
-import { useStepStore } from '../../../../../../zustand';
+import { useStepStore, useToolStore } from '../../../../../../zustand';
 import { repairResons } from '../../../../constants';
 import { TextAreaRef } from 'antd/lib/input/TextArea';
+import { shallow } from 'zustand/shallow';
 import Template from '../../templates/Template';
 import Button from '../../../../../../components/Button';
 import useStoreController from '../../../../../../hooks/commons/useStoreController';
@@ -12,7 +13,16 @@ const { TextArea } = Input;
 
 const RepairSupply: FC = () => {
 
-    const { detailTool, text, setText } = useStepStore();
+    const { text, setText } = useStepStore(state => ({
+        text: state.text,
+        setText: state.setText
+    }), shallow);
+
+    const { tool, imgUrl } = useToolStore(state => ({
+        tool: state.tool,
+        imgUrl: state.toolImg?.img_url
+    }), shallow);
+    
     const { handleStepInit } = useStoreController();
 
     const [resonSelect, setResonSelect] = useState<string | null>(null);
@@ -72,7 +82,7 @@ const RepairSupply: FC = () => {
                         <img src='' alt='이미지' className='absolute bottom-0 right-0 w-20 h-20 bg-white' />  
                     </div>                            
                     <p>
-                        {detailTool?.tool_spec}  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque nulla eligendi natus repellendus aliquam, placeat quisquam debitis! Ea facilis officiis ex omnis officia, fugit dicta rerum quasi numquam fuga a!
+                        {tool?.tool_spec}  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque nulla eligendi natus repellendus aliquam, placeat quisquam debitis! Ea facilis officiis ex omnis officia, fugit dicta rerum quasi numquam fuga a!
                     </p>
                 </div>
                 <div className='flex flex-col gap-10'>

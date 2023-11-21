@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useToolStore } from '../../../../../../../zustand';
-import DataBox from '../teplate/DataBox';
+import DataRow from '../teplate/DataRow';
 import useRangeTool from '../../../../../queries/tool/useRangeTool';
 import DataLoading from '../teplate/DataLoading';
 
@@ -22,7 +22,7 @@ const TabletDatas: FC = () => {
     }
 
     return data?.result.map((tool) => (
-        <DataBox key={tool.tool_id} toolData={tool} />
+        <DataRow key={tool.tool_id} toolData={tool} />
     ));  
 };
 
