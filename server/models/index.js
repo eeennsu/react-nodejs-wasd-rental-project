@@ -13,7 +13,10 @@ let sequelize = new Sequelize(
       define: {
           charset: 'utf8',
           collate: 'utf8_general_ci',
-      }
+      },
+      dialectOptions: {
+        timezone: 'Etc/GMT-9', // 서울 시간대 (GMT+9)
+      },
       
   },
   

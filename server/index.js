@@ -38,7 +38,9 @@ sequelize.sync()
   });
   
 
-
+  const serverTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  console.log(`서버 시간대: ${serverTimeZone}`);
+  
 // 서버 실행
 app.set('port', process.env.PORT || 80);
 //"img_url": "images\\20220428-rentaltool-test2.jpg

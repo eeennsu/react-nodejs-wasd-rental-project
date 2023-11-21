@@ -112,6 +112,63 @@ module.exports={
         })
     },
 
+    rentalClassRoom: (body) => {
+        return new Promise((resolve) => {
+          const requiredFields = ["tool_id", "user_id", "rental_date", "rental_due_date", "department_id"];
+          
+          for (const field of requiredFields) {
+            if (!(field in body) || body[field] === undefined || body[field] === null) {
+              const fieldResult = field;
+              console.log(fieldResult)
+              resolve(fieldResult);
+              return;
+            }
+          } 
+      
+          const a = moment(body.rental_date)
+         
+         const b = moment(body.rental_due_date)
+
+     const rentalDate = a.add(9, 'hours');
+     const rentalDueDate =   b.add(9, 'hours');
+      
+       
+          Rental.create({
+            tool_id: body.tool_id,
+            user_id: body.user_id,
+            rental_date: rentalDate,
+            rental_due_date: rentalDueDate,
+            rental_state: "대여",
+            rental_extend: false,
+          })
+          .then((createResult) => {
+            console.log(createResult)
+            Log.create({
+              log_type: "0",
+              log_title: "대여",
+              log_content: `${createResult.user_id}님께서 ${createResult.tool_id} 기자재를 대여했습니다.`,
+              log_create_at:  moment(createResult.rental_date),
+              department_id: body.department_id
+            })
+            .then((result) => {
+              
+              resolve(result); // 성공적으로 처리되었으므로 resolve() 호출
+            })
+            .catch((logError) => {
+              console.error("로그 생성 오류:", logError);
+              resolve("로그 생성 오류"); // 오류 처리 후 resolve()
+            });
+          })
+          .catch((error) => {
+            console.error("대여 생성 오류:", error);
+            resolve("대여 생성 오류"); // 오류 처리 후 resolve()
+          });
+        });
+      },
+      
+      
+      
+
     returnTool: (body) => {
         return new Promise((resolve) => {
             Tool.findOne({
@@ -189,6 +246,7 @@ module.exports={
                 });
         })
     },
+   
 
     extensionTool: (body) => {
         return new Promise((resolve) => {
@@ -367,7 +425,8 @@ module.exports={
     
                     obj['D_day'] = "D+" + days; // 연체 일수 계산하여 "D+일수" 형태로 저장
                     obj['result'] = result[i];
-    
+
+
                     objs.push(obj);
                 }
     
@@ -378,7 +437,43 @@ module.exports={
                 resolve("err");
             });
         })
-    },
+    }, 
+
+ /*  LateRentalList: (res) => {
+        return new Promise((resolve) => {
+          Rental.findAll({
+            where: {
+              rental_state: "미반납" // "미반납" 상태인 레코드만 조회
+            },
+            include: [
+              {
+                model: Tool,
+                attributes: ['tool_content', 'tool_state', 'tool_name'], // 'Tool' 테이블에서 불러올 컬럼 지정
+              }
+            ]
+          })
+            .then((result) => {
+              let objs = {};
+      
+              for (let i = 0; i < result.length; i++) {
+                let days = moment().diff(moment(result[i].rental_due_date), 'days');
+                let obj = {};
+      
+                obj['D_day'] = "D+" + days; // 연체 일수 계산하여 "D+일수" 형태로 저장
+                obj['result'] = result[i];
+      
+                // tool_id를 key로 사용하여 객체에 저장
+                objs[result[i].tool_id] = obj;
+              }
+      
+              resolve(objs);
+            })
+            .catch((err) => {
+              console.log(err);
+              resolve("err");
+            });
+        });
+      }, */
 
     rentalTableAll:()=>{
         return new Promise((resolve)=>{ 
@@ -394,5 +489,7 @@ module.exports={
       
           })
         },
+
+    
 
 }

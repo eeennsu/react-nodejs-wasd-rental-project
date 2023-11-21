@@ -32,7 +32,7 @@ router.post('/sendMail',authController.sendMail);
 //User DB에 있는 모든 정보 불러오기
 router.get('/UserTableAll',checkToken,checkMaster,authController.UserTableAll);
 
-//router.post('/searchPw',authController.searchPw) 
+router.post('/searchPw',authController.searchPw) 
 
 
 module.exports = router;
