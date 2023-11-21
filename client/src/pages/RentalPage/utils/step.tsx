@@ -63,3 +63,15 @@ export const getContent = (step: SystemStep) => {
 //         default: throw new Error(`Unknown activeTab value : ${activeTab}`);
 //     }
 // }
+
+export const dateFormmat = (date?: string): string => {
+
+    if (!date) return '';
+
+    return new Intl.DateTimeFormat('ko-KR', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(date));
+}
+
+export const getImgSrc = (url: string): string => {
+
+    return new URL(url, import.meta.env.VITE_LOCAL_SERVER_URL).href;
+}

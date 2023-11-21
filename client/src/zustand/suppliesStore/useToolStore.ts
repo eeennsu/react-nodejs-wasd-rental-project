@@ -1,8 +1,8 @@
-import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { IToolStore } from './types';
+import { createWithEqualityFn } from 'zustand/traditional';
 
-const useToolStore = create<IToolStore>()(
+const useToolStore = createWithEqualityFn<IToolStore>()(
     devtools(
         (set) => ({
             // VRsData: [],
@@ -19,6 +19,16 @@ const useToolStore = create<IToolStore>()(
             // paginatedDatas: [],
             // setPaginatedDatas: (paginatedDatas) => set({ paginatedDatas }, false, 'SET_PAGINATED_DATAS'),
             // resetPaginatedDatas: () => set(() => ({ paginatedDatas: [] }), false, 'RESET_PAGINATED_DATAS')
+
+            tool: null,
+            setTool: (tool) => set(() => ({ tool })),
+
+            classRoom: null,
+            setClassRoom: (classRoom) => set(() => ({ classRoom })),
+            
+            toolImg: null,
+            setToolImg: (img) => set(() => ({ toolImg: img })),
+
             page: 1,
             setPage: (page) => set(() => ({ page }))
         })

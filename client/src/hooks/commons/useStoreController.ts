@@ -3,16 +3,25 @@ import { useStepStore, useTabsStore, useTimeStore, useToolStore } from '../../zu
 const useStoreController = () => {
 
     const { activeTab, setActiveTab } = useTabsStore();
-    const { page, setPage } = useToolStore();
+    const { 
+        page, setPage, 
+        tool, setTool,
+        toolImg, setToolImg,
+        classRoom, setClassRoom
+    } = useToolStore();
+
     const { 
         systemStep, setSystemStep, 
         text, setText,  
         selectedRoom, setSelectedRoom,
-        detailTool, setDetailTool, 
-        detailLectureRoom, setDetailLectureRoom,
         isModalOpen, setIsModalOpen
     } = useStepStore();
-    const { rentDate, setRentDate, returnDate, setReturnDate, resetTimes } = useTimeStore();
+    
+    const { 
+        rentDate, setRentDate, 
+        returnDate, setReturnDate, 
+        resetTimes 
+    } = useTimeStore();
 
     const handleStepInit = () => {      
         systemStep !== 'INIT' && setSystemStep('INIT');  
@@ -27,8 +36,9 @@ const useStoreController = () => {
 
     const handleDataInit = () => {
         selectedRoom && setSelectedRoom(null);
-        detailTool && setDetailTool(null);
-        detailLectureRoom && setDetailLectureRoom(null);
+        tool && setTool(null);
+        toolImg && setToolImg(null);
+        classRoom && setClassRoom(null);
         isModalOpen && setIsModalOpen(false);
         systemStep === 'LR_RENT' && resetTimes();
     }

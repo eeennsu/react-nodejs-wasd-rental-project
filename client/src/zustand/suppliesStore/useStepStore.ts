@@ -1,15 +1,15 @@
-import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { IStepStore } from './types';
+import { createWithEqualityFn } from 'zustand/traditional';
 
-const useStepStore = create<IStepStore>()(
+const useStepStore = createWithEqualityFn<IStepStore>()(
     devtools(
         (set) => ({
             isModalOpen: false,
             setIsModalOpen: (trigger) => set(() => ({ isModalOpen: trigger }), false, 'SET_IS_MODAL_OPEN'),
 
-            detailTool: null,
-            setDetailTool: (detailTool) => set(() => ({ detailTool }), false, 'SET_DETAIL_TOOL'),
+            // detailTool: null,
+            // setDetailTool: (detailTool) => set(() => ({ detailTool }), false, 'SET_DETAIL_TOOL'),
 
             // detailVR: null,
             // setDetailVR: (detailVR) => set(() => ({ detailVR }), false, 'SET_DETAIL_VR'),
@@ -17,8 +17,8 @@ const useStepStore = create<IStepStore>()(
             // detailTablet: null,
             // setDetailTablet: (detailTablet) => set(() => ({ detailTablet }), false, 'SET_DETAIL_VR'),
 
-            detailLectureRoom: null,
-            setDetailLectureRoom: (detailLectureRoom) => set(() => ({ detailLectureRoom }), false, 'SET_DETAIL_VR'),
+            // detailLectureRoom: null,
+            // setDetailLectureRoom: (detailLectureRoom) => set(() => ({ detailLectureRoom }), false, 'SET_DETAIL_VR'),
 
             // resetDetailValue: () => set(() => ({ 
             //     detailTool: null,

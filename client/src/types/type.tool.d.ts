@@ -5,9 +5,9 @@ interface Tool {
     department_id: number;
     tool_code: string;
     tool_content: string;
-    tool_division: Division;
+    tool_division: string;
     tool_id: string;
-    tool_name: string;
+    tool_name: ToolName;
     tool_purchase_date: string;
     tool_purchase_division: string;
     tool_spec: string;
@@ -18,6 +18,12 @@ interface Tool {
 
 interface ToolImage {
     img_id: string;
+    img_part_1: any;
+    img_part_2: any;
+    img_part_3: any;
+    img_part_4: any;
+    img_part_5: any;
+    img_part_6: any;
     img_url: string;
     tool_id: string;
 }
