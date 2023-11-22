@@ -12,7 +12,7 @@ import useStoreController from '../../../../../../hooks/commons/useStoreControll
 
 const { TextArea } = Input;
 
-const RepairSupply: FC = () => {
+const RepairTool: FC = () => {
 
     const activeTab = useTabsStore(state => state.activeTab);
     const user_id = useUserStore(state => state.user?.user_id);
@@ -29,7 +29,7 @@ const RepairSupply: FC = () => {
     const { handleStepInit } = useStoreController();
 
     const [resonSelect, setResonSelect] = useState<string | null>(null);
-
+    
     const renderOptions = repairResons.map((reson) => ({
         label: reson,
         value: reson
@@ -43,7 +43,7 @@ const RepairSupply: FC = () => {
         setText(e.target.value);
     }
 
-    const handleRepairRequest = async (e: FormEvent<HTMLFormElement>) => {
+    const handleRepairRequest = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
             
         if (!resonSelect) {
@@ -59,27 +59,39 @@ const RepairSupply: FC = () => {
         }
 
         try {
+            fetchRepairTool();        
+        } catch (error) {
+            console.log(error);
+            message.error('서버 에러가 발생하였습니다. 괸라자에게 문의해 주세요');
+        } finally {
+            handleBack();
+        }
+    }
+
+    const fetchRepairTool = async () => {
+        if (user_id && tool?.tool_id) {
             const repairData: RepairTool = {
-                user_id: user_id!,
-                tool_id: tool!.tool_id,
-                repair_part: resonSelect,
+                user_id: user_id,
+                tool_id: tool.tool_id,
+                repair_part: resonSelect!,
                 repair_reason: text
-            } 
+            }; 
 
             const response = await repairTool_API(repairData);
 
             if (response.data[200] === 'OK') {
                 message.success('수리 요청이 완료되었습니다');    
+                console.log(response.data);
             } else {
                 message.error('수리 요청에 실패하였습니다! 관리자에게 문의해 주세요');
             }
-            
-        } catch (error) {
-            console.log(error);
-            message.error('서버 에러가 발생하였습니다. 괸라자에게 문의해 주세요');
-        } finally {
-            handleStepInit(activeTab);
-        }
+        } else {
+            message.error('프론트 오류가 발생하였습니다. 관리자에게 문의해 주세요!');
+        }         
+    }
+
+    const handleBack = () => {
+        handleStepInit(activeTab);
     }
 
     return (
@@ -91,7 +103,7 @@ const RepairSupply: FC = () => {
                         <img src={''} alt='이미지' className='absolute bottom-0 right-0 w-20 h-20 bg-white' />  
                     </div>                            
                     <p>
-                        {tool?.tool_spec}  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque nulla eligendi natus repellendus aliquam, placeat quisquam debitis! Ea facilis officiis ex omnis officia, fugit dicta rerum quasi numquam fuga a!
+                        {tool?.tool_content}
                     </p>
                 </div>
                 <div className='flex flex-col gap-10'>
@@ -102,7 +114,7 @@ const RepairSupply: FC = () => {
                                 onChange={handleSelectChange}
                                 options={renderOptions}
                                 size='small'
-                                className='w-full'                    
+                                className='w-full'          
                                 dropdownStyle={{ overflow: 'hidden', textOverflow: 'ellipsis' }}        
                             />
                         </div>
@@ -118,8 +130,8 @@ const RepairSupply: FC = () => {
                         </div>      
                     </div>                
                     <footer className='flex justify-end gap-4'>
-                        <Button onClick={() => handleStepInit(activeTab)} bgColor='02'>
-                            뒤로 가기
+                        <Button onClick={handleBack} bgColor='01'>
+                            돌아가기
                         </Button>
                         <Button type='submit' bgColor='01'>
                             수리 요청
@@ -131,4 +143,4 @@ const RepairSupply: FC = () => {
     );
 }
 
-export default RepairSupply;
+export default RepairTool;

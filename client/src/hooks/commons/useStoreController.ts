@@ -2,7 +2,7 @@ import { useStepStore, useTabsStore, useTimeStore, useToolStore } from '../../zu
 
 const useStoreController = () => {
 
-    const { activeTab, setActiveTab } = useTabsStore();
+    const { setActiveTab } = useTabsStore();
     const { 
         page, setPage, 
         tool, setTool,
@@ -23,9 +23,9 @@ const useStoreController = () => {
         resetTimes 
     } = useTimeStore();
 
-    const handleStepInit = (activeTab: ActiveTab = 0) => {      
+    const handleStepInit = (selectedActiveTab: ActiveTab = 0) => {      
         systemStep !== 'INIT' && setSystemStep('INIT');  
-        activeTab !== 1 && setActiveTab(activeTab);
+        setActiveTab(selectedActiveTab);
         text.length >= 1 && setText('');    
     }
 
