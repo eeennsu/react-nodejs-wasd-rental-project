@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Outlet } from 'react-router-dom';
-import Modal from '../pages/RentPage/features/Step/content/DescTool/Modal';
+import Modal from '../pages/RentalPage/features/Step/content/DescTool/Modal';
 
 const OtherLayout: FC = () => {
 

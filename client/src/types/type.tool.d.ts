@@ -1,5 +1,5 @@
 type ToolName = 'VR 실습기기' | '타블렛' | 'x';
-type ToolState = '대여가능' | '대여불가능';
+type ToolState = '대여가능' | '대여중' | '대여불가';
 
 interface Tool {
     department_id: number;

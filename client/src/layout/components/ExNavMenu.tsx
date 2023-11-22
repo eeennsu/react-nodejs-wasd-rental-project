@@ -9,7 +9,7 @@ const ExNavMenu: FC = () => {
     const { handleAllStoreInit } = useStoreController();
 
     const handleExNav = () => {
-        if (pathname === '/rent') {
+        if (pathname === '/rental') {
             console.log('??');
             handleAllStoreInit();   
         }

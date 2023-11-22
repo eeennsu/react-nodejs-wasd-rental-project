@@ -9,7 +9,7 @@ const SampleNav: FC = () => {
                 <Link to='/main'>메인 페이지</Link>
             </li>
             <li className='underline'>
-                <Link to='/rent'>대여 페이지</Link>
+                <Link to='/rental'>대여 페이지</Link>
             </li>
             <li className='underline'>
                 <Link to='/my-page/1'>마이 페이지</Link>
