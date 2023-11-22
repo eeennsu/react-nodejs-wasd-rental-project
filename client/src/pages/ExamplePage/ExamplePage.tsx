@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import Button from '../../components/Button';
+import { Link } from 'react-router-dom';
 
 const ExamplePage: FC = () => {
 
@@ -12,7 +13,9 @@ const ExamplePage: FC = () => {
             </div>
             <div className='flex flex-col items-center justify-center gap-4 mt-[70px]'>
                 <div className='py-3 px-28 bg-02 h-2/5'>
-                    기자재 대여 바로 가기 &gt;
+                <Link to = {'/rent'}>
+                기자재 대여 바로 가기 &gt;
+                </Link>
                 </div>
                 <div className='py-3 px-28 bg-02'>
                     강의실 대여 바로 가기 &gt;
@@ -29,8 +32,11 @@ const ExamplePage: FC = () => {
                         </h3>
                         <div>
                             <Button bgColor='01'>
+                              <Link to={'https://open.kakao.com/o/sUALlY5e'}>
                                 바로 가기 &gt;
+                                </Link>
                             </Button>
+                            
                         </div>
                     </div>
                     <div className='flex flex-col items-center justify-center w-1/2 gap-10 h-5/6 bg-02'>

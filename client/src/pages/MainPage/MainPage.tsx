@@ -1,16 +1,21 @@
 import type { FC } from 'react';
-import Button_o from './MainO/Button_o';
-import Openchat from './MainO/Openchat';
+import Button_o from './Mainelement/Button_o';
+import Openchat from './Mainelement/Openchat';
+import Rentlist from './Mainelement/Rentlist';
 
 const MainPage: FC = () => {
-    
+
+
+
     return (
-      <div >
-        <div className='w-120 h-80 bg-03'>
-          <Button_o/>
-          <Openchat/>  
-        </div>
-      </div>
+        <div className='w-full'>
+          <div className='fixed w-full top-28 bg-03 h-2/5 -z-10'>
+            <Button_o/>
+            <Openchat/>
+            <Rentlist/>
+           </div>
+            
+        </div>        
     );
 };
 
