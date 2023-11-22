@@ -1,7 +1,13 @@
 type UserLicense = 1 | 4;
 
+await signUp_API({
+    user_id: 'adasd'
+});
+
 // signUp API의 매개변수 회원가입할 때 필요한 유저 정보를 담고 있음
-interface SignUpUser extends LoginUser {
+interface SignUpUser {
+    user_id: string;
+    user_pw: string;
     user_name: string;
     user_email: string;
     user_student_number: string;
