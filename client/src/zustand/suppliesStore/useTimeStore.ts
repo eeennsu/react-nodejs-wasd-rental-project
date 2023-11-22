@@ -1,8 +1,8 @@
-import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { ITimeStore } from './types';
+import { createWithEqualityFn } from 'zustand/traditional';
 
-const useTimeStore = create<ITimeStore>()(
+const useTimeStore = createWithEqualityFn<ITimeStore>()(
     devtools(
         (set) => ({   
             rentDate: null,
