@@ -30,6 +30,9 @@ sequelize.sync()
   });
 
   
+  app.get('/', (req, res) => {
+    res.send('안녕하세요 서버입니다.');
+  });
 
   app.get('/images/:imageFileName', (req, res) => {
     const imageFileName = req.params.imageFileName;
@@ -38,9 +41,13 @@ sequelize.sync()
   });
   
 
+  const serverTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  console.log(`서버 시간대: ${serverTimeZone}`);
 
+  console.log("환경변수 값:",process.env.PORT)
+  
 // 서버 실행
-app.set('port', process.env.PORT || 80);
+app.set('port', process.env.PORT || 3000);
 //"img_url": "images\\20220428-rentaltool-test2.jpg
 const server = http.createServer(app);
 server.listen(app.get('port'), () => {

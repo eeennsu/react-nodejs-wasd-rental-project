@@ -25,10 +25,10 @@ router.get("/myLateRentalList/:user_id",checkToken,checkOne,rentalController.myL
 
 //연체 중인 사용자 목록
 router.get("/LateRentalList",checkToken,checkMaster,rentalController.LateRentalList);
-
+//checkToken,checkMaster,
 //rental DB에 있는 모든 정보 불러오기
 router.get("/rentalTableAll",checkToken,checkMaster,rentalController.rentalTableAll);
 
-
+router.post('/rentalClassRoom',rentalController.rentalClassRoom);
 
 module.exports = router;

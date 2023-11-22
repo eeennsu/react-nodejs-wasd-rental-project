@@ -14,10 +14,10 @@ export const addTool_API = (tool: Tool) => axiosPr.post<ResAddTool>('/tool/addTo
 export const updateTool_API = (tool: Tool) => axiosPr.post<ResUpdateTool>('/tool/updateTool', tool);
 
 // 유저 토큰 필요 / 기자재 1개 조회
-export const oneViewTool_API = (tool_id: string) => axiosPr.get<ResOneViewTool>(`/tool/viewTool/${tool_id}`);  
+export const oneViewTool_API = (tool_id?: string) => axiosPr.get<ResOneViewTool>(`/tool/viewTool/${tool_id}`);  
 
 // 유저 토큰 필요 / 기자재 전체 조회 
-export const viewTools_API = (page: number) => axiosPr.get<ResViewTools>(`/tool/viewTools/${page}/100`);
+export const viewTools_API = (page: number) => axiosPr.get<ResViewTools>(`/tool/viewTools/${page}/${PAGE_LIMIT}`);
 
 // 유저 토큰 필요 / 기자재 검색 
 export const searchTool_API = (toolSearch: string, page: number) => axiosPr.get<ResSearchTool>(`/tool/searchTool/${toolSearch}/${page}/${PAGE_LIMIT}`); 

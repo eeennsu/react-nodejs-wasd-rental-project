@@ -10,18 +10,26 @@ export interface IToolStore {
     // tabletsData: Tablet[];
     // setTabletsData: (datas: Tablet[]) => void;
 
-    // lectureRoomsData: LectureRoom[];
-    // setLectureRoomsData: (datas: LectureRoom[]) => void;
+    // classRoomsData: ClassRoom[];
+    // setClassRoomsData: (datas: ClassRoom[]) => void;
 
     // resetAllDatas: () => void;
 
-    // paginatedDatas: VR[] | Tablet[] | LectureRoom[];
-    // setPaginatedDatas: (datas: VR[] | Tablet[] | LectureRoom[]) => void; 
+    // paginatedDatas: VR[] | Tablet[] | ClassRoom[];
+    // setPaginatedDatas: (datas: VR[] | Tablet[] | ClassRoom[]) => void; 
     // resetPaginatedDatas: () => void;
     
+    tool: Tool | null;
+    setTool: (tool: Tool | null) => void;
+
+    classRoom: ClassRoom | null;
+    setClassRoom: (vr: ClassRoom | null) => void;
+
+    toolImg: ToolImage | null | undefined;
+    setToolImg: (img: ToolImage | null | undefined) => void;
+
     page: number;
-    setPage: (page: number) => void;
-    
+    setPage: (page: number) => void;    
 }
 
 export interface ISearchStore {
@@ -34,8 +42,8 @@ export interface ISearchStore {
     // searchedTablets: Tablet[] | null;
     // setSearchedTablets: (datas: Tablet[]) => void;
 
-    // searchedLectureRooms: LectureRoom[] | null;
-    // setSearchedLectureRooms: (datas: LectureRoom[]) => void;
+    // searchedClassRooms: ClassRoom[] | null;
+    // setSearchedClassRooms: (datas: ClassRoom[]) => void;
     searchedResults: AllSuppliesArr;
     setSearchedResults: (results: AllSuppliesArr) => void;
 }
@@ -44,8 +52,8 @@ export interface IStepStore {
     isModalOpen: boolean;
     setIsModalOpen: (trigger: boolean) => void;
 
-    detailTool: Tool | null;
-    setDetailTool: (tool: Tool | null) => void
+    // detailTool: Tool | null;
+    // setDetailTool: (tool: Tool | null) => void
 
     // detailVR: VR | null,
     // setDetailVR: (vr: VR) => void;
@@ -53,8 +61,8 @@ export interface IStepStore {
     // detailTablet: Tablet | null,
     // setDetailTablet: (tablet: Tablet) => void;
 
-    detailLectureRoom: LectureRoom | null,
-    setDetailLectureRoom: (vr: LectureRoom | null) => void;
+    // detailClassRoom: ClassRoom | null,
+    // setDetailClassRoom: (vr: ClassRoom | null) => void;
  
     // resetDetailValue: () => void;
 

@@ -15,7 +15,7 @@ const SampleLogin: FC = () => {
     const [pw, setPw] = useState<string>('');
 
     const { isLogin, setLogin, setToken, user, setUser} = useUserStore();
-
+    
     const handleLoginTest = async () => {
         setIsLoading(true);
         
@@ -42,7 +42,9 @@ const SampleLogin: FC = () => {
                 }
     
                 setLogin();
-                setUser(response.data.login);
+
+                const { user_pw, user_created_at, ...rest } = response.data.login!;
+                setUser(rest);
                 setToken(response.data.token.token);
              
                 message.success('로그인에 성공하였습니다!');

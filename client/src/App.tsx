@@ -29,9 +29,9 @@ const App = () => {
                     </Route>
                   
                     <Route element={<OtherLayout />}>       
-                        {/* <Route element={<RequireAuth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />}> */}
+                        <Route element={<RequireAuth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />}>
                             <Route path='/rental' element={<RentalPage />} />
-                        {/* </Route>     */}
+                        </Route>
                         <Route path='/my-page/:id' element={<MyPage />} />
                         <Route path='/manager' element={<ManagerPage />} />
                         <Route path='/manager/tool-status' element={<ManagerToolStatus />} />                                                                    

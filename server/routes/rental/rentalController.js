@@ -32,6 +32,59 @@ module.exports={
         //}
     },
 
+    rentalClassRoom: (req,res)=>{
+        const body = req.body
+        
+       rentalService.rentalClassRoom(body)
+       .then((result)=>{
+        let obj ={};
+
+        if(result=="tool_id"){
+            obj["200"] = "OK"
+            obj["err"] = `${result}값이 비어있습니다.`
+            res.send(obj)
+        }
+
+        else if(result=="user_id"){
+            obj["200"] = "OK"
+            obj["err"] = `${result}값이 비어있습니다.`
+            res.send(obj)
+        }
+        else if(result=="rental_date"){
+            obj["200"] = "OK"
+            obj["err"] = `${result}값이 비어있습니다.`
+            res.send(obj)
+        }
+        else if(result=="rental_due_date"){
+            obj["200"] = "OK"
+            obj["err"] = `${result}값이 비어있습니다.`
+            res.send(obj)
+        }
+        else if(result=="department_id"){
+            obj["200"] = "OK"
+            obj["err"] = `${result}값이 비어있습니다.`
+            res.send(obj)
+        }
+        else if (result=="대여 생성 오류"){
+            obj["200"] = "OK"
+            obj["err"] = `대여 생성 오류`
+            res.send(obj)
+        }
+        else if (result=="로그 생성 오류"){
+            obj["200"] = "OK"
+            obj["err"] = `로그 생성 오류`
+            res.send(obj)
+        }
+        else{
+            obj["200"] = "OK"
+            obj["result"] = result
+            res.send(obj)
+        }
+
+       })
+        
+    },
+
     returnTool: (req, res) => {
         const body = req.body;
             rentalService.returnTool(body)
@@ -178,7 +231,7 @@ module.exports={
             else {
                 obj["200"]= "OK";
                 obj["result"] = result;
-                res.send(result);
+                res.status(200).json({ "200": "OK", result });
             }
         })
     },

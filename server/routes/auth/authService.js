@@ -237,7 +237,9 @@ module.exports = {
           toEmail: email,
           subject: '****Verify your new Recess account****',
           code: code,
+          html: `<p>Your verification code is: ${code}</p>`
         };
+        console.log(emailParam)
 
         mailer.sendGmail(emailParam);
         delete emailParam.html;
@@ -251,6 +253,9 @@ module.exports = {
       }
     });
   },
+
+  
+  
 
   UserTableAll:()=>{
     return new Promise((resolve)=>{ 

@@ -96,3 +96,7 @@ div.ant-picker-input > input {
 .ant-skeleton-input {
     width: 100% !important;
 }
+
+.ant-select-selection-placeholder {
+    color: rgba(63, 93, 125, 1) !important;
+}

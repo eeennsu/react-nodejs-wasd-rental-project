@@ -1,6 +1,6 @@
 import type { FC, PropsWithChildren } from 'react';
 import { useMemo } from 'react';
-import ListItem from './ListItem';
+import ListItem, { Skeleton } from './ListItem';
 import Spinner from '../../../../components/Spinner';
 
 type Props = {
@@ -36,15 +36,17 @@ const MyRentalInfo: FC<Props> = ({ title, data, isLoading, error }) => {
             </h2>
             {
                 isLoading ? (
-                    <div className='h-[203px] flex items-center bg-03 w-full justify-center'>
-                        <Spinner />
-                    </div>
+                    <ul className='h-[203px] flex flex-col bg-03 w-full pt-2'>
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                    </ul>
                 ) : (
                     minItems ? (
                         <RentalList>
                             {
                                 minItems?.map((rental, i) => (
-                                    <ListItem key={`${rental ? rental.result.rental_id + rental.result.user_id: i}}`} item={rental} />
+                                    <ListItem key={i} item={rental} />
                                 ))
                             }
                         </RentalList>
@@ -52,7 +54,7 @@ const MyRentalInfo: FC<Props> = ({ title, data, isLoading, error }) => {
                         <RentalList>
                             {
                                 Array.from({ length: 7 }, () => '').map((_, i) => (
-                                    <ListItem  />
+                                    <ListItem key={i} />
                                 ))
                             }
                         </RentalList>                   

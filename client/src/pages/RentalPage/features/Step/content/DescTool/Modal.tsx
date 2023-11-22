@@ -24,6 +24,7 @@ const Modal: FC = () => {
             onCancel={handleModalClose} 
             width={800}
             footer={null}
+            className='drop-shadow-2xl'
         >
             <DescTool />
         </AntdModal>

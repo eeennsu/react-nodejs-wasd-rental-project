@@ -1,23 +1,35 @@
 import type { FC, ChangeEvent, FormEvent } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { Input, Select, message } from 'antd';
-import { useStepStore } from '../../../../../../zustand';
+import { useStepStore, useTabsStore, useToolStore, useUserStore } from '../../../../../../zustand';
 import { repairResons } from '../../../../constants';
-import { TextAreaRef } from 'antd/lib/input/TextArea';
+import { shallow } from 'zustand/shallow';
+import { getImgURL } from '../../../../utils/step';
+import { repairTool_API } from '../../../../../../api/repair/repair';
 import Template from '../../templates/Template';
 import Button from '../../../../../../components/Button';
 import useStoreController from '../../../../../../hooks/commons/useStoreController';
 
 const { TextArea } = Input;
 
-const RepairSupply: FC = () => {
+const RepairTool: FC = () => {
 
-    const { detailTool, text, setText } = useStepStore();
+    const activeTab = useTabsStore(state => state.activeTab);
+    const user_id = useUserStore(state => state.user?.user_id);
+    const { text, setText } = useStepStore(state => ({
+        text: state.text,
+        setText: state.setText
+    }), shallow);
+
+    const { tool, toolImg } = useToolStore(state => ({
+        tool: state.tool,
+        toolImg: state.toolImg
+    }), shallow);
+    
     const { handleStepInit } = useStoreController();
 
     const [resonSelect, setResonSelect] = useState<string | null>(null);
-    const textRef = useRef<TextAreaRef | null>(null);
-
+    
     const renderOptions = repairResons.map((reson) => ({
         label: reson,
         value: reson
@@ -47,32 +59,51 @@ const RepairSupply: FC = () => {
         }
 
         try {
-            // API 호출
-
-            //
-            message.success('수리 요청이 완료되었습니다');    
+            fetchRepairTool();        
         } catch (error) {
             console.log(error);
-            message.error('알수 없는 에러가 발생했습니다. 괸라자에게 문의해주세요');
+            message.error('서버 에러가 발생하였습니다. 괸라자에게 문의해 주세요');
         } finally {
-            handleStepInit();
+            handleBack();
         }
     }
 
-    useEffect(() => {
-        textRef.current?.focus();
-    }, []);
+    const fetchRepairTool = async () => {
+        if (user_id && tool?.tool_id) {
+            const repairData: RepairTool = {
+                user_id: user_id,
+                tool_id: tool.tool_id,
+                repair_part: resonSelect!,
+                repair_reason: text
+            }; 
+
+            const response = await repairTool_API(repairData);
+
+            if (response.data[200] === 'OK') {
+                message.success('수리 요청이 완료되었습니다');    
+                console.log(response.data);
+            } else {
+                message.error('수리 요청에 실패하였습니다! 관리자에게 문의해 주세요');
+            }
+        } else {
+            message.error('프론트 오류가 발생하였습니다. 관리자에게 문의해 주세요!');
+        }         
+    }
+
+    const handleBack = () => {
+        handleStepInit(activeTab);
+    }
 
     return (
         <Template className='mt-[74px]'>
             <form className='grid grid-cols-2 gap-10' onSubmit={handleRepairRequest}>
                 <div className='flex flex-col gap-4'>
                     <div className='relative h-2/3'>
-                        <img src='' alt='이미지' className='w-full h-full bg-slate-300 rounded-[4px]' />   
-                        <img src='' alt='이미지' className='absolute bottom-0 right-0 w-20 h-20 bg-white' />  
+                        <img src={getImgURL(toolImg!.img_url)} alt='이미지' className='w-full h-full bg-slate-300 rounded-[4px]' />   
+                        <img src={''} alt='이미지' className='absolute bottom-0 right-0 w-20 h-20 bg-white' />  
                     </div>                            
                     <p>
-                        {detailTool?.tool_spec}  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque nulla eligendi natus repellendus aliquam, placeat quisquam debitis! Ea facilis officiis ex omnis officia, fugit dicta rerum quasi numquam fuga a!
+                        {tool?.tool_content}
                     </p>
                 </div>
                 <div className='flex flex-col gap-10'>
@@ -83,7 +114,7 @@ const RepairSupply: FC = () => {
                                 onChange={handleSelectChange}
                                 options={renderOptions}
                                 size='small'
-                                className='w-full'                    
+                                className='w-full'          
                                 dropdownStyle={{ overflow: 'hidden', textOverflow: 'ellipsis' }}        
                             />
                         </div>
@@ -95,13 +126,12 @@ const RepairSupply: FC = () => {
                                 style={{ resize: 'none' }}  
                                 placeholder='수리할 내용을 입력해주세요' 
                                 rows={20} 
-                                ref={textRef}
                             />
                         </div>      
                     </div>                
                     <footer className='flex justify-end gap-4'>
-                        <Button onClick={handleStepInit} bgColor='02'>
-                            뒤로 가기
+                        <Button onClick={handleBack} bgColor='01'>
+                            돌아가기
                         </Button>
                         <Button type='submit' bgColor='01'>
                             수리 요청
@@ -113,4 +143,4 @@ const RepairSupply: FC = () => {
     );
 }
 
-export default RepairSupply;
+export default RepairTool;

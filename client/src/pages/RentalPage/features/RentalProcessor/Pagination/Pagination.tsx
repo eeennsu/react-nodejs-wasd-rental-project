@@ -6,6 +6,7 @@ import { AxiosError, AxiosResponse } from 'axios';
 import { suppliesQueryKeys } from '../../../constants';
 import { useQueryClient } from '@tanstack/react-query';
 import PGButton from './PGButton';
+import { shallow } from 'zustand/shallow';
 
 // const onShowSizeChange: PaginationProps['onShowSizeChange'] = (current, pageSize) => {
 //     console.log(current, pageSize);
@@ -105,9 +106,12 @@ const Pagination: FC = () => {
 
     // }, [curPage, VRsData, tabletsData, lectureRoomsData]);
 
-    const { activeTab } = useTabsStore();
+    const activeTab = useTabsStore(state => state.activeTab);
 
-    const { page: curPage, setPage } = useToolStore();
+    const { curPage, setPage } = useToolStore(state => ({
+        curPage: state.page, setPage: state.setPage
+    }), shallow);
+    
     const handleCurPageChange = (page: number, pageSize: number) => {
         setPage(page);
     }

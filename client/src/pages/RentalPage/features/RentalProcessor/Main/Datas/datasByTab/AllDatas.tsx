@@ -1,16 +1,14 @@
 import type { FC } from 'react';
 import { useToolStore } from '../../../../../../../zustand';
-import { Spin } from 'antd';
-import DataBox from '../teplate/DataBox';
+import DataRow from '../teplate/DataRow';
 import useViewTool from '../../../../../queries/tool/useViewTools';
 import DataLoading from '../teplate/DataLoading';
+import FetchDatasError from '../teplate/FetchDatasError';
 
 const AllDatas: FC = () => {
 
     const { page } = useToolStore();
     const { data, isLoading, error } = useViewTool(page);
-
-    console.log('all datas', data);
 
     if (isLoading) {
         return (
@@ -20,12 +18,12 @@ const AllDatas: FC = () => {
 
     if (error) {
         return (
-            'error...'
+            <FetchDatasError />
         );
     }
 
     return data?.result.map((tool) => (
-        <DataBox key={tool.tool_id} toolData={tool} />
+        <DataRow key={tool.tool_id} toolData={tool} />
     ));  
 };
 
