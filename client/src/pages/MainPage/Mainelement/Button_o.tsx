@@ -10,12 +10,12 @@ const Button_o: FC = () => {
             
             <div className='flex flex-col items-center justify-center gap-4 mt-[40px]'>
                 <div className='py-3 px-28 bg-02'>
-                  <Link to = {'/rent'}>
+                  <Link to = {'/rental'}>
                   기자재 대여 바로 가기 &gt;
                   </Link>
                 </div>
                 <div className='py-3 px-28 bg-02'>
-                  <Link to = {'/rent'}>
+                  <Link to = {'/rental'}>
                     강의실 대여 바로 가기 &gt;
                   </Link>
                 </div>

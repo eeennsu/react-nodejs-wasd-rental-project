@@ -9,7 +9,7 @@ const MainPage: FC = () => {
 
     return (
         <div className='w-full'>
-          <div className='fixed w-full top-28 bg-03 h-2/5 -z-10'>
+          <div className='fixed w-full top-28 bg-03 h-2/5'>
             <Button_o/>
             <Openchat/>
             <Rentlist/>
