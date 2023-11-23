@@ -7,7 +7,7 @@ import FetchDatasError from '../teplate/FetchDatasError';
 
 const TabletDatas: FC = () => {
 
-    const { page } = useToolStore();
+    const page = useToolStore(state => state.page);
     const { data, isLoading, error } = useRangeTool('타블렛', page);
 
     if (isLoading) {
