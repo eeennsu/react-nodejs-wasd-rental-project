@@ -15,7 +15,7 @@ router.post('/login',authController.login);
 router.post('/approveUser',checkToken,checkMaster,authController.approveUser);
 
 //회원가입 신청 목록 불러오기
-router.get('/listPendingUsers/:page/:pageLimit',checkToken,checkMaster,authController.listPendingUsers);
+router.get('/listPendingUsers',checkToken,checkMaster,authController.listPendingUsers);
 
 //아이디 중복확인
 router.post('/checkId',authController.checkId);

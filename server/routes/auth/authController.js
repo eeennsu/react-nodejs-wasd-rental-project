@@ -97,12 +97,10 @@ module.exports = {
     },
 
     listPendingUsers: (req,res)=>{
-        const page = req.params.page 
-        const pageLimit = req.params.pageLimit 
-        const userId = req.params.user_id
+       
         console.log(typeof(page))
         
-        authService.listPendingUsers(page,pageLimit)
+        authService.listPendingUsers()
         .then((result)=>{
             let obj = {};
             console.log(result.length)

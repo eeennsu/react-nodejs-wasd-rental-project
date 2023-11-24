@@ -106,18 +106,15 @@ module.exports = {
     });
   },
 
-  listPendingUsers: (page, pageLimit) => {
-    page = parseInt(page);
-    pageLimit = parseInt(pageLimit);
-    const pageOffset = (page - 1) * pageLimit;
+  listPendingUsers: () => {
+   
 
     return new Promise((resolve) => {
         User.findAll({
             where: {
                 manager_approval: false
             },
-            limit: pageLimit,
-            offset: pageOffset,
+           
             order: [['user_created_at', 'ASC']] // 가장 최근에 가입한 사용자부터 보여주기 위해
         })
         .then((result)=>{
