@@ -306,18 +306,18 @@ module.exports={
             ]
             })
             .then((result) => {
-
                 let objs = [];
 
-                let days;
+                //let days;
                 let Dday;
 
                 for (i = 0; i < result.length; i++) {
 
                     let obj = {};
 
-                    days = moment(result[i].rental_due_date).diff(moment(), 'days');
-
+                    //days = moment(result[i].rental_due_date).diff(moment(), 'days');
+                    let days = moment().diff(moment(result[i].rental_due_date), 'days');
+    
                     if (days > 0) {
                         Dday = "D - " + days;
                     } else if (days == 0) {

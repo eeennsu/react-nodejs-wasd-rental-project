@@ -115,7 +115,8 @@ module.exports = {
 
             if(result){
               obj["200"] = "OK";
-              obj["result"] = result;
+              obj["total"] = result.obj
+              obj["result"] = result.result;
               res.send(obj)
             }
             else if (result==false){
@@ -201,14 +202,15 @@ module.exports = {
           console.log(result)
           let obj = {};
 
-          if(result.length==0){
+          if(result.result.length==0){
             obj["200"] ="OK";
             obj["result"]= "검색어에 맞는 기기 혹은 강의실이 없습니다.";
             res.send(obj);
           }
           else if(result.length!==0){
             obj["200"] ="OK";
-            obj["result"] = result;
+            obj["total"] = result.obj
+            obj["result"] = result.result
             res.send(obj);
           }
           else{
@@ -228,14 +230,15 @@ module.exports = {
           
           let obj = {};
 
-          if(result.length==0){
+          if(result.sortedResult.length==0){
             obj["200"] ="OK";
             obj["err"]= errorCode.E18.message;
             res.send(obj);
           }
           else if (result.length !==0){
             obj["200"] ="OK";
-            obj["result"]= result;
+            obj["total"] = result.obj;
+            obj["result"]= result.sortedResult;
             res.send(obj);
           }
 

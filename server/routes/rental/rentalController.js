@@ -156,10 +156,9 @@ module.exports={
                 obj["err"] = errorCode.E00.message;
                 res.send(obj);
             } else {
-                console.log("이거찎힘?")
                 obj["200"]= "OK";
                 obj["result"] = result;
-                res.send(result);
+                res.status(200).json({ "200": "OK", result });
             }
             
         })
@@ -208,7 +207,7 @@ module.exports={
             } else {
                 obj["200"]= "OK";
                 obj["result"] = result;
-                res.send(result);
+                res.status(200).json({ "200": "OK", result });
             }
         })
     },

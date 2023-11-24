@@ -197,23 +197,27 @@ module.exports = {
   
     return new Promise((resolve) => {
       Tool.findAll({
-        // where: {
-        //   tool_id: {
-        //     [Op.like]: `%${toolId}%`, // toolName에 해당하는 항목 검색 (부분 일치)
-        //   },
-        // },
-        limit: pageLimit,
-        offset: pageOffset,
-        order: [['tool_id', 'ASC']], // tool_content 기준으로 내림차순 정렬
+
       })
-        .then((result) => {
-          console.log(result)
-          resolve(result);
+      .then((result)=>{
+        let obj = result.length
+
+        Tool.findAll({
+    
+          limit: pageLimit,
+          offset: pageOffset,
+          order: [['tool_id', 'ASC']], // tool_content 기준으로 내림차순 정렬
         })
-        .catch((error) => {
-          console.error('데이터 조회 중 오류 발생:', error);
-          resolve(false);
-        });
+          .then((result) => {
+            console.log(result)
+            resolve({obj,result});
+          })
+          .catch((error) => {
+            console.error('데이터 조회 중 오류 발생:', error);
+            resolve(false);
+          });
+      })
+      
     });
   },
   
@@ -287,15 +291,20 @@ module.exports = {
     page = parseInt(page);
     pageLimit = parseInt(pageLimit);
     console.log("검색어",toolSearch)
-  //   const searchConditions = Object.keys(Tool.rawAttributes).map(key => {
-  //     return { [key]: { [Op.like]: `%${toolSearch}%` } };
-  // });
-
-
     const pageOffset = (page - 1) * pageLimit;
+
     return new Promise((resolve)=>{
       Tool.findAll({
-      where:  {tool_content: {
+        where: {tool_content: {
+          [Op.like]: `%${toolSearch}%`
+        }}
+      })
+      .then((result)=>{
+        
+        let obj = result.length
+   
+         Tool.findAll({
+          where: {tool_content: {
           [Op.like]: `%${toolSearch}%`, // toolName에 해당하는 항목 검색 (부분 일치)
         }},
         // where: { [Op.or]: searchConditions },
@@ -304,14 +313,18 @@ module.exports = {
         order: [['tool_content', 'DESC']],
       })
       .then((result)=>{
-        resolve(result)
+        //result.push(obj)
+        resolve({obj,result})
       })
       .catch((err)=>{
         resolve("err")
       })
+      
+      })
+
+     
     })
   },
-
   rangeTool: (toolName,page,pageLimit) => {
     page = parseInt(page); //2
     pageLimit = parseInt(pageLimit); //10
@@ -319,8 +332,14 @@ module.exports = {
     console.log(pageOffset)
 
     return new Promise((resolve) => {
+    Tool.findAll({
+      where: { tool_name: {  [Op.like]: `%${toolName}%`} },
+    })
+    .then((result)=>{
+      let obj = result.length
+
       Tool.findAll({
-        where: { tool_name: toolName }, // tool_name을 사용하여 조건을 설정
+        where: { tool_name: {  [Op.like]: `%${toolName}%`} }, // tool_name을 사용하여 조건을 설정
         limit: pageLimit,
         offset: pageOffset,   
       })
@@ -331,12 +350,15 @@ module.exports = {
             const numberB = parseInt(b.tool_content.match(/\d+/)[0]);
             return numberA - numberB;
         });
-        resolve(sortedResult);
+        resolve({obj,sortedResult});
     })
         .catch((error) => {
           console.error('데이터 조회 중 오류 발생:', error);
           resolve("err");
         });
+    })
+      
+      
     });
   },
 
