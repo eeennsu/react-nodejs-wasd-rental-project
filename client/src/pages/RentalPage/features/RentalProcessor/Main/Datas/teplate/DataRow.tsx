@@ -10,8 +10,8 @@ const regex = /\d+번/; // 숫자(\d)가 하나 이상 있는 "숫자번" 패턴
 
 const DataRow: FC<Props> = ({ toolData }) => {
 
-    const { setIsModalOpen } = useStepStore();
-    const { setTool } = useToolStore();
+    const setIsModalOpen  = useStepStore(state => state.setIsModalOpen);
+    const setTool = useToolStore(state => state.setTool);
 
     const handleClick = () => {
         setTool(toolData);

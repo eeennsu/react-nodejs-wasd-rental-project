@@ -9,8 +9,6 @@ import SampleLogin from './pages/SampleLogin/SampleLogin';
 import RequireAuth from './layout/auth/RequireAuth';
 import Unauthorized from './layout/auth/Unauthorized';
 
-
-
 const App = () => {
     
     return (

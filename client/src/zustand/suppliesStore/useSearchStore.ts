@@ -1,8 +1,8 @@
-import { create } from 'zustand';
+import { createWithEqualityFn } from 'zustand/traditional';
 import { devtools } from 'zustand/middleware';
 import { ISearchStore } from './types';
 
-const useSearchStore = create<ISearchStore>()(
+const useSearchStore = createWithEqualityFn<ISearchStore>()(
     devtools(
         (set) => ({
             searchTerm: '',

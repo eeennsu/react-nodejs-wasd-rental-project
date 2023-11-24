@@ -8,7 +8,7 @@ import axiosPu, { PAGE_LIMIT } from '../config/axiosPu';
 */
 
 // 회원가입
-export const signUp_API = (detailUser: SignUpUser) => axiosPu.post<ResSignUp>('/auth/signUp', detailUser);
+export const signUp_API = (signUpUser: SignUpUser) => axiosPu.post<ResSignUp>('/auth/signUp', signUpUser);
 
 // 로그인
 export const login_API = (user: LoginUser) => axiosPu.post<ResLogin>('/auth/login', user);

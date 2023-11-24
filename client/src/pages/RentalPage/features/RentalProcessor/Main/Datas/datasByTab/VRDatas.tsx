@@ -7,7 +7,7 @@ import FetchDatasError from '../teplate/FetchDatasError';
 
 const VRDatas: FC = () => {
 
-    const { page } = useToolStore();
+    const page = useToolStore(state => state.page);
     const { data, isLoading, error } = useRangeTool('VR 실습기기', page);
 
     if (isLoading) {

@@ -21,4 +21,3 @@ const RentalPage: FC = () => {
 };
 
 export default RentalPage;
-

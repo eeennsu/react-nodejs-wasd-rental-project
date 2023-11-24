@@ -6,10 +6,10 @@ import DataLoading from '../teplate/DataLoading';
 
 const ClassRoomDatas: FC = () => {
 
-    // const { page } = useToolStore();
-    // const { data, isLoading, error } = useRangeTool('x', page);
+    const page = useToolStore(state => state.page);
+    const { data, isLoading, error } = useRangeTool('x', page);
 
-    // console.log('classRoomData', data);
+    console.log('classRoomData', data);
 
     return (
         <>
@@ -22,7 +22,7 @@ const ClassRoomDatas: FC = () => {
                     ))                
                 )
             } */}
-            강의실은 보류
+            강의실은 보류, 강의실만 추출하는 법이 없음
         </>
     );
 };
