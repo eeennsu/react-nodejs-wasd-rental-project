@@ -6,8 +6,8 @@ import DataLoading from '../teplate/DataLoading';
 
 const ClassRoomDatas: FC = () => {
 
-    const page = useToolStore(state => state.page);
-    const { data, isLoading, error } = useRangeTool('x', page);
+    const curPage = useToolStore(state => state.curPage);
+    const { data, isLoading, error } = useRangeTool('x', curPage);
 
     console.log('classRoomData', data);
 

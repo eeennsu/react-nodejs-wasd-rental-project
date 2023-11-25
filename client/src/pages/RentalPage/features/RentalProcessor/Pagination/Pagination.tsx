@@ -108,12 +108,16 @@ const Pagination: FC = () => {
 
     const activeTab = useTabsStore(state => state.activeTab);
 
-    const { curPage, setPage } = useToolStore(state => ({
-        curPage: state.page, setPage: state.setPage
+    const { 
+        curPage, setCurPage,
+        totalPage, 
+    } = useToolStore(state => ({
+        curPage: state.curPage, setCurPage: state.setCurPage,
+        totalPage: state.totalPage,
     }), shallow);
     
     const handleCurPageChange = (page: number, pageSize: number) => {
-        setPage(page);
+        setCurPage(page);
     }
 
     const itemRender = (page: number, type: "page" | "prev" | "next" | "jump-prev" | "jump-next", element: ReactNode): ReactNode => {
@@ -128,12 +132,14 @@ const Pagination: FC = () => {
         return element;
     }
 
+    console.log('totalPage', totalPage);
+
     return (
         <AntdPagination 
             defaultCurrent={1}
             current={curPage}
             onChange={handleCurPageChange} 
-            total={activeTab === 0 ? 48 : activeTab === 1 ? 21 : activeTab === 2 ? 19 : 8}
+            total={totalPage}
             itemRender={itemRender}  
             showQuickJumper={false}
             showSizeChanger={false}

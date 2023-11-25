@@ -11,8 +11,9 @@ const useOneViewTool = (tool_id: string) => {
     });
 
     return {
-        data: data?.data, error, isLoading
+        data: data?.data ?? null, error, isLoading
     };
 }
 
-export default useOneViewTool;
+export default useOneViewTool;    ;
+

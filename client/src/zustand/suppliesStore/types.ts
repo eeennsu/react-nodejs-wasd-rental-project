@@ -28,8 +28,11 @@ export interface IToolStore {
     toolImg: ToolImage | null | undefined;
     setToolImg: (img: ToolImage | null | undefined) => void;
 
-    page: number;
-    setPage: (page: number) => void;    
+    curPage: number;
+    setCurPage: (curPage: number) => void;   
+    
+    totalPage: number;
+    setTotalPage: (page: number) => void;
 }
 
 export interface ISearchStore {

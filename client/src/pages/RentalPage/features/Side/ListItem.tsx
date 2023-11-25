@@ -30,6 +30,7 @@ const DetailsItem: FC<Props> = ({ item }) => {
 export default DetailsItem;
 
 
+
 export const Skeleton: FC = () => {
     
     return (

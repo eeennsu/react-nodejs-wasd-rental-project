@@ -1,33 +1,33 @@
 import type { FC, PropsWithChildren } from 'react';
 import { useMemo } from 'react';
 import ListItem, { Skeleton } from './ListItem';
-import Spinner from '../../../../components/Spinner';
 
 type Props = {
     title: string;
-    data?: ResMyRentalList | ResMyLateRentalList;
+    rentalInfos?: ExistCurRental[] | string;
     isLoading: boolean;
     error: Error | unknown;
 }
 
-const MyRentalInfo: FC<Props> = ({ title, data, isLoading, error }) => {
+const MIN_LENGTH = 7;
+
+const MyRentalInfo: FC<Props> = ({ title, rentalInfos, isLoading, error }) => {
     
-    const minLength = 7;
-    const defaultItems = Array.from({ length: minLength }, () => '');
+    const defaultItems = Array.from({ length: MIN_LENGTH }, () => '');
 
     const minItems = useMemo(() => {
-        if (data && Array.isArray(data)) {
-            const items = data as ExistCurRental[];
+        if (rentalInfos && Array.isArray(rentalInfos)) {
+            const items = rentalInfos as ExistCurRental[];
 
-            if (items.length <= minLength) {
+            if (items.length <= MIN_LENGTH) {
                 return defaultItems.map((_, i) => items[i]);
             } else {
-                return data;
+                return rentalInfos;
             }
         }
 
         return undefined;
-    }, [data, defaultItems]);
+    }, [rentalInfos, defaultItems]);
 
     return (
         <div className='flex flex-col items-center shadow-left w-[130px] md:w-[150px]'>
@@ -35,29 +35,35 @@ const MyRentalInfo: FC<Props> = ({ title, data, isLoading, error }) => {
                 {title}
             </h2>
             {
-                isLoading ? (
-                    <ul className='h-[203px] flex flex-col bg-03 w-full pt-2'>
-                        <Skeleton />
-                        <Skeleton />
-                        <Skeleton />
-                    </ul>
+                error ? (
+                    <EmptyContainer>
+                        <DangerError />
+                    </EmptyContainer>
                 ) : (
-                    minItems ? (
-                        <RentalList>
-                            {
-                                minItems?.map((rental, i) => (
-                                    <ListItem key={i} item={rental} />
-                                ))
-                            }
-                        </RentalList>
+                    isLoading ? (
+                        <EmptyContainer>
+                            <Skeleton />
+                            <Skeleton />
+                            <Skeleton />
+                        </EmptyContainer>
                     ) : (
-                        <RentalList>
-                            {
-                                Array.from({ length: 7 }, () => '').map((_, i) => (
-                                    <ListItem key={i} />
-                                ))
-                            }
-                        </RentalList>                   
+                        minItems ? (
+                            <RentalList>
+                                {
+                                    minItems?.map((rental, i) => (
+                                        <ListItem key={i} item={rental} />
+                                    ))
+                                }
+                            </RentalList>
+                        ) : (
+                            <RentalList>
+                                {
+                                    Array.from({ length: 7 }, () => '').map((_, i) => (
+                                        <ListItem key={i} />
+                                    ))
+                                }
+                            </RentalList>                   
+                        )
                     )
                 )
             }
@@ -73,5 +79,28 @@ const RentalList: FC<PropsWithChildren> = ({ children }) => {
         <ul className='w-full overflow-x-auto overflow-y-auto list-none list-inside text whitespace-nowrap h-[203px] my-scr'>
             {children}
         </ul>
+    );
+}
+
+const EmptyContainer: FC<PropsWithChildren> = ({ children }) => {
+
+    return (
+        <ul className='h-[203px] flex flex-col bg-03 w-full pt-2'>
+            {children}
+        </ul>
+    )
+}
+
+const DangerError: FC = () => {
+
+    return (
+        <div className='flex flex-col items-center justify-center h-full px-2 py-2 text-xs opacity-75' role="alert">
+            <div className="w-full px-4 py-2 font-bold text-white bg-red-500 rounded-t">
+                Danger
+            </div>
+            <div className="px-4 py-3 text-red-700 bg-red-100 border border-t-0 border-red-400 rounded-b ">
+                <p>에러가 발생하였습니다. 관리자에게 문의해 주세요.</p>
+            </div>
+        </div>
     );
 }

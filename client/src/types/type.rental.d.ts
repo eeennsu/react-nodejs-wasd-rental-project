@@ -51,9 +51,9 @@ interface ResExtensionTool {
     err?: string;
 }
 
-type ResMyRentalList = ExistCurRental[] | {
-    "200": OK;
-    result: string;
+interface ResMyRentalList {
+    '200': OK;
+    result: ExistCurRental[] | string;
 }
 
 // 오류 수정 중
@@ -66,17 +66,14 @@ interface ResMyAllRentalList {
     result: RentalInfo | string;
 }
 
-type ResMyLateRentalList = ExistCurRental[] | {
-    "200": OK;
-    result: string;
+interface ResMyLateRentalList {
+    '200': OK;
+    result: ExistCurRental[] | string;
 }
 
 interface ResLateRentalList {
     '200': OK;
-    result: Array<{
-        '200': OK;
-        result: RentalInfo | string;
-    }> | string;
+    result: ExistCurRental[] | string;
 }
 
 interface ResRentalTableAll {

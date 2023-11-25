@@ -1,6 +1,8 @@
 import { AxiosError, AxiosResponse } from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { rangeTool_API } from '../../../../api/tool/toolApis';
+import { useEffect } from 'react';
+import { useToolStore } from '../../../../zustand';
 
 const useRangeTool = (tool_name: ToolName, page: number) => {
 
@@ -11,8 +13,14 @@ const useRangeTool = (tool_name: ToolName, page: number) => {
         keepPreviousData: true,
     });
 
+    const setTotalPage = useToolStore(state => state.setTotalPage);
+
+    useEffect(() => {
+        data?.data.total && setTotalPage(data.data.total);
+    }, [data]);
+
     return {
-        data: data?.data, error, isLoading
+        data: data?.data ?? null, error, isLoading
     };
 }
 

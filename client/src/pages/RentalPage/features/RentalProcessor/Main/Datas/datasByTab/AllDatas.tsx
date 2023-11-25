@@ -7,8 +7,8 @@ import FetchDatasError from '../teplate/FetchDatasError';
 
 const AllDatas: FC = () => {
 
-    const page = useToolStore(state => state.page);
-    const { data, isLoading, error } = useViewTool(page);
+    const curPage = useToolStore(state => state.curPage);
+    const { data, isLoading, error } = useViewTool(curPage);
    
     console.log(data);
 

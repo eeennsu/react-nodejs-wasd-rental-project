@@ -7,14 +7,15 @@ type Props = {
 
 const TabButton: FC<PropsWithChildren<Props>> = ({ children, idx }) => {
 
-    const { activeTab, setActiveTab } = useTabsStore();
-    const { setSearchTerm }  = useSearchStore();
-    const { setPage } = useToolStore();
+    const activeTab = useTabsStore(state => state.activeTab);
+    const setActiveTab = useTabsStore(state => state.setActiveTab);
+    const setSearchTerm  = useSearchStore(state => state.setSearchTerm);
+    const setCurPage = useToolStore(state => state.setCurPage);
 
     const handleSetActiveTab = () => {
         setSearchTerm('');
         setActiveTab(idx as ActiveTab);   
-        setPage(1);
+        setCurPage(1);
     }
 
     if (activeTab === idx) {

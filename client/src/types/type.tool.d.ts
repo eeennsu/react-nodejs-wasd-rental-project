@@ -65,18 +65,21 @@ interface ResOneViewTool {
 // 기자재 전체 조회 response
 interface ResViewTools {
     '200': OK;
+    total: number;
     result: Tool[];
 }
 
 // 기자재 검색 response 
 interface ResSearchTool {
     '200': OK;
+    total: number;
     result: Tool[];
 }
 
 // 기자재 유형에 따른 정렬 response
 interface ResRangeTool {
     '200': OK;
+    total: number;
     result: Tool[];
 }
 
