@@ -25,10 +25,28 @@ router.get("/myLateRentalList/:user_id",checkToken,checkOne,rentalController.myL
 
 //연체 중인 사용자 목록
 router.get("/LateRentalList",checkToken,checkMaster,rentalController.LateRentalList);
-//checkToken,checkMaster,
+
 //rental DB에 있는 모든 정보 불러오기
 router.get("/rentalTableAll",checkToken,checkMaster,rentalController.rentalTableAll);
 
+//강의실 대여
 router.post('/rentalClassRoom',rentalController.rentalClassRoom);
+
+//대여중인 타블렛, vr기기 보기
+router.post('/rentalToolList',rentalController.rentalToolList);
+
+//강의실 반납
+router.post('/returnClassRoom',rentalController.returnClassRoom);
+
+//대여중인 강의실 
+router.get('/NotClassCount/:tool_id',rentalController.NotClassCount);
+
+
+
+//ViewRental타블렛, VR기기 자세히 보기
+
+//ViewClassRoom강의실 대여 자세히 보기
+
+
 
 module.exports = router;

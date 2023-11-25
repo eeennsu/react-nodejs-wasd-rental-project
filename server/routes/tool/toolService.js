@@ -336,6 +336,7 @@ module.exports = {
       where: { tool_name: {  [Op.like]: `%${toolName}%`} },
     })
     .then((result)=>{
+     
       let obj = result.length
 
       Tool.findAll({
@@ -350,6 +351,7 @@ module.exports = {
             const numberB = parseInt(b.tool_content.match(/\d+/)[0]);
             return numberA - numberB;
         });
+       
         resolve({obj,sortedResult});
     })
         .catch((error) => {
@@ -358,6 +360,7 @@ module.exports = {
         });
     })
       
+
       
     });
   },

@@ -85,6 +85,51 @@ module.exports={
         
     },
 
+    returnClassRoom:(req,res)=>{
+        const body = req.body
+        rentalService.returnClassRoom(body)
+        .then((result)=>{
+            console.log(result)
+            let obj={}
+            if(result=="err"){
+                obj["200"] = "OK"
+                obj["msg"] = errorCode.E00.message;
+                res.send(obj)
+            }
+            else{
+                obj["200"] = "OK"
+                obj["result"] = result
+                res.send(obj)
+            }
+        })
+    },
+
+    NotClassCount:(req,res)=>{
+         const toolId = req.params.tool_id
+         console.log(toolId)
+        rentalService.NotClassCount(toolId)
+        .then((result)=>{
+            let obj={};
+            if(result==false){
+                obj["200"] = "OK"
+                obj["msg"] = errorCode.E00.message;
+                res.send(obj)
+            }
+            else if(result=="err"){
+                obj["200"] = "OK"
+                obj["msg"] = errorCode.E00.message;
+                res.send(obj)
+            }
+            else{
+                obj["200"] = "OK"
+                obj["result"] = result;
+                res.send(obj)
+            }
+        })
+    },
+
+   
+
     returnTool: (req, res) => {
         const body = req.body;
             rentalService.returnTool(body)
@@ -258,6 +303,31 @@ module.exports={
                 res.send(obj);
             }
             
+        })
+    },
+
+    rentalToolList:(req,res)=>{
+
+        rentalService.rentalToolList()
+        .then((result)=>{
+           
+            let obj = {};
+
+            if(result.length==0){
+                obj["200"] = "Ok"
+                obj["msg"] = "대여중인 기자재가 없습니다"
+                res.send(obj);
+            }
+            else if(result=="err"){
+                obj["200"] = "Ok"
+                obj["msg"] = errorCode.E00.message
+                res.send(obj);
+            }
+            else{
+                obj["200"] = "Ok"
+                obj["result"] = result
+                res.send(obj);
+            }
         })
     },
 

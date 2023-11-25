@@ -41,5 +41,15 @@ module.exports = {
             }
         })
 
+    },
+
+    ViewRental:(req,res)=>{
+        departmentId=req.params.department_id
+        testService.ViewRental(departmentId)
+        .then((result)=>{
+            console.log(result)
+            let obj ={}
+            res.send(result)
+        })
     }
 }

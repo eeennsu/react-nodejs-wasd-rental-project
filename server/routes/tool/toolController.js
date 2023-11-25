@@ -227,7 +227,7 @@ module.exports = {
         const pageLimit = req.params.pageLimit 
         toolService.rangeTool(toolName,page,pageLimit)
         .then((result)=>{
-          
+        
           let obj = {};
 
           if(result.sortedResult.length==0){
@@ -386,5 +386,7 @@ module.exports = {
           }
         })
       },
+
+      
 }
 
