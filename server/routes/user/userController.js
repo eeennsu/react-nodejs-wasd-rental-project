@@ -20,7 +20,7 @@ module.exports = {
                 res.send(obj);
             } else {
                 obj["200"] = 'OK';
-                obj['err'] = result;
+                obj['result'] = result;
                 res.send(obj);
             }
         });
