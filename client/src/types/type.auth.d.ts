@@ -1,8 +1,9 @@
 type UserLicense = 1 | 4;
 
-await signUp_API({
-    user_id: 'adasd'
-});
+interface Department {
+    department_id: number;
+    department_name: string;
+}
 
 // signUp API의 매개변수 회원가입할 때 필요한 유저 정보를 담고 있음
 interface SignUpUser {

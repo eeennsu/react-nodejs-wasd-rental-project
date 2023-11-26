@@ -17,13 +17,13 @@ export const returnTool_API = (returnToolInfo: ReturnTool) => axiosPri.post<ResR
 export const extensionTool_API = (extensionTool: ExtensionTool) => axiosPri.post<ResExtensionTool>('/rental/extensionTool', extensionTool);
 
 // 유저 토큰 필요 / 강의실 대여
-export const rentalClassRoom_API = (rentalClassRoom: RentalClassRoom) => axiosPri.post<ResRentalClassRoom>('/rental/rentalClassRoom', rentalClassRoom);
+export const rentalClassRoom_API = (rentalClassRoom: RentalClassroom) => axiosPri.post<ResRentalClassroom>('/rental/rentalClassRoom', rentalClassRoom);
 
 // 유저 토큰 필요 / 강의실 반납
-export const returnClassRoom_API = (returnClassRoom: ReturnClassRoom) => axiosPri.post<ResReturnClassRoom>('/rental/returnClassRoom', returnClassRoom);
+export const returnClassRoom_API = (returnClassRoom: ReturnClassroom) => axiosPri.post<ResReturnClassroom>('/rental/returnClassRoom', returnClassRoom);
 
 // 토큰 필요 x / 대여 중인 강의실 불러오기
-export const notClassRoomCount_API = (tool_id: string) => axiosPub.get<ResNotClassRoomCount>(`/rental/notClassRoomCount/${tool_id}`);
+export const notClassroomCount_API = (tool_id: string) => axiosPub.get<ResNotClassroomCount>(`/rental/notClassCount/${tool_id}`);
 
 // 토큰 필요 x / 대여 중인 VR, 테블릿 모두 불러오기
 export const viewRental_API = (department_id: string) => axiosPub.get<ResViewRental>(`/rental/viewRental/${department_id}`);

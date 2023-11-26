@@ -51,7 +51,7 @@ interface ResExtensionTool {
     err?: string;
 }
 
-interface RentalClassRoom {
+interface RentalClassroom {
     tool_id: string;
     user_id: string;
     rental_date: string;
@@ -59,7 +59,7 @@ interface RentalClassRoom {
     department_id: string;
 }
 
-interface ResRentalClassRoom {
+interface ResRentalClassroom {
     '200': OK;
     result: {
         log_id: number;
@@ -70,13 +70,13 @@ interface ResRentalClassRoom {
     }
 }
 
-interface ReturnClassRoom {
+interface ReturnClassroom {
     tool_id: string;
     user_id: string;
     rental_id: string;
 }
 
-interface ResReturnClassRoom {
+interface ResReturnClassroom {
     '200': OK;
     result: {
         log_id: number;
@@ -87,11 +87,11 @@ interface ResReturnClassRoom {
     }
 }
 
-interface NotClassRoomCount {
+interface NotClassroomCount {
     tool_id: string;
 }
 
-interface ResNotClassRoomCount {
+interface ResNotClassroomCount {
     '200': OK;
     result: Array<{
         rental_id: number;

@@ -1,4 +1,3 @@
-// err?? API 확인필요
 interface ResViewInfo {
     '200': OK;
     result?: {

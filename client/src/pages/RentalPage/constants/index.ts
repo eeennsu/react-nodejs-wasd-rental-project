@@ -13,13 +13,13 @@ export const classRoom = {
 }
 
 export const repairResons: string[] = [
-    '이유 01 LROROERE',
-    '이유 02 LROROERE',
-    '이유 03 LROROERE',
-    '이유 04 LROROERE',
-    '이유 05 LROROERE',
-    '이유 06 LROROERE',
-    '이유 07 LROROERE',
+    '이유 01',
+    '이유 02',
+    '이유 03',
+    '이유 04',
+    '이유 05',
+    '이유 06',
+    '이유 07',
 ];
 
 export const minutes: number[] = [0, 1, 2, 3, 4, 5];

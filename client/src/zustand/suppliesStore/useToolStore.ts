@@ -23,9 +23,6 @@ const useToolStore = createWithEqualityFn<IToolStore>()(
             tool: null,
             setTool: (tool) => set(() => ({ tool })),
 
-            classRoom: null,
-            setClassRoom: (classRoom) => set(() => ({ classRoom })),
-            
             toolImg: null,
             setToolImg: (img) => set(() => ({ toolImg: img })),
 
