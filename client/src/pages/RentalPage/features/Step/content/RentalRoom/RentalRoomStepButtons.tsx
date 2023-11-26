@@ -3,24 +3,32 @@ import Button from '../../../../../../components/Button';
 import useStoreController from '../../../../../../hooks/commons/useStoreController';
 import { message } from 'antd';
 import { useStepStore, useTimeStore } from '../../../../../../zustand';
+import { shallow } from'zustand/shallow';
 
 const RentalRoomStepButtons: FC = () => {
 
     const { 
         text, setText, 
-        selectedRoom, 
-        setSystemStep 
-    } = useStepStore();
+        selectedRoom, setSystemStep 
+    } = useStepStore(state => ({
+        text: state.text, setText: state.setText,
+        selectedRoom: state.selectedRoom, setSystemStep: state.setSystemStep
+    }), shallow);
 
     const {
         rentDate,
         firstSelectHour, firstSelectMin,
         lastSelectHour, lastSelectMin,
         resetTimes
-    } = useTimeStore();
+    } = useTimeStore(state => ({
+        rentDate: state.rentDate,
+        firstSelectHour: state.firstSelectHour, firstSelectMin: state.firstSelectMin, 
+        lastSelectHour: state.lastSelectHour, lastSelectMin: state.lastSelectMin,
+        resetTimes: state.resetTimes
+    }), shallow);
 
     const handleDescRoomStep = () => {
-        setSystemStep('LR_DESC');    
+        setSystemStep('CLASSROOM_DESC');    
         text.length >= 1 && setText('');     
         resetTimes();
     }

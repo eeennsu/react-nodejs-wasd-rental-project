@@ -22,9 +22,6 @@ export interface IToolStore {
     tool: Tool | null;
     setTool: (tool: Tool | null) => void;
 
-    classRoom: ClassRoom | null;
-    setClassRoom: (vr: ClassRoom | null) => void;
-
     toolImg: ToolImage | null | undefined;
     setToolImg: (img: ToolImage | null | undefined) => void;
 
@@ -47,8 +44,8 @@ export interface ISearchStore {
 
     // searchedClassRooms: ClassRoom[] | null;
     // setSearchedClassRooms: (datas: ClassRoom[]) => void;
-    searchedResults: AllSuppliesArr;
-    setSearchedResults: (results: AllSuppliesArr) => void;
+    // searchedResults: AllSuppliesArr;
+    // setSearchedResults: (results: AllSuppliesArr) => void;
 }
 
 export interface IStepStore {

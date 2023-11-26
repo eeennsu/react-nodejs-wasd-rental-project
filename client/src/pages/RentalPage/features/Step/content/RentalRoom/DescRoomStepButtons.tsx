@@ -12,7 +12,7 @@ const DescRoomButtons: FC = () => {
     }
 
     const handleRentStep = () => {
-        setSystemStep('LR_RENT');
+        setSystemStep('CLASSROOM_RENT');
     } 
 
     return (

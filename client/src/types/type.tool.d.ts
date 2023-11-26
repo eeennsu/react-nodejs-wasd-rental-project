@@ -1,5 +1,8 @@
-type ToolName = 'VR 실습기기' | '타블렛' | 'x';
+type TabName = '전체' | 'VR' | 'TABLET' | 'LECTURE_ROOM';
+type ActiveTab = 0 | 1 | 2 | 3;
+type ToolName = 'VR 실습기기' | '타블렛' | '강의실';
 type ToolState = '대여가능' | '대여중' | '대여불가';
+type SystemStep = 'INIT' | 'TOOL_REPAIR' | 'TOOL_RENT' | 'CLASSROOM_DESC' | 'CLASSROOM_RENT' ;
 
 interface Tool {
     department_id: number;

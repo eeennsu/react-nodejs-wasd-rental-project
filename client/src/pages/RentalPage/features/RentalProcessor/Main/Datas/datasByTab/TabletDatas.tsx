@@ -22,8 +22,8 @@ const TabletDatas: FC = () => {
         );
     }
 
-    return data?.result.map((tool) => (
-        <DataRow key={tool.tool_id} toolData={tool} />
+    return data?.result.map((tabletData) => (
+        <DataRow key={tabletData.tool_id} data={tabletData} />
     ));  
 };
 

@@ -13,8 +13,8 @@ const DescTool: FC = () => {
         tool: state.tool,
         setToolImg: state.setToolImg
     }), shallow);
-    
-    const { data, isLoading, error } = useOneViewTool(tool!.tool_id);
+
+    const { data, isLoading, error } = useOneViewTool(tool?.tool_id as string);
     const src = new URL(data?.result.img.img_url!, import.meta.env.VITE_LOCAL_SERVER_URL).href;
 
     useEffect(() => {
@@ -24,7 +24,11 @@ const DescTool: FC = () => {
     return (
         <section className='md:h-[480px] grid grid-cols-2 gap-5'>
             <div className='w-full h-full'>
-                <img src={data && src} className='object-contain w-full h-full' alt={`${tool?.tool_content} 이미지` } /> 
+                {
+                    data && (
+                        <img src={src} className='object-contain w-full h-full shadow-lg hover:shadow-2xl' alt={`${tool?.tool_content} 이미지` } />
+                    )
+                }
             </div>              
             <div className='flex flex-col justify-between '>
                 <div className='mt-8'>

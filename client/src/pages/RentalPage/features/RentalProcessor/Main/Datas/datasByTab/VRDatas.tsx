@@ -22,8 +22,8 @@ const VRDatas: FC = () => {
         );
     }
 
-    return data?.result.map((tool) => (
-        <DataRow key={tool.tool_id} toolData={tool} />
+    return data?.result.map((vrData) => (
+        <DataRow key={vrData.tool_id} data={vrData} />
     ));  
 };
 

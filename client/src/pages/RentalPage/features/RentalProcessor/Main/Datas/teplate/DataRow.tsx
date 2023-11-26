@@ -3,36 +3,37 @@ import { useStepStore, useToolStore } from '../../../../../../../zustand';
 import DataTemplate from './DataTemplate';
 
 type Props = {
-    toolData: Tool;
+    data: Tool;
 }
 
 const regex = /\d+번/; // 숫자(\d)가 하나 이상 있는 "숫자번" 패턴
 
-const DataRow: FC<Props> = ({ toolData }) => {
+const DataRow: FC<Props> = ({ data }) => {
 
-    const setIsModalOpen  = useStepStore(state => state.setIsModalOpen);
     const setTool = useToolStore(state => state.setTool);
+    const setIsModalOpen  = useStepStore(state => state.setIsModalOpen);
+    const setSystemStep = useStepStore(state => state.setSystemStep);
 
     const handleClick = () => {
-        setTool(toolData);
+        setTool(data);
 
-        setIsModalOpen(true);
+        data.tool_name === '강의실' ? setSystemStep('CLASSROOM_DESC') : setIsModalOpen(true);
     }
 
-    const match = toolData.tool_name !== 'x' && toolData.tool_content.match(regex);
+    const match = data.tool_name !== '강의실' && data.tool_content.match(regex);
 
     return (
         <DataTemplate onClick={handleClick}>
             <div>
-                {toolData.tool_code !== 'x' ? `${match}` : toolData.tool_id}
+                {data.tool_code !== 'x' ? `${match}` : data.tool_id}
             </div>
             <div className='flex gap-1 mx-1'>               
                 {' / '}
-                {toolData.tool_name}            
+                {data.tool_name}            
                 {' / '}
             </div>
             <div>
-                {toolData.tool_state}
+                {data.tool_state}
             </div>
         </DataTemplate>
     );

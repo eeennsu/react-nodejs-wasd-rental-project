@@ -15,8 +15,8 @@ export const getContent = (step: SystemStep) => {
         case 'TOOL_RENT':
             return <RentalTool />
 
-        case 'LR_DESC': 
-        case 'LR_RENT': 
+        case 'CLASSROOM_DESC': 
+        case 'CLASSROOM_RENT': 
             return <RentRoom />
 
         default: throw new Error(`Unknown step value : ${step}`);

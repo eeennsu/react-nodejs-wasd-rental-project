@@ -3,28 +3,30 @@ import { useToolStore } from '../../../../../../../zustand';
 import DataRow from '../teplate/DataRow';
 import useRangeTool from '../../../../../queries/tool/useRangeTool';
 import DataLoading from '../teplate/DataLoading';
+import FetchDatasError from '../teplate/FetchDatasError';
 
 const ClassRoomDatas: FC = () => {
 
     const curPage = useToolStore(state => state.curPage);
-    const { data, isLoading, error } = useRangeTool('x', curPage);
+    const { data, isLoading, error } = useRangeTool('강의실', curPage);
 
     console.log('classRoomData', data);
 
-    return (
-        <>
-            {/* {
-                isLoading ? (
-                    <DataLoading />
-                ) : (
-                    data?.result.map((tool) => (
-                        <DataRow key={tool.tool_id} toolData={tool} />
-                    ))                
-                )
-            } */}
-            강의실은 보류, 강의실만 추출하는 법이 없음
-        </>
-    );
+    if (isLoading) {
+        return (
+            <DataLoading />
+        );
+    }
+
+    if (error) {
+        return (
+            <FetchDatasError />
+        );
+    }
+
+    return data?.result.map((classRoomData) => (
+        <DataRow key={classRoomData.tool_id} data={classRoomData} />
+    ));  
 };
 
 export default ClassRoomDatas;
