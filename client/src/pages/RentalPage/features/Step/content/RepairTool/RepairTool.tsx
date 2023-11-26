@@ -21,9 +21,8 @@ const RepairTool: FC = () => {
         setText: state.setText
     }), shallow);
 
-    const { tool, toolImg } = useToolStore(state => ({
-        tool: state.tool,
-        toolImg: state.toolImg
+    const { tool, setTool, toolImg } = useToolStore(state => ({
+        tool: state.tool, setTool: state.setTool, toolImg: state.toolImg,
     }), shallow);
     
     const { handleStepInit } = useStoreController();
@@ -92,6 +91,7 @@ const RepairTool: FC = () => {
 
     const handleBack = () => {
         handleStepInit(activeTab);
+        setTool(null);
     }
 
     return (

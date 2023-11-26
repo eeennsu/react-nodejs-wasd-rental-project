@@ -6,7 +6,8 @@ const { TextArea } = Input;
 
 const RentalReson: FC = () => {
 
-    const { text, setText } = useStepStore();
+    const text = useStepStore(state => state.text);
+    const setText = useStepStore(state => state.setText);
 
     const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setText(e.target.value);

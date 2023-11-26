@@ -17,8 +17,8 @@ const useSearchStore = createWithEqualityFn<ISearchStore>()(
             // searchedLectureRooms: null,
             // setSearchedLectureRooms: (searchedLectureRooms) => set(() => ({ searchedLectureRooms }), false, 'SET_SEARCHED_LECTURE_ROOMS'),
 
-            searchedResults: [],
-            setSearchedResults: (results) => set(() => ({ searchedResults: results }), false ,'SET_SEARCHED_RESULTS'),
+            // searchedResults: [],
+            // setSearchedResults: (results) => set(() => ({ searchedResults: results }), false ,'SET_SEARCHED_RESULTS'),
         }),
     )
 );

@@ -1,10 +1,15 @@
 import type { FC } from 'react';
 import { useStepStore } from '../../../../../../zustand';
+import { shallow } from 'zustand/shallow';
 import Button from '../../../../../../components/Button';
 
 const DescRoomButtons: FC = () => {
 
-    const { setSystemStep, selectedRoom, setSelectedRoom } = useStepStore();
+    const { setSystemStep, selectedRoom, setSelectedRoom } = useStepStore(state => ({
+        setSystemStep: state.setSystemStep,
+        selectedRoom: state.selectedRoom,
+        setSelectedRoom: state.setSelectedRoom
+    }), shallow);
 
     const handleInitStep = () => {
         setSystemStep('INIT');

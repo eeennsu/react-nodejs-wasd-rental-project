@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import { useTimeStore } from '../../../../../../../zustand';
 import { message } from 'antd';
 import { useState, useEffect } from 'react';
+import { shallow } from 'zustand/shallow';
 
 type Props = {
     startHour: number;
@@ -18,7 +19,15 @@ const MinArea: FC<Props> = ({ startHour, startMin }) => {
         setFirstSelectHour, setFirstSelectMin,
         setLastSelectHour, setLastSelectMin,
         timeBtnsResetTrigger,
-    } = useTimeStore();
+    } = useTimeStore(state => ({
+        roomStatus: state.roomStatus,
+        selectStatus: state.selectStatus, setSelectStatus: state.setSelectStatus,
+        firstSelectHour: state.firstSelectHour, firstSelectMin: state.firstSelectMin, 
+        lastSelectHour: state.lastSelectHour, lastSelectMin: state.lastSelectMin,
+        setFirstSelectHour: state.setFirstSelectHour, setFirstSelectMin: state.setFirstSelectMin,
+        setLastSelectHour: state.setLastSelectHour, setLastSelectMin: state.setLastSelectMin,
+        timeBtnsResetTrigger: state.timeBtnsResetTrigger
+    }), shallow);
 
     const [isSelected, setIsSelected] = useState<boolean>(false);
     const [isPrevTimes, setIsPrevTimes] = useState<boolean>(false);
@@ -48,9 +57,9 @@ const MinArea: FC<Props> = ({ startHour, startMin }) => {
 
     useEffect(() => {
         if (selectStatus === 'FIRST_SELECT') {
-            if (startHour <= firstSelectHour!) {
+            if (firstSelectHour && startHour <= firstSelectHour) {
                 if (startHour === firstSelectHour) {
-                    if (startMin < firstSelectMin!) {        
+                    if (firstSelectMin && startMin < firstSelectMin) {        
                         setIsPrevTimes(true);
                     }
                 }
@@ -62,14 +71,14 @@ const MinArea: FC<Props> = ({ startHour, startMin }) => {
         }
 
         else if (selectStatus === 'LAST_SELECT') {
-            if (startHour >= lastSelectHour!) {
+            if (lastSelectHour && startHour >= lastSelectHour) {
                 if (startHour === lastSelectHour) {
-                    if (startMin > lastSelectMin! && !isPrevTimes) {
+                    if (lastSelectMin && startMin > lastSelectMin && !isPrevTimes) {
            
                         setIsOverTimes(true);
                     } 
 
-                    else if (startMin < lastSelectMin! && !isPrevTimes) {
+                    else if (lastSelectMin && startMin < lastSelectMin && !isPrevTimes) {
                         setIsSelected(true);
                     }
                 }
@@ -79,7 +88,7 @@ const MinArea: FC<Props> = ({ startHour, startMin }) => {
                 }
             }
 
-            else if (startHour < lastSelectHour! && !isPrevTimes && lastSelectHour! >= firstSelectHour!) {                
+            else if ((lastSelectHour && firstSelectHour && lastSelectHour) && startHour < lastSelectHour && !isPrevTimes && lastSelectHour >= firstSelectHour!) {                
                 setIsSelected(true);
             }           
         }

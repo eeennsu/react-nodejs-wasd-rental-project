@@ -23,6 +23,7 @@ const RentalTool: FC = () => {
     const returnDate = useTimeStore(state => state.returnDate);
     const userId = useUserStore(state => state.user?.user_id);
     const tool = useToolStore(state => state.tool);
+    const setTool = useToolStore(state => state.setTool);
     const { handleStepInit, handleDateInit } = useStoreController();
 
     const refUserType = useRef<HTMLInputElement | null>(null);
@@ -103,6 +104,7 @@ const RentalTool: FC = () => {
     const handleBack = () => {
         handleStepInit(activeTab);
         handleDateInit();
+        setTool(null);
     }
 
     useEffect(() => {

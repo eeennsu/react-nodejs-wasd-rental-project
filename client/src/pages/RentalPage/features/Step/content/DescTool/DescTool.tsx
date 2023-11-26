@@ -15,10 +15,10 @@ const DescTool: FC = () => {
     }), shallow);
 
     const { data, isLoading, error } = useOneViewTool(tool?.tool_id as string);
-    const src = new URL(data?.result.img.img_url!, import.meta.env.VITE_LOCAL_SERVER_URL).href;
+    const src = new URL(data?.result?.img?.img_url!, import.meta.env.VITE_LOCAL_SERVER_URL)?.href;
 
     useEffect(() => {
-        data?.result.img && setToolImg(data?.result.img);
+        data?.result?.img && setToolImg(data?.result?.img);
     }, [data]);
 
     return (

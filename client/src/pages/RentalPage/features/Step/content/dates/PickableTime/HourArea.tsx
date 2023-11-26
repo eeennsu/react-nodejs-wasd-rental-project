@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import { minutes } from '../../../../../constants';
 import MinArea from './MinArea';
+
 type Props = {
     startHour: number;
-
 }
 
 const HourArea: FC <Props> = ({ startHour }) => {
@@ -17,7 +17,9 @@ const HourArea: FC <Props> = ({ startHour }) => {
                     ))
                 }
             </div>            
-            <span className='absolute text-xs font-extrabold -bottom-3'>{startHour}</span>
+            <span className='absolute text-xs font-extrabold -bottom-3'>
+                {startHour}
+            </span>
         </div>
     );
 };

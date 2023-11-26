@@ -1,10 +1,15 @@
 import type { FC } from 'react';
-import { useStepStore } from '../../../../../../zustand';
+import { useStepStore, useToolStore } from '../../../../../../zustand';
+import { shallow } from 'zustand/shallow';
 import Button from '../../../../../../components/Button';
 
 const DescToolButtons: FC = () => {
 
-    const { setIsModalOpen ,setSystemStep } = useStepStore();
+    const { setIsModalOpen ,setSystemStep } = useStepStore(state => ({
+        setIsModalOpen: state.setIsModalOpen, setSystemStep: state.setSystemStep
+    }), shallow);
+
+    const setTool = useToolStore(state => state.setTool);
  
     const handleRepairStep = () => {        
         setSystemStep('TOOL_REPAIR');
@@ -14,6 +19,7 @@ const DescToolButtons: FC = () => {
     const handleRentStep = () => {
         setSystemStep('TOOL_RENT');
         setIsModalOpen(false);
+        setTool(null);
     }
 
     return (

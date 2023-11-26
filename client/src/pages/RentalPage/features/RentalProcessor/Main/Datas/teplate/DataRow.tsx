@@ -11,13 +11,12 @@ const regex = /\d+번/; // 숫자(\d)가 하나 이상 있는 "숫자번" 패턴
 const DataRow: FC<Props> = ({ data }) => {
 
     const setTool = useToolStore(state => state.setTool);
-    const setIsModalOpen  = useStepStore(state => state.setIsModalOpen);
+    const setIsModalOpen = useStepStore(state => state.setIsModalOpen);
     const setSystemStep = useStepStore(state => state.setSystemStep);
 
     const handleClick = () => {
-        setTool(data);
-
         data.tool_name === '강의실' ? setSystemStep('CLASSROOM_DESC') : setIsModalOpen(true);
+        setTool(data);
     }
 
     const match = data.tool_name !== '강의실' && data.tool_content.match(regex);
