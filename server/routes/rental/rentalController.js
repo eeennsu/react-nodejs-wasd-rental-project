@@ -331,6 +331,61 @@ module.exports={
         })
     },
 
+    
+    ViewRental:(req,res)=>{
+        departmentId=req.params.department_id
+        rentalService.ViewRental(departmentId)
+        .then((result)=>{
+            let obj ={}
+            if(result.length==0){
+                obj["200"] = "OK"
+                obj["msg"] = "대여중인 기자재가 없습니다."
+                res.send(obj)
+            }
+
+            else if (result=='err') {
+                obj["200"] = "OK"
+                obj["err"] = errorCode.E00.message
+                res.send(obj)
+            }
+
+            else{
+                obj["200"] = "OK"
+                obj["result"] = result
+                res.send(obj) 
+            }
+        })
+    },
+
+    ViewClassRoom:(req,res)=>{
+        const toolId=req.params.tool_id
+
+        rentalService.ViewClassRoom(toolId)
+        .then((result)=>{
+
+            let obj = {};
+
+            if(result.length==0){
+                obj["200"] = "OK"
+                obj['msg'] = '대여중인 강의실이 없습니다'
+                res.send(obj)
+            }
+
+            else if (result=="err"){
+                obj["200"] = "OK"
+                obj['err'] = errorCode.E00.message;
+                res.send(obj)
+            }
+
+            else{
+                obj["200"] = "OK"
+                obj['result'] = result
+                res.send(obj)
+            }
+        })
+    },
+
+
 }
 
 

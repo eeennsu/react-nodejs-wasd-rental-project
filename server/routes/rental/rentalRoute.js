@@ -30,22 +30,23 @@ router.get("/LateRentalList",checkToken,checkMaster,rentalController.LateRentalL
 router.get("/rentalTableAll",checkToken,checkMaster,rentalController.rentalTableAll);
 
 //강의실 대여
-router.post('/rentalClassRoom',rentalController.rentalClassRoom);
-
-//대여중인 타블렛, vr기기 보기
-router.post('/rentalToolList',rentalController.rentalToolList);
+router.post('/rentalClassRoom',checkToken,checkOne,rentalController.rentalClassRoom);
 
 //강의실 반납
-router.post('/returnClassRoom',rentalController.returnClassRoom);
+router.post('/returnClassRoom',checkToken,checkOne,rentalController.returnClassRoom);
 
 //대여중인 강의실 
 router.get('/NotClassCount/:tool_id',rentalController.NotClassCount);
 
+//대여중인 기자재 모두 불러오기
+router.get("/ViewRental/:department_id",rentalController.ViewRental);
 
+//대여중인 타블렛, vr기기 보기
+router.post('/rentalToolList',checkToken,checkMaster,rentalController.rentalToolList);
 
-//ViewRental타블렛, VR기기 자세히 보기
+//대여중인 강의실 불러오기
+router.get('/ViewClassRoom/:tool_id',checkToken,checkMaster,rentalController.ViewClassRoom);
 
-//ViewClassRoom강의실 대여 자세히 보기
 
 
 

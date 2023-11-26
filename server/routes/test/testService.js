@@ -45,31 +45,27 @@ module.exports = {
         })
 
     },
-    ViewRental:(departmentId)=>{
-        return new Promise((resolve)=>{
-            Tool.findAll({
-                tool_state:"대여중"
+    ViewRental: (departmentId) => {
+        return new Promise((resolve) => {
+          Tool.findAll({
+            where: {
+              tool_state: "대여중",
+              department_id: departmentId,
             },
-            {
-                where:{department_id:departmentId},
-                [Sequelize.Op.and]: [
-                    { department_id: { [Sequelize.Op.eq]: departmentId } }
-                  ],
-                include: [
-                    {
-                        model: Rental,
-                        attributes: ['user_id'] // 'Tool' 테이블에서 불러올 컬럼 지정
-                    },
-                ]
-            },
-            
-            )
-            .then((result)=>{
-                resolve(result)
+            include: [
+              {
+                model: Rental,
+                attributes: ['user_id'],
+              },
+            ],
+          })
+            .then((result) => {
+              resolve(result);
             })
-            .catch((err)=>{
-                resolve('err')
-            })
-        })
-    },
+            .catch((err) => {
+              resolve('err');
+            });
+        });
+      },
+      
 }

@@ -1,3 +1,4 @@
+const errorCode = require('../../config/errorCode');
 const {Img,User}=require('../../models');
 const testService = require("./testService")
 
@@ -47,9 +48,24 @@ module.exports = {
         departmentId=req.params.department_id
         testService.ViewRental(departmentId)
         .then((result)=>{
-            console.log(result)
             let obj ={}
-            res.send(result)
+            if(result.length==0){
+                obj["200"] = "OK"
+                obj["msg"] = "대여중인 기자재가 없습니다."
+                res.send(obj)
+            }
+
+            else if (result=='err') {
+                obj["200"] = "OK"
+                obj["msg"] = errorCode.E00.message
+                res.send(obj)
+            }
+
+            else{
+                obj["200"] = "OK"
+                obj["result"] = result
+                res.send(obj) 
+            }
         })
-    }
+    },
 }

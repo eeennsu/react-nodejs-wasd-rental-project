@@ -568,6 +568,46 @@ module.exports = {
         })
     },
 
+    ViewRental: (departmentId) => {
+        return new Promise((resolve) => {
+          Tool.findAll({
+            where: {
+              tool_state: "대여중",
+              department_id: departmentId,
+            },
+            include: [
+              {
+                model: Rental,
+                attributes: ['user_id'],
+              },
+            ],
+          })
+            .then((result) => {
+              resolve(result);
+            })
+            .catch((err) => {
+              resolve('err');
+            });
+        });
+      },
+
+      ViewClassRoom:(toolId)=>{
+        return new Promise((resolve)=>{
+            Rental.findAll({
+                where:{
+                    rental_state:"대여",
+                    tool_id:toolId,
+                }
+            })
+            .then((result) => {
+                resolve(result);
+              })
+              .catch((err) => {
+                resolve('err');
+              });
+        })
+      },
+
 
 
 }

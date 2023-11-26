@@ -501,5 +501,7 @@ notRentalToolCount: (toolName) => {
       })
    })
   },
+
+ 
   
 }
