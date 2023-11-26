@@ -8,8 +8,8 @@ interface Tool {
     department_id: number;
     tool_code: string;
     tool_content: string;
-    tool_division: string;
-    tool_id: string;
+    tool_division: string;          
+    tool_id: string;                            
     tool_name: ToolName;
     tool_purchase_date: string;
     tool_purchase_division: string;

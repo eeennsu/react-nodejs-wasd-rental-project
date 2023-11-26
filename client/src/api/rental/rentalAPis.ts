@@ -1,4 +1,5 @@
 import axiosPri from '../config/axiosPr';
+import axiosPub from '../config/axiosPu';
 
 /* 
     1. 유저 토큰 필요, 마스터 토큰 필요 이런거는 무시
@@ -6,14 +7,26 @@ import axiosPri from '../config/axiosPr';
     3. 모든 함수에 들어가는 매개변수 형태는 컨트롤 + 우클릭해서 어떤 타입이 필요한지 확인 가능
 */
 
-// 유저 토큰 필요 / 기자재 대여
+// 유저 토큰 필요 / 타블렛, VR 기기 대여
 export const rentalTool_API = (rentalToolInfo: RentalTool) => axiosPri.post<ResRentalTool>('/rental/rentalTool', rentalToolInfo);
 
-// 유저 토큰 필요 / 기자재 반납
+// 유저 토큰 필요 / 타블렛, VR 기기 반납
 export const returnTool_API = (returnToolInfo: ReturnTool) => axiosPri.post<ResReturnTool>('/rental/returnTool', returnToolInfo);
 
-// 유저 토큰 필요 / 기자재 연장
+// 유저 토큰 필요 / 타블렛, VR 기기 연장
 export const extensionTool_API = (extensionTool: ExtensionTool) => axiosPri.post<ResExtensionTool>('/rental/extensionTool', extensionTool);
+
+// 유저 토큰 필요 / 강의실 대여
+export const rentalClassRoom_API = (rentalClassRoom: RentalClassRoom) => axiosPri.post<ResRentalClassRoom>('/rental/rentalClassRoom', rentalClassRoom);
+
+// 유저 토큰 필요 / 강의실 반납
+export const returnClassRoom_API = (returnClassRoom: ReturnClassRoom) => axiosPri.post<ResReturnClassRoom>('/rental/returnClassRoom', returnClassRoom);
+
+// 토큰 필요 x / 대여 중인 강의실 불러오기
+export const notClassRoomCount_API = (tool_id: string) => axiosPub.get<ResNotClassRoomCount>(`/rental/notClassRoomCount/${tool_id}`);
+
+// 토큰 필요 x / 대여 중인 VR, 테블릿 모두 불러오기
+export const viewRental_API = (department_id: string) => axiosPub.get<ResViewRental>(`/rental/viewRental/${department_id}`);
 
 // 유저 토큰 필요 / 사용자의 현재 대여 목록 확인
 export const myRentalList_API = (user_id: string) => axiosPri.get<ResMyRentalList>(`/rental/myRentalList/${user_id}`);
