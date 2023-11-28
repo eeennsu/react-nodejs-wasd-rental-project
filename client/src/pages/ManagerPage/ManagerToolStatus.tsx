@@ -1,12 +1,12 @@
 import { FC, useEffect, useState, ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 
-interface AddEquipmentModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+// interface AddEquipmentModalProps {
+//   isOpen: boolean;
+//   onClose: () => void;
+// }
 
-const ManagerToolStatus: FC<AddEquipmentModalProps> = ({ isOpen, onClose }) => {
+const ManagerToolStatus: FC = () => {
 
   const [image, setImage] = useState<File | null>(null);
   const [description, setDescription] = useState<string>('');
@@ -18,18 +18,15 @@ const ManagerToolStatus: FC<AddEquipmentModalProps> = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleDescriptionChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setDescription(event.target.value);
-  };
+  // const handleDescriptionChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+  //   setDescription(event.target.value);
+  // };
 
-  const handleAddEquipment = () => {
-    // 여기에서 선택된 이미지와 입력된 설명을 이용하여 기자재 추가 로직을 수행
-    // 예를 들어, 서버로 이미지와 설명을 업로드하는 등의 작업을 수행할 수 있습니다.
-    // 성공적으로 처리되면 모달을 닫을 수 있도록 onClose 호출 등을 수행
-    // 이 부분은 실제 로직에 맞게 수정이 필요합니다.
-    console.log('Adding equipment:', { image, description });
-    onClose();
-  };
+  // const handleAddEquipment = () => {
+  
+  //   console.log('Adding equipment:', { image, description });
+  //   onClose();
+  // };
 
    
     return (
