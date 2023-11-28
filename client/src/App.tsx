@@ -8,6 +8,8 @@ import SampleNav from './layout/components/SampleNav';
 import SampleLogin from './pages/SampleLogin/SampleLogin';
 import RequireAuth from './layout/auth/RequireAuth';
 import Unauthorized from './layout/auth/Unauthorized';
+import RentalLog from './pages/ManagerPage/log/RentalLog';
+import Suggestions from './pages/ManagerPage/RepairRequset/Suggestions';
 
 const App = () => {
     
@@ -32,7 +34,9 @@ const App = () => {
                         </Route>
                         <Route path='/my-page/:id' element={<MyPage />} />
                         <Route path='/manager' element={<ManagerPage />} />
-                        <Route path='/manager/tool-status' element={<ManagerToolStatus />} />                                                                    
+                        <Route path='/manager/tool-status' element={<ManagerToolStatus  />} />                                                                    
+                        <Route path='/manager/rental-log' element={<RentalLog />} />   
+                        <Route path='/manager/suggestions' element={<Suggestions />} />                                                                 
                         <Route path='/sampleLogin' element={<SampleLogin />} />
                     </Route>               
                 </Route>     

@@ -11,6 +11,7 @@ import FetchDatasError from '../../../RentalProcessor/Main/Datas/teplate/FetchDa
 const RentalRoomForm: FC = () => {
 
     const selectedRoom = useStepStore(state => state.selectedRoom);
+    
     const { data, isLoading, error } = useRentaledClassRooms(selectedRoom as string);
 
     const { resetTimes, setTimeBtnsResetTrigger } = useTimeStore(state => ({

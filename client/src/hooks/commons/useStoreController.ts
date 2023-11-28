@@ -8,12 +8,10 @@ const useStoreController = () => {
         page, setPage, 
         tool, setTool,
         toolImg, setToolImg,
-        classRoom, setClassRoom
     } = useToolStore(state => ({
-        page: state.page, setPage: state.setPage,
+        page: state.curPage, setPage: state.setCurPage,
         tool: state.tool, setTool: state.setTool,
         toolImg: state.toolImg, setToolImg: state.setToolImg,
-        classRoom: state.classRoom, setClassRoom: state.setClassRoom,
     }), shallow);
 
     const { 
@@ -53,9 +51,8 @@ const useStoreController = () => {
         selectedRoom && setSelectedRoom(null);
         tool && setTool(null);
         toolImg && setToolImg(null);
-        classRoom && setClassRoom(null);
         isModalOpen && setIsModalOpen(false);
-        systemStep === 'LR_RENT' && resetTimes();
+        systemStep === 'CLASSROOM_RENT' && resetTimes();
     }
 
     const handleToolInit = () => {

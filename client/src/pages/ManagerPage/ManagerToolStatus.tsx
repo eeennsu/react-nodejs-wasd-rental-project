@@ -42,7 +42,7 @@ const ManagerToolStatus: FC<AddEquipmentModalProps> = ({ isOpen, onClose }) => {
   <div key={index} className='w-[558px] h-[140px] bg-04 rounded-md'>
     
     <div className='flex items-center'>
-      <img className='w-128 h-128 object-cover mr-4' src='' alt='기자재 이미지' />
+      <img className='object-cover mr-4 w-128 h-128' src='' alt='기자재 이미지' />
       <div>
         <h3 className='text-lg font-bold'>기자재명</h3>
         <p className='text-sm'>기자재 설명</p>
@@ -59,7 +59,7 @@ const ManagerToolStatus: FC<AddEquipmentModalProps> = ({ isOpen, onClose }) => {
 {Array.from({ length: 4 }).map((_, index) => (
   <div key={index} className='w-[558px] h-[140px] bg-04 rounded-md'>
     <div className='flex items-center'>
-      <img className='w-128 h-128 object-cover mr-4' src='사진주소' alt='기자재 이미지' />
+      <img className='object-cover mr-4 w-128 h-128' src='사진주소' alt='기자재 이미지' />
       <div>
         <h3 className='text-lg font-bold'>기자재명</h3>
         <p className='text-sm'>기자재 설명</p>
