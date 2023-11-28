@@ -4,8 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import RepairRequestComponent from './RepairRequset/RepairRequestComponen';
 import RentalListComponent from './RentalList/RentalListComponent';
 import ApprovalComponent from './ApprovalComponent';
-import RentalLogComponent from './RentalLogComponent';
+import RentalLogComponent from './log/RentalLogComponent';
 import EquipmentStatusComponent from './EquipmentStatus/EquipmentStatusComponent';
+import EquipmentOverdueList from './EquipmentOverdueList'
 
 
 const ManagerPage: FC = () => {
@@ -22,6 +23,7 @@ const ManagerPage: FC = () => {
            <RentalListComponent/>
           <RentalLogComponent/>
           <EquipmentStatusComponent/>
+          <EquipmentOverdueList/>
           
           
           

@@ -4,7 +4,7 @@ import Button from '../../components/Button';
 const ManagerInformation : FC = () => {
   return (
     <div className="text-center">
-         <div className="w-[400px] h-52 absolute top-[140px] -ml-[40px] bg-02 rounded-md ">
+         <div className="w-[400px] h-52 absolute top-[140px] -ml-[35px] bg-02 rounded-md ">
         <div className="text-[36px] font-bold pt-3">
          관리자
          </div>

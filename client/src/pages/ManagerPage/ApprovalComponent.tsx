@@ -1,26 +1,62 @@
 import type { FC } from 'react';
 import React from 'react';
 import Button from '../../components/Button';
+import { useUserStore } from '../../zustand';
+import {approveUser_API, listPendingUsers_API} from '../../api/auth/authApis';
 
 
 const ApprovalComponent : FC = () =>{
+
+//   const { user } = useUserStore();
+
+//   const test = async () => {
+//     try {
+//       const response = await listPendingUsers_API(user!.user_student_number)
+
+//     console.log(response.data)
+
+//     }
+// catch(err){
+//   console.log(err)
+// }
+//   };
+
+const handleApproveUser = async () => {
+
+  try {
+    const response = await approveUser_API({user_id:''});
+
+    if(response.data[200]){
+
+    }else{
+
+    }
+  } catch(error){
+    
+    console.log(error);
+
+  };
+  
+}
+
+ 
 
   const applicants = [
     { id: 1, 학번: '2021001', 이름: '홍길동', 날짜: '2023-11-09' },
     { id: 2, 학번: '2021002', 이름: '김철수', 날짜: '2023-11-10' },
     { id: 3, 학번: '2021003', 이름: '이영희', 날짜: '2023-11-11' },
     { id: 4, 학번: '2021004', 이름: '박영수', 날짜: '2023-11-12' },
-    { id: 5, 학번: '2021005', 이름: '박영수', 날짜: '2023-11-12' },
-    { id: 6, 학번: '2021006', 이름: '박영수', 날짜: '2023-11-12' },
-    { id: 7, 학번: '2021007', 이름: '박영수', 날짜: '2023-11-12' },
-    { id: 8, 학번: '2021008', 이름: '박영수', 날짜: '2023-11-12' },
+    // { id: 5, 학번: '2021005', 이름: '박영수', 날짜: '2023-11-12' },
+    // { id: 6, 학번: '2021006', 이름: '박영수', 날짜: '2023-11-12' },
+    // { id: 7, 학번: '2021007', 이름: '박영수', 날짜: '2023-11-12' },
+    // { id: 8, 학번: '2021008', 이름: '박영수', 날짜: '2023-11-12' },
 
 
   ];
 
   return (
-    <div className="overflow-y-auto w-[830px] h-52 absolute top-[140px] ml-[390px] bg-02 rounded-md">
-      <table className="w-full">
+    <div className="overflow-y-auto w-[825px] h-52 absolute top-[140px] ml-[390px] bg-02 rounded-md">
+      <table className="w-full h-full">
       
         <tbody>
           {applicants.map((applicant, index) => (
