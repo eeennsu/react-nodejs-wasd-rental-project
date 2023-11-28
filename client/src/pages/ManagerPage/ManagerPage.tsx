@@ -15,12 +15,10 @@ const ManagerPage: FC = () => {
         <div className='overscroll-auto'>
 
 
-           <MyInfoComponent/>
-           <ApprovalComponent/>
-          
-           <RepairRequestComponent/>
-          
-           <RentalListComponent/>
+          <MyInfoComponent/>
+          <ApprovalComponent/>
+          <RepairRequestComponent/>
+          <RentalListComponent/>
           <RentalLogComponent/>
           <EquipmentStatusComponent/>
           <EquipmentOverdueList/>
