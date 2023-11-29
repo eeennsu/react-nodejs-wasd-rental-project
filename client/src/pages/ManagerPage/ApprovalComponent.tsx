@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../../components/Button';
 import { useUserStore } from '../../zustand';
 import {approveUser_API, listPendingUsers_API} from '../../api/auth/authApis';
@@ -7,7 +7,7 @@ import {approveUser_API, listPendingUsers_API} from '../../api/auth/authApis';
 
 const ApprovalComponent : FC = () =>{
 
-//   const { user } = useUserStore();
+ const { user } = useUserStore();
 
 //   const test = async () => {
 //     try {
@@ -21,25 +21,30 @@ const ApprovalComponent : FC = () =>{
 // }
 //   };
 
-const handleApproveUser = async () => {
+  const [users, setUsers] = useState<DetailUser[]>([]);
 
-  try {
-    const response = await approveUser_API({user_id:''});
+  useEffect(() => {
 
-    if(response.data[200]){
+    try {
+      const fetch = async () => {
+        const { data } = await listPendingUsers_API();
 
-    }else{
+        setUsers(data.result);
+      }
+      console.log(' 여기!!', users);
+      // 실행!
+      fetch();
+    } catch(error){
+      
+      console.log(error);
 
-    }
-  } catch(error){
+    };
     
-    console.log(error);
+  }, []);
 
-  };
-  
-}
-
- 
+  const handleApproveUsre = async (index: number) => {
+    const response = await approveUser_API({ user_id: users[index].user_id });
+  }
 
   const applicants = [
     { id: 1, 학번: '2021001', 이름: '홍길동', 날짜: '2023-11-09' },
@@ -60,7 +65,7 @@ const handleApproveUser = async () => {
       
         <tbody>
           {applicants.map((applicant, index) => (
-            <React.Fragment key={applicant.id}>
+            <React.Fragment key={applicant.id} index={index}> 
               <tr >
                 <td className="text-center">{applicant.학번}</td>
                 <td className="text-center">{applicant.이름}</td>

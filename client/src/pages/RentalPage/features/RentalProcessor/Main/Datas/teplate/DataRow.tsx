@@ -18,7 +18,7 @@ const DataRow: FC<Props> = ({ data }) => {
         data.tool_name === '강의실' ? setSystemStep('CLASSROOM_DESC') : setIsModalOpen(true);
         setTool(data);
     }
-
+   
     const match = data.tool_name !== '강의실' && data.tool_content.match(regex);
 
     return (
