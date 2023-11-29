@@ -1,6 +1,6 @@
 const { resolve } = require('path');
 const {
-  Tool, Img, Department, Rental, User, Sequelize: { Op }
+  Tool, Img, Department, Rental, User, Sequelize: { Op },Sequelize
 } = require('../../models');
 
 const e = require('express');
@@ -310,10 +310,15 @@ module.exports = {
         // where: { [Op.or]: searchConditions },
         limit: pageLimit,
         offset: pageOffset,
-        order: [['tool_content', 'DESC']],
+      //  order: [['tool_content', 'DESC']],
+      order: [
+        [Sequelize.literal("CAST(SUBSTRING(tool_content, 9) AS UNSIGNED)"), 'DESC']
+      ],
       })
       .then((result)=>{
-        //result.push(obj)
+        result.push(obj)
+        console.log(obj)
+        console.log("이거 뭐찍힘?",result)
         resolve({obj,result})
       })
       .catch((err)=>{
@@ -325,6 +330,11 @@ module.exports = {
      
     })
   },
+
+  // order: [
+       //   [Sequelize.fn('CAST', Sequelize.col('tool_content'), 'INTEGER'), 'ASC']
+       // ], 
+
   rangeTool: (toolName,page,pageLimit) => {
     page = parseInt(page); //2
     pageLimit = parseInt(pageLimit); //10

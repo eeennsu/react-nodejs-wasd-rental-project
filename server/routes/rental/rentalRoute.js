@@ -45,9 +45,9 @@ router.get("/ViewRental/:department_id",rentalController.ViewRental);
 router.post('/rentalToolList',checkToken,checkMaster,rentalController.rentalToolList);
 
 //대여중인 강의실 불러오기
-router.get('/ViewClassRoom/:tool_id',checkToken,checkMaster,rentalController.ViewClassRoom);
+//router.get('/ViewClassRoom/:tool_id',checkToken,checkMaster,rentalController.ViewClassRoom);
 
-
+router.get('/ViewClassRoom/:tool_id',rentalController.ViewClassRoom);
 
 
 module.exports = router;
