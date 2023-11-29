@@ -10,6 +10,9 @@ export const suppliesQueryKeys: [string, string] = ['fetch_vrs', 'fetch_lecture_
 export const classRoom = {
     enginerringBuilding: ['공학관 317-1호', '공학관 317-2호', '공학관 319호', '공학관 320호'],
     room_mainBuilding: ['본관 504호', '본관 505호', '본관 506호', '본관 507호']
+} satisfies {
+    enginerringBuilding: ClassRoomName[];
+    room_mainBuilding: ClassRoomName[];
 }
 
 export const repairResons: string[] = [

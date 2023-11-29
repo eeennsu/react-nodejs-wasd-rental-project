@@ -12,7 +12,7 @@ const RentalRoomForm: FC = () => {
 
     const selectedRoom = useStepStore(state => state.selectedRoom);
     
-    const { data, isLoading, error } = useRentaledClassRooms(selectedRoom as string);
+    const { data, isLoading, error } = useRentaledClassRooms(selectedRoom as ClassRoomName);
 
     const { resetTimes, setTimeBtnsResetTrigger } = useTimeStore(state => ({
         resetTimes: state.resetTimes, 
@@ -61,7 +61,7 @@ const Loading: FC = () => {
     
     return (
         <div className='flex items-center justify-center h-full'>
-            <span className="loading loading-bars loading-sm md:loading-lg"></span>
+            <span className="loading loading-bars loading-sm md:loading-lg" />
         </div>
     );
 }

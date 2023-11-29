@@ -9,8 +9,6 @@ const AllDatas: FC = () => {
 
     const curPage = useToolStore(state => state.curPage);
     const { data, isLoading, error } = useViewTool(curPage);
-   
-    console.log(data);
 
     if (isLoading) {
         return (

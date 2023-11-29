@@ -2,7 +2,8 @@ type TabName = '전체' | 'VR' | 'TABLET' | 'LECTURE_ROOM';
 type ActiveTab = 0 | 1 | 2 | 3;
 type ToolName = 'VR 실습기기' | '타블렛' | '강의실';
 type ToolState = '대여가능' | '대여중' | '대여불가';
-type SystemStep = 'INIT' | 'TOOL_REPAIR' | 'TOOL_RENT' | 'CLASSROOM_DESC' | 'CLASSROOM_RENT' ;
+type SystemStep = 'INIT' | 'TOOL_REPAIR' | 'TOOL_RENT' | 'CLASSROOM_DESC' | 'CLASSROOM_RENT';
+type ClassRoomName = '공학관 317-1호' | '공학관 317-2호' | '공학관 319호' | '공학관 320호' | '본관 504호' | '본관 505호' | '본관 506호' | '본관 507호';
 
 interface Tool {
     department_id: number;

@@ -3,7 +3,7 @@ import { useStepStore } from '../../../../../../zustand';
 import { shallow } from 'zustand/shallow';
 
 type Props = {
-    room: string
+    room: ClassRoomName
 }
 
 const RoomButton: FC<Props> = ({ room }) => {

@@ -1,12 +1,8 @@
 import type { FC, ReactNode } from 'react';
 import { Pagination as AntdPagination } from 'antd';
-import { useState, useEffect, useCallback } from 'react';
-import { useToolStore, useTabsStore } from '../../../../../zustand';
-import { AxiosError, AxiosResponse } from 'axios';
-import { suppliesQueryKeys } from '../../../constants';
-import { useQueryClient } from '@tanstack/react-query';
-import PGButton from './PGButton';
+import { useToolStore } from '../../../../../zustand';
 import { shallow } from 'zustand/shallow';
+import PGButton from './PGButton';
 
 // const onShowSizeChange: PaginationProps['onShowSizeChange'] = (current, pageSize) => {
 //     console.log(current, pageSize);
@@ -106,8 +102,6 @@ const Pagination: FC = () => {
 
     // }, [curPage, VRsData, tabletsData, lectureRoomsData]);
 
-    const activeTab = useTabsStore(state => state.activeTab);
-
     const { 
         curPage, setCurPage,
         totalPage, 
@@ -131,8 +125,6 @@ const Pagination: FC = () => {
 
         return element;
     }
-
-    console.log('totalPage', totalPage);
 
     return (
         <AntdPagination 

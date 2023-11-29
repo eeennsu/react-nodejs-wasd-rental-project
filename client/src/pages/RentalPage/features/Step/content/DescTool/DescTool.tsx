@@ -6,6 +6,8 @@ import { shallow } from 'zustand/shallow';
 import ToolState from '../../templates/ToolState';
 import DescToolButtons from './DescToolButtons';
 import useOneViewTool from '../../../../queries/tool/useOneViewTool';
+import { Spin } from 'antd';
+import FetchDatasError from '../../../RentalProcessor/Main/Datas/teplate/FetchDatasError';
 
 const DescTool: FC = () => {
 
@@ -23,13 +25,21 @@ const DescTool: FC = () => {
 
     return (
         <section className='md:h-[480px] grid grid-cols-2 gap-5'>
-            <div className='w-full h-full'>
-                {
-                    data && (
-                        <img src={src} className='object-contain w-full h-full shadow-lg hover:shadow-2xl' alt={`${tool?.tool_content} 이미지` } />
-                    )
-                }
-            </div>              
+            {
+                isLoading ? (
+                    <Loading />
+                ) : error ? (
+                    <FetchDatasError type='warning' msg='이미지를 불러오는데 실패하였습니다. 관리자에게 문의해 주세요.' />
+                ) : (
+                    <div className='flex items-center w-full h-full'>
+                        {
+                            data && (
+                                <img src={src} className='object-contain w-full h-full rounded-md' alt={`${tool?.tool_content} 이미지` } />
+                            )
+                        }
+                    </div> 
+                )
+            }           
             <div className='flex flex-col justify-between '>
                 <div className='mt-8'>
                     <h3 className='font-[800] text-lg'>
@@ -62,6 +72,15 @@ const Paragraph: FC<{ title: string; text?: string }> = ({ title, text }) => {
             <p>
                 {text}
             </p>
+        </div>
+    );
+}
+
+const Loading: FC = () => {
+
+    return (
+        <div className='flex items-center justify-center h-full'>
+            <Spin size='large' />         
         </div>
     );
 }

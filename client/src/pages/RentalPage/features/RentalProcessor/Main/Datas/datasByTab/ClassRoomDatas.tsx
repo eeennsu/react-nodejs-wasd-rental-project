@@ -10,8 +10,6 @@ const ClassRoomDatas: FC = () => {
     const curPage = useToolStore(state => state.curPage);
     const { data, isLoading, error } = useRangeTool('강의실', curPage);
 
-    console.log('classRoomData', data);
-
     if (isLoading) {
         return (
             <DataLoading />

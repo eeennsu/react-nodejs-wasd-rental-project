@@ -12,22 +12,13 @@ type Props = {
 const MinArea: FC<Props> = ({ startHour, startMin }) => {
 
     const { 
-        roomStatus,
-        selectStatus, setSelectStatus,
+        roomStatus, selectStatus, setSelectStatus,
         firstSelectHour, firstSelectMin,
         lastSelectHour, lastSelectMin,
         setFirstSelectHour, setFirstSelectMin,
         setLastSelectHour, setLastSelectMin,
-        timeBtnsResetTrigger,
-    } = useTimeStore(state => ({
-        roomStatus: state.roomStatus,
-        selectStatus: state.selectStatus, setSelectStatus: state.setSelectStatus,
-        firstSelectHour: state.firstSelectHour, firstSelectMin: state.firstSelectMin, 
-        lastSelectHour: state.lastSelectHour, lastSelectMin: state.lastSelectMin,
-        setFirstSelectHour: state.setFirstSelectHour, setFirstSelectMin: state.setFirstSelectMin,
-        setLastSelectHour: state.setLastSelectHour, setLastSelectMin: state.setLastSelectMin,
-        timeBtnsResetTrigger: state.timeBtnsResetTrigger
-    }), shallow);
+        timeBtnsResetTrigger
+    } = useTimeStore();
 
     const [isSelected, setIsSelected] = useState<boolean>(false);
     const [isPrevTimes, setIsPrevTimes] = useState<boolean>(false);
@@ -37,14 +28,12 @@ const MinArea: FC<Props> = ({ startHour, startMin }) => {
 
     const handleSelectRoom = () => {
         if (selectStatus === 'NONE') {
-
             setIsSelected(true);
             setSelectStatus('FIRST_SELECT');
             setFirstSelectHour(startHour);
             setFirstSelectMin(startMin);  
 
         } else if (selectStatus === 'FIRST_SELECT') {
-
             setIsSelected(true);
             setSelectStatus('LAST_SELECT');    
             setLastSelectHour(startHour);
@@ -73,8 +62,7 @@ const MinArea: FC<Props> = ({ startHour, startMin }) => {
         else if (selectStatus === 'LAST_SELECT') {
             if (lastSelectHour && startHour >= lastSelectHour) {
                 if (startHour === lastSelectHour) {
-                    if (lastSelectMin && startMin > lastSelectMin && !isPrevTimes) {
-           
+                    if (lastSelectMin && startMin > lastSelectMin && !isPrevTimes) {           
                         setIsOverTimes(true);
                     } 
 
@@ -102,7 +90,7 @@ const MinArea: FC<Props> = ({ startHour, startMin }) => {
 
     return (
         <button 
-            className={`px-1 text-white h-10 ${bg} ${(isPrevTimes || isOverTimes) && 'bg-03'}`} 
+            className={`w-2 h-10 transition-colors ${bg} ${(isPrevTimes || isOverTimes) && 'bg-03 '} ${(!isPrevTimes && !isOverTimes) && 'hover:brightness-110'}`} 
             onClick={handleSelectRoom}  
             disabled={roomStatus === 'DISABLED' || (isPrevTimes || isOverTimes)}
         />

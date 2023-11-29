@@ -22,13 +22,8 @@ const Modal: FC = () => {
             width={800}
             footer={null}
             centered            
-            forceRender
         >
-           {
-                isModalOpen && (
-                    <DescTool />   
-                )
-           }   
+           <DescTool />  
         </AntdModal>
     );
 };
