@@ -13,10 +13,12 @@ const useViewTool = (curPage: number) => {
         keepPreviousData: true,        
     });
 
-    const setTotalPage = useToolStore(state => state.setTotalPage);
-
+    const setTotal = useToolStore(state => state.setTotal);
+    
     useEffect(() => {
-        data?.data.total && setTotalPage(data.data.total);
+        if (data?.data.total) {
+            setTotal(data.data.total);
+        }        
     }, [data]);
 
     return {

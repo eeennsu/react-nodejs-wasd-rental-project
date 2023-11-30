@@ -29,8 +29,8 @@ const useToolStore = createWithEqualityFn<IToolStore>()(
             curPage: 1,
             setCurPage: (curPage) => set(() => ({ curPage })),
 
-            totalPage: 1,
-            setTotalPage: (totalPage) => set(() => ({ totalPage })),
+            total: 1,
+            setTotal: (total) => set(() => ({ total })),
         })
     )
 );
