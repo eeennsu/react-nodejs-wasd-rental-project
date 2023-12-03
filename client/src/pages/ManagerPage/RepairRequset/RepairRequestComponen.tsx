@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
 
 const RepairRequestComponent : FC = () =>{
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setModalOpen] = useState(false);
 
     const openModal = () => {
-      setIsModalOpen(true);
+      setModalOpen(true);
     };
   
     const closeModal = () => {
-      setIsModalOpen(false);
+      setModalOpen(false);
     };
 
     return(
