@@ -2,6 +2,8 @@ import type { FC } from 'react';
 import Button_o from './Mainelement/Button_o';
 import Openchat from './Mainelement/Openchat';
 import Rentlist from './Mainelement/Rentlist';
+import { Link } from 'react-router-dom';
+import Button from '../../components/Button';
 
 const MainPage: FC = () => {
 
@@ -13,6 +15,13 @@ const MainPage: FC = () => {
             <Button_o/>
             <Openchat/>
             <Rentlist/>
+            <div>
+            <Button bgColor='02'>
+              <Link to = {'/SignUp'}>
+                회원가입 &gt;
+              </Link>
+            </Button>
+            </div>
            </div>
             
         </div>        
