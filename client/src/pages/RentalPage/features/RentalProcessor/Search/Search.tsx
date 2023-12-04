@@ -1,28 +1,62 @@
-import { useDeferredValue, type ChangeEvent, type FC, type FormEvent, type KeyboardEvent, useState } from 'react';
+import { type ChangeEvent, type FC, type FormEvent, type KeyboardEvent, useState } from 'react';
 import { useTabsStore, useSearchStore, useToolStore } from '../../../../../zustand';
 import { useEffect } from 'react';
 import { shallow } from 'zustand/shallow';
+import { searchTool_API } from '../../../../../api/tool/toolApis';
+import useSearchTool from '../../../queries/tool/useSearchTool';
 
 const Search: FC = () => {
 
-    const activeTab  = useTabsStore(state => state.activeTab);
+    const [searchTerm, setSearchTerm] = useState<string>('');
+    const [isSubmit, setIsSubmit] = useState<boolean>(false);
+    
+    const curPage = useToolStore(state => state.curPage);
 
-    const {         
-        // VRsData, setVRsData,
-        // tabletsData, setTabletsData,
-        // lectureRoomsData, setLectureRoomsData
-    } = useToolStore();    
-
-    const { searchTerm, setSearchTerm } = useSearchStore(state => ({
-        searchTerm: state.searchTerm, setSearchTerm: state.setSearchTerm
-    }), shallow);
-
-    const defferedSearchTerm = useDeferredValue(searchTerm);
-
+    const setSearchedResults= useSearchStore(state => state.setSearchedResults);
+    
+    const { data, isLoading, error } = useSearchTool(searchTerm, curPage, isSubmit);
+    
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
-    }   
+        
+        if (isSubmit) {
+            setIsSubmit(false);
+        }
+    }      
+
+    const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmit(true);       
+    }
+
+    useEffect(() => {
+        if (isSubmit && data && data.result) {
+            setSearchedResults(data.result);
+
+            console.log('여기', data.result);
+        }
+    }, [isSubmit, data]);
     
+    return (
+        <form className='flex w-full border-4 border-01 md:w-auto' onSubmit={handleSearchSubmit}>
+            <input className='flex-1 px-3 py-2 text-sm bg-white border-black rounded-sm outline-none w-52 placeholder:text-sm placeholder:text-gray-300' value={searchTerm} onChange={handleChange} 
+            placeholder='검색어를 입력해 주세요'/>
+            <button type='submit' className='px-3.5 md:py-2 text-white md:px-7 bg-01 whitespace-nowrap text-sm md:text-base'>
+                검색
+            </button>          
+        </form>
+    );
+};
+
+export default Search;
+
+
+
+
+
+
+
+
     // useEffect(() => {
     //     switch(activeTab) {
     //         case 0: 
@@ -73,20 +107,3 @@ const Search: FC = () => {
     //     }        
 
     // }, [defferedSearchTerm, activeTab, setVRsData, setTabletsData, setLectureRoomsData]);
-
-    const handleSearchSubmit = () => {
-
-    }
-
-    return (
-        <form className='flex w-full border-4 border-01 md:w-auto' onSubmit={handleSearchSubmit}>
-            <input className='flex-1 px-3 py-1 bg-white border-black rounded-sm outline-none w-52 placeholder:text-sm placeholder:text-gray-300' value={searchTerm} onChange={handleChange} 
-            placeholder='검색어를 입력해 주세요'/>
-            <button type='submit' className='px-3.5 md:py-2 text-white md:px-7 bg-01 whitespace-nowrap text-sm md:text-base'>
-                검색
-            </button>          
-        </form>
-    );
-};
-
-export default Search;

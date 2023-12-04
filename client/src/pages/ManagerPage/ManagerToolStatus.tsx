@@ -1,6 +1,6 @@
 import { FC, useEffect, useState, ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
-
+import AddEquipmentComponent from './AddEquipment/AddEquipmentComponent';
 // interface AddEquipmentModalProps {
 //   isOpen: boolean;
 //   onClose: () => void;
@@ -70,12 +70,7 @@ const ManagerToolStatus: FC = () => {
 
           
 
-          <div className='w-[400px] h-[117px] bg-01 rounded-md absolute top-[900px] -ml-[px] '>
-            <div className='mt-[30px] ml-[110px] text-[36px] text-04 font-bold'>
-                기자재 추가
-            </div>
-          
-            </div>
+         <AddEquipmentComponent/>
 
             <div className='w-[400px] h-[117px] bg-01 rounded-md absolute top-[900px] ml-[450px] '>
             <div className='mt-[30px] ml-[110px] text-[36px] text-04 font-bold'>

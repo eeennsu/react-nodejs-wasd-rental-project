@@ -22,8 +22,8 @@ export const approveUser_API = (approveUser: ApproveUser) => axiosPri.post<ResAp
 // 비밀번호 변경
 export const changePw_API = (password: ChangePw) => axiosPu.post<ResChangePw>('/auth/changePW', password);
 
-// 마스터 토큰 필요 / 회원가입 신청 목록,  page 매개변수에는 현재 페이지정보가 담긴 number값이 매개변수로 들어가면 됨 ex) 1, 2, 3 등등..
-export const listPendingUsers_API = (page: number) => axiosPri.post<ResListPendingUsers>(`/auth/listPendingUsers/${page}/${PAGE_LIMIT}`);
+// 마스터 토큰 필요 
+export const listPendingUsers_API = () => axiosPri.post<ResListPendingUsers>('/auth/listPendingUsers');
 
 // 이메일 인증
 export const sendMail = (email: SendMail) => axiosPu.post<ResSendMail>('/auth/sendMail', email);

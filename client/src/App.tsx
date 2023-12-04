@@ -1,6 +1,6 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { MainPage, ManagerPage, ManagerToolStatus, MyPage, RentalPage, RentalLog, Suggestions } from './pages';
+import { MainPage, ManagerPage, ManagerToolStatusPage, MyPage, RentalPage, RentalLogPage, Suggestions, SignUpPage } from './pages';
 import { MainLayout, OtherLayout, RootLayout } from './layout';
 import { ROLES } from './layout/auth/roles';
 import ExamplePage from './pages/ExamplePage/ExamplePage';
@@ -15,28 +15,27 @@ const App = () => {
         <BrowserRouter>
             <Routes>
                 <Route index path='/' element={<SampleNav />}/>   
-                <Route path='unauthorized' element={<Unauthorized />} />         
+                <Route path='/unauthorized' element={<Unauthorized />} />         
                 <Route element={<RootLayout />}>
                     <Route element={<MainLayout />}>
                         <Route index path='/main' element={<MainPage />} />       
-                        <Route path='/example' element={<ExamplePage />} />     
-                    </Route>
-
-                    <Route element={<OtherLayout />}>
-                        <Route path='/sampleLogin' element={<SampleLogin />} />
+                        <Route path='/main/sign-up' element={<SignUpPage />} />      
+                        <Route path='/example' element={<ExamplePage />} />   
                     </Route>
                   
                     <Route element={<OtherLayout />}>       
                         <Route element={<RequireAuth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />}>
                             <Route path='/rental' element={<RentalPage />} />
-                        </Route>
-                        <Route path='/my-page/:id' element={<MyPage />} />
+                        </Route>          
                         <Route path='/manager' element={<ManagerPage />} />
-                        <Route path='/manager/tool-status' element={<ManagerToolStatus />} />                                                                    
-                        <Route path='/manager/rental-log' element={<RentalLog />} />   
+                        <Route path='/manager/tool-status' element={<ManagerToolStatusPage />} />                                                                    
+                        <Route path='/manager/rental-log' element={<RentalLogPage />} />   
                         <Route path='/manager/suggestions' element={<Suggestions />} />                                                                 
-                        <Route path='/sampleLogin' element={<SampleLogin />} />
+                        <Route path='/sampleLogin' element={<SampleLogin />} />                        
                     </Route>               
+                    <Route element={<RequireAuth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />}>
+                        <Route path='/my-page/:id' element={<MyPage />} />
+                    </Route>  
                 </Route>     
 
                 {/* <Route element={<RequireAuth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />} >

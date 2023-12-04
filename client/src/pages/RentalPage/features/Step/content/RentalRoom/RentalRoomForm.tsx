@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { useStepStore, useTimeStore, useToolStore } from '../../../../../../zustand';
+import { useStepStore, useTimeStore } from '../../../../../../zustand';
 import { shallow } from 'zustand/shallow';
 import DatePicker from '../dates/DatePicker';
 import TimePicker from '../dates/PickableTime/TimePicker';

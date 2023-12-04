@@ -8,8 +8,8 @@ import { approveUser_API } from '../../api/auth/authApis';
 const RentalPage: FC = () => {
 
     // 로그인 여부 / 토큰 / 유저에 대한 정보 (이메일, 학번, 아이디 등등..)
-    const { isLogin, token, user } = useUserStore();
-
+    const { isLogin, user, token } = useUserStore();
+    
     // 만약 특정 버튼이 클릭할 때 이 api를 호출하고 싶다면? 버튼의 onClick 속성에 이 함수를 넣으면 됨.
     const handleApproveUser = async () => {
         try {

@@ -1,9 +1,9 @@
 import useUserStore from './userStore/useUserStore';
-import useSearchStore from './suppliesStore/useSearchStore';
-import useToolStore from './suppliesStore/useToolStore';
-import useTabsStore from './suppliesStore/useTabStore';
-import useStepStore from './suppliesStore/useStepStore';
-import useTimeStore from './suppliesStore/useTimeStore';
+import useSearchStore from './toolStore/useSearchStore';
+import useToolStore from './toolStore/useToolStore';
+import useTabsStore from './toolStore/useTabStore';
+import useStepStore from './toolStore/useStepStore';
+import useTimeStore from './toolStore/useTimeStore';
 
 export {
     useUserStore,

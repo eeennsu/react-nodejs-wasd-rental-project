@@ -28,13 +28,16 @@ export interface IToolStore {
     curPage: number;
     setCurPage: (curPage: number) => void;   
     
-    totalPage: number;
-    setTotalPage: (page: number) => void;
+    total: number;
+    setTotal: (page: number) => void;
 }
 
 export interface ISearchStore {
     searchTerm: string;
     setSearchTerm: (term: string) => void; 
+
+    searchedResults: Tool[] | null;
+    setSearchedResults: (isSearched: Tool[] | null) => void;
 
     // searchedVRs: VR[] | null;
     // setSearchedVRs: (datas: VR[]) => void;

@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import Pagination from '../Pagination/Pagination';
+import ToolPagination from '../Pagination/ToolPagination';
 import Tabs from './Tabs/Tabs';
 import Datas from './Datas/Datas';
 
@@ -12,7 +12,7 @@ const Main: FC = () => {
                 <Datas />    
             </div>
             <div className='flex justify-center w-full my-6'>                
-                <Pagination />            
+                <ToolPagination />            
             </div>   
         </> 
     );

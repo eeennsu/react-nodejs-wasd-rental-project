@@ -8,6 +8,9 @@ const useSearchStore = createWithEqualityFn<ISearchStore>()(
             searchTerm: '',
             setSearchTerm: (searchTerm) => set(() => ({ searchTerm }), false, 'SET_SEARCH_TERM'),
 
+            searchedResults: null,
+            setSearchedResults: (searchedResults) => set(() => ({ searchedResults }), false, 'SET_SEARCHED_RESULTS')
+
             // searchedVRs: null,
             // setSearchedVRs: (searchedVRs) => set(() => ({ searchedVRs }), false, 'SET_SEARCHED_VRS'),
 

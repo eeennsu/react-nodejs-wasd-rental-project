@@ -1,5 +1,6 @@
 import type { FC, PropsWithChildren } from 'react';
 import { useSearchStore, useTabsStore, useToolStore } from '../../../../../../zustand';
+import { shallow } from 'zustand/shallow';
 
 type Props = {
     idx: number;
@@ -9,13 +10,16 @@ const TabButton: FC<PropsWithChildren<Props>> = ({ children, idx }) => {
 
     const activeTab = useTabsStore(state => state.activeTab);
     const setActiveTab = useTabsStore(state => state.setActiveTab);
-    const setSearchTerm  = useSearchStore(state => state.setSearchTerm);
     const setCurPage = useToolStore(state => state.setCurPage);
+    const { setSearchTerm, searchedResults, setSearchedResults } = useSearchStore(state => ({
+        setSearchTerm: state.setSearchTerm, searchedResults: state.searchedResults, setSearchedResults: state.setSearchedResults
+    }), shallow);
 
     const handleSetActiveTab = () => {
         setSearchTerm('');
         setActiveTab(idx as ActiveTab);   
         setCurPage(1);
+        searchedResults && setSearchedResults(null);
     }
 
     if (activeTab === idx) {

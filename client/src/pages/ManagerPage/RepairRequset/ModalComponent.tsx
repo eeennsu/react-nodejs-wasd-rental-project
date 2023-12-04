@@ -13,16 +13,16 @@ const ModalComponent: FC<ModalProps> = ({ isOpen, onClose }) => {
 
   const { user } = useUserStore();
 
-  const test = async () => {
-    try {
-      const response = await myRepairView_API(user!.user_id, 'repair_part')
+//   const test = async () => {
+//     try {
+//       const response = await myRepairView_API(user!.user_id, 'repair_part')
 
-      console.log(response.data)
-    }
-catch(err){
-  console.log(err)
-}
-  };
+//       console.log(response.data)
+//     }
+// catch(err){
+//   console.log(err)
+// }
+//   };
 
   return (
     <div className={`fixed top-[190px] left-[583px] w-[980px] h-[460px] bg-04 z-[900] rounded-md ${isOpen ? 'visible' : 'invisible'}`}>
