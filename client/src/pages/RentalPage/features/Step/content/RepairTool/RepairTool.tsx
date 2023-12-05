@@ -1,6 +1,6 @@
 import type { FC, ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
-import { Input, Select, message } from 'antd';
+import { Image, Input, Select, message } from 'antd';
 import { useStepStore, useTabsStore, useToolStore, useUserStore } from '../../../../../../zustand';
 import { repairResons } from '../../../../constants';
 import { shallow } from 'zustand/shallow';
@@ -78,9 +78,8 @@ const RepairTool: FC = () => {
 
             const response = await repairTool_API(repairData);
 
-            if (response.data[200] === 'OK') {
+            if (response.data['200'] === 'OK') {
                 message.success('수리 요청이 완료되었습니다');    
-                console.log(response.data);
             } else {
                 message.error('수리 요청에 실패하였습니다! 관리자에게 문의해 주세요');
             }
@@ -96,17 +95,16 @@ const RepairTool: FC = () => {
 
     return (
         <Template className='mt-[74px]'>
-            <form className='grid grid-cols-2 gap-10' onSubmit={handleRepairRequest}>
+            <div className='grid grid-cols-2 gap-10'>
                 <div className='flex flex-col gap-4'>
                     <div className='relative h-2/3'>
-                        <img src={getImgURL(toolImg!.img_url)} alt='이미지' className='w-full h-full bg-slate-300 rounded-[4px]' />   
-                        <img src={''} alt='이미지' className='absolute bottom-0 right-0 w-20 h-20 bg-white' />  
+                        <Image src={getImgURL(toolImg!.img_url)} alt='이미지' width={430} height={400} className=' bg-slate-300 rounded-[4px] shadow-xl' />    
                     </div>                            
                     <p>
                         {tool?.tool_content}
                     </p>
                 </div>
-                <div className='flex flex-col gap-10'>
+                <form className='flex flex-col gap-10' onSubmit={handleRepairRequest}>
                     <div className='flex flex-col items-end bg-01 rounded-[4px]'>
                         <div className='w-28 h-full my-3.5 mr-3.5'>
                             <Select                      
@@ -137,8 +135,8 @@ const RepairTool: FC = () => {
                             수리 요청
                         </Button>    
                     </footer>
-                </div>            
-            </form>              
+                </form>            
+            </div>              
         </Template>
     );
 }

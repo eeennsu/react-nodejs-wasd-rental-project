@@ -9,13 +9,23 @@ import Spinner from '../../../../../components/Spinner';
 
 const Search: FC = () => {
 
-    const [searchTerm, setSearchTerm] = useState<string>('');
-    const [isSubmit, setIsSubmit] = useState<boolean>(false);
+    const [isSearched, setIsSearched] = useState<boolean>(false);
+    const [isSearching, setIsSearching] = useState<boolean>();
+
+    const { curPage, setTotal } = useToolStore(state => ({
+        curPage: state.curPage,
+        setTotal: state.setTotal
+    }), shallow);
+   
+    const { searchTerm, searchedResults, setSearchTerm, setSearchedResults } = useSearchStore(state => ({
+        searchTerm: state.searchTerm,
+        searchedResults: state.searchedResults,
+        setSearchTerm: state.setSearchTerm,
+        setSearchedResults: state.setSearchedResults
+    }), shallow);
+    // const setActiveTab = useTabsStore(state => state.setActiveTab);
     
-    const curPage = useToolStore(state => state.curPage);
-    const setSearchedResults = useSearchStore(state => state.setSearchedResults);
-    const setActiveTab = useTabsStore(state => state.setActiveTab);
-    const { data, isError, isFetching, error } = useSearchTool(searchTerm, curPage, isSubmit);
+    // const { data, isError, isFetching, error } = useSearchTool(searchTerm, curPage, isSubmit);
     
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
@@ -23,32 +33,69 @@ const Search: FC = () => {
 
     const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        
         if (searchTerm.length <= 0) {
             message.warning('검색어를 한글자 이상 입력해주세요.');
         }
 
-        setIsSubmit(true);       
+        fetchSearch();
+    }
+
+    const fetchSearch = async () => {
+        try {
+            setIsSearching(true);
+            const { data } = await searchTool_API(searchTerm, curPage)
+            
+            if (data) {
+                console.log('data', data);
+                setSearchedResults(data.result);
+                setTotal(data.total);
+                setIsSearched(true);
+            }
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setIsSearching(false);
+        }
     }
 
     useEffect(() => {
-        if (isSubmit && data && data.result) {
-            setSearchedResults(data.result);
-            setIsSubmit(false);
-            setActiveTab(4);
+        if (isSearched && searchTerm.length >= 1 && searchedResults!.length >= 1) {
+            fetchSearch();
         }
-    }, [isSubmit, data]);
+    }, [curPage, searchTerm]);
+
+    // useEffect(() => {
+    //     const getSearchedData = async () => {
+    //         setIsSearching(true);
+    //         const { data } = await searchTool_API(searchTerm, curPage)
+            
+    //         if (data) {
+    //             console.log('data', data);
+    //             setIsSearching(false);
+    //         }
+    //     }
+        
+    //     if (isSubmit && searchTerm.length >= 1) {
+    //         getSearchedData();
+    //     }
+     
+    // }, [searchTerm, isSubmit]);
 
     return (
         <form className='flex w-full border-4 border-01 md:w-auto' onSubmit={handleSearchSubmit}>
-            <input className={`flex-1 px-3 py-2 text-sm bg-white border-black rounded-sm outline-none w-52 hover:placeholder:text-gray-400 focus:placeholder:text-gray-400 placeholder:text-xs placeholder:text-gray-300 ${isError && 'brightness-75'}`} value={searchTerm} onChange={handleChange} 
-            placeholder='오큘러스 / 타블렛 / 공학관 / 강의실' disabled={isError}/>
-            <button type='submit' className={`px-3.5 md:py-2 text-white md:px-7 w-[86px] bg-01 whitespace-nowrap text-sm md:text-base ${isFetching && 'brightness-75'}`} disabled={isFetching || isError}>
-                {
-                    isFetching ? (
-                        <Spinner />
-                    ) : '검색'
-                }
-            </button>          
+            {
+                <>
+                <input className={`flex-1 px-3 py-2 text-sm bg-white border-black rounded-sm outline-none w-52 hover:placeholder:text-gray-400 focus:placeholder:text-gray-400 placeholder:text-xs placeholder:text-gray-300`} value={searchTerm} onChange={handleChange} placeholder='오큘러스 / 타블렛 / 공학관 / 본관' disabled={isSearching}/>
+                <button type='submit' className={`px-3.5 md:py-2 text-white md:px-7 w-[86px] bg-01 whitespace-nowrap text-sm md:text-base ${isSearching && 'brightness-75'}`} disabled={isSearching}>
+                    {
+                        isSearching ? (
+                            <Spinner />
+                        ) : '검색'
+                    }
+                </button>     
+             </>
+            }     
         </form>
     );
 };

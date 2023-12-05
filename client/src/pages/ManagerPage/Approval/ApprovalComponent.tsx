@@ -23,21 +23,23 @@ const ApprovalComponent: FC = () => {
     fetchUsers();
   }, []);
 
-  const handleApproveUser = async (index: number)  => {
-     await approveUser_API({ user_id: users[index].user_id });
+  const handleApproveUser = async (user_id: string)  => {            // index: number 를 user_id: string으로 변경
+
+     // await approveUser_API({ user_id: users[index].user_id });     원래거
+     await approveUser_API({ user_id: user_id });
   };
 
   return (
     <div className="overflow-y-auto w-[825px] h-52 absolute top-[140px] ml-[390px] bg-02 rounded-md">
       <table className="w-full h-full">
         <tbody>
-          {users.map((user, index) => (
+          {users?.map((user, index) => (
             <ApplicantRow
               key={user.user_id}
               학번={user.user_student_number}
               이름={user.user_name}
               날짜={user.user_created_at}
-              onApprove={() => handleApproveUser(user!.user_id)}
+              onApprove={() => handleApproveUser(user.user_id)}
             />
           ))}
         </tbody>

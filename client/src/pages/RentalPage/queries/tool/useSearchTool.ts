@@ -7,7 +7,7 @@ import { useToolStore } from '../../../../zustand';
 const useSearchTool = (searchTerm: string, page: number, isSubmit: boolean) => {
 
     const { data, isError, error, isFetching } = useQuery<AxiosResponse<ResSearchTool, AxiosError>>({
-        queryKey: ['search-tool', { searchTerm }],
+        queryKey: ['search-tool', { searchTerm, page }],
         queryFn: () => searchTool_API(searchTerm, page),
         enabled: Boolean(isSubmit && searchTerm && page)   
     });

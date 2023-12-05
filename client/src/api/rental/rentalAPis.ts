@@ -31,7 +31,7 @@ export const viewRental_API = (department_id: string) => axiosPub.get<ResViewRen
 // 유저 토큰 필요 / 사용자의 현재 대여 목록 확인
 export const myRentalList_API = (user_id: string) => axiosPri.get<ResMyRentalList>(`/rental/myRentalList/${user_id}`);
 
-// 마스터 토큰 필요 / 기자재 삭제 / (오류 수정중이라고 함)
+// 마스터 토큰 필요 / 기자재 삭제 
 export const deleteTool_API = (tool_id: string) => axiosPri.get<ResDeleteTool>(`/tool/deleteTool/${tool_id}`);
 
 // 유저 토큰 필요 / 사용자의 역대 대여 목록

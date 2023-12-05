@@ -3,11 +3,12 @@ import { useToolStore } from  '../../../../../../zustand';
 import { dateFormmat } from '../../../../utils/step';
 import { useEffect } from 'react';
 import { shallow } from 'zustand/shallow';
+import { Spin } from 'antd';
 import ToolState from '../../templates/ToolState';
 import DescToolButtons from './DescToolButtons';
 import useOneViewTool from '../../../../queries/tool/useOneViewTool';
-import { Spin } from 'antd';
 import FetchDatasError from '../../../RentalProcessor/Main/Datas/teplate/FetchDatasError';
+import Image from 'antd/es/image/index';
 
 const DescTool: FC = () => {
 
@@ -34,7 +35,7 @@ const DescTool: FC = () => {
                     <div className='flex items-center w-full h-full'>
                         {
                             data && (
-                                <img src={src} className='object-contain w-full h-full rounded-md' alt={`${tool?.tool_content} 이미지` } />
+                                <Image src={src} className='object-contain w-full h-full rounded-md shadow-xl' alt={`${tool?.tool_content} 이미지` } />
                             )
                         }
                     </div> 

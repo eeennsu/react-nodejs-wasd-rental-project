@@ -37,7 +37,7 @@ export interface ISearchStore {
     setSearchTerm: (term: string) => void; 
 
     searchedResults: Tool[] | null;
-    setSearchedResults: (isSearched: Tool[] | null) => void;
+    setSearchedResults: (searchResults: Tool[] | null) => void;
 
     // searchedVRs: VR[] | null;
     // setSearchedVRs: (datas: VR[]) => void;
