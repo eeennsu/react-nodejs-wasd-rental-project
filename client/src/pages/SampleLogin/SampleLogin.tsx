@@ -25,7 +25,7 @@ const SampleLogin: FC = () => {
                 user_pw: pw,
             });
     
-            console.log(response.data);
+            // console.log(response.data);
     
             if (response.data[200]) {    
                 
@@ -69,8 +69,7 @@ const SampleLogin: FC = () => {
     }
 
     useEffect(() => {
-        console.log('state', state);
-        
+        // console.log('state', state);        
         if (state) {
             message.info('로그인이 필요합니다');
         }
@@ -80,22 +79,22 @@ const SampleLogin: FC = () => {
         <div className='flex flex-col items-center justify-center flex-1 w-full gap-3 ounded-sm bg-slate-300'>
             {
                 isLogin ? (
-                        <div className='flex flex-col items-center w-full h-full gap-4'>
-                            <p>
+                    <div className='flex flex-col items-center w-full h-full gap-4'>
+                        <p>
                             로그인에 성공하였습니다! 
-                            </p>
-                            <p>
-                                {user?.user_name}님 안녕하세요! 
-                            </p>
-                            <p>
-                                당신은 {user?.user_license === 1 ? '일반 유저' : '관리자'}입니다                         
-                            </p>                      
-                            <p className='underline'>
-                                <Link to='/'>
-                                    샘플 네비바 가기
-                                </Link>
-                            </p>                         
-                        </div>
+                        </p>
+                        <p>
+                            {user?.user_name}님 안녕하세요! 
+                        </p>
+                        <p>
+                            당신은 {user?.user_license === 1 ? '일반 유저' : '관리자'}입니다                         
+                        </p>                      
+                        <p className='underline'>
+                            <Link to='/'>
+                                샘플 네비바 가기
+                            </Link>
+                        </p>                         
+                    </div>
                 ) : (
                     <>
                         <h3 className='text-3xl'>Sample Login</h3> 

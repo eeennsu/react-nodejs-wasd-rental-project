@@ -7,10 +7,10 @@ type Props = {
 }
 
 const SearchedDatas: FC<Props> = ({ results }) => {
-    console.log('results', results);
+
     return (
-        results.length >= 2 ? (
-            results.map((result, i) => (
+        results.length >= 1 ? (
+            results.map((result) => (
                 <DataRow key={result.tool_id} data={result} />
             ))
         ) : (

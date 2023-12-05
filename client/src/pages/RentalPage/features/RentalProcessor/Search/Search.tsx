@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import { shallow } from 'zustand/shallow';
 import { searchTool_API } from '../../../../../api/tool/toolApis';
 import useSearchTool from '../../../queries/tool/useSearchTool';
+import { message } from 'antd';
+import Spinner from '../../../../../components/Spinner';
 
 const Search: FC = () => {
 
@@ -11,38 +13,41 @@ const Search: FC = () => {
     const [isSubmit, setIsSubmit] = useState<boolean>(false);
     
     const curPage = useToolStore(state => state.curPage);
-
-    const setSearchedResults= useSearchStore(state => state.setSearchedResults);
-    
-    const { data, isLoading, error } = useSearchTool(searchTerm, curPage, isSubmit);
+    const setSearchedResults = useSearchStore(state => state.setSearchedResults);
+    const setActiveTab = useTabsStore(state => state.setActiveTab);
+    const { data, isError, isFetching, error } = useSearchTool(searchTerm, curPage, isSubmit);
     
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
-        
-        if (isSubmit) {
-            setIsSubmit(false);
-        }
     }      
 
     const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if (searchTerm.length <= 0) {
+            message.warning('검색어를 한글자 이상 입력해주세요.');
+        }
+
         setIsSubmit(true);       
     }
 
     useEffect(() => {
         if (isSubmit && data && data.result) {
             setSearchedResults(data.result);
-
-            console.log('여기', data.result);
+            setIsSubmit(false);
+            setActiveTab(4);
         }
     }, [isSubmit, data]);
-    
+
     return (
         <form className='flex w-full border-4 border-01 md:w-auto' onSubmit={handleSearchSubmit}>
-            <input className='flex-1 px-3 py-2 text-sm bg-white border-black rounded-sm outline-none w-52 placeholder:text-sm placeholder:text-gray-300' value={searchTerm} onChange={handleChange} 
-            placeholder='검색어를 입력해 주세요'/>
-            <button type='submit' className='px-3.5 md:py-2 text-white md:px-7 bg-01 whitespace-nowrap text-sm md:text-base'>
-                검색
+            <input className={`flex-1 px-3 py-2 text-sm bg-white border-black rounded-sm outline-none w-52 hover:placeholder:text-gray-400 focus:placeholder:text-gray-400 placeholder:text-xs placeholder:text-gray-300 ${isError && 'brightness-75'}`} value={searchTerm} onChange={handleChange} 
+            placeholder='오큘러스 / 타블렛 / 공학관 / 강의실' disabled={isError}/>
+            <button type='submit' className={`px-3.5 md:py-2 text-white md:px-7 w-[86px] bg-01 whitespace-nowrap text-sm md:text-base ${isFetching && 'brightness-75'}`} disabled={isFetching || isError}>
+                {
+                    isFetching ? (
+                        <Spinner />
+                    ) : '검색'
+                }
             </button>          
         </form>
     );

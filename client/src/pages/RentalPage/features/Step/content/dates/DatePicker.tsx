@@ -16,8 +16,6 @@ const DatePicker: FC<Props> = ({ type }) => {
 
     const handleDateChange = (date: null | Dayjs, dateString: string) => {
         if (date) {
-            console.log(date);
-            console.log(dateString);
             setRentDate(new Date(dateString));
         }
          

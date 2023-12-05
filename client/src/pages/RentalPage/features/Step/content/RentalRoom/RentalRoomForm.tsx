@@ -12,7 +12,7 @@ const RentalRoomForm: FC = () => {
 
     const selectedRoom = useStepStore(state => state.selectedRoom);
     
-    const { data, isLoading, error } = useRentaledClassRooms(selectedRoom as ClassRoomName);
+    const { data, isLoading, error } = useRentaledClassRooms(selectedRoom!);
 
     const { resetTimes, setTimeBtnsResetTrigger } = useTimeStore(state => ({
         resetTimes: state.resetTimes, 
@@ -23,6 +23,8 @@ const RentalRoomForm: FC = () => {
         resetTimes();
         setTimeBtnsResetTrigger();
     }
+
+    console.log('room data', data);
 
     return (
         <section className='flex flex-col w-full gap-4 px-[50px] py-[22px] mt-4 bg-04 h-full'>
