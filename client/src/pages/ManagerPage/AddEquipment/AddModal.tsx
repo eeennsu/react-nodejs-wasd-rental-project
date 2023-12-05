@@ -63,24 +63,34 @@ const AddModal: FC<ModaladdProps> = ({ isOpen, onClose }) => {
               value={additionalContent}
               onChange={(e) => setAdditionalContent(e.target.value)}
               placeholder="추가 내용을 입력하세요."
-              className="w-[630px] h-[270px] bg-03 mb-4 p-2 resize-none overflow-auto"
+              className="w-[630px] h-[270px] bg-03 mb-4 p-6 resize-none overflow-auto"
             />
 
 </div>
 
             {/* 닫기 버튼 */}
-            {/* <button
+            {/* <button 
               onClick={onClose}
-              className="mt-[30px]">
+              className="ml-[940px] -mt-[400px]">
               x
             </button> */}
+
+            <div className="flex mt-[20px]">
+            <Button 
+             onClick={onClose}
+             bgColor='01' className='ml-[705px] '>
+                 뒤로가기
+          </Button>
           
             {/* 추가 내용 전송 버튼 (임시로 예시 버튼) */}
           <Button 
           onClick={onClose}
-          bgColor='01' className='ml-[800px] '>
+          bgColor='01' className='ml-[10px] '>
                  추가하기
           </Button>
+            </div>
+
+        
           </div>
         </div>
       )}

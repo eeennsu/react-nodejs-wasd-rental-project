@@ -81,7 +81,10 @@ const ManagerToolStatus: FC = () => {
 
             <div className='w-[400px] h-[117px] bg-01 rounded-md absolute top-[900px] ml-[900px] '>
             <div className='mt-[30px] ml-[132px] text-[36px] text-04 font-bold'>
-             뒤로가기
+              <Link to='/manager'>
+                뒤로가기
+              </Link>
+            
             </div>
           
             </div>
