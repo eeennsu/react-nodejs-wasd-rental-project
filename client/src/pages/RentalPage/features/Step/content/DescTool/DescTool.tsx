@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useToolStore } from  '../../../../../../zustand';
-import { dateFormmat } from '../../../../utils/step';
+import { getDateFormat } from '../../../../utils/timePicker';
 import { useEffect } from 'react';
 import { shallow } from 'zustand/shallow';
 import { Spin } from 'antd';
@@ -50,7 +50,7 @@ const DescTool: FC = () => {
                     <div className='flex flex-col gap-4 mt-6'>
                         <Paragraph title='툴 standard' text={tool?.tool_standard} />
                         <Paragraph title='기자재 사양' text={tool?.tool_spec} />
-                        <Paragraph title='업데이트 날짜' text={dateFormmat(tool?.tool_update_at)} />                     
+                        <Paragraph title='업데이트 날짜' text={getDateFormat(tool?.tool_update_at)} />                     
                     </div>
                 </div>
                 <DescToolButtons />            

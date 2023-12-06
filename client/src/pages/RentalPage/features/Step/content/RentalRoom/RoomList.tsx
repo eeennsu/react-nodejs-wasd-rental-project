@@ -1,16 +1,19 @@
 import type { FC } from 'react';
 import { classRoom } from '../../../../constants';
 import { useEffect } from 'react';
+import { notification } from 'antd';
 import RoomButton from './SelectRoomButton';
-import { message } from 'antd';
 
 const RoomList: FC = () => {
 
     const { enginerringBuilding, room_mainBuilding } = classRoom;
 
     useEffect(() => {
-        message.config({
-
+        notification.info({
+            message: 'Notification',
+            description: '이곳에서 강의실을 먼저 선택해 주세요!',
+            placement: 'bottomRight',
+            duration: 3
         })
     }, []);
 

@@ -64,13 +64,6 @@ export const getContent = (step: SystemStep) => {
 //     }
 // }
 
-export const dateFormmat = (date?: string): string => {
-
-    if (!date) return '';
-
-    return new Intl.DateTimeFormat('ko-KR', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(date));
-}
-
 export const getImgURL = (url: string): string => {
 
     return new URL(url, import.meta.env.VITE_LOCAL_SERVER_URL).href;
