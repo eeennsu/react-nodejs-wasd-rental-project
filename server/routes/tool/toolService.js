@@ -316,9 +316,11 @@ module.exports = {
       ],
       })
       .then((result)=>{
-        result.push(obj)
-        console.log(obj)
-        console.log("이거 뭐찍힘?",result)
+        //result.push(obj)
+        //console.log(obj)
+        //console.log("이거 뭐찍힘?",result)
+        //const resultWithoutCount = result.slice(0, result.length - 1);
+        //console.log(resultWithoutCount)
         resolve({obj,result})
       })
       .catch((err)=>{

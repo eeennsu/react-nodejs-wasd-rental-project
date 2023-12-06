@@ -27,6 +27,15 @@ module.exports = {
     getTest: (req,res)=>{
 
         const userId = req.params.user_id
+
+        const enCode = encodeURI("이윤태")
+
+      
+
+        const deCode = decodeURI(enCode)
+        console.log("인코딩된값",enCode)
+        console.log("디코딩 된 값",deCode)
+
         testService.getTest(userId)
         .then((result)=>{
             let obj = {};
