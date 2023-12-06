@@ -5,6 +5,7 @@ import Rentlist from './Mainelement/Rentlist';
 import { Link } from 'react-router-dom';
 import Button from '../../components/Button';
 import MainLogo from '../../components/MainLogo';
+import Personal from './SignUp/Personal';
 
 const MainPage: FC = () => {
 
@@ -14,7 +15,7 @@ const MainPage: FC = () => {
           <div className='fixed w-full top-28 bg-03 h-2/5'>       
             <Button_o/>
             <Openchat/>
-            <Rentlist/>
+            <Personal/>
             <div>
             <Button bgColor='02'>
               <Link to = {'/SignUp'}>

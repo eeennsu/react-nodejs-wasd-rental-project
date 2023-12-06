@@ -1,6 +1,6 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { MainPage, ManagerPage, ManagerToolStatusPage, MyPage, RentalPage, RentalLogPage, Suggestions, SignUpPage } from './pages';
+import { MainPage, ManagerPage, ManagerToolStatusPage, MyPage, RentalPage, RentalLogPage, Suggestions, SignUp } from './pages';
 import { MainLayout, OtherLayout, RootLayout } from './layout';
 import { ROLES } from './layout/auth/roles';
 import ExamplePage from './pages/ExamplePage/ExamplePage';
@@ -19,7 +19,7 @@ const App = () => {
                 <Route element={<RootLayout />}>
                     <Route element={<MainLayout />}>
                         <Route index path='/main' element={<MainPage />} />       
-                        <Route path='/main/sign-up' element={<SignUpPage />} />      
+                        <Route path='/main/signup' element={<SignUp />} />      
                         <Route path='/example' element={<ExamplePage />} />   
                     </Route>
                   
