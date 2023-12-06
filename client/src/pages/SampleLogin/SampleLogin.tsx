@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 import { message } from 'antd';
-import { login_API } from '../../api/auth/authApis';
+import { login_API } from '../../api/auth/authApi';
 import { useUserStore } from '../../zustand';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';

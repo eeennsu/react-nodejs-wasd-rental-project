@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { viewTools_API } from '../../../../api/tool/toolApis';
+import { viewTools_API } from '../../../../api/tool/toolApi';
 import { AxiosError, AxiosResponse } from 'axios';
 import { useEffect } from 'react';
 import { useToolStore } from '../../../../zustand';

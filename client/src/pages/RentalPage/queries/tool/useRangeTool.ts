@@ -1,6 +1,6 @@
 import { AxiosError, AxiosResponse } from 'axios';
 import { useQuery } from '@tanstack/react-query';
-import { rangeTool_API } from '../../../../api/tool/toolApis';
+import { rangeTool_API } from '../../../../api/tool/toolApi';
 import { useEffect } from 'react';
 import { useToolStore } from '../../../../zustand';
 

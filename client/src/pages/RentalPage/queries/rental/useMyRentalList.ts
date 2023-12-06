@@ -1,6 +1,6 @@
 import type { AxiosError, AxiosResponse } from 'axios';
 import { useQuery } from '@tanstack/react-query';
-import { myRentalList_API } from '../../../../api/rental/rentalAPis';
+import { myRentalList_API } from '../../../../api/rental/rentalApi';
 
 const useMyRentalList = (user_id: string) => {
 

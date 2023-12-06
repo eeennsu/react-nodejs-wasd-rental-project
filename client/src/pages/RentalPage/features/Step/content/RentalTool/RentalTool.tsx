@@ -7,7 +7,7 @@ import Button from '../../../../../../components/Button';
 import Template from '../../templates/Template';
 import Picker from '../dates/DatePicker';
 import useStoreController from '../../../../../../hooks/commons/useStoreController';
-import { rentalTool_API } from '../../../../../../api/rental/rentalAPis';
+import { rentalTool_API } from '../../../../../../api/rental/rentalApi';
 
 const { TextArea } = AntdInput;
 const regClassNum = /^\d{10}$/;

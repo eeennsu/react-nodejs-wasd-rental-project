@@ -5,7 +5,7 @@ import { useStepStore, useTabsStore, useToolStore, useUserStore } from '../../..
 import { repairResons } from '../../../../constants';
 import { shallow } from 'zustand/shallow';
 import { getImgURL } from '../../../../utils/step';
-import { repairTool_API } from '../../../../../../api/repair/repair';
+import { repairTool_API } from '../../../../../../api/repair/repairApi';
 import Template from '../../templates/Template';
 import Button from '../../../../../../components/Button';
 import useStoreController from '../../../../../../hooks/commons/useStoreController';

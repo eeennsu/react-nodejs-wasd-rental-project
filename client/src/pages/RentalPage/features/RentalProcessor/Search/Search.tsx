@@ -2,7 +2,7 @@ import type { FC, ChangeEvent, FormEvent } from 'react';
 import { useEffect, useState } from 'react';
 import { useTabsStore, useSearchStore, useToolStore } from '../../../../../zustand';
 import { shallow } from 'zustand/shallow';
-import { searchTool_API } from '../../../../../api/tool/toolApis';
+import { searchTool_API } from '../../../../../api/tool/toolApi';
 import { message } from 'antd';
 import Spinner from '../../../../../components/Spinner';
 

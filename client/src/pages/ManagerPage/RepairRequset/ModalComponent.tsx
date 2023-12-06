@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import type { FC } from 'react';
 import Button from "../../../components/Button";
-import { myRepairView_API } from "../../../api/repair/repair";
+import { myRepairView_API } from "../../../api/repair/repairApi";
 import { useUserStore } from "../../../zustand";
 
 interface ModalProps {

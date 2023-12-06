@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React, { useEffect, useState } from 'react';
 import Button from '../../../components/Button';
 import { useUserStore } from '../../../zustand';
-import { approveUser_API, listPendingUsers_API } from '../../../api/auth/authApis';
+import { approveUser_API, listPendingUsers_API } from '../../../api/auth/authApi';
 import ApplicantRow from './ApplicantRow';
 
 const ApprovalComponent: FC = () => {

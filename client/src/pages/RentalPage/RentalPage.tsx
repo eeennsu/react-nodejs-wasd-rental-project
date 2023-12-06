@@ -3,7 +3,7 @@ import { useStepStore, useUserStore } from '../../zustand';
 import { getContent } from './utils/step';
 import Side from './features/Side/Side';
 import './features/app.css';
-import { approveUser_API } from '../../api/auth/authApis';
+import { approveUser_API } from '../../api/auth/authApi';
 
 const RentalPage: FC = () => {
 

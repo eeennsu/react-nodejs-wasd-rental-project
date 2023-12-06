@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { oneViewTool_API } from '../../../../api/tool/toolApis';
+import { oneViewTool_API } from '../../../../api/tool/toolApi';
 import { AxiosError, AxiosResponse } from 'axios';
 
 const useOneViewTool = (tool_id: string) => {
