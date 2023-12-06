@@ -7,7 +7,7 @@ type Props = {
 }
 
 const SearchedDatas: FC<Props> = ({ results }) => {
-    console.log('results', results);
+    // console.log('results', results);
     return (
         results.length >= 1 ? (
             results.map((result) => (
