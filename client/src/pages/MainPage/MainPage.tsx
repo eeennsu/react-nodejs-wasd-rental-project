@@ -18,7 +18,7 @@ const MainPage: FC = () => {
             <Personal/>
             <div>
             <Button bgColor='02'>
-              <Link to = {'/SignUp'}>
+              <Link to = {'/main/sign-up'}>
                 회원가입 &gt;
               </Link>
             </Button>

@@ -40,7 +40,7 @@ import Button from '../../../components/Button';
 
   return (
     <div className='w-full'>
-      <div className='fixed w-full top-28 bg-03 h-12'>
+      <div className='fixed w-full h-12 top-28 bg-03'>
           <form onSubmit={handleSubmit}>
             <div className='w-[400px] h-[560px] space-y-4 left-37 rounded-8 bg-02 p-4 pl-10 rounded-b-lg'>
               <div className='rounded-md'>
