@@ -6,11 +6,11 @@ const ExNavMenu: FC = () => {
 
     const navigate = useNavigate();
     const { pathname } = useLocation();
-    const { handleAllStoreInit } = useStoreController();
+    const { setAllStoreInit } = useStoreController();
 
     const handleExNav = () => {
         if (pathname === '/rental') {
-            handleAllStoreInit();   
+            setAllStoreInit();   
         }
      
         navigate('/');      

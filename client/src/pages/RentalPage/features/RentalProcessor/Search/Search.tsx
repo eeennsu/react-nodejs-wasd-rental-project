@@ -8,7 +8,7 @@ import Spinner from '../../../../../components/Spinner';
 
 const Search: FC = () => {
 
-    // const [isNewSearch, setIsNewSearch] = useState<boolean>(false);
+    const [isNewSearch, setIsNewSearch] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>();
     const [searchedTerm, setSearchedTerm] = useState<string>('');
 
@@ -42,18 +42,15 @@ const Search: FC = () => {
     }
 
     const fetchSearch = async (init: boolean) => {
-
-        console.log(init ? '이닛' : '낫 이닛');
-   
-        try {
-            setIsLoading(true);           
-           
+        setIsLoading(true);
+        setIsNewSearch(init);
+        
+        try {                
             const term = init ? searchTerm : searchedTerm;
             const page = init ? 1 : curPage;
             const { data } = await searchTool_API(term, page);
             
             if (data) {
-                // console.log('data', data);
                 setSearchedResults(data.result);
                 setTotal(data.total);
                 setActiveTab(4);        
@@ -67,9 +64,13 @@ const Search: FC = () => {
         }
     }
 
-    useEffect(() => {
-        if (searchTerm?.length >= 1 && searchedResults!.length >= 1 && (searchTerm === searchedTerm)) {
-            fetchSearch(false);
+    useEffect(() => {        
+        if (searchedResults && searchedResults.length >= 1) {
+            if ((searchTerm === searchedTerm) || (!isNewSearch && searchTerm !== searchedTerm)) {
+                fetchSearch(false);
+            } else if (isNewSearch) {
+                return;
+            } 
         }
     }, [curPage]);
 
@@ -92,61 +93,3 @@ const Search: FC = () => {
 };
 
 export default Search;
-
-
-
-
-
-
-
-
-    // useEffect(() => {
-    //     switch(activeTab) {
-    //         case 0: 
-    //             if (VRsData?.length >= 1) {
-    //                 const searched = VRsData.filter((vr) => vr.SKU.toString().includes(defferedSearchTerm));
-    //                 setSearchedVRs(searched);
-    //             }
-
-    //             break;
-                
-    //         case 1:
-    //             if (tabletsData?.length >= 1) {
-    //                 const searched = tabletsData.filter((tablet) => tablet.SKU.toString().includes(defferedSearchTerm));
-    //                 setSearchedTablets(searched);
-    //             }
-                
-    //             break;
-
-    //         case 2: 
-    //             if (lectureRoomsData?.length >= 1) {
-    //                 const searched = lectureRoomsData.filter((room) => room.name.includes(defferedSearchTerm));
-    //                 setSearchedLectureRooms(searched);
-    //             }
-              
-    //             break;
-
-    //         default:
-    //             throw new Error(`${activeTab} is not defined.`);
-    //     }
-
-    //     if (defferedSearchTerm?.length === 0) {
-    //         switch(activeTab) {             
-    //             case 0:
-    //                 setSearchedVRs(null);
-    //                 break;
-
-    //             case 1:
-    //                 setSearchedTablets(null);
-    //                 break;
-                
-    //             case 2:
-    //                 setSearchedLectureRooms(null);
-    //                 break;
-
-    //             default:
-    //                 throw new Error(`${activeTab} is not defined.`);          
-    //         }
-    //     }        
-
-    // }, [defferedSearchTerm, activeTab, setVRsData, setTabletsData, setLectureRoomsData]);

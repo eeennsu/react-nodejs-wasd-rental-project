@@ -1,4 +1,4 @@
-import { useStepStore, useTabsStore, useTimeStore, useToolStore } from '../../zustand';
+import { useSearchStore, useStepStore, useTabsStore, useTimeStore, useToolStore } from '../../zustand';
 import { shallow } from 'zustand/shallow';
 
 const useStoreController = () => {
@@ -36,18 +36,28 @@ const useStoreController = () => {
         resetTimes: state.resetTimes
     }), shallow);
 
-    const handleStepInit = (selectedActiveTab: ActiveTab = 0) => {      
+    const {
+        searchTerm, setSearchTerm,
+        searchedResults, setSearchedResults
+    } = useSearchStore(state => ({
+        searchTerm: state.searchTerm, setSearchTerm: state.setSearchTerm,
+        searchedResults: state.searchedResults, setSearchedResults: state.setSearchedResults,
+    }), shallow);
+
+
+
+    const setStepInit = (selectedActiveTab: ActiveTab = 0) => {      
         systemStep !== 'INIT' && setSystemStep('INIT');  
         setActiveTab(selectedActiveTab);
         text.length >= 1 && setText('');    
     }
 
-    const handleDateInit = () => {             
+    const setDateInit = () => {             
         rentDate && setRentDate(null);
         returnDate && setReturnDate(null);
     }
 
-    const handleDataInit = () => {
+    const setDataInit = () => {
         selectedRoom && setSelectedRoom(null);
         tool && setTool(null);
         toolImg && setToolImg(null);
@@ -55,21 +65,28 @@ const useStoreController = () => {
         systemStep === 'CLASSROOM_RENT' && resetTimes();
     }
 
-    const handleToolInit = () => {
+    const setToolInit = () => {
         page !== 1 && setPage(1);
     }
 
-    const handleAllStoreInit = () => {
-        handleStepInit();
-        handleDateInit();
-        handleDataInit();
-        handleToolInit();
+    const setSearchDataInit = () => {
+        searchTerm.length >= 1 && setSearchTerm('');
+        searchedResults && setSearchedResults(null);
+    }
+
+    const setAllStoreInit = () => {
+        setStepInit();
+        setDateInit();
+        setDataInit();
+        setToolInit();
+        setSearchDataInit();
     }
 
     return {
-        handleStepInit,
-        handleDateInit,
-        handleAllStoreInit
+        setStepInit,
+        setDateInit,
+        setSearchDataInit,
+        setAllStoreInit
     };
 }
 

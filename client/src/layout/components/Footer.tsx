@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import logo2 from '../../assets/images/logo2.png';
 
-
 const Footer: FC = () => {
     
     // 이미지 60? 40?

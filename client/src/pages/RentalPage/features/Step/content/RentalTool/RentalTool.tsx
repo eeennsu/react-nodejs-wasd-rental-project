@@ -24,7 +24,7 @@ const RentalTool: FC = () => {
     const userId = useUserStore(state => state.user?.user_id);
     const tool = useToolStore(state => state.tool);
     const setTool = useToolStore(state => state.setTool);
-    const { handleStepInit, handleDateInit } = useStoreController();
+    const { setStepInit, setDateInit } = useStoreController();
 
     const refUserType = useRef<HTMLInputElement | null>(null);
     const refClassNum = useRef<HTMLInputElement | null>(null);
@@ -102,8 +102,8 @@ const RentalTool: FC = () => {
     }
 
     const handleBack = () => {
-        handleStepInit(activeTab);
-        handleDateInit();
+        setStepInit(activeTab);
+        setDateInit();
         setTool(null);
     }
 

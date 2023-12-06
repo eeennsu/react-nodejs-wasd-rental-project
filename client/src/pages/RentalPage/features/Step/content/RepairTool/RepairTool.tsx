@@ -25,7 +25,7 @@ const RepairTool: FC = () => {
         tool: state.tool, setTool: state.setTool, toolImg: state.toolImg,
     }), shallow);
     
-    const { handleStepInit } = useStoreController();
+    const { setStepInit } = useStoreController();
 
     const [resonSelect, setResonSelect] = useState<string | null>(null);
     
@@ -89,7 +89,7 @@ const RepairTool: FC = () => {
     }
 
     const handleBack = () => {
-        handleStepInit(activeTab);
+        setStepInit(activeTab);
         setTool(null);
     }
 
