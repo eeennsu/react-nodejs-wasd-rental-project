@@ -94,13 +94,16 @@ interface NotClassroomCount {
 interface ResNotClassroomCount {
     '200': OK;
     result: Array<{
-        rental_id: number;
         rental_date: string;
         rental_due_date: string;
-        rental_state: string;
         rental_extend: boolean;
+        rental_id: number;
+        rental_state: string;
+        tool_id: ClassRoomName;
+        user: {
+            user_name: string;
+        }
         user_id: string;
-        tool_id: string;
     }>;
 }
 

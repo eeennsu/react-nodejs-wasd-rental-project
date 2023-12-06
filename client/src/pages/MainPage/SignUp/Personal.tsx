@@ -3,37 +3,37 @@ import React, { useState } from 'react';
 import Button from '../../../components/Button';
 
 // // 개인정보 타입 정의
-// type Personal = {
-//   Name: string;
-//   studentNumber: string,
-//   email: string;
-//   phoneNumber: string;
-// };
+type Personal = {
+  Name: string;
+  studentNumber: string,
+  email: string;
+  phoneNumber: string;
+};
 
-// const Personal: FC = () => {
-//   // 폼 상태
-//   const [formData, setFormData] = useState<Personal>({
-//     Name: '',
-//     studentNumber: '',
-//     email: '',
-//     phoneNumber: '',
-//   });
+const Personal: FC = () => {
+  // 폼 상태
+  const [formData, setFormData] = useState<Personal>({
+    Name: '',
+    studentNumber: '',
+    email: '',
+    phoneNumber: '',
+  });
 
-//   // 입력 값 변경 핸들러
-//   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = e.target;
-//     setFormData((prevData) => ({
-//       ...prevData,
-//       [name]: value,
-//     }));
-//   };
+  // 입력 값 변경 핸들러
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-//   // 폼 제출 핸들러
-//   const handleSubmit = (e: React.FormEvent) => {
-//     e.preventDefault();
-//     // 폼 데이터 사용 또는 전송
-//     console.log('제출된 데이터:', formData);
-//   };
+  // 폼 제출 핸들러
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // 폼 데이터 사용 또는 전송
+    console.log('제출된 데이터:', formData);
+  };
 
 
 

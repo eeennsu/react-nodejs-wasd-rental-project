@@ -1,10 +1,18 @@
 import type { FC } from 'react';
 import { classRoom } from '../../../../constants';
+import { useEffect } from 'react';
 import RoomButton from './SelectRoomButton';
+import { message } from 'antd';
 
 const RoomList: FC = () => {
 
     const { enginerringBuilding, room_mainBuilding } = classRoom;
+
+    useEffect(() => {
+        message.config({
+
+        })
+    }, []);
 
     return (
         <section className='flex flex-col items-center justify-center w-full py-[56px] text-center'>

@@ -2,7 +2,7 @@ import type { AxiosError, AxiosResponse } from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { notClassroomCount_API } from '../../../../api/rental/rentalApi';
 
-const useRentaledClassRooms = (tool_id: ClassRoomName) => {
+const useNotClassroomCount = (tool_id: ClassRoomName) => {
 
     const { data, error, isLoading } = useQuery<AxiosResponse<ResNotClassroomCount, AxiosError>>({
         queryKey: ['not-classroom-count', { tool_id }],
@@ -15,4 +15,4 @@ const useRentaledClassRooms = (tool_id: ClassRoomName) => {
     };
 }
 
-export default useRentaledClassRooms;
+export default useNotClassroomCount;
