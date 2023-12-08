@@ -5,9 +5,7 @@ const SignUp: FC = () => {
     
     return (
       <div className='w-full'>
-          <div className='fixed w-full top-28 bg-03 h-12'>
             <Personal/>
-          </div>
       </div>
     );
 };
