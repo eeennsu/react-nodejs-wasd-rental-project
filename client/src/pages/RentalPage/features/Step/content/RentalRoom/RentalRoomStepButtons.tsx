@@ -9,10 +9,10 @@ import { SessionUserInfo } from '../../../../../../zustand/userStore/types';
 const RentalRoomStepButtons: FC = () => {
 
     const { 
-        text, setText, 
+        rentalReson, setText, 
         selectedRoom, setSystemStep 
     } = useStepStore(state => ({
-        text: state.text, setText: state.setText,
+        rentalReson: state.text, setText: state.setText,
         selectedRoom: state.selectedRoom, setSystemStep: state.setSystemStep
     }), shallow);
 
@@ -22,7 +22,7 @@ const RentalRoomStepButtons: FC = () => {
         lastSelectHour, lastSelectMin,
         resetTimes, setTimeBtnsResetTrigger
     } = useTimeStore(state => ({
-        rentDate: state.rentDate,
+        rentDate: state.rentalDate,
         firstSelectHour: state.firstSelectHour, firstSelectMin: state.firstSelectMin, 
         lastSelectHour: state.lastSelectHour, lastSelectMin: state.lastSelectMin,
         resetTimes: state.resetTimes,
@@ -35,7 +35,7 @@ const RentalRoomStepButtons: FC = () => {
 
     const handleDescRoomStep = () => {
         setSystemStep('CLASSROOM_DESC');    
-        text.length >= 1 && setText('');     
+        rentalReson.length >= 1 && setText('');     
         resetTimes();
     }
 
@@ -69,7 +69,7 @@ const RentalRoomStepButtons: FC = () => {
             return;
         }
 
-        if (text.length  <= 0) {
+        if (rentalReson.length  <= 0) {
             message.warning('수리 사유를 입력해주세요.');
 
             return;
@@ -78,6 +78,9 @@ const RentalRoomStepButtons: FC = () => {
         try {
             console.log('유저 아이디 - ', user_id);
             console.log('디파트먼트 아이디 - ', department_id);
+            console.log('선택된 강의실 - ', selectedRoom);
+            console.log('대여 사유 - ', rentalReson);
+            console.log('대여 날짜 - ', rentDate);
             
             message.success('강의실 대여가 완료되었습니다');    
         } catch (error) {

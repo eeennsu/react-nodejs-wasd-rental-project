@@ -27,11 +27,11 @@ const useStoreController = () => {
     }), shallow);
     
     const { 
-        rentDate, setRentDate, 
+        rentalDate, setRentalDate, 
         returnDate, setReturnDate, 
         resetTimes 
     } = useTimeStore(state => ({
-        rentDate: state.rentDate, setRentDate: state.setRentDate,
+        rentalDate: state.rentalDate, setRentalDate: state.setRentalDate,
         returnDate: state.returnDate, setReturnDate: state.setReturnDate,
         resetTimes: state.resetTimes
     }), shallow);
@@ -53,7 +53,7 @@ const useStoreController = () => {
     }
 
     const setDateInit = () => {             
-        rentDate && setRentDate(null);
+        rentalDate && setRentalDate(null);
         returnDate && setReturnDate(null);
     }
 

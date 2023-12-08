@@ -5,19 +5,21 @@ interface RepairTool {
     tool_id: string;
 }
 
+interface RepairInfo {
+    repair_id: number;
+    repair_part: string;
+    repair_reason: string;
+    repair_create_at: string;
+    repair_state: string;
+    user_id: string,
+    tool_id: string;
+}
+
 interface ResRepairTool {
     '200': OK;
     suc: string;
     result: {
-        repairResult: {
-            repair_id: number;
-            repair_part: string;
-            repair_reason: string;
-            repair_create_at: string;
-            repair_state: string;   // 미확인
-            user_id: string,
-            tool_id: string
-        };
+        repairResult: RepairInfo;
         logResult: {
             log_id: number;
             log_type: number;
@@ -40,39 +42,15 @@ interface ResChekRepair {
 
 interface ResMyRepairList {
     '200': OK;
-    result: Array<{
-        repair_id: number;
-        repair_part: string;
-        repair_reason: string;
-        repair_create_at: string;
-        repair_state: string;
-        user_id: string;
-        tool_id: string;
-    }> | string;
+    result: RepairInfo[] | string;
 }
 
 interface ResMyRepairView {
     '200': OK;
-    result: Array<{
-        repair_id: number;
-        repair_part: string;
-        repair_reason: string;
-        repair_create_at: string;
-        repair_state: string;
-        user_id: string,
-        tool_id: string;
-    }> | string;
+    result: RepairInfo[] | string;
 }
 
 interface ResNotRepairList {
     '200': OK;
-    result: Array<{
-        repair_id: number;
-        repair_part: string;
-        repair_reason: string;
-        repair_create_at: string;
-        repair_state: string;
-        user_id: string,
-        tool_id: string;
-    }> | string;
+    result: RepairInfo[] | string;
 }

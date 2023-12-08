@@ -17,7 +17,7 @@ const Suggestions: FC = () => {
     };
 
 
-    const [suggestions, setSuggestions] = useState<ResNotRepairList[]>([]);
+    const [suggestions, setSuggestions] = useState<RepairInfo[]>([]);       // 서버의 response 를 보면, result 속성안에 값이 있고, result의 타입은 RepairInfo 타입의 배열임.
 
     useEffect(() => {
       const test_3 = async () => {
@@ -51,18 +51,18 @@ const Suggestions: FC = () => {
           기자재 건의사항
         </div>
         <div className="w-[1180px] h-[800px] space-y-4 left-37 rounded-8 bg-02 p-4 pl-10 rounded-b-lg" >
-        {suggestions.map((suggestion, index) => (
-  <div key={index} onClick={openModal} className='flex w-[1020px] h-[80px] bg-03 ml-[35px] rounded-md text-[18px] p-1'>
-    <h3 className="ml-[30px] mt-[20px] font-bold" >
-      {suggestion.repair_reason} {/* 건의사항 제목 */}
-    </h3>
-    <div className='ml-[550px] mt-[20px]'>
-      {suggestion.user_id} {/* 작성자 이름 */}
-    </div>
-    <div className='ml-[10px] mt-[20px]'>
-      {suggestion.repair_create_at} {/* 작성일 */}
-    </div>
-  </div>
+        {suggestions?.map((suggestion, index) => (
+          <div key={index} onClick={openModal} className='flex w-[1020px] h-[80px] bg-03 ml-[35px] rounded-md text-[18px] p-1'>
+            <h3 className="ml-[30px] mt-[20px] font-bold" >
+              {suggestion.repair_reason} {/* 건의사항 제목 */}
+            </h3>
+            <div className='ml-[550px] mt-[20px]'>
+              {suggestion.user_id} {/* 작성자 이름 */}
+            </div>
+            <div className='ml-[10px] mt-[20px]'>
+              {suggestion.repair_create_at} {/* 작성일 */}
+            </div>
+          </div>
           ))}
         </div>
         <ModalComponent isOpen={isModalOpen} onClose={closeModal} />
