@@ -1,28 +1,57 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import type { FC } from 'react';
 import Button from "../../../components/Button";
 import { myRepairView_API } from "../../../api/repair/repairApi";
 import { useUserStore } from "../../../zustand";
+import { string } from "prop-types";
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+interface text_1 {
+
+  repair_id: number;
+  repair_part: string;
+  repair_reason: string;
+  repair_create_at: string;
+  repair_state: string;
+  user_id: string,
+  tool_id: string;
+
+}
+
+
 const ModalComponent: FC<ModalProps> = ({ isOpen, onClose }) => {
 
   const { user } = useUserStore();
 
-//   const test = async () => {
-//     try {
-//       const response = await myRepairView_API(user!.user_id, 'repair_part')
 
-//       console.log(response.data)
-//     }
-// catch(err){
-//   console.log(err)
-// }
-//   };
+  const [repairs, setRepairs]= useState<ResMyRepairView[]>([]);
+
+  useEffect(() => {
+
+    const test = async () => {
+
+      try {
+        const response = await myRepairView_API(user!.user_id, user!.user_email)
+  
+        console.log(response.data)
+      }
+  catch(err){
+    console.log(err)
+  }
+    };
+
+    test();
+    
+  },[]);
+
+  // const test_2 = async (user_id)
+
+
+ 
 
   return (
     <div className={`fixed top-[190px] left-[583px] w-[980px] h-[460px] bg-04 z-[900] rounded-md ${isOpen ? 'visible' : 'invisible'}`}>
@@ -37,12 +66,22 @@ const ModalComponent: FC<ModalProps> = ({ isOpen, onClose }) => {
         <h2></h2>
       </div>
 
-      <Button onClick={onClose} bgColor='01' className=" w-[120px] h-[45px] ml-[660px] mt-[280px]">
+      <div  onClick={onClose} className="text-[30px] -mr-[900px] -mt-[80px]">
+        x
+      </div>
+
+      <Button onClick={onClose} bgColor='01' className=" w-[120px] h-[45px] ml-[660px] mt-[340px]">
+        <div className="text-[16px]">
         수리중
+        </div>
+       
       </Button>
 
       <Button onClick={onClose} bgColor='01' className=" w-[120px] h-[45px] ml-[20px] ">
+        <div className="text-[16px]">
         수리완료
+        </div>
+       
       </Button>
     </div>
   );

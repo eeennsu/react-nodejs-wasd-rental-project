@@ -27,7 +27,9 @@ const AddModal: FC<ModaladdProps> = ({ isOpen, onClose }) => {
         <div className="fixed inset-0 flex items-center justify-center">
           {/* 모달 내용 */}
           <div className="bg-white rounded-md p-6 w-[980px] h-[400px]">
-            <div className="w-[270px] h-[270px] border-8 bg-04 border-gay-700 border-dotted">기자재 추가</div>
+            <div className="w-[270px] h-[270px] border-8 bg-04 border-gay-700 border-dotted">
+              기자재 추가
+              </div>
 
             {/* 이미지 업로드 버튼 */}
             <div className="mt-[10px] text-[12px] pb-1">
@@ -68,12 +70,6 @@ const AddModal: FC<ModaladdProps> = ({ isOpen, onClose }) => {
 
 </div>
 
-            {/* 닫기 버튼 */}
-            {/* <button 
-              onClick={onClose}
-              className="ml-[940px] -mt-[400px]">
-              x
-            </button> */}
 
             <div className="flex mt-[20px]">
             <Button 
