@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React, { useState } from 'react';
 import Button from '../../../components/Button';
 
-// 개인정보 타입 정의
+
 type Personal = {
   Name: string;
   studentNumber: string,

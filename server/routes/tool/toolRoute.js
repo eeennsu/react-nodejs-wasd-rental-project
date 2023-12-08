@@ -26,7 +26,7 @@ router.get('/viewTools/:page/:pageLimit',checkToken,checkOne,toolController.view
 router.post('/deleteTool',checkToken,checkMaster,toolController.deleteTool);
 
 //검색 기능
-router.get('/searchTool/:toolSearch/:page/:pageLimit',checkToken,checkOne,toolController.searchTool);
+router.get('/searchTool/:toolSearch/:page/:pageLimit',/*checkToken,checkOne,*/toolController.searchTool);
 
 //기자재 유형에 따른 정렬
 router.get('/rangeTool/:tool_name/:page/:pageLimit',checkToken,checkOne,toolController.rangeTool);

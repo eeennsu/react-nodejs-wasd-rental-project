@@ -1,4 +1,4 @@
-const { Rental, Log, Tool, Img,Sequelize } = require('../../models');
+const { Rental, Log, Tool, Img,Sequelize,User } = require('../../models');
 const { Op } = require('sequelize');
 const moment = require("moment");
 require("moment-timezone");
@@ -214,7 +214,15 @@ module.exports = {
               [Sequelize.Op.and]: [
                 { tool_id: { [Sequelize.Op.eq]: toolId } }
               ]
-            }
+            },
+            include: [
+                {
+                    model:User,
+                    attributes: ['user_name'],
+                },
+            ]
+           
+
           })
           .then((result) => {
             result !== null ? resolve(result) : resolve(false);
@@ -576,12 +584,18 @@ module.exports = {
               department_id: departmentId,
             },
             include: [
-              {
-                model: Rental,
-                attributes: ['user_id'],
-              },
-            ],
-          })
+                {
+                  model: Rental,
+                  attributes: ['user_id'],
+                  include: [
+                    {
+                      model: User, // User 모델과 조인
+                      attributes: ['user_name'], // 필요한 속성 선택
+                    },
+                  ],
+                },
+              ],
+            })
             .then((result) => {
               resolve(result);
             })

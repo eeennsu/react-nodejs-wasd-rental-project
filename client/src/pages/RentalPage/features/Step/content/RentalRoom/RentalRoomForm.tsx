@@ -1,18 +1,19 @@
-import type { FC } from 'react';
+import { useEffect, type FC } from 'react';
 import { useStepStore, useTimeStore } from '../../../../../../zustand';
 import { shallow } from 'zustand/shallow';
+import { notification } from 'antd';
 import DatePicker from '../dates/DatePicker';
 import TimePicker from '../dates/PickableTime/TimePicker';
 import Button from '../../../../../../components/Button';
 import RentReson from './RentalReson';
-import useRentaledClassRooms from '../../../../queries/rental/useRentaledClassRooms';
+import useNotClassroomCount from '../../../../queries/rental/useNotClassroomCount';
 import FetchDatasError from '../../../RentalProcessor/Main/Datas/teplate/FetchDatasError';
 
 const RentalRoomForm: FC = () => {
-
-    const selectedRoom = useStepStore(state => state.selectedRoom);
     
-    const { data, isLoading, error } = useRentaledClassRooms(selectedRoom!);
+    const selectedRoom = useStepStore(state => state.selectedRoom);
+       
+    const { data: rentalHours, isLoading, error } = useNotClassroomCount(selectedRoom!);
 
     const { resetTimes, setTimeBtnsResetTrigger } = useTimeStore(state => ({
         resetTimes: state.resetTimes, 
@@ -24,7 +25,14 @@ const RentalRoomForm: FC = () => {
         setTimeBtnsResetTrigger();
     }
 
-    console.log('room data', data);
+    useEffect(() => {
+        notification.info({
+            message: 'Notification',
+            description: '대여 중인 시간을 제외하고 선택해 주세요!',
+            placement: 'bottomRight',
+            duration: 3
+        })
+    }, []);
 
     return (
         <section className='flex flex-col w-full gap-4 px-[50px] py-[22px] mt-4 bg-04 h-full'>
@@ -44,18 +52,19 @@ const RentalRoomForm: FC = () => {
                                 다시 선택하기
                             </Button>  
                         </div>
-                        <TimePicker />
-                        <div>
-                            <RentReson />  
-                        </div>  
+                        <TimePicker classroomRentalInfos={rentalHours?.result}/>
+                        <RentReson />     
                     </>
-                )
-            }       
+                )                   
+            }        
         </section>
     );
 };
 
 export default RentalRoomForm;
+
+
+
 
 
 

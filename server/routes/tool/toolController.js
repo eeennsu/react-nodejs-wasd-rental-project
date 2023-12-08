@@ -199,12 +199,13 @@ module.exports = {
       
         toolService.searchTool(page,pageLimit,toolSearch)
         .then((result)=>{
+       
           console.log(result)
           let obj = {};
 
           if(result.result.length==0){
             obj["200"] ="OK";
-            obj["result"]= "검색어에 맞는 기기 혹은 강의실이 없습니다.";
+            obj["result"]= result.result
             res.send(obj);
           }
           else if(result.length!==0){

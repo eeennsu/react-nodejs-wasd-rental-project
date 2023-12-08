@@ -1,6 +1,7 @@
 import type { FC } from 'react';
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
+import { useUserStore } from '../../../zustand';
+import { viewRental_API } from '../../../api/rental/rentalApi'
 
 interface TooltipProps {
   
