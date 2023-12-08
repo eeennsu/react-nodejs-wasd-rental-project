@@ -28,7 +28,7 @@ const useStepStore = createWithEqualityFn<IStepStore>()(
             text: '',
             setText: (text) => set(() => ({ text: text }), false, 'SET_TEXT'),
 
-            selectedRoom: '',
+            selectedRoom: null,
             setSelectedRoom: (selectedRoom) => set(() => ({ selectedRoom }), false, 'SET_SELECTED_ROOM'),
 
             isProcessLoading: false,

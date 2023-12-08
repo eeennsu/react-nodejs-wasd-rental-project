@@ -77,6 +77,10 @@ div.ant-picker-range {
     padding: 0 !important;
 }
 
+.ant-picker-input{
+    height: 100%;
+}
+
 div.ant-picker-input > input {
     height: 100% !important;
     display: flex;
@@ -99,4 +103,12 @@ div.ant-picker-input > input {
 
 .ant-select-selection-placeholder {
     color: rgba(63, 93, 125, 1) !important;
+}
+
+.ant-picker:hover, .ant-picker:active, .ant-picker:focus, .ant-picker:not(:hover), .ant-picker:not(:active), ant-picker:not(:focus) {
+    border-color: initial;
+}
+
+.ant-input:hover, .ant-input:focus {
+    border-color: initial;
 }

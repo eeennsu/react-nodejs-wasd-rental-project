@@ -1,4 +1,4 @@
-type SessionUserInfo = {
+export type SessionUserInfo = {
     user_id: string;
     user_email: string;
     user_student_number: number;
