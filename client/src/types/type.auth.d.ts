@@ -53,7 +53,7 @@ interface ResLogin {
         user_name: string;
         user_created_at: string;
         user_license: UserLicense;
-        department_id: number;
+        department_id: string;
     }, 
     token?: {
         token: string

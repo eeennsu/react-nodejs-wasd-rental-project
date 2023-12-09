@@ -3,14 +3,15 @@ import { useTimeStore } from '../../../../../../../zustand';
 import { message } from 'antd';
 import { useState, useEffect, useMemo } from 'react';
 import { RentaledTime } from '../../../../../utils/timePicker';
+import { Dayjs } from 'dayjs';
 
 type Props = {
     startHour: number;
     startMin: number;
-    rentaledHours: RentaledTime[][];
+    rentaledTimes: RentaledTime[][];
 }
 
-const MinArea: FC<Props> = ({ startHour, startMin, rentaledHours }) => {
+const MinArea: FC<Props> = ({ startHour, startMin, rentaledTimes }) => {
 
     const { 
         roomStatus, selectStatus, setSelectStatus,
@@ -18,7 +19,7 @@ const MinArea: FC<Props> = ({ startHour, startMin, rentaledHours }) => {
         lastSelectHour, lastSelectMin,
         setFirstSelectHour, setFirstSelectMin,
         setLastSelectHour, setLastSelectMin,
-        timeBtnsResetTrigger
+        timeBtnsResetTrigger, rentalDate
     } = useTimeStore();
 
     const [isSelected, setIsSelected] = useState<boolean>(false);
@@ -111,20 +112,89 @@ const MinArea: FC<Props> = ({ startHour, startMin, rentaledHours }) => {
         else if (isOverTimes) setIsOverTimes(false);
     }, [timeBtnsResetTrigger]);
 
+    // useEffect(() => {
+    //     if (rentalDate) {
+    //         const idx = rentaledDates.findIndex((date) => {
+    //             return (
+    //                 date.get('year') === rentalDate.get('year') &&
+    //                 date.get('month') === rentalDate.get('month') &&
+    //                 date.get('date') === rentalDate.get('date')
+    //             );
+    //         });
+
+    //         console.log(rentaledDates[idx]);
+    //     }
+    // }, [rentalDate, rentaledDates]);
+
     useEffect(() => {
-        rentaledHours.forEach((table) => {
-            const { hour: rentalHour, min: rentalMin } = table[0];
-            const { hour: returnHour, min: returnMin } = table[1];
-        
-            if (startHour >= rentalHour && startHour <= returnHour) {
-                if ((startHour === rentalHour && startMin < rentalMin) || (startHour === returnHour && startMin > returnMin)) {
-                    return;                 
-                } 
+        if (rentalDate) {
+            rentaledTimes.forEach((time) => {                
+                const { hour: rentalHour, min: rentalMin } = time[0];
+                const { hour: returnHour, min: returnMin } = time[1];
                 
-                setIsRentaled(true);
-            }       
-        });
-    }, [rentaledHours]);
+                const _returnMin = returnMin - 10;     
+                
+                if (startHour >= rentalHour && startHour <= returnHour) {
+                    if ((startHour === rentalHour && startMin < rentalMin) || (startHour === returnHour && startMin > _returnMin)) {
+                        return;                 
+                    } 
+                    setIsRentaled(true);
+                } else {
+                    console.log('??');
+                }          
+            });
+        } 
+        // console.log(rentaledTimes);
+    }, [rentaledTimes, rentalDate]);
+
+    // useEffect(() => {
+    //     if (!rentaledDates || !returnedDates) {
+    //         return;
+    //     }
+
+    //     console.log(returnedDates);
+    // }, [rentaledDates, returnedDates]);
+
+    // useEffect(() => {
+    //     if (rentalDate && rentaledDates.length >= 1) {
+    //         rentaledDates.map((date, i) => {
+
+    //             // console.log(date.get('month') === rentalDate.get('month') && date.get('date') === rentalDate.get('date'));
+    //             if (date.get('year') === rentalDate.get('year') && date.get('month') === rentalDate.get('month') && date.get('date') === rentalDate.get('date')) {
+    //                 // console.log(date);
+    //                 rentaledTimes.map((time) => {
+    //                     const { hour: rentalHour, min: rentalMin } = time[0];
+    //                     const { hour: returnHour, min: returnMin } = time[1];
+                        
+    //                     const _returnMin = returnMin - 10;     
+        
+    //                     if (startHour >= rentalHour && startHour <= returnHour) {
+    //                         if ((startHour === rentalHour && startMin < rentalMin) || (startHour === returnHour && startMin > _returnMin)) {
+    //                             return;                 
+    //                         } 
+    //                         setIsRentaled(true);
+    //                     } 
+    //                 });
+    //             }
+    //         });
+    //     }
+
+    //     rentaledTimes.map((time) => {
+    //         const { hour: rentalHour, min: rentalMin } = time[0];
+    //         const { hour: returnHour, min: returnMin } = time[1];
+            
+    //         const _returnMin = returnMin - 10;     
+
+    //         rentaledDates.map((date) =>)
+    //         if (startHour >= rentalHour && startHour <= returnHour) {
+    //             if ((startHour === rentalHour && startMin < rentalMin) || (startHour === returnHour && startMin > _returnMin)) {
+    //                 return;                 
+    //             } 
+    //             setIsRentaled(true);
+    //         } 
+    //     });
+        
+    // }, [rentalDate, rentaledDates]);
 
     return (
         <button 

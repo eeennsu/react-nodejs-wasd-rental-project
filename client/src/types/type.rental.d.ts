@@ -112,7 +112,7 @@ interface ResNotClassroomCount {
 interface ResViewRental {
     '200': OK;
     result: Array<Tool & {
-        rentals: Array<{ user_id: string }>
+        rentals: Array<{ user_id?: string }?>
     }>;
 }
 
@@ -123,7 +123,12 @@ interface ResMyRentalList {
 
 // 오류 수정 중
 interface ResDeleteTool {
-
+    '200': OK;
+    suc: string;
+    result: Array<{
+        tool: number;
+        img: number;
+    }>
 }
 
 interface ResMyAllRentalList {

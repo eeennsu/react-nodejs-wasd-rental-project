@@ -17,7 +17,7 @@ interface ResViewInfo {
 
 interface ChangeInfo {
     user_email: string;
-    user_student_number: string;
+    user_student_number: number;
     user_name: string;
 }
 

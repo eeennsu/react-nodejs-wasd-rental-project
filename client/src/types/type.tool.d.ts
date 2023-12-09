@@ -22,19 +22,20 @@ interface Tool {
 
 interface ToolImage {
     img_id: string;
-    img_part_1: any;
-    img_part_2: any;
-    img_part_3: any;
-    img_part_4: any;
-    img_part_5: any;
-    img_part_6: any;
+    img_part_1: unknown;
+    img_part_2: unknown;
+    img_part_3: unknown;
+    img_part_4: unknown;
+    img_part_5: unknown;
+    img_part_6: unknown;
     img_url: string;
     tool_id: string;
 }
 
+// 기자재 하나 추가 response
 interface ResAddTool {
     200: 'OK';
-    result: {
+    result?: {
         result: Tool;
         image: ToolImage[];
     };
@@ -49,19 +50,9 @@ interface ResUpdateTool {
 // 기자재 하나 조회 response
 interface ResOneViewTool {
     '200': OK;
-    result: {
+    result?: {
         tool: Tool;
-        img: {
-            img_id: string;
-            img_url: string;
-            img_part_1: null,
-            img_part_2: null,
-            img_part_3: null,
-            img_part_4: null,
-            img_part_5: null,
-            img_part_6: null,
-            tool_id: string;
-        }
+        img: ToolImage
     };
     err?: string;
 }
@@ -83,8 +74,9 @@ interface ResSearchTool {
 // 기자재 유형에 따른 정렬 response
 interface ResRangeTool {
     '200': OK;
-    total: number;
-    result: Tool[];
+    total?: number;
+    result?: Tool[];
+    err?: string;
 }
 
 // 대여 가능한 기자재, 강의실 개수 response 
@@ -102,13 +94,13 @@ interface ResNotRentalToolCount {
 // 기자재 대여 불가 처리 response
 interface ResCannotRental {
     '200': OK;
-    result: string;
+    result?: string;
     err?: string;
 }
 
 // 기자재 대여 가능 처리 response
 interface ResCanRental {
     '200': OK;
-    result: string;
+    result?: string;
     err?: string;
 }

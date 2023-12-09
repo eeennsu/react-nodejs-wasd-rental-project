@@ -19,11 +19,12 @@ const RentalTool: FC = () => {
         text: state.text,
         setText: state.setText,
     }), shallow);
-    const rentDate = useTimeStore(state => state.rentDate);
+    const rentalDate = useTimeStore(state => state.rentalDate);
     const returnDate = useTimeStore(state => state.returnDate);
     const userId = useUserStore(state => state.user?.user_id);
     const tool = useToolStore(state => state.tool);
     const setTool = useToolStore(state => state.setTool);
+    
     const { setStepInit, setDateInit } = useStoreController();
 
     const refUserType = useRef<HTMLInputElement | null>(null);
@@ -53,7 +54,7 @@ const RentalTool: FC = () => {
             return;
         }
 
-        if (!rentDate) {
+        if (!rentalDate) {
             message.warning('대여할 날짜를 지정해주세요.');
             
             return;
@@ -75,7 +76,7 @@ const RentalTool: FC = () => {
             fetchRentalTool();         
         } catch (error) {
             console.log(error);
-            message.error('알수 없는 에러가 발생했습니다. 괸라자에게 문의해 주세요');
+            message.error('알수 없는 에러가 발생했습니다. 괸라자에게 문의해 주세요.');
         } finally {
             handleBack();
         }
@@ -83,12 +84,12 @@ const RentalTool: FC = () => {
 
     const fetchRentalTool = async () => {
         if (tool?.tool_id && userId) {
-            const repairData: RentalTool = {
+            const rentalTool: RentalTool = {
                 tool_id: tool?.tool_id,
                 user_id: userId
             };
 
-            const response = await rentalTool_API(repairData);
+            const response = await rentalTool_API(rentalTool);
 
             if (response.data[200] === 'OK') {
                 message.success('대여 요청이 완료되었습니다');    
@@ -97,7 +98,7 @@ const RentalTool: FC = () => {
                 message.error('대여 요청에 실패하였습니다! 관리자에게 문의해 주세요');
             }   
         } else {
-            message.error('프론트 오류가 발생하였습니다. 관리자에게 문의해 주세요!');
+            message.error('유저와 기자재 정보를 받아오지 못했습니다. 관리자에게 문의해 주세요!');
         }
     }
 

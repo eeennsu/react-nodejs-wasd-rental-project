@@ -61,7 +61,7 @@ const RepairTool: FC = () => {
             fetchRepairTool();        
         } catch (error) {
             console.log(error);
-            message.error('서버 에러가 발생하였습니다. 괸라자에게 문의해 주세요');
+            message.error('서버 에러가 발생하였습니다. 괸리자에게 문의해 주세요');
         } finally {
             handleBack();
         }

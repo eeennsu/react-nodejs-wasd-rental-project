@@ -1,6 +1,10 @@
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+
 dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault('Asia/Seoul');
 
 export const getDateFormat = (date?: string): string => {
     if (!date) return '';
@@ -26,4 +30,32 @@ export const getHoursFormat = (date?: string): RentaledTime => {
         hour: +utcDate.format('HH'),
         min: +utcDate.format('mm'),
     }
+}
+
+// export const getFullDate = (dayjsDate: Dayjs): Dayjs => {
+//     const year = dayjsDate.year();
+//     const month = dayjsDate.month() + 1;
+//     const date = dayjsDate.date();
+//     dayjsDate.format('yyyy-MM-dd');
+//     return dayjs(`${year}-${month}-${date}`);
+// }
+
+export const convertToKoreanTime = (dayjsObj: Dayjs, hour: number, min: number) => {
+    const formattedDate = dayjs(dayjsObj.format('YYYY-MM-DD'));
+
+    const combineTime = formattedDate.set('hour', hour).set('minute', min);
+
+    // return combineTime.utc().tz('Asia/Seoul').format();
+    return dayjs.tz(combineTime, 'Asia/Seoul').format();
+}
+
+export const getOnlyWeekday = (): Dayjs => {
+    const now = dayjs();
+    let defaultValue = now;
+    
+    if (now.day() === 0 || now.day() === 6) {
+        defaultValue = now.day(8);
+    }
+
+    return defaultValue;
 }

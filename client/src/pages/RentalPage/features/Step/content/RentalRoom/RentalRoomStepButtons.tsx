@@ -1,10 +1,12 @@
 import type { FC } from 'react';
-import Button from '../../../../../../components/Button';
-import useStoreController from '../../../../../../hooks/commons/useStoreController';
 import { message } from 'antd';
 import { useStepStore, useTimeStore, useUserStore } from '../../../../../../zustand';
 import { shallow } from'zustand/shallow';
 import { SessionUserInfo } from '../../../../../../zustand/userStore/types';
+import Button from '../../../../../../components/Button';
+import useStoreController from '../../../../../../hooks/commons/useStoreController';
+import { convertToKoreanTime } from '../../../../utils/timePicker';
+import { rentalClassRoom_API } from '../../../../../../api/rental/rentalApi';
 
 const RentalRoomStepButtons: FC = () => {
 
@@ -17,12 +19,12 @@ const RentalRoomStepButtons: FC = () => {
     }), shallow);
 
     const {
-        rentDate,
+        rentalDateNum, returnDateNum,
         firstSelectHour, firstSelectMin,
         lastSelectHour, lastSelectMin,
         resetTimes, setTimeBtnsResetTrigger
     } = useTimeStore(state => ({
-        rentDate: state.rentalDate,
+        rentalDateNum: state.rentalDate, returnDateNum: state.returnDate,
         firstSelectHour: state.firstSelectHour, firstSelectMin: state.firstSelectMin, 
         lastSelectHour: state.lastSelectHour, lastSelectMin: state.lastSelectMin,
         resetTimes: state.resetTimes,
@@ -44,14 +46,14 @@ const RentalRoomStepButtons: FC = () => {
         setTimeBtnsResetTrigger();
     }
     
-    const handleRentRoomRequest = () => {
+    const handleRentRoomRequest = async () => {
         if (!selectedRoom) {
             message.error('강의실이 선택되지 않았습니다.');
 
             return;
         }
 
-        if (!rentDate) {
+        if (!rentalDateNum || !returnDateNum) {
             message.warning('대여할 날짜를 지정해주세요.');
 
             return;
@@ -70,22 +72,52 @@ const RentalRoomStepButtons: FC = () => {
         }
 
         if (rentalReson.length  <= 0) {
-            message.warning('수리 사유를 입력해주세요.');
+            message.warning('대여 사유를 입력해주세요.');
 
             return;
         }
 
         try {
-            console.log('유저 아이디 - ', user_id);
-            console.log('디파트먼트 아이디 - ', department_id);
-            console.log('선택된 강의실 - ', selectedRoom);
-            console.log('대여 사유 - ', rentalReson);
-            console.log('대여 날짜 - ', rentDate);
+            // console.log('유저 아이디 - ', user_id);
+            // console.log('디파트먼트 아이디 - ', department_id);
+            // console.log('선택된 강의실 - ', selectedRoom);
+            // console.log('대여 사유 - ', rentalReson);
+            // console.log('대여 날짜 - ', rentalDateNum);
+            // console.log('대여 시간 -', `${firstSelectHour}시 ${firstSelectMin}분`);
+            // console.log('반납 날짜 - ', rentalDateNum);
+            // console.log('반납 시간 -', `${lastSelectHour}시 ${lastSelectMin + 10}분`);
             
-            message.success('강의실 대여가 완료되었습니다');    
+            const rental_date = convertToKoreanTime(rentalDateNum!, firstSelectHour!, firstSelectMin!);
+            const rental_due_date = convertToKoreanTime(returnDateNum!, lastSelectHour!, lastSelectMin! + 10);
+
+            const retnalClassroom: RentalClassroom = {
+                tool_id: selectedRoom,
+                user_id,
+                rental_date,
+                rental_due_date,
+                department_id
+            }
+
+            const { data } = await rentalClassRoom_API(retnalClassroom);
+
+            if (data) {
+                const rentalStart = `${firstSelectHour}시${firstSelectMin ? ` ${firstSelectMin}분` : ''}`;
+                let rentalEnd = '';
+                
+                if (lastSelectMin + 10 === 60) {
+                    rentalEnd = `${lastSelectHour + 1}시`;
+                } else {
+                    rentalEnd = `${lastSelectHour}시 ${lastSelectMin + 10}분`;
+                }
+                
+                const rentalMessage = `${selectedRoom}를 ${rentalStart} 부터 ${rentalEnd}까지 대여하였습니다`;
+                message.success(rentalMessage);
+            } else {
+                message.error('강의실 대여에 실패하였습니다. 관리자에게 문의해 주세요.');
+            }
         } catch (error) {
             console.log(error);
-            message.error('알수 없는 에러가 발생했습니다. 괸라자에게 문의해주세요');
+            message.error('알 수 없는 에러가 발생했습니다. 괸라자에게 문의해 주세요.');
         } finally {
             handleInit();
         }

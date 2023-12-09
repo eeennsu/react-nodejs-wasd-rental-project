@@ -1,14 +1,16 @@
 import { devtools } from 'zustand/middleware';
 import { ITimeStore } from './types';
 import { createWithEqualityFn } from 'zustand/traditional';
+import dayjs from 'dayjs';
+import { getOnlyWeekday } from '../../pages/RentalPage/utils/timePicker';
 
 const useTimeStore = createWithEqualityFn<ITimeStore>()(
     devtools(
         (set) => ({   
-            rentalDate: null,
+            rentalDate: getOnlyWeekday(),
             setRentalDate: (rentalDate) => set(() => ({ rentalDate }), false, 'SET_RENTAL_DATE'),
 
-            returnDate: null,
+            returnDate: getOnlyWeekday(),
             setReturnDate: (returnDate) => set(() => ({ returnDate }), false, 'SET_RETURN_DATE'),
 
             roomStatus: 'SELECTABLE',

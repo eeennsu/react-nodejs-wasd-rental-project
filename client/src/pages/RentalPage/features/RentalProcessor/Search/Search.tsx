@@ -56,9 +56,12 @@ const Search: FC = () => {
                 setActiveTab(4);        
                 setSearchedTerm(term);       
                 init && setCurPage(1);
+            } else {
+                message.error('검색에 실패하였습니다. 관리자에게 문의해 주세요.');
             }
         } catch (error) {
             console.log(error);
+            message.error('알 수 없는 에러가 발생했습니다. 괸라자에게 문의해 주세요');
         } finally {
             setIsLoading(false);
         }

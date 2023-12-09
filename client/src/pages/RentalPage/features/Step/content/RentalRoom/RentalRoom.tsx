@@ -8,7 +8,6 @@ import DescRoomButtons from './DescRoomStepButtons';
 import RentalRoomStepButtons from './RentalRoomStepButtons';
 import Image from 'antd/es/image/index';
 import timetable from '../../../../../../assets/images/timetable.png';
-import Button from '../../../../../../components/Button';
 
 const RentalRoom: FC = () => {
 

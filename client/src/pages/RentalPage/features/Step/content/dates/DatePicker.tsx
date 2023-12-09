@@ -4,16 +4,7 @@ import { DatePicker as AntdDatePicker } from 'antd';
 import { useTimeStore } from '../../../../../../zustand';
 import { disabledDate, rangePresets } from '../../../../utils/rangePicker';
 import { shallow } from 'zustand/shallow';
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
-import utc from 'dayjs/plugin/utc';
-import 'dayjs/locale/ko';
-import timezone from 'dayjs/plugin/timezone';
-
-dayjs.extend(relativeTime);
-dayjs.extend(utc);
-dayjs.extend(timezone);			
-dayjs.locale('ko');
+import { getOnlyWeekday } from '../../../../utils/timePicker';
 
 type Props = {
     type: 'range' | 'date'
@@ -23,41 +14,25 @@ const AntdRangePicker = AntdDatePicker.RangePicker;
 
 const DatePicker: FC<Props> = ({ type }) => {
 
-    const { rentalDate, setRentalDate, setReturnDate } = useTimeStore(state => ({
-        rentalDate: state.rentalDate,
+    const { setRentalDate, setReturnDate } = useTimeStore(state => ({
         setRentalDate: state.setRentalDate,
         setReturnDate: state.setReturnDate
     }), shallow);
 
     const handleDateChange = (dayjsDate: null | Dayjs, dateString: string) => {
         if (dayjsDate) {
-            const year = dayjsDate.year();
-            const month = dayjsDate.month() + 1;
-            const date = dayjsDate.date();
-            
-            const _rentalDate = dayjs(`${year}-${month}-${date}`);
-            console.log('_rentalDate', _rentalDate);
-            setRentalDate(_rentalDate);
+            setRentalDate(dayjsDate);
+            setReturnDate(dayjsDate);
         } else {
             setRentalDate(null);
+            setReturnDate(null);
         }
     }
 
-    const handleRangeChange = (dayjsDate: null | Array<Dayjs | null>, dateStrings: string[]) => {
-        if (Array.isArray(dayjsDate) && dayjsDate.length >= 1 && dayjsDate[0] && dayjsDate[1]) {     
-            const yearRental = dayjsDate[0].year();
-            const monthRental = dayjsDate[0].month() + 1;
-            const dateRental = dayjsDate[0].date();
-        
-            const yearReturn = dayjsDate[1].year();
-            const monthReturn = dayjsDate[1].month() + 1;
-            const dateReturn = dayjsDate[1].date();
-
-            const _rentalDate = dayjs(`${yearRental}-${monthRental}-${dateRental}`);
-            const _returnDate = dayjs(`${yearReturn}-${monthReturn}-${dateReturn}`);
-
-            setRentalDate(_rentalDate);
-            setReturnDate(_returnDate);  
+    const handleRangeChange = (dayjsDates: null | Array<Dayjs | null>, dateStrings: string[]) => {
+        if (Array.isArray(dayjsDates) && dayjsDates[0] && dayjsDates[1]) {     
+            setRentalDate(dayjsDates[0]);
+            setReturnDate(dayjsDates[1]);  
         } else {
             setRentalDate(null);
             setReturnDate(null);  
@@ -67,8 +42,9 @@ const DatePicker: FC<Props> = ({ type }) => {
     if (type === 'date') {
         return (
             <AntdDatePicker 
+                defaultValue={getOnlyWeekday()}
                 onChange={handleDateChange}
-                disabledDate={disabledDate}
+                // disabledDate={disabledDate}
                 placeholder='대여 날짜를 선택해 주세요'
                 format='MM-DD / ddd'
                 className='w-[260px] border rounded-none border-01 bg-04 p-0'
