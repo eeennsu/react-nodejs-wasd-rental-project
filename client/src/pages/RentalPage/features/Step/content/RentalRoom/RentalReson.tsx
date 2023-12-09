@@ -1,8 +1,6 @@
 import type { FC, ChangeEvent } from 'react';
-import { Input } from 'antd';
 import { useStepStore } from '../../../../../../zustand';
-
-const { TextArea } = Input;
+import { Input } from 'antd';
 
 const RentalReson: FC = () => {
 
@@ -14,13 +12,13 @@ const RentalReson: FC = () => {
     }
 
     return (
-        <TextArea 
+        <Input.TextArea 
             className='h-full p-3 border-2 rounded-none bg-04 border-01 placeholder:text-02/80'        
             value={text} 
             onChange={handleTextChange} 
             style={{ resize: 'none' }}  
             placeholder='대여 사유를 입력해 주세요' 
-            rows={3}
+            rows={4}
         />
     );
 };

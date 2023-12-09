@@ -12,7 +12,7 @@ const RoomList: FC = () => {
         notification.info({
             message: 'Notification',
             description: '이곳에서 강의실을 먼저 선택해 주세요!',
-            placement: 'bottomRight',
+            placement: 'topRight',
             duration: 3
         })
     }, []);

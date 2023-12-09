@@ -1,3 +1,5 @@
+import { Dayjs } from 'dayjs';
+
 export interface ITabsStore {
     activeTab: ActiveTab;
     setActiveTab: (changedTab: ActiveTab) => void;
@@ -83,11 +85,11 @@ export interface IStepStore {
 }
 
 export interface ITimeStore {
-    rentDate: Date | null;
-    setRentDate: (date: Date | null) => void;
+    rentalDate: Dayjs | null;
+    setRentalDate: (date: Dayjs | null) => void;
 
-    returnDate: Date | null;
-    setReturnDate: (date: Date | null) => void;
+    returnDate: Dayjs | null;
+    setReturnDate: (date: Dayjs | null) => void;
 
     roomStatus: RoomStatus;
     setRoomStatus: (status: RoomStatus) => void;

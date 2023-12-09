@@ -5,11 +5,11 @@ import { createWithEqualityFn } from 'zustand/traditional';
 const useTimeStore = createWithEqualityFn<ITimeStore>()(
     devtools(
         (set) => ({   
-            rentDate: null,
-            setRentDate: (date) => set(() => ({ rentDate: date }), false, 'SET_RENT_DATE'),
+            rentalDate: null,
+            setRentalDate: (rentalDate) => set(() => ({ rentalDate }), false, 'SET_RENTAL_DATE'),
 
             returnDate: null,
-            setReturnDate: (date) => set(() => ({ returnDate: date }), false, 'SET_RETURN_DATE'),
+            setReturnDate: (returnDate) => set(() => ({ returnDate }), false, 'SET_RETURN_DATE'),
 
             roomStatus: 'SELECTABLE',
             setRoomStatus: (roomStatus) => set(() => ({ roomStatus }), false, 'SET_ROOM_STATUS'),
@@ -22,10 +22,10 @@ const useTimeStore = createWithEqualityFn<ITimeStore>()(
             lastSelectHour: null,
             lastSelectMin: null,
             
-            setFirstSelectHour: (firstHour: number) => set((prev) => ({ firstSelectHour: firstHour }), false, 'SET_FIRST_SELECT_HOUR'),
-            setFirstSelectMin: (firstMin: number) => set(() => ({ firstSelectMin: firstMin }), false, 'SET_FIRST_SELECT_MIN'),
-            setLastSelectHour: (lastHour: number) => set(() => ({ lastSelectHour: lastHour }), false, 'SET_LAST_SELECT_HOUR'),
-            setLastSelectMin: (lastMin: number) => set(() => ({ lastSelectMin: lastMin }), false, 'SET_LAST_SELECT_MIN'),
+            setFirstSelectHour: (firstSelectHour) => set(() => ({ firstSelectHour }), false, 'SET_FIRST_SELECT_HOUR'),
+            setFirstSelectMin: (firstSelectMin) => set(() => ({ firstSelectMin }), false, 'SET_FIRST_SELECT_MIN'),
+            setLastSelectHour: (lastSelectHour) => set(() => ({ lastSelectHour }), false, 'SET_LAST_SELECT_HOUR'),
+            setLastSelectMin: (lastSelectMin) => set(() => ({ lastSelectMin }), false, 'SET_LAST_SELECT_MIN'),
         
             resetTimes: () => set(() => ({ 
                 selectStatus: 'NONE',

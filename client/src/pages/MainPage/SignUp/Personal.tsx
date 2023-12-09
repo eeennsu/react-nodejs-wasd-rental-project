@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React, { useState } from 'react';
 import Button from '../../../components/Button';
 
-// // 개인정보 타입 정의
+
 type Personal = {
   Name: string;
   studentNumber: string,
@@ -40,9 +40,9 @@ const Personal: FC = () => {
 
   return (
     <div className='w-full'>
-      <div className='fixed w-full h-12 top-28 bg-03'>
+      <div className='fixed w-full h-32 top-40 bg-03'>
           <form onSubmit={handleSubmit}>
-            <div className='w-[400px] h-[560px] space-y-4 left-37 rounded-8 bg-02 p-4 pl-10 rounded-b-lg'>
+            <div className='w-60 h-[56px] space-y-4 left-37 rounded-8 bg-02 p-4 pl-10 rounded-b-lg'>
               <div className='rounded-md'>
                 학번:
                 <input

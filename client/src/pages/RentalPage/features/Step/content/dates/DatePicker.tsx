@@ -3,34 +3,64 @@ import type { Dayjs } from 'dayjs';
 import { DatePicker as AntdDatePicker } from 'antd';
 import { useTimeStore } from '../../../../../../zustand';
 import { disabledDate, rangePresets } from '../../../../utils/rangePicker';
+import { shallow } from 'zustand/shallow';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import utc from 'dayjs/plugin/utc';
+import 'dayjs/locale/ko';
+import timezone from 'dayjs/plugin/timezone';
+
+dayjs.extend(relativeTime);
+dayjs.extend(utc);
+dayjs.extend(timezone);			
+dayjs.locale('ko');
 
 type Props = {
     type: 'range' | 'date'
 }
 
-const { RangePicker } = AntdDatePicker;
+const AntdRangePicker = AntdDatePicker.RangePicker;
 
 const DatePicker: FC<Props> = ({ type }) => {
 
-    const { setRentDate, setReturnDate } = useTimeStore();
+    const { rentalDate, setRentalDate, setReturnDate } = useTimeStore(state => ({
+        rentalDate: state.rentalDate,
+        setRentalDate: state.setRentalDate,
+        setReturnDate: state.setReturnDate
+    }), shallow);
 
-    const handleDateChange = (date: null | Dayjs, dateString: string) => {
-        if (date) {
-            setRentDate(new Date(dateString));
-        }
-         
-        else {
-            setRentDate(null);
+    const handleDateChange = (dayjsDate: null | Dayjs, dateString: string) => {
+        if (dayjsDate) {
+            const year = dayjsDate.year();
+            const month = dayjsDate.month() + 1;
+            const date = dayjsDate.date();
+            
+            const _rentalDate = dayjs(`${year}-${month}-${date}`);
+            console.log('_rentalDate', _rentalDate);
+            setRentalDate(_rentalDate);
+        } else {
+            setRentalDate(null);
         }
     }
 
-    const handleRangeChange = (dates: null | Array<Dayjs | null>, dateStrings: string[]) => {
-        if (dates) {         
-            setRentDate(new Date(dateStrings[0]));
-            setReturnDate(new Date(dateStrings[1]));
+    const handleRangeChange = (dayjsDate: null | Array<Dayjs | null>, dateStrings: string[]) => {
+        if (Array.isArray(dayjsDate) && dayjsDate.length >= 1 && dayjsDate[0] && dayjsDate[1]) {     
+            const yearRental = dayjsDate[0].year();
+            const monthRental = dayjsDate[0].month() + 1;
+            const dateRental = dayjsDate[0].date();
+        
+            const yearReturn = dayjsDate[1].year();
+            const monthReturn = dayjsDate[1].month() + 1;
+            const dateReturn = dayjsDate[1].date();
+
+            const _rentalDate = dayjs(`${yearRental}-${monthRental}-${dateRental}`);
+            const _returnDate = dayjs(`${yearReturn}-${monthReturn}-${dateReturn}`);
+
+            setRentalDate(_rentalDate);
+            setReturnDate(_returnDate);  
         } else {
-            setRentDate(null);
-            setReturnDate(null);
+            setRentalDate(null);
+            setReturnDate(null);  
         }
     }
 
@@ -48,7 +78,7 @@ const DatePicker: FC<Props> = ({ type }) => {
 
     else {
         return (
-            <RangePicker 
+            <AntdRangePicker 
                 presets={rangePresets}
                 disabledDate={disabledDate} 
                 onChange={handleRangeChange}          

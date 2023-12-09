@@ -17,18 +17,32 @@ const TooltipComponent: FC<TooltipProps> = ({ showTooltip, toggleTooltip }) => {
   };
 
 
-  const test = [
-    {id: 1, 학번: '2021001', 이름: '홍길동', 기자재: 'vr'},
-    // {id: 2, 학번: '2021001', 이름: '김소연', 기자재: '타블렛'},
-    // {id: 3, 학번: '2021001', 이름: 'ㅁㅁㅁ', 기자재: '강의실'},
-    // {id: 4, 학번: '2021001', 이름: 'ㅇㅇㅇ', 기자재: 'vr'},
-    // {id: 5, 학번: '2021001', 이름: 'ㅇㄱㄱ', 기자재: '강의실'},
-    // {id: 6, 학번: '2021001', 이름: 'ㅎㅎㅎ', 기자재: '타블렛'},
 
-  ]
 
   // 이름과 기자재 정보만을 가지는 배열 생성
-const tooltipData = test.map(({ id,이름, 기자재 }) => ({ id, 이름, 기자재 }));
+// const tooltipData = test.map(({ id,이름, 기자재 }) => ({ id, 이름, 기자재 }));
+
+const { user } = useUserStore();
+const [lental, setLental] = useState<DetailUser[]>([]);
+
+
+// useEffect( () => {
+//   const lentalUsers = async () => {
+//     try {
+
+//       const { data } = await viewRental_API();
+      
+//       setLental(data.result);
+
+//     }catch (err) {
+
+//       console.log(err);
+
+//     }
+//   };
+//   lentalUsers();
+// },[]);
+
 
   return (
 
@@ -42,7 +56,7 @@ const tooltipData = test.map(({ id,이름, 기자재 }) => ({ id, 이름, 기자
       >
         기자재 대여 목록
       </div>
-      {showTooltip && (
+      {/* {showTooltip && (
         <div className="w-[180px] h-[76px] absolute top-[-50px] left-[300px] z-[99] p-4 bg-gray-200 rounded shadow-md text-sm">
          {tooltipData.map(({id, 이름, 기자재}) =>(
           <div key={id}>
@@ -52,7 +66,7 @@ const tooltipData = test.map(({ id,이름, 기자재 }) => ({ id, 이름, 기자
          )
          )}
         </div>
-      )}
+      )} */}
       
     </div>
     </div>

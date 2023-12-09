@@ -22,7 +22,6 @@ const AddEquipmentComponent: FC = () => {
 
                 
             </div>
-         {/* AddModal 컴포넌트를 isOpen과 onClose props로 전달 */}
       {isModalOpen && (
         <AddModal
           isOpen={isModalOpen}

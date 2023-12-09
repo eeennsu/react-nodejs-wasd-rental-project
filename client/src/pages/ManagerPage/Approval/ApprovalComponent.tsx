@@ -22,10 +22,10 @@ const ApprovalComponent: FC = () => {
 
     fetchUsers();
   }, []);
+  
 
-  const handleApproveUser = async (user_id: string)  => {            // index: number 를 user_id: string으로 변경
+  const handleApproveUser = async (user_id: string)  => {       
 
-     // await approveUser_API({ user_id: users[index].user_id });     원래거
      await approveUser_API({ user_id: user_id });
   };
 

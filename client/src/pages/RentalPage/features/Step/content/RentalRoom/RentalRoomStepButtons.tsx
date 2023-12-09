@@ -2,16 +2,17 @@ import type { FC } from 'react';
 import Button from '../../../../../../components/Button';
 import useStoreController from '../../../../../../hooks/commons/useStoreController';
 import { message } from 'antd';
-import { useStepStore, useTimeStore } from '../../../../../../zustand';
+import { useStepStore, useTimeStore, useUserStore } from '../../../../../../zustand';
 import { shallow } from'zustand/shallow';
+import { SessionUserInfo } from '../../../../../../zustand/userStore/types';
 
 const RentalRoomStepButtons: FC = () => {
 
     const { 
-        text, setText, 
+        rentalReson, setText, 
         selectedRoom, setSystemStep 
     } = useStepStore(state => ({
-        text: state.text, setText: state.setText,
+        rentalReson: state.text, setText: state.setText,
         selectedRoom: state.selectedRoom, setSystemStep: state.setSystemStep
     }), shallow);
 
@@ -19,22 +20,30 @@ const RentalRoomStepButtons: FC = () => {
         rentDate,
         firstSelectHour, firstSelectMin,
         lastSelectHour, lastSelectMin,
-        resetTimes
+        resetTimes, setTimeBtnsResetTrigger
     } = useTimeStore(state => ({
-        rentDate: state.rentDate,
+        rentDate: state.rentalDate,
         firstSelectHour: state.firstSelectHour, firstSelectMin: state.firstSelectMin, 
         lastSelectHour: state.lastSelectHour, lastSelectMin: state.lastSelectMin,
-        resetTimes: state.resetTimes
+        resetTimes: state.resetTimes,
+        setTimeBtnsResetTrigger: state.setTimeBtnsResetTrigger
     }), shallow);
+
+    const { user_id, department_id } = useUserStore(state => state.user) as SessionUserInfo;
+
+    const { setStepInit, setDateInit } = useStoreController();
 
     const handleDescRoomStep = () => {
         setSystemStep('CLASSROOM_DESC');    
-        text.length >= 1 && setText('');     
+        rentalReson.length >= 1 && setText('');     
         resetTimes();
     }
-    
-    const { handleStepInit, handleDateInit } = useStoreController();
 
+    const handleResetTimes = () => {
+        resetTimes();
+        setTimeBtnsResetTrigger();
+    }
+    
     const handleRentRoomRequest = () => {
         if (!selectedRoom) {
             message.error('강의실이 선택되지 않았습니다.');
@@ -48,28 +57,31 @@ const RentalRoomStepButtons: FC = () => {
             return;
         }
 
-        if (!firstSelectHour || !firstSelectMin) {
+        if (!firstSelectHour || firstSelectMin === null || firstSelectMin === undefined) {
             message.warning('대여를 시작할 시간을 지정해주세요.');
         
             return;
         }
 
-        if (!lastSelectHour || !lastSelectMin) {
+        if (!lastSelectHour || lastSelectMin === null || lastSelectMin === undefined) {
             message.warning('대여를 마감할 시간을 입력해주세요.');
 
             return;
         }
 
-        if (text.length  <= 0) {
+        if (rentalReson.length  <= 0) {
             message.warning('수리 사유를 입력해주세요.');
 
             return;
         }
 
         try {
-            // API 호출
-
-            //
+            console.log('유저 아이디 - ', user_id);
+            console.log('디파트먼트 아이디 - ', department_id);
+            console.log('선택된 강의실 - ', selectedRoom);
+            console.log('대여 사유 - ', rentalReson);
+            console.log('대여 날짜 - ', rentDate);
+            
             message.success('강의실 대여가 완료되었습니다');    
         } catch (error) {
             console.log(error);
@@ -80,19 +92,26 @@ const RentalRoomStepButtons: FC = () => {
     }
 
     const handleInit = () => {
-        handleStepInit();
-        handleDateInit();
+        setStepInit();
+        setDateInit();
         resetTimes();
     }
 
     return (
-        <footer className='flex justify-end gap-3 p-4 bg-04'>
-            <Button onClick={handleDescRoomStep} bgColor='02'>
-                돌아가기
-            </Button> 
-            <Button onClick={handleRentRoomRequest} bgColor='01'>
-                대여 완료
-            </Button>           
+        <footer className='flex items-center justify-between p-4 bg-04'>
+            <div>
+                <Button onClick={handleResetTimes} bgColor='01'>
+                    다시 선택
+                </Button>     
+            </div>
+            <div className='flex gap-3'>
+                <Button onClick={handleDescRoomStep} bgColor='02'>
+                    돌아가기
+                </Button> 
+                <Button onClick={handleRentRoomRequest} bgColor='01'>
+                    대여 완료
+                </Button>       
+            </div>        
         </footer>
     );
 };

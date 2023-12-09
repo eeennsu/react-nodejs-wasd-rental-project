@@ -9,33 +9,78 @@ import RentReson from './RentalReson';
 import useNotClassroomCount from '../../../../queries/rental/useNotClassroomCount';
 import FetchDatasError from '../../../RentalProcessor/Main/Datas/teplate/FetchDatasError';
 
+/*
+    [
+        [
+            {
+                hour: 9,
+                min: 40              // 9시 40분
+            },
+            {
+                hour: 12,
+                min: 30,             // 12시 30분
+            }
+        ],
+        [
+            {
+                hour: 16,
+                min: 30             // 16시 30분
+            },
+            {
+                hour: 18,
+                min: 20,             // 18시 20분
+            }
+        ]
+    ]  
+*/
+
+const dummy = {
+    '200': 'OK',
+    result: [
+        {
+            rental_id: 67,
+            rental_date: '2023-12-08T09:40:00.000Z',            // 9시 40분
+            rental_due_date: '2023-12-08T12:30:00.000Z',        // 12시 30분
+            rental_state: '대여',
+            rental_extend: false,       
+            tool_id: '본관507호',
+            user: {
+                user_name: '어쩌구'
+            },
+            user_id: 'ㅂㅈㄷㅂㅈㄷㅂㅈ'
+        },
+        {
+            rental_id: 68,
+            rental_date: '2023-12-08T16:30:00.000Z',            // 16시 30분
+            rental_due_date: '2023-12-08T18:20:00.000Z',        // 18시 20분
+            rental_state: '대여',
+            rental_extend: false,
+            user: {
+                user_name: '어쩌구'
+            },
+            user_id: 'ㅂㅈㄷㅂㅈㄷㅂㅈ',
+            tool_id: '본관507호'
+        }
+    ]
+} satisfies ResNotClassroomCount;
+
 const RentalRoomForm: FC = () => {
     
     const selectedRoom = useStepStore(state => state.selectedRoom);
        
     const { data: rentalHours, isLoading, error } = useNotClassroomCount(selectedRoom!);
 
-    const { resetTimes, setTimeBtnsResetTrigger } = useTimeStore(state => ({
-        resetTimes: state.resetTimes, 
-        setTimeBtnsResetTrigger: state.setTimeBtnsResetTrigger
-    }), shallow);
-
-    const handleResetTimes = () => {
-        resetTimes();
-        setTimeBtnsResetTrigger();
-    }
-
     useEffect(() => {
         notification.info({
             message: 'Notification',
             description: '대여 중인 시간을 제외하고 선택해 주세요!',
-            placement: 'bottomRight',
+            placement: 'topRight',
             duration: 3
-        })
+        });
     }, []);
 
     return (
-        <section className='flex flex-col w-full gap-4 px-[50px] py-[22px] mt-4 bg-04 h-full'>
+        <section className='flex flex-col w-full gap-4 px-[48px] py-[20px] mt-4 bg-04 h-full'>
             {
                 isLoading ? (
                     <Loading />
@@ -43,17 +88,12 @@ const RentalRoomForm: FC = () => {
                     <Error />
                 ) : (
                     <>
-                        <h3 className='mb-2 text-2xl font-semibold'>
+                        <h3 className='text-xl font-bold'>
                             {selectedRoom}
-                        </h3>
-                        <div className='flex justify-between'>
-                            <DatePicker type='date' />      
-                            <Button onClick={handleResetTimes} bgColor='01'>
-                                다시 선택하기
-                            </Button>  
-                        </div>
-                        <TimePicker classroomRentalInfos={rentalHours?.result}/>
-                        <RentReson />     
+                        </h3>                  
+                        <DatePicker type='date' />  
+                        <TimePicker classroomRentalInfos={dummy.result}/>
+                        <RentReson />                    
                     </>
                 )                   
             }        
@@ -62,9 +102,6 @@ const RentalRoomForm: FC = () => {
 };
 
 export default RentalRoomForm;
-
-
-
 
 
 

@@ -1,3 +1,7 @@
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+dayjs.extend(utc);
+
 export const getDateFormat = (date?: string): string => {
     if (!date) return '';
 
@@ -7,33 +11,19 @@ export const getDateFormat = (date?: string): string => {
 }
 
 export type RentaledTime = {
-    hour: string;
-    min: string;
+    hour: number;
+    min: number;
 }
 
 export const getHoursFormat = (date?: string): RentaledTime => {
-    let rentaledHours: RentaledTime  = {
-        hour: '',
-        min: ''
+    if (!date) {
+        throw new Error('getHoursFormat date undefined.');
+    };
+
+    const utcDate = dayjs(date).utc();
+
+    return {
+        hour: +utcDate.format('HH'),
+        min: +utcDate.format('mm'),
     }
-
-    if (!date) return rentaledHours;
-
-    const format = new Intl.DateTimeFormat('ko-kR', { hour: 'numeric', hour12: false, minute: 'numeric' }).formatToParts();
-
-    format.map((item) => {
-        if (item.type === 'hour') {
-            rentaledHours = {
-                ...rentaledHours, 
-                hour: item.value
-            };
-        } else if (item.type === 'minute') { 
-            rentaledHours = {
-                ...rentaledHours,
-                min: item.value
-            };
-        }
-    });
-
-    return rentaledHours;
 }
