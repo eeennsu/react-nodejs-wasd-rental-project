@@ -32,10 +32,10 @@ router.get('/searchTool/:toolSearch/:page/:pageLimit',/*checkToken,checkOne,*/to
 router.get('/rangeTool/:tool_name/:page/:pageLimit',checkToken,checkOne,toolController.rangeTool);
 
 //대여 가능한 기자재/강의실 갯수
-router.get('/rentalToolCount/:tool_name',checkToken,checkOne,toolController.rentalToolCount);
+router.get('/rentalToolCount/:tool_name',toolController.rentalToolCount);
 
 //대여 불가능한 기자재/강의실 갯수
-router.get('/notRentalToolCount/:tool_name',checkToken,checkOne,toolController.notRentalToolCount);
+router.get('/notRentalToolCount/:tool_name',toolController.notRentalToolCount);
 
 //기자재 대여불가처리
 router.get('/cannotRental/:tool_id',checkToken,checkMaster,toolController.cannotRental);

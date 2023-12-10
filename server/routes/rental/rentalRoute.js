@@ -36,10 +36,10 @@ router.post('/rentalClassRoom',checkToken,checkOne,rentalController.rentalClassR
 router.post('/returnClassRoom',checkToken,checkOne,rentalController.returnClassRoom);
 
 //대여중인 강의실 
-router.get('/NotClassCount/:tool_id',rentalController.NotClassCount);
+router.get('/NotClassCount/:tool_id',checkToken,checkMaster,rentalController.NotClassCount);
 
 //대여중인 기자재 모두 불러오기
-router.get("/ViewRental/:department_id",rentalController.ViewRental);
+router.get("/ViewRental/:department_id",checkToken,checkMaster,rentalController.ViewRental);
 
 //대여중인 타블렛, vr기기 보기
 router.post('/rentalToolList',checkToken,checkMaster,rentalController.rentalToolList);
