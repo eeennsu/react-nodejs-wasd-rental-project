@@ -52,9 +52,13 @@ const Suggestions: FC = () => {
 
     const handleSuggestions = async ( user_id: string, repair_id: number ) => {
 
-        await myRepairView_API( user_id, repair_id );
+      openModal();
 
-        console.log(handleSuggestions,'된다?')
+        const response = await myRepairView_API( user_id, repair_id );
+        const results = response.data.result;
+
+
+        console.log(results,'된다?')
 
     
     }

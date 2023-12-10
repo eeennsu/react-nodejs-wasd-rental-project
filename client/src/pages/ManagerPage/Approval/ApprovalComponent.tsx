@@ -9,17 +9,22 @@ const ApprovalComponent: FC = () => {
   const [users, setUsers] = useState<DetailUser[]>([]);
 
   useEffect(() => {
+
     const fetchUsers = async () => {
       try {
-        const { data } = await listPendingUsers_API();
+        const response = await listPendingUsers_API();
+        const result = response.data.result;
 
-        if (data.result) {
-          setUsers(data.result);
+
+        if (Array.isArray(result)) {
+          setUsers(result);
+
+          console.log()
+
         } else {
           // 만약 신청한 유저들이 없다면 이곳 조건을 타게됨. 
         }
 
-        console.log('성공')
       } catch (error) {
         console.log(error);
       }
@@ -40,7 +45,7 @@ const ApprovalComponent: FC = () => {
         <tbody>
           {users?.map((user, index) => (
             <ApplicantRow
-              key={user.user_id}
+              key={index}
               학번={user.user_student_number}
               이름={user.user_name}
               날짜={user.user_created_at}

@@ -1,23 +1,39 @@
 import axios from 'axios';
 import type { FC } from 'react';
-
-const RentalLog: FC = () => {
-
-    async function test() {
-
-        try {
-
-            const page = 1;
-            const response = await axios.get(`http://125.248.162.72:3000/log/logList/${page}`);
-            const data = response.data;
-            console.log('성공', data);
-          } catch (err) {
-            console.error('오류 발생:', err);
-          }
-        
-    }
+import React, { useState, useEffect} from 'react';
+import {logList_API} from '../../../api/log/logApi'
+import Pagination from '../../../components/Pagination/Pagination';
 
 
+
+
+
+
+  const RentalLog: FC = () => {
+  const [curPage, setCurPage] = useState<number>(1);
+  const [total, setTotal] = useState<number>(0);
+  const [logs, setLogs] = useState< string[]>([]);
+
+  useEffect(() => {
+    const fetchlog = async (page: number) => {
+      try {
+        const response = await logList_API(page);
+        const result = response.data.result;
+
+        if (Array.isArray(result)) {
+          setLogs(result);
+
+          console.log(result)
+        } else {
+          console.error('데이터가 배열이 아닙니다.');
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchlog(1);
+  }, []);
 
     return (
         
@@ -28,15 +44,20 @@ const RentalLog: FC = () => {
         </div>
   
         <div className="w-[1180px] h-[800px]  space-y-4 left-37 rounded-8 bg-02 p-4 pl-10 rounded-b-lg" >
-  
-        <div className='   w-[1020px] h-[80px] bg-03 ml-[35px] rounded-md text-[18px] p-1'>
-         
-        </div>
+       {logs.map((logs, index)=>(
+
+         <div  key={index} className=' w-[1020px] h-[80px] bg-03 ml-[35px] rounded-md text-[18px] p-6'>
+           {logs}
+         </div>
+
+  ))}
+        
   
     
       
         </div>
-        
+        <Pagination curPage={curPage} setCurPage={setCurPage} total={total}/>
+
         
     </div>
             

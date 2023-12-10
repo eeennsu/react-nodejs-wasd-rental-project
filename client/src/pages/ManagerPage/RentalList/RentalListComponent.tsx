@@ -1,6 +1,7 @@
 import type { FC } from 'react';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TooltipComponent from './TooltipComponent';
+import { myRentalList_API } from '../../../api/rental/rentalApi'
 
 const RentalListComponent: FC = () => {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -8,6 +9,8 @@ const RentalListComponent: FC = () => {
   const toggleTooltip = () => {
     setShowTooltip(!showTooltip);
   }
+
+
 
   return (
     <div className="w-[400px] h-14 absolute top-96 ml-[390px] bg-01 rounded-t-lg rounded-tr-lg text-2xl text-center">

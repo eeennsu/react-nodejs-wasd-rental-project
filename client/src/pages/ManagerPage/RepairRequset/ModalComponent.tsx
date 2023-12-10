@@ -10,17 +10,6 @@ interface ModalProps {
   onClose: () => void;
 }
 
-interface text_1 {
-
-  repair_id: number;
-  repair_part: string;
-  repair_reason: string;
-  repair_create_at: string;
-  repair_state: string;
-  user_id: string,
-  tool_id: string;
-
-}
 
 
 const ModalComponent: FC<ModalProps> = ({ isOpen, onClose }) => {
@@ -35,7 +24,7 @@ const ModalComponent: FC<ModalProps> = ({ isOpen, onClose }) => {
     const test = async () => {
 
       try {
-        const response = await myRepairView_API(user!.user_id, user?.repair_id)
+        const response = await myRepairView_API(user!.user_id, repair_id)
   
         console.log(response.data)
       }

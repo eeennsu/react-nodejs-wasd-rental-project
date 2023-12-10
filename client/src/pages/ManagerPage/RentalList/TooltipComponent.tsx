@@ -2,6 +2,8 @@ import type { FC } from 'react';
 import { useState, useEffect } from 'react';
 import { useUserStore } from '../../../zustand';
 import { viewRental_API } from '../../../api/rental/rentalApi'
+import { myRentalList_API } from '../../../api/rental/rentalApi'
+
 
 interface TooltipProps {
   
@@ -22,27 +24,26 @@ const TooltipComponent: FC<TooltipProps> = ({ showTooltip, toggleTooltip }) => {
   // 이름과 기자재 정보만을 가지는 배열 생성
 // const tooltipData = test.map(({ id,이름, 기자재 }) => ({ id, 이름, 기자재 }));
 
-const { user } = useUserStore();
-const [lental, setLental] = useState<DetailUser[]>([]);
+
+const [rentallist, setRentalList] = useState<RentalInfo[]>([]);
+
+useEffect(() => {
+  const fetchData = async (user_id: string) => {
+    try {
+      const response = await myRentalList_API(user_id);
+
+      console.log(response.data); 
+
+      // 받아온 데이터를 상태에 업데이트
+      setRentalList(response.data);
+    } catch (err) {
+      console.error('데이터 불러오기 실패:', err);
+    }
+  };
 
 
-// useEffect( () => {
-//   const lentalUsers = async () => {
-//     try {
-
-//       const { data } = await viewRental_API();
-      
-//       setLental(data.result);
-
-//     }catch (err) {
-
-//       console.log(err);
-
-//     }
-//   };
-//   lentalUsers();
-// },[]);
-
+  fetchData();
+}, []); 
 
   return (
 
@@ -56,17 +57,17 @@ const [lental, setLental] = useState<DetailUser[]>([]);
       >
         기자재 대여 목록
       </div>
-      {/* {showTooltip && (
+      {showTooltip && (
         <div className="w-[180px] h-[76px] absolute top-[-50px] left-[300px] z-[99] p-4 bg-gray-200 rounded shadow-md text-sm">
-         {tooltipData.map(({id, 이름, 기자재}) =>(
-          <div key={id}>
-            <p>기자재 이름: {이름}</p>
-            <p>대여자 정보: {기자재}</p>
+         {/* {tooltipData.map(({id, 이름, 기자재}) =>( */}
+          <div>
+            <p>기자재 이름: 이름 </p>
+            <p>대여자 정보: 이름</p>
              </div>
-         )
-         )}
+         {/* )
+         )} */}
         </div>
-      )} */}
+      )}
       
     </div>
     </div>
