@@ -4,14 +4,7 @@ import React, { useState, useEffect} from 'react';
 import { notRepairList_API, myRepairView_API } from '../../../api/repair/repairApi'
 import Pagination from '../../../components/Pagination/Pagination';
 
-// interface RepairInfo {
-//   repair_id: string;
-//   repair_reason: string;
-//   user_id: string;
-//   repair_create_at: string;
-//   repair_state: string;
-//   // 다른 필요한 속성들도 추가 가능
-// }
+
 
 
 const Suggestions: FC = () => {
@@ -35,13 +28,15 @@ const Suggestions: FC = () => {
     // 서버의 response 를 보면, result 속성안에 값이 있고, result의 타입은 RepairInfo 타입의 배열임.
 
     useEffect(() => {
-      const fetchData = async () => {
+      const fetchData = async ( page: number ) => {
         try {
-          const response = await notRepairList_API();
+          const response = await notRepairList_API( page );
           const result = response.data.result;
+
+          console.log(response.data)
   
           if (Array.isArray(result)) {
-            console.log(result, '받아온 데이터'); // 확인용 로그
+            console.log(result, '받아온 데이터');
             setSuggestions(result);
           } else {
             console.error('데이터가 배열이 아닙니다.');
