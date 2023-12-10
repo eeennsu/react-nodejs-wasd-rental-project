@@ -39,7 +39,7 @@ const RentalPage: FC = () => {
             <aside className='md:w-1/5'>
                 <Side />
             </aside>
-            <section className='mb-10 md:w-4/5 3xl:mb-0'>
+            <section className=' md:mb-10 md:w-4/5 3xl:mb-0'>
                 {getContent(systemStep)}
             </section>        
         </div>

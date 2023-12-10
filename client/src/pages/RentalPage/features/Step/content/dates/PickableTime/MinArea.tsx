@@ -179,7 +179,7 @@ const MinArea: FC<Props> = ({ startHour, startMin, rentaledTimes }) => {
     
     return (
         <button 
-            className={`w-2 h-10 transition-colors ${background} ${(isPrevTimes || isOverTimes || isCanNotRentalTime) && 'bg-03 '} ${(!isPrevTimes && !isOverTimes && !isCanNotRentalTime) && 'hover:brightness-110'}`} 
+            className={`w-4 h-14 md:w-2 md:h-10 transition-colors ${background} ${(isPrevTimes || isOverTimes || isCanNotRentalTime) && 'bg-03 '} ${(!isPrevTimes && !isOverTimes && !isCanNotRentalTime) && 'hover:brightness-110'}`} 
             onClick={handleSelectRoom}  
             disabled={roomStatus === 'DISABLED' || (isPrevTimes || isOverTimes || (isCanNotRentalTime && !isRentaled))}
         />

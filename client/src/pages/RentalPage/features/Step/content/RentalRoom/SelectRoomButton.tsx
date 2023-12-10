@@ -18,7 +18,7 @@ const RoomButton: FC<Props> = ({ room }) => {
     }
 
     return (
-        <button className={`w-1/4 h-28 font-semibold border cursor-pointer border-01 hover:bg-slate-200 ${selectedRoom === room && 'border-2'}`} onClick={handleRentStep}>
+        <button className={`w-full h-28 font-semibold border cursor-pointer text-sm md:text-base border-01 hover:bg-slate-200 ${selectedRoom === room && 'border-2'}`} onClick={handleRentStep}>
             {building}
             <br />
             {roomNumber}

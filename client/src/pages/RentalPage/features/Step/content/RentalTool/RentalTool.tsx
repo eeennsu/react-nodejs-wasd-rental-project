@@ -26,11 +26,15 @@ const RentalTool: FC = () => {
     const setTool = useToolStore(state => state.setTool);
     
     const { setStepInit, setDateInit } = useStoreController();
-
+    
     const refUserType = useRef<HTMLInputElement | null>(null);
     const refClassNum = useRef<HTMLInputElement | null>(null);
     const refUserName = useRef<HTMLInputElement | null>(null);
     
+    useEffect(() => {
+        console.log(tool);
+    }, [tool]);
+
     const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setText(e.target.value);
     }

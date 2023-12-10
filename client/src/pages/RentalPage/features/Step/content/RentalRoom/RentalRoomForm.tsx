@@ -2,7 +2,7 @@ import { useEffect, type FC } from 'react';
 import { useStepStore } from '../../../../../../zustand';
 import { notification } from 'antd';
 import DatePicker from '../dates/DatePicker';
-import TimePicker from '../dates/PickableTime/TimePick';
+import TimePick from '../dates/PickableTime/TimePick';
 import RentReson from './RentalReson';
 import useNotClassroomCount from '../../../../queries/rental/useNotClassroomCount';
 import FetchDatasError from '../../../RentalProcessor/Main/Datas/teplate/FetchDatasError';
@@ -31,12 +31,16 @@ const RentalRoomForm: FC = () => {
                     <Error />
                 ) : (
                     <>
-                        <h3 className='text-xl font-bold'>
+                        <h3 className='text-xl font-bold max-lg:text-center'>
                             {selectedRoom || <span className='text-sm text-red-400 underline'>강의실 이름을 확인할 수 없습니다. 관리자에게 문의해 주세요.</span>}
                         </h3>                  
-                        <DatePicker type='date' />  
-                        <TimePicker classroomRentalInfos={rentalInfos?.result}/>
-                        <RentReson />                    
+                        <div className='flex max-lg:justify-center'>
+                            <DatePicker type='date' />  
+                        </div>
+                        <TimePick classroomRentalInfos={rentalInfos?.result}/>
+                        <div className='max-lg:mt-4'>
+                            <RentReson /> 
+                        </div>                   
                     </>
                 )                   
             }        

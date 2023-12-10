@@ -1,13 +1,13 @@
-import type { FC, PropsWithChildren, DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
-type Props = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
+type Props = {
+    onClick?: () => void;
+}
 
-};
-
-const UserButton: FC<PropsWithChildren<Props>> = ({ children, ...btnProps }) => {
+const UserButton: FC<PropsWithChildren<Props>> = ({ children, onClick }) => {
 
     return (
-        <button {...btnProps} className='py-1 bg-[#F2F4F7] rounded-2lg font-[500] w-[100px] text-sm hover:brightness-105 active:brightness-90'>
+        <button className='py-1 bg-[#F2F4F7] rounded-2lg font-[500] w-[100px] md:text-sm hover:brightness-105 active:brightness-90' onClick={onClick}>
             {children}
         </button>
     );

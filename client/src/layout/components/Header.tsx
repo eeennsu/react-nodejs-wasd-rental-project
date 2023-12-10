@@ -4,6 +4,7 @@ import ExNavMenu from './ExNavMenu';
 import { useUserStore } from '../../zustand';
 import { message } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { shallow } from 'zustand/shallow';
 
 const Header: FC = () => {
 
@@ -14,7 +15,7 @@ const Header: FC = () => {
         setLogout: state.setLogout,
         setUser: state.setUser,
         setToken: state.setToken,
-    }));
+    }), shallow);
 
     const handleLogout = () => {
         setLogout();
@@ -26,12 +27,12 @@ const Header: FC = () => {
     }
 
     return (
-        <header className='relative flex items-center h-[48px] bg-01'>
+        <header className='relative flex items-center h-[56px] md:h-[48px] bg-01'>
             <ExNavMenu />
             <nav className='w-full max-w-6xl mx-auto'>
                 {
                     isLogin && (
-                        <ul className='flex justify-center gap-6 md:justify-end'>
+                        <ul className='flex justify-end gap-2 md:gap-6 max-lg:mx-3'>
                             <li>
                                 <UserButton>
                                     {name}님

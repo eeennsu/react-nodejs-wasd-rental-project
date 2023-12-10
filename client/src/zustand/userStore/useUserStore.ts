@@ -1,10 +1,10 @@
-import { create } from 'zustand';
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 import { UserStoreType } from './types';
+import { createWithEqualityFn } from 'zustand/traditional';
 
 export const LOGIN_SESSION_STORAGE = 'login-session-storage';
 
-const useUserStore = create<UserStoreType>()(
+const useUserStore = createWithEqualityFn<UserStoreType>()(
     devtools(
         persist(
             (set) => ({

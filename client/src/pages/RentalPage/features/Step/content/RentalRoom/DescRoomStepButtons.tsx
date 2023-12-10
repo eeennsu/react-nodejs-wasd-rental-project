@@ -21,7 +21,7 @@ const DescRoomButtons: FC = () => {
     } 
 
     return (
-        <footer className='flex justify-end gap-3 p-4'>
+        <footer className='flex justify-center gap-3 p-1 md:p-4 md:justify-end'>
             <Button onClick={handleInitStep} bgColor='02'>
                 돌아가기
             </Button> 

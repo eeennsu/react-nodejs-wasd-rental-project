@@ -32,7 +32,8 @@ const App = () => {
                         <Route path='/manager/rental-log' element={<RentalLogPage />} />   
                         <Route path='/manager/suggestions' element={<Suggestions />} />                                                                 
                         <Route path='/sampleLogin' element={<SampleLogin />} />                        
-                    </Route>               
+                    </Route>            
+                       
                     <Route element={<RequireAuth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />}>
                         <Route path='/my-page/:id' element={<MyPage />} />
                     </Route>  

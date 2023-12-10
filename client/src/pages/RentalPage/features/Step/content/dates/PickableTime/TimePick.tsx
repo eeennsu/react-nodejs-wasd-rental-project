@@ -41,15 +41,13 @@ const TimePick: FC<Props> = ({ classroomRentalInfos }) => {
     }, [selectDate, classroomRentalInfos]);
 
     return (
-        <section className='relative'>
-            <div className='flex gap-x-[10px] gap-y-[16px] flex-wrap'>
-                {
-                    hours.map((hour, i) => (
-                        <HourArea key={hour} startHour={(i+1) + 8} rentaledTimes={rentaledTimes} />
-                    ))
-                }
-            </div>
-        </section>
+        <div className='flex gap-x-6 gap-y-5 md:gap-x-[10px] md:gap-y-4 flex-wrap max-lg:justify-center'>
+            {
+                hours.map((hour, i) => (
+                    <HourArea key={hour} startHour={(i+1) + 8} rentaledTimes={rentaledTimes} />
+                ))
+            }
+        </div>
     );
 };
 

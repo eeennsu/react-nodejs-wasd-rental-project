@@ -9,7 +9,8 @@ const DescToolButtons: FC = () => {
         setIsModalOpen: state.setIsModalOpen, setSystemStep: state.setSystemStep
     }), shallow);
 
-    const setTool = useToolStore(state => state.setTool);
+    const toolState = useToolStore(state => state.tool?.tool_state);
+    const isNotRental = toolState !== '대여가능';
  
     const handleRepairStep = () => {        
         setSystemStep('TOOL_REPAIR');
@@ -19,7 +20,6 @@ const DescToolButtons: FC = () => {
     const handleRentStep = () => {
         setSystemStep('TOOL_RENT');
         setIsModalOpen(false);
-        setTool(null);
     }
 
     return (
@@ -27,7 +27,7 @@ const DescToolButtons: FC = () => {
             <Button bgColor='01' onClick={handleRepairStep}>
                 수리 요청
             </Button>
-            <Button bgColor='01' onClick={handleRentStep} >
+            <Button bgColor='01' className={`${isNotRental && 'opacity-70'}`} onClick={handleRentStep} disabled={isNotRental}>
                 대여 하기
             </Button>
         </footer>   

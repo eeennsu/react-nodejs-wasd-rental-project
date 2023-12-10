@@ -24,7 +24,7 @@ const RentalRoom: FC = () => {
 
     return (
         <Template className='h-full mb-5 3xl:mb-0'>         
-            <div className='relative'>
+            <div className='relative mx-9 md:mx-0'>
                 <div className='absolute z-10 flex items-center justify-center w-full h-full transition-colors duration-300 cursor-pointer bg-black/50 group hover:bg-black/60 hover:shadow-sm' onClick={handleVisibleChange}>
                     <span className='text-xl font-bold tracking-wider text-white'>
                         시간표 보기
@@ -42,7 +42,7 @@ const RentalRoom: FC = () => {
                     }} 
                 />             
             </div>   
-            <div className='h-[360px]'>
+            <div className='h-full md:h-[360px]'>
                 {
                     systemStep === 'CLASSROOM_DESC' ? (
                         <RoomList />
