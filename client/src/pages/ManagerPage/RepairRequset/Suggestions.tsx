@@ -46,7 +46,7 @@ const Suggestions: FC = () => {
         }
       };
   
-      fetchData();
+      fetchData(1);
     }, []);
 
 

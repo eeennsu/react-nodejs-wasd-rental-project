@@ -12,7 +12,12 @@ const ApprovalComponent: FC = () => {
     const fetchUsers = async () => {
       try {
         const { data } = await listPendingUsers_API();
-        setUsers(data.result);
+
+        if (data.result) {
+          setUsers(data.result);
+        } else {
+          // 만약 신청한 유저들이 없다면 이곳 조건을 타게됨. 
+        }
 
         console.log('성공')
       } catch (error) {
