@@ -85,7 +85,7 @@ module.exports={
         
     },
 
-    returnClassRoom:(req,res)=>{
+    returnClassRoom: (req,res)=>{
         const body = req.body
         rentalService.returnClassRoom(body)
         .then((result)=>{
@@ -104,7 +104,7 @@ module.exports={
         })
     },
 
-    NotClassCount:(req,res)=>{
+    NotClassCount: (req,res)=>{
          const toolId = req.params.tool_id
          console.log(toolId)
         rentalService.NotClassCount(toolId)
@@ -127,8 +127,6 @@ module.exports={
             }
         })
     },
-
-   
 
     returnTool: (req, res) => {
         const body = req.body;
@@ -187,7 +185,7 @@ module.exports={
         
     },
 
-    myRentalList:(req,res)=>{
+    myRentalList: (req,res)=>{
         const userId = req.params.user_id
         rentalService.myRentalList(userId)
         .then(result => {
@@ -209,7 +207,7 @@ module.exports={
         })
     },
 
-    myAllRentalList:(req,res)=>{
+    myAllRentalList: (req,res)=>{
         const userId = req.params.user_id
         rentalService.myAllRentalList(userId)
         .then((result)=>{
@@ -236,7 +234,7 @@ module.exports={
         })
     },
 
-    myLateRentalList:(req,res)=>{
+    myLateRentalList: (req,res)=>{
         const userId = req.params.user_id
         rentalService.myLateRentalList(userId)
         .then((result)=>{
@@ -257,7 +255,7 @@ module.exports={
         })
     },
 
-    LateRentalList:(req,res)=>{
+    LateRentalList: (req,res)=>{
         rentalService.LateRentalList()
         .then((result)=>{
             let obj = {};
@@ -280,7 +278,7 @@ module.exports={
         })
     },
 
-    rentalTableAll:(req,res)=>{
+    rentalTableAll: (req,res)=>{
         rentalService.rentalTableAll()
         .then((result)=>{
             let obj = {}
@@ -306,7 +304,7 @@ module.exports={
         })
     },
 
-    rentalToolList:(req,res)=>{
+    rentalToolList: (req,res)=>{
 
         rentalService.rentalToolList()
         .then((result)=>{
@@ -330,9 +328,8 @@ module.exports={
             }
         })
     },
-
-    
-    ViewRental:(req,res)=>{
+  
+    ViewRental: (req,res)=>{
         departmentId=req.params.department_id
         rentalService.ViewRental(departmentId)
         .then((result)=>{
@@ -357,7 +354,7 @@ module.exports={
         })
     },
 
-    ViewClassRoom:(req,res)=>{
+    ViewClassRoom: (req,res)=>{
         const toolId=req.params.tool_id
 
         rentalService.ViewClassRoom(toolId)

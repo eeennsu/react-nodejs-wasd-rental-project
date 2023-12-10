@@ -126,8 +126,7 @@ module.exports = {
           resolve('err');
         });
     });
-},
-
+  },
 
   checkId: (body) => {
     return new Promise((resolve) => {
@@ -251,10 +250,7 @@ module.exports = {
     });
   },
 
-  
-  
-
-  UserTableAll:()=>{
+  UserTableAll: ()=>{
     return new Promise((resolve)=>{ 
       User.findAll(
 

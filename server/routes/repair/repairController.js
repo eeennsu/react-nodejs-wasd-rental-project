@@ -2,7 +2,7 @@ const errorCode = require('../../config/errorCode')
 const repairService = require('./repairService')
 module.exports={
 
-    repairTool:(req,res)=>{
+    repairTool: (req,res)=>{
         const body = req.body
         repairService.repairTool(body)
         .then((result)=>{
@@ -29,7 +29,7 @@ module.exports={
         })
     },
 
-    checkRepair:(req,res)=>{
+    checkRepair: (req,res)=>{
         const body = req.body
         repairService.checkRepair(body)
         .then((result)=>{
@@ -60,7 +60,7 @@ module.exports={
         });
     },
 
-    myRepairList:(req,res)=>{
+    myRepairList: (req,res)=>{
         const userId = req.params.user_id
        
         repairService.myRepairList(userId)
@@ -85,7 +85,7 @@ module.exports={
         })
     },
 
-    myRepairView:(req,res)=>{
+    myRepairView: (req,res)=>{
         const userId = req.params.user_id
         const repairId = req.params.repair_id
 
@@ -141,7 +141,7 @@ module.exports={
         })
     },
 
-    notRepairList:(req,res)=>{
+    notRepairList: (req,res)=>{
 
         const page = req.params.page 
         const pageLimit = req.params.pageLimit 

@@ -76,7 +76,7 @@ module.exports = {
         });
     },
 
-    approveUser:(req,res)=>{
+    approveUser: (req,res)=>{
         const body = req.body
         authService.approveUser(body)
         .then((result)=>{
@@ -233,7 +233,7 @@ module.exports = {
         });
     },
 
-    UserTableAll:(req,res)=>{
+    UserTableAll: (req,res)=>{
         authService.UserTableAll()
         .then((result)=>{
             let obj = {}

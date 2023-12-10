@@ -41,8 +41,6 @@ module.exports = {
           })
       },
 
-     
-
       updateTool: (req,res) =>{
         const body = req.body 
         const img = req.file;
@@ -76,7 +74,7 @@ module.exports = {
         
       },
 
-      viewTool:(req,res)=>{
+      viewTool: (req,res)=>{
         const toolId = req.params.tool_id
 
         toolService.viewTool(toolId)
@@ -132,27 +130,6 @@ module.exports = {
         })
       },
 
-    
-     /* deleteTool:(req,res)=>{
-        const body =req.body
-        console.log(body)
-      
-        toolService.deleteTool(body)
-        .then((result)=>{
-          let obj = {};
-          if(result.tool > 0 || result.img > 0){
-            obj["200"] ="OK";
-            obj["result"] = result;
-            res.send(obj)
-          }
-
-          else {
-            obj["200"] ="OK";
-            obj["err"] = errorCode.E00.message;
-            res.send(obj)
-          }
-        })
-      },*/
       deleteTool: (req, res) => {
         const body = req.body;
         console.log(!body)
@@ -189,10 +166,9 @@ module.exports = {
               console.error(error);
               res.status(500).send("빈값이다");
           });
-    },
+      },
     
-
-      searchTool:(req,res)=>{
+      searchTool: (req,res)=>{
         const toolSearch = req.params.toolSearch
         const page = req.params.page 
         const pageLimit = req.params.pageLimit 
@@ -222,7 +198,7 @@ module.exports = {
         })
       },
 
-      rangeTool:(req,res)=>{
+      rangeTool: (req,res)=>{
         const toolName = req.params.tool_name 
         const page = req.params.page                                   
         const pageLimit = req.params.pageLimit 
@@ -257,7 +233,7 @@ module.exports = {
         })
       },
 
-      rentalToolCount:(req,res)=>{
+      rentalToolCount: (req,res)=>{
         
         const toolName = req.params.tool_name
         console.log(toolName)
@@ -288,7 +264,7 @@ module.exports = {
         })
       },
 
-      notRentalToolCount:(req,res)=>{
+      notRentalToolCount: (req,res)=>{
   
         const toolName = req.params.tool_name
 
@@ -318,7 +294,7 @@ module.exports = {
         })
       },
 
-      cannotRental : (req, res) => {
+      cannotRental: (req, res) => {
         const toolId = req.params.tool_id;
         
         toolService.cannotRental(toolId)
@@ -343,7 +319,7 @@ module.exports = {
         })
       },
 
-      canRental : (req, res) => {
+      canRental: (req, res) => {
         const toolId = req.params.tool_id;
         
         toolService.canRental(toolId)
@@ -369,7 +345,7 @@ module.exports = {
         })
       },
 
-      toolList:(req,res)=>{
+      toolList: (req,res)=>{
         toolService.toolList()
         .then((result)=>{
 
@@ -387,6 +363,27 @@ module.exports = {
           }
         })
       },
+
+      /* deleteTool:(req,res)=>{
+        const body =req.body
+        console.log(body)
+      
+        toolService.deleteTool(body)
+        .then((result)=>{
+          let obj = {};
+          if(result.tool > 0 || result.img > 0){
+            obj["200"] ="OK";
+            obj["result"] = result;
+            res.send(obj)
+          }
+
+          else {
+            obj["200"] ="OK";
+            obj["err"] = errorCode.E00.message;
+            res.send(obj)
+          }
+        })
+      },*/
 
       
 }

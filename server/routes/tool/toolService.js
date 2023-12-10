@@ -86,8 +86,6 @@ module.exports = {
     });
   },
 
-  
-
   updateTool: async (body, img) => {
   return new Promise(async (resolve) => {
     try {
@@ -164,7 +162,7 @@ module.exports = {
       resolve("Error updating tool or image");
     }
   });
-},
+  },
 
   viewTool: (toolId) => {
     return new Promise(async (resolve) => {
@@ -221,32 +219,6 @@ module.exports = {
     });
   },
   
-  
-
- /* deleteTool: (toolId) => {
-    return new Promise(async (resolve) => {
-      try {
-        const [toolResult, imgResult] = await Promise.all([
-          Tool.destroy({ where: { tool_id: toolId } }),
-          Img.destroy({ where: { img_id: toolId } })
-        ]);
-  
-        if (toolResult !== null && imgResult !== null) {
-          const combinedResult = {
-            tool: toolResult,
-            img: imgResult
-          };
-          console.log(combinedResult)
-          resolve(combinedResult);
-        } else {
-          resolve(false);
-        }
-      } catch (error) {
-        console.error(error);
-        resolve("err");
-      }
-    });
-  }, */
   deleteTool: (body) => {
     return new Promise(async (resolve) => {
       if(console.log(Object.keys(body).length===0)){
@@ -280,14 +252,9 @@ module.exports = {
             resolve("err");
         }
     });
-},
+  },
 
-  
-
-
-  
-
-  searchTool:(page,pageLimit,toolSearch)=>{
+  searchTool: (page,pageLimit,toolSearch)=>{
     page = parseInt(page);
     pageLimit = parseInt(pageLimit);
     console.log("검색어",toolSearch)
@@ -332,10 +299,6 @@ module.exports = {
      
     })
   },
-
-  // order: [
-       //   [Sequelize.fn('CAST', Sequelize.col('tool_content'), 'INTEGER'), 'ASC']
-       // ], 
 
   rangeTool: (toolName,page,pageLimit) => {
     page = parseInt(page); //2
@@ -402,9 +365,9 @@ module.exports = {
             resolve("err");
         });
     });
-},
+  },
 
-notRentalToolCount: (toolName) => {
+  notRentalToolCount: (toolName) => {
   return new Promise((resolve) => {
       if (!toolName) {
           resolve("Null");
@@ -429,9 +392,7 @@ notRentalToolCount: (toolName) => {
           resolve("err");
       });
   });
-},
-
-
+  },
 
   cannotRental: (toolId) => {
     return new Promise((resolve) => {
@@ -499,7 +460,7 @@ notRentalToolCount: (toolName) => {
     })
   },
 
-  toolList:()=>{
+  toolList: ()=>{
    return new Promise((resolve)=>{
     Tool.findAll(
       )
@@ -514,6 +475,29 @@ notRentalToolCount: (toolName) => {
    })
   },
 
- 
+  /* deleteTool: (toolId) => {
+    return new Promise(async (resolve) => {
+      try {
+        const [toolResult, imgResult] = await Promise.all([
+          Tool.destroy({ where: { tool_id: toolId } }),
+          Img.destroy({ where: { img_id: toolId } })
+        ]);
+  
+        if (toolResult !== null && imgResult !== null) {
+          const combinedResult = {
+            tool: toolResult,
+            img: imgResult
+          };
+          console.log(combinedResult)
+          resolve(combinedResult);
+        } else {
+          resolve(false);
+        }
+      } catch (error) {
+        console.error(error);
+        resolve("err");
+      }
+    });
+  }, */
   
 }

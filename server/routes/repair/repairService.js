@@ -59,7 +59,6 @@ module.exports={
         });
     },
     
-    
     checkRepair: (body) => {
         return new Promise((resolve) => {
             Repair.update(
@@ -96,7 +95,7 @@ module.exports={
         });
     },
 
-    myRepairList:(userId)=>{
+    myRepairList: (userId)=>{
         return new Promise((resolve)=>{
             Repair.findAll({
                 where: {
@@ -114,7 +113,7 @@ module.exports={
         })
     },
 
-    myRepairView:(userId,repairId)=>{
+    myRepairView: (userId,repairId)=>{
        return new Promise((resolve)=>{
         Repair.findOne({
             where: {
@@ -152,7 +151,7 @@ module.exports={
         })
     },
 
-    notRepairList:(page,pageLimit)=>{
+    notRepairList: (page,pageLimit)=>{
         page = parseInt(page);
     pageLimit = parseInt(pageLimit);
     const pageOffset = (page - 1) * pageLimit;
