@@ -6,7 +6,7 @@ import RentalListComponent from './RentalList/RentalListComponent';
 import ApprovalComponent from './Approval/ApprovalComponent';
 import RentalLogComponent from './log/RentalLogComponent';
 import EquipmentStatusComponent from './EquipmentStatus/EquipmentStatusComponent';
-import EquipmentOverdueList from './EquipmentOverdueList'
+import EquipmentOverdueList from './OverdueList/EquipmentOverdueList'
 
 
 const ManagerPage: FC = () => {

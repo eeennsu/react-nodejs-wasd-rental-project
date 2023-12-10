@@ -63,7 +63,10 @@ const Suggestions: FC = () => {
     
     }
 
-    
+    const formatDate = (dateString : string) => {
+      const date = new Date(dateString);
+      return date.toISOString().split('T')[0]; // YYYY-MM-DD 형식으로 변환
+    };
 
     return (
 
@@ -81,7 +84,7 @@ const Suggestions: FC = () => {
             >
               <h3 className="ml-[30px] mt-[20px] font-bold">{suggestion.repair_reason}</h3>
               <div className='ml-[550px] mt-[20px]'>{suggestion.user_id}</div>
-              <div className='ml-[10px] mt-[20px]'>{suggestion.repair_create_at}</div>
+              <div className='ml-[70px] mt-[20px]'>{formatDate(suggestion.repair_create_at)}</div>
             </div>
           ))}
         </div>
