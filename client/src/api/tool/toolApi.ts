@@ -1,5 +1,5 @@
 import axiosPr from '../config/axiosPr';
-import { PAGE_LIMIT } from '../config/axiosPu';
+import axiosPub, { PAGE_LIMIT } from '../config/axiosPu';
 
 /* 
     1. 유저 토큰 필요, 마스터 토큰 필요 이런거는 무시
@@ -26,10 +26,10 @@ export const searchTool_API = (toolSearch: string, page: number) => axiosPr.get<
 export const rangeTool_API = (tool_name: ToolName, page: number) => axiosPr.get<ResRangeTool>(`/tool/rangeTool/${tool_name}/${page}/${PAGE_LIMIT}`);
 
 // 유저 토큰 필요 / 대여 가능한 기자재, 강의실의 개수
-export const rentalToolCount_API = (tool_name: string) => axiosPr.get<ResRentalToolCount>(`/tool/rentalToolCount/${tool_name}`);
+export const rentalToolCount_API = (tool_name: string) => axiosPub.get<ResRentalToolCount>(`/tool/rentalToolCount/${tool_name}`);
 
 // 유저 토큰 필요 / 대여 불가능한 기자재, 강의실의 개수
-export const notRentalToolCount_API = (tool_name: string) => axiosPr.get<ResNotRentalToolCount>(`/tool/notRentalToolCount/${tool_name}`);
+export const notRentalToolCount_API = (tool_name: string) => axiosPub.get<ResNotRentalToolCount>(`/tool/notRentalToolCount/${tool_name}`);
 
 // 관리자 토큰 필요 / 기자재 대여 불가 처리
 export const cannotRental_API = (tool_id: string) => axiosPr.get<ResCanRental>(`/tool/cannotRental/${tool_id}`);

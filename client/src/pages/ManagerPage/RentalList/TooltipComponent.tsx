@@ -2,14 +2,12 @@ import type { FC } from 'react';
 import { useState, useEffect } from 'react';
 import { useUserStore } from '../../../zustand';
 import { viewRental_API } from '../../../api/rental/rentalApi'
-import { myRentalList_API } from '../../../api/rental/rentalApi'
-
 
 interface TooltipProps {
-  
   showTooltip: boolean;
   toggleTooltip: () => void;
 }
+
 const TooltipComponent: FC<TooltipProps> = ({ showTooltip, toggleTooltip }) => {
   const [isClicked, setIsClicked] = useState(false);
 
@@ -25,22 +23,25 @@ const TooltipComponent: FC<TooltipProps> = ({ showTooltip, toggleTooltip }) => {
 // const tooltipData = test.map(({ id,이름, 기자재 }) => ({ id, 이름, 기자재 }));
 
 
-const [rentallist, setRentalList] = useState<RentalInfo[]>([]);
+const [rentallist, setRentalList] = useState<ViewTool[]>([]);
 
 useEffect(() => {
-  const fetchData = async (user_id: string) => {
+  const fetchData = async () => {
     try {
-      const response = await myRentalList_API(user_id);
+      const response = await viewRental_API();
 
-      console.log(response.data); 
 
+      // console.log(response.data); 
       // 받아온 데이터를 상태에 업데이트
-      setRentalList(response.data);
+      if (response.data.result) {
+        setRentalList(response.data.result);      // 이 api의 결과는 200, result, msg 라는 속성이 들어있는 객체가 오고, 우리가 원하는 값은 result에 담겨져 있음. 이런것들은 함수를 컨트롤 클릭해서 어떤 값의 형태가 들어오는지 확인해줘야함.        
+      } else {
+        // 이곳은 대여중인 기자재가 하나도 없을때 여기 로직 실행
+      }
     } catch (err) {
       console.error('데이터 불러오기 실패:', err);
     }
   };
-
 
   fetchData();
 }, []); 

@@ -24,4 +24,4 @@ export const notRepairList_API = (page: number) => axiosPri.get<ResNotRepairList
 
 // post?
 // 관리자 토큰 필요 / 지금까지 들어온 모든 수리 요청 보기와 rental DB에 있는 모든 정보 불러오기 
-export const repairList_API = () => axiosPri.post<unknown>(`/repair/RepairList`);
+export const repairList_API = () => axiosPri.post<ResAllRepairList>(`/repair/RepairList`);

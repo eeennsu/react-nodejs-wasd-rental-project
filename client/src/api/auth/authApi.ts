@@ -23,7 +23,7 @@ export const approveUser_API = (approveUser: ApproveUser) => axiosPri.post<ResAp
 export const changePw_API = (password: ChangePw) => axiosPu.post<ResChangePw>('/auth/changePW', password);
 
 // 마스터 토큰 필요 
-export const listPendingUsers_API = () => axiosPri.post<ResListPendingUsers>('/auth/listPendingUsers');
+export const listPendingUsers_API = () => axiosPri.get<ResListPendingUsers>('/auth/listPendingUsers');
 
 // 이메일 인증
 export const sendMail = (email: SendMail) => axiosPu.post<ResSendMail>('/auth/sendMail', email);

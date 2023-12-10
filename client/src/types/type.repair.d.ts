@@ -57,3 +57,8 @@ interface ResNotRepairList {
     result?: RepairInfo[];
     msg?: string;
 }
+
+interface ResAllRepairList {
+    '200': OK;
+    result: RepairInfo[]
+}

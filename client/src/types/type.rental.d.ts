@@ -20,6 +20,10 @@ type ClassroomRentalInfo = {
     user_id: string;
 }
 
+interface ViewTool extends Tool{
+    rentals: Array<{ user_id: string }>;
+}
+
 interface RentalInfo {
     rental_id: number;
     rental_date: string;
@@ -112,9 +116,7 @@ interface ResNotClassroomCount {
 
 interface ResViewRental {
     '200': OK;
-    result?: Array<Tool & {
-        rentals: Array<{ user_id?: string }?>
-    }>;
+    result?: ViewTool[]
     msg?: string;
 }
 

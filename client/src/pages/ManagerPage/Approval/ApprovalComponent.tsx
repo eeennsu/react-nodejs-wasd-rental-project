@@ -13,16 +13,18 @@ const ApprovalComponent: FC = () => {
     const fetchUsers = async () => {
       try {
         const response = await listPendingUsers_API();
-        const result = response.data.result;
+            
+        // 받아온 response 콘솔에 출력
+        console.log(response.data);
 
-
-        if (Array.isArray(result)) {
-          setUsers(result);
-
-          console.log()
-
+        if (response.data.result) {
+          setUsers(response.data.result);
+          console.log('요청한 유저들이 있네요!');
+          
         } else {
           // 만약 신청한 유저들이 없다면 이곳 조건을 타게됨. 
+          console.log('요청한 유저들이 없네요...');
+          console.log(response.data.msg);
         }
 
       } catch (error) {

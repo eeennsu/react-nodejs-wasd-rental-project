@@ -26,7 +26,7 @@ export const returnClassRoom_API = (returnClassRoom: ReturnClassroom) => axiosPr
 export const notClassroomCount_API = (classroomName: ClassRoomName) => axiosPub.get<ResNotClassroomCount>(`/rental/NotClassCount/${classroomName}`);
 
 // 토큰 필요 x / 대여 중인 VR, 테블릿 모두 불러오기
-export const viewRental_API = (department_id: string) => axiosPub.get<ResViewRental>(`/rental/viewRental/${department_id}`);
+export const viewRental_API = () => axiosPri.get<ResViewRental>(`/rental/ViewRental/1`);
 
 // 유저 토큰 필요 / 사용자의 현재 대여 목록 확인
 export const myRentalList_API = (user_id: string) => axiosPri.get<ResMyRentalList>(`/rental/myRentalList/${user_id}`);
