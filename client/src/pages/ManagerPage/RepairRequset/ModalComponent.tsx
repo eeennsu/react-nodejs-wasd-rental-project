@@ -8,6 +8,7 @@ import { string } from "prop-types";
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
+  repair?: RepairInfo | null;
 }
 
 interface text_1 {
@@ -23,7 +24,7 @@ interface text_1 {
 }
 
 
-const ModalComponent: FC<ModalProps> = ({ isOpen, onClose }) => {
+const ModalComponent: FC<ModalProps> = ({ isOpen, onClose,  repair }) => {
 
   const { user } = useUserStore();
 
@@ -35,7 +36,7 @@ const ModalComponent: FC<ModalProps> = ({ isOpen, onClose }) => {
     const test = async () => {
 
       try {
-        const response = await myRepairView_API(user!.user_id, user!.user_email)
+        const response = await myRepairView_API(user!.user_id, user!.department_id)
   
         console.log(response.data)
       }
