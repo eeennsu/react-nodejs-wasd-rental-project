@@ -18,25 +18,23 @@ const RoomList: FC = () => {
     }, []);
 
     return (
-        <section className='flex flex-col items-center justify-center w-full py-[56px] text-center'>
-            <table className='w-10/12 border-collapse h-3/5 bg-04'>
-                <tbody>
-                    <tr>
-                        {
-                            enginerringBuilding.map((room) => (
-                                <RoomButton key={room} room={room} />
-                            ))
-                        }
-                    </tr>
-                    <tr>
-                        {
-                            room_mainBuilding.map((room) => (
-                                <RoomButton key={room} room={room} />
-                            ))
-                        }
-                    </tr>
-                </tbody>
-            </table>
+        <section className='flex flex-col items-center justify-center w-full py-[56px]'>
+            <div className='flex flex-col w-10/12 h-3/5 bg-04'>
+                <div className='flex'>
+                    {
+                        enginerringBuilding.map((room) => (
+                            <RoomButton key={room} room={room} />
+                        ))
+                    }
+                </div>
+                <div className='flex'>
+                    {
+                        room_mainBuilding.map((room) => (
+                            <RoomButton key={room} room={room} />
+                        ))
+                    }
+                </div>
+            </div>
         </section>
     );
 };

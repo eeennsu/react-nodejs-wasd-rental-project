@@ -3,6 +3,7 @@ import { useTimeStore } from '../../../../../../../zustand';
 import { message } from 'antd';
 import { useState, useEffect, useMemo } from 'react';
 import { RentaledTime } from '../../../../../utils/timePicker';
+import { shallow } from 'zustand/shallow';
 
 type Props = {
     startHour: number;
@@ -20,12 +21,21 @@ const MinArea: FC<Props> = ({ startHour, startMin, rentaledTimes }) => {
         setLastSelectHour, setLastSelectMin,
         timeBtnsResetTrigger, rentalDate,
         closestRentaledTime, setClosestRentaledTime
-    } = useTimeStore();
+    } = useTimeStore(state => ({
+        roomStatus: state.roomStatus, selectStatus: state.selectStatus, setSelectStatus: state.setSelectStatus,
+        firstSelectHour: state.firstSelectHour, firstSelectMin: state.firstSelectMin,
+        lastSelectHour: state.lastSelectHour, lastSelectMin: state.lastSelectMin,
+        setFirstSelectHour: state.setFirstSelectHour, setFirstSelectMin: state.setFirstSelectMin,
+        setLastSelectHour: state.setLastSelectHour, setLastSelectMin: state.setLastSelectMin,
+        timeBtnsResetTrigger: state.timeBtnsResetTrigger, rentalDate: state.rentalDate,
+        closestRentaledTime: state.closestRentaledTime, setClosestRentaledTime: state.setClosestRentaledTime
+    }), shallow);
 
     const [isSelected, setIsSelected] = useState<boolean>(false);
     const [isPrevTimes, setIsPrevTimes] = useState<boolean>(false);
     const [isOverTimes, setIsOverTimes] = useState<boolean>(false);
     const [isRentaled, setIsRentaled] = useState<boolean>(false);
+    const [isCanNotRentalTime, setIsCanNotRentalTime] = useState<boolean>(false);
 
     const background: string = useMemo(() => {
         return isRentaled ? 'bg-green-300' : roomStatus ===  'DISABLED' ? 'bg-04' : ((roomStatus === 'SELECTABLE' && isSelected) ? 'bg-01' : 'bg-02');
@@ -79,9 +89,6 @@ const MinArea: FC<Props> = ({ startHour, startMin, rentaledTimes }) => {
         }
     }
 
-    // 1. 첫번째 클릭했을 때 가장 다음으로 가까운 렌탈된 스타트 시간과 분을 전역적으로 설정함
-    // 2. 현재 MinArea가 1번에서 설정한 시간보다 크고, 렌탈된 시간이 아니면 선택할 수 없도록 함
-
     useEffect(() => {
         switch(selectStatus) {
             case 'FIRST_SELECT': 
@@ -100,26 +107,23 @@ const MinArea: FC<Props> = ({ startHour, startMin, rentaledTimes }) => {
                 }
                 
                 let closest: RentaledTime = {
-                    hour: 0,
-                    min: 0,
+                    hour: 1000,
+                    min: 1000
                 };
-                // console.log(rentaledTimes);
+
                 rentaledTimes.forEach((times) => {
-                    const [rentaledStartTime] = times;
-                
-                    // if (!closest || (rentaledStartTime.hour > closest.hour && rentaledStartTime.hour <= startHour)) {
-                    //     closest = {
-                    //         hour: rentaledStartTime.hour,
-                    //         min: 0 // 분은 0으로 설정했지만 필요에 따라 변경 가능
-                    //     };
-                    // }
+                    const [rentaledStartTime, rentalEndTime] = times;
+                   
+                    if (rentaledStartTime.hour >= firstSelectHour! && (rentaledStartTime.hour <= closest.hour)) {
+                        closest = {
+                            hour: rentaledStartTime.hour,
+                            min: Math.max(rentaledStartTime.min, rentalEndTime.min)
+                        }                  
+                    }                  
+                });          
 
-                    if (rentaledStartTime.hour > closest.hour) {
-                        
-                    }
-                });
+                setClosestRentaledTime(closest);
 
-                console.log(closest);
                 break;
 
             case 'LAST_SELECT': 
@@ -149,19 +153,35 @@ const MinArea: FC<Props> = ({ startHour, startMin, rentaledTimes }) => {
     
     useEffect(() => {
         if (isSelected) setIsSelected(false);
-        else if (isPrevTimes) setIsPrevTimes(false);
-        else if (isOverTimes) setIsOverTimes(false);
-    }, [timeBtnsResetTrigger]);
+        if (isPrevTimes) setIsPrevTimes(false);
+        if (isOverTimes)  setIsOverTimes(false);
+        if (isCanNotRentalTime) setIsCanNotRentalTime(false); 
+        if (firstSelectHour) setFirstSelectHour(null);
+        if (lastSelectHour) setFirstSelectHour(null);
+        if (selectStatus !== 'NONE') setSelectStatus('NONE'); 
+    }, [timeBtnsResetTrigger, rentalDate]);
 
     useEffect(() => {
         setIsRentaled(isRentaledDuringTime);
     }, [rentaledTimes, rentalDate]);
 
+    useEffect(() => {
+        if (!closestRentaledTime || !firstSelectHour) return;
+
+        if (closestRentaledTime.hour >= startHour) {
+            if (startHour === closestRentaledTime.hour && closestRentaledTime.min <= startMin) {
+                setIsCanNotRentalTime(true);
+            } 
+        } else if (startHour >= closestRentaledTime.hour) {
+            setIsCanNotRentalTime(true);
+        }
+    }, [closestRentaledTime]);
+    
     return (
         <button 
-            className={`w-2 h-10 transition-colors ${background} ${(isPrevTimes || isOverTimes) && 'bg-03 '} ${(!isPrevTimes && !isOverTimes) && 'hover:brightness-110'}`} 
+            className={`w-2 h-10 transition-colors ${background} ${(isPrevTimes || isOverTimes || isCanNotRentalTime) && 'bg-03 '} ${(!isPrevTimes && !isOverTimes && !isCanNotRentalTime) && 'hover:brightness-110'}`} 
             onClick={handleSelectRoom}  
-            disabled={roomStatus === 'DISABLED' || (isPrevTimes || isOverTimes)}
+            disabled={roomStatus === 'DISABLED' || (isPrevTimes || isOverTimes || (isCanNotRentalTime && !isRentaled))}
         />
     );
 };

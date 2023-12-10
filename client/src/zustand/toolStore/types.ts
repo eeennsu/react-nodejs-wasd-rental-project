@@ -102,10 +102,10 @@ export interface ITimeStore {
     firstSelectMin: number | null;
     lastSelectHour: number | null;
     lastSelectMin: number | null;
-    setFirstSelectHour: (firstHour: number) => void;
-    setFirstSelectMin: (firstMin: number) => void;
-    setLastSelectHour: (lastHour: number) => void;
-    setLastSelectMin: (lastMin: number) => void;
+    setFirstSelectHour: (firstHour: number | null) => void;
+    setFirstSelectMin: (firstMin: number | null) => void;
+    setLastSelectHour: (lastHour: number | null) => void;
+    setLastSelectMin: (lastMin: number | null) => void;
 
     resetTimes: () => void;
     
