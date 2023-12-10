@@ -31,7 +31,7 @@ interface ResRepairTool {
 }
 
 interface CheckRepair {
-    repair_id: string;
+    repair_id: number;
     repair_state: string;
 }
 

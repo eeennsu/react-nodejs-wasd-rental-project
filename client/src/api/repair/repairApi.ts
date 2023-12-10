@@ -1,4 +1,5 @@
 import axiosPri from '../config/axiosPr';
+import { PAGE_LIMIT_2 } from '../config/axiosPu';
 
 /* 
     1. 유저 토큰 필요, 마스터 토큰 필요 이런거는 무시
@@ -19,7 +20,7 @@ export const myRepairList_API = (user_id: string) => axiosPri.get<ResMyRepairLis
 export const myRepairView_API = (user_id: string, repair_id: number) => axiosPri.get<ResMyRepairView>(`/repair/myRepairView/${user_id}/${repair_id}`);
 
 // 관리자 토큰 필요 / 미확인 수리 요청 보기
-export const notRepairList_API = () => axiosPri.get<ResNotRepairList>(`/repair/notRepairList`);
+export const notRepairList_API = (page: number) => axiosPri.get<ResNotRepairList>(`/repair/notRepairList/${page}/${PAGE_LIMIT_2}`);
 
 // post?
 // 관리자 토큰 필요 / 지금까지 들어온 모든 수리 요청 보기와 rental DB에 있는 모든 정보 불러오기 

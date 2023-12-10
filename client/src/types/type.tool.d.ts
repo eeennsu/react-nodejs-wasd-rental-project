@@ -3,7 +3,7 @@ type ActiveTab = 0 | 1 | 2 | 3 | 4;  // 전체, 오큘러스, 타블렛, 강의�
 type ToolName = 'VR 실습기기' | '타블렛' | '강의실';
 type ToolState = '대여가능' | '대여중' | '대여불가';
 type SystemStep = 'INIT' | 'TOOL_REPAIR' | 'TOOL_RENT' | 'CLASSROOM_DESC' | 'CLASSROOM_RENT';
-type ClassRoomName = '공학관317-1호' | '공학관317-2호' | '공학관319호' | '공학관320호' | '본관504호' | '본관505호' | '본관506호' | '본관507호';
+type ClassRoomName = '공학관 317-1호' | '공학관 317-2호' | '공학관 319호' | '공학관 320호' | '본관 504호' | '본관 505호' | '본관 506호' | '본관 507호';
 
 interface Tool {
     department_id: number;

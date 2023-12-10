@@ -1,7 +1,7 @@
 export type SessionUserInfo = {
     user_id: string;
     user_email: string;
-    user_student_number: number;
+    user_student_number: string;
     user_name: string;
     user_license: UserLicense;
     department_id: string;
