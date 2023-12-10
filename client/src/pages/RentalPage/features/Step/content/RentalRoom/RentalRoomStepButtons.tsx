@@ -3,10 +3,10 @@ import { message } from 'antd';
 import { useStepStore, useTimeStore, useUserStore } from '../../../../../../zustand';
 import { shallow } from'zustand/shallow';
 import { SessionUserInfo } from '../../../../../../zustand/userStore/types';
-import Button from '../../../../../../components/Button';
-import useStoreController from '../../../../../../hooks/commons/useStoreController';
 import { convertToKoreanTime } from '../../../../utils/timePicker';
 import { rentalClassRoom_API } from '../../../../../../api/rental/rentalApi';
+import Button from '../../../../../../components/Button';
+import useStoreController from '../../../../../../hooks/commons/useStoreController';
 
 const RentalRoomStepButtons: FC = () => {
 
@@ -77,16 +77,7 @@ const RentalRoomStepButtons: FC = () => {
             return;
         }
 
-        try {
-            // console.log('유저 아이디 - ', user_id);
-            // console.log('디파트먼트 아이디 - ', department_id);
-            // console.log('선택된 강의실 - ', selectedRoom);
-            // console.log('대여 사유 - ', rentalReson);
-            // console.log('대여 날짜 - ', rentalDateNum);
-            // console.log('대여 시간 -', `${firstSelectHour}시 ${firstSelectMin}분`);
-            // console.log('반납 날짜 - ', rentalDateNum);
-            // console.log('반납 시간 -', `${lastSelectHour}시 ${lastSelectMin + 10}분`);
-            
+        try {            
             const rental_date = convertToKoreanTime(rentalDateNum!, firstSelectHour!, firstSelectMin!);
             const rental_due_date = convertToKoreanTime(returnDateNum!, lastSelectHour!, lastSelectMin! + 10);
 
@@ -96,7 +87,7 @@ const RentalRoomStepButtons: FC = () => {
                 rental_date,
                 rental_due_date,
                 department_id
-            }
+            };
 
             const { data } = await rentalClassRoom_API(retnalClassroom);
 
@@ -125,8 +116,8 @@ const RentalRoomStepButtons: FC = () => {
 
     const handleInit = () => {
         setStepInit();
-        setDateInit();
         resetTimes();
+        setDateInit(true);
     }
 
     return (

@@ -1,4 +1,5 @@
 import { Dayjs } from 'dayjs';
+import { RentaledTime } from '../../pages/RentalPage/utils/timePicker';
 
 export interface ITabsStore {
     activeTab: ActiveTab;
@@ -110,4 +111,7 @@ export interface ITimeStore {
     
     timeBtnsResetTrigger: boolean;
     setTimeBtnsResetTrigger: () => void;
+
+    closestRentaledTime: RentaledTime | null;
+    setClosestRentaledTime: (closestRentaledTime: RentaledTime | null) => void;
 }

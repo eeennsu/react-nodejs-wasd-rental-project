@@ -4,14 +4,14 @@ import React, { useState, useEffect} from 'react';
 import { notRepairList_API, myRepairView_API } from '../../../api/repair/repairApi'
 import Pagination from '../../../components/Pagination/Pagination';
 
-interface RepairInfo {
-  repair_id: string;
-  repair_reason: string;
-  user_id: string;
-  repair_create_at: string;
-  repair_state: string;
-  // 다른 필요한 속성들도 추가 가능
-}
+// interface RepairInfo {
+//   repair_id: string;
+//   repair_reason: string;
+//   user_id: string;
+//   repair_create_at: string;
+//   repair_state: string;
+//   // 다른 필요한 속성들도 추가 가능
+// }
 
 
 const Suggestions: FC = () => {
@@ -55,7 +55,7 @@ const Suggestions: FC = () => {
     }, []);
 
 
-    const handleSuggestions = async ( user_id: string, repair_id: string ) => {
+    const handleSuggestions = async ( user_id: string, repair_id: number ) => {
 
         await myRepairView_API( user_id, repair_id );
 

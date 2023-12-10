@@ -16,7 +16,7 @@ export const checkRepair_API = (checkRepair: CheckRepair) => axiosPri.post<ResCh
 export const myRepairList_API = (user_id: string) => axiosPri.get<ResMyRepairList>(`/repair/myRepairList/${user_id}`); 
 
 // 유저 토큰 필요 / 사용자의 수리 요청 목록 자세히
-export const myRepairView_API = (user_id: string, repair_id: string) => axiosPri.get<ResMyRepairView>(`/repair/myRepairView/${user_id}/${repair_id}`);
+export const myRepairView_API = (user_id: string, repair_id: number) => axiosPri.get<ResMyRepairView>(`/repair/myRepairView/${user_id}/${repair_id}`);
 
 // 관리자 토큰 필요 / 미확인 수리 요청 보기
 export const notRepairList_API = () => axiosPri.get<ResNotRepairList>(`/repair/notRepairList`);

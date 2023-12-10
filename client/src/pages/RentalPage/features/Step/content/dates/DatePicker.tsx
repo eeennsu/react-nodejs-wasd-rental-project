@@ -44,7 +44,7 @@ const DatePicker: FC<Props> = ({ type }) => {
             <AntdDatePicker 
                 defaultValue={getOnlyWeekday()}
                 onChange={handleDateChange}
-                // disabledDate={disabledDate}
+                disabledDate={disabledDate}
                 placeholder='대여 날짜를 선택해 주세요'
                 format='MM-DD / ddd'
                 className='w-[260px] border rounded-none border-01 bg-04 p-0'

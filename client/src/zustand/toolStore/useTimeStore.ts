@@ -39,6 +39,9 @@ const useTimeStore = createWithEqualityFn<ITimeStore>()(
 
             timeBtnsResetTrigger: false,
             setTimeBtnsResetTrigger: () => set((prev) => ({ timeBtnsResetTrigger: !prev.timeBtnsResetTrigger }), false, 'SET_TIME_BTNS_RESET_TRIGGER'),
+
+            closestRentaledTime: null,
+            setClosestRentaledTime: (closestRentaledTime) => set(() => ({ closestRentaledTime }), false, 'SET_CLOSEST_TIME')
         }),
     )
 );

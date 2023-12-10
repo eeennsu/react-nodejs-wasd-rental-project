@@ -29,6 +29,3 @@ const Modal: FC = () => {
 };
 
 export default Modal;
-
-
-

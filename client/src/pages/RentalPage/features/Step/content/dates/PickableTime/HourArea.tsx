@@ -2,7 +2,6 @@ import type { FC } from 'react';
 import { minutes } from '../../../../../constants';
 import { RentaledTime } from '../../../../../utils/timePicker';
 import MinArea from './MinArea';
-import { Dayjs } from 'dayjs';
 
 type Props = {
     startHour: number;

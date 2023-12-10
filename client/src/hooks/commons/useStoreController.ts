@@ -1,3 +1,4 @@
+import { getOnlyWeekday } from '../../pages/RentalPage/utils/timePicker';
 import { useSearchStore, useStepStore, useTabsStore, useTimeStore, useToolStore } from '../../zustand';
 import { shallow } from 'zustand/shallow';
 
@@ -50,11 +51,12 @@ const useStoreController = () => {
         systemStep !== 'INIT' && setSystemStep('INIT');  
         setActiveTab(selectedActiveTab);
         text.length >= 1 && setText('');    
+        selectedRoom && setSelectedRoom(null);
     }
 
-    const setDateInit = () => {             
-        rentalDate && setRentalDate(null);
-        returnDate && setReturnDate(null);
+    const setDateInit = (isSameDay: boolean = false) => {             
+        rentalDate && setRentalDate(isSameDay ? getOnlyWeekday() : null);
+        returnDate && setReturnDate(isSameDay ? getOnlyWeekday() : null);
     }
 
     const setDataInit = () => {

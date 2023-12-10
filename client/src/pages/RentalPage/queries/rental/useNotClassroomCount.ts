@@ -8,6 +8,7 @@ const useNotClassroomCount = (classroomName: ClassRoomName) => {
         queryKey: ['not-classroom-count', { classroomName }],
         queryFn: () => notClassroomCount_API(classroomName),
         enabled: Boolean(classroomName),   
+        cacheTime: 0
     });
     
     return {

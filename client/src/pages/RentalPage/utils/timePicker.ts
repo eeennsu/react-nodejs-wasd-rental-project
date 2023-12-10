@@ -53,9 +53,12 @@ export const getOnlyWeekday = (): Dayjs => {
     const now = dayjs();
     let defaultValue = now;
     
-    if (now.day() === 0 || now.day() === 6) {
-        defaultValue = now.day(8);
+    if (now.day() === 0) { 
+        defaultValue = now.add(1, 'day');
+    } else if (now.day() === 6) { 
+        defaultValue = now.add(2, 'day'); 
     }
 
+    return defaultValue;
     return defaultValue;
 }

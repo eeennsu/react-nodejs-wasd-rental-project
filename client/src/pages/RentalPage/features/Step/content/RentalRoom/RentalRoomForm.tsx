@@ -2,7 +2,7 @@ import { useEffect, type FC } from 'react';
 import { useStepStore } from '../../../../../../zustand';
 import { notification } from 'antd';
 import DatePicker from '../dates/DatePicker';
-import TimePicker from '../dates/PickableTime/TimePicker';
+import TimePicker from '../dates/PickableTime/TimePick';
 import RentReson from './RentalReson';
 import useNotClassroomCount from '../../../../queries/rental/useNotClassroomCount';
 import FetchDatasError from '../../../RentalProcessor/Main/Datas/teplate/FetchDatasError';
