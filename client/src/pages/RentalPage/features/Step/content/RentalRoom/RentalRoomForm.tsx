@@ -32,7 +32,7 @@ const RentalRoomForm: FC = () => {
                 ) : (
                     <>
                         <h3 className='text-xl font-bold'>
-                            {selectedRoom}
+                            {selectedRoom || <span className='text-sm text-red-400 underline'>강의실 이름을 확인할 수 없습니다. 관리자에게 문의해 주세요.</span>}
                         </h3>                  
                         <DatePicker type='date' />  
                         <TimePicker classroomRentalInfos={rentalInfos?.result}/>

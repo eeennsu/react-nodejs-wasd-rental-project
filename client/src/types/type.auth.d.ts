@@ -71,7 +71,8 @@ interface SearchId {
 // searchID API의 response
 interface ResSearchId {
     '200': OK;
-    result: string;
+    result?: string;
+    err?: string;
 }
 
 // checkId API의 response
@@ -94,7 +95,8 @@ interface ResChangePw {
 // 회원가입 신청 목록 API의 response, result 타입 조정 필요
 interface ResListPendingUsers {
     '200': OK;
-    result: DetailUser[];           // DetailUser의 배열
+    result?: DetailUser[];           // DetailUser의 배열
+    msg?: string;
 }
 
 // sendMail API의 매개변수
@@ -114,7 +116,8 @@ interface ResSendMail {
 // 유저 디비에 있는 모든 정보 불러오기 api의 response,   result 타입 조정 필요
 interface ResUserTableAll {
     '200': OK;
-    result: DetailUser[];           // DetailUser의 배열
+    result?: DetailUser[];           // DetailUser의 배열
+    msg?: string;
 }
 
 interface ApproveUser {

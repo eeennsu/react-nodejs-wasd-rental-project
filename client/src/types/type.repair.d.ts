@@ -42,15 +42,18 @@ interface ResChekRepair {
 
 interface ResMyRepairList {
     '200': OK;
-    result: RepairInfo[] | string;
+    result?: RepairInfo[];
+    msg: string;
 }
 
 interface ResMyRepairView {
     '200': OK;
-    result: RepairInfo[] | string;
+    result?: RepairInfo[];
+    msg?: string;
 }
 
 interface ResNotRepairList {
     '200': OK;
-    result: RepairInfo[] | string;
+    result?: RepairInfo[];
+    msg?: string;
 }

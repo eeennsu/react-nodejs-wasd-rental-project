@@ -29,7 +29,7 @@ export const rangeTool_API = (tool_name: ToolName, page: number) => axiosPr.get<
 export const rentalToolCount_API = (tool_name: string) => axiosPr.get<ResRentalToolCount>(`/tool/rentalToolCount/${tool_name}`);
 
 // 유저 토큰 필요 / 대여 불가능한 기자재, 강의실의 개수
-export const notRentalToolCount_API = (tool_name: string) => axiosPr.get<ResRentalToolCount>(`/tool/notRentalToolCount/${tool_name}`);
+export const notRentalToolCount_API = (tool_name: string) => axiosPr.get<ResNotRentalToolCount>(`/tool/notRentalToolCount/${tool_name}`);
 
 // 관리자 토큰 필요 / 기자재 대여 불가 처리
 export const cannotRental_API = (tool_id: string) => axiosPr.get<ResCanRental>(`/tool/cannotRental/${tool_id}`);

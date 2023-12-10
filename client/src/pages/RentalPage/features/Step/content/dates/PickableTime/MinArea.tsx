@@ -103,20 +103,23 @@ const MinArea: FC<Props> = ({ startHour, startMin, rentaledTimes }) => {
                     hour: 0,
                     min: 0,
                 };
-                console.log(rentaledTimes);
+                // console.log(rentaledTimes);
                 rentaledTimes.forEach((times) => {
                     const [rentaledStartTime] = times;
                 
-                    // closest가 설정되지 않았거나, 현재 시간보다 크지만, 가장 가까운 시간을 찾으면 업데이트
-                    if (!closest || (rentaledStartTime.hour > closest.hour && rentaledStartTime.hour <= startHour)) {
-                        closest = {
-                            hour: rentaledStartTime.hour,
-                            min: 0 // 분은 0으로 설정했지만 필요에 따라 변경 가능
-                        };
+                    // if (!closest || (rentaledStartTime.hour > closest.hour && rentaledStartTime.hour <= startHour)) {
+                    //     closest = {
+                    //         hour: rentaledStartTime.hour,
+                    //         min: 0 // 분은 0으로 설정했지만 필요에 따라 변경 가능
+                    //     };
+                    // }
+
+                    if (rentaledStartTime.hour > closest.hour) {
+                        
                     }
                 });
 
-                // console.log(closest);
+                console.log(closest);
                 break;
 
             case 'LAST_SELECT': 

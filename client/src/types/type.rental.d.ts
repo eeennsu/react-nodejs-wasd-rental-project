@@ -106,19 +106,22 @@ interface NotClassroomCount {
 
 interface ResNotClassroomCount {
     '200': OK;
-    result: ClassroomRentalInfo[];
+    result?: ClassroomRentalInfo[];
+    msg?: string;
 }
 
 interface ResViewRental {
     '200': OK;
-    result: Array<Tool & {
+    result?: Array<Tool & {
         rentals: Array<{ user_id?: string }?>
     }>;
+    msg?: string;
 }
 
 interface ResMyRentalList {
     '200': OK;
-    result: ExistCurRental[] | string;
+    result?: ExistCurRental[];
+    msg?: string;
 }
 
 // 오류 수정 중
@@ -133,17 +136,20 @@ interface ResDeleteTool {
 
 interface ResMyAllRentalList {
     '200': OK;
-    result: RentalInfo | string;
+    result?: RentalInfo[];
+    msg?: string;
 }
 
 interface ResMyLateRentalList {
     '200': OK;
-    result: ExistCurRental[] | string;
+    result?: ExistCurRental[];
+    msg: string;
 }
 
 interface ResLateRentalList {
     '200': OK;
-    result: ExistCurRental[] | string;
+    result?: ExistCurRental;
+    msg?: string;
 }
 
 interface ResRentalTableAll {

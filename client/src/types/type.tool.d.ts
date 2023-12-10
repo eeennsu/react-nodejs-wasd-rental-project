@@ -82,13 +82,15 @@ interface ResRangeTool {
 // 대여 가능한 기자재, 강의실 개수 response 
 interface ResRentalToolCount {
     '200': string;
-    result: string;
+    result?: string;
+    err?: string;
 }
 
 // 대여 불가능한 기자재, 강의실 개수 response 
 interface ResNotRentalToolCount {
     '200': OK;
-    result: string;
+    result?: string;
+    err?: string;
 }
 
 // 기자재 대여 불가 처리 response
