@@ -24,7 +24,7 @@ module.exports = {
                 res.send(obj);
             } else if(result=="user_email, user_student_number"){
                 obj["200"]= "OK";
-                obj["err"] = "학번,이메일이 모두 중복된 값 입니다.";
+                obj["msg"] = "학번,이메일이 모두 중복된 값 입니다.";
                 res.send(obj);
             } else if (result == "err" || result == false) {
                 obj["200"]= "OK";
@@ -32,7 +32,7 @@ module.exports = {
                 res.send(obj);
             } else {
                 obj["200"]= "OK";
-                obj['suc'] = "회원가입에 성공하였습니다. 관리자 승인 후 로그인 가능합니다";
+                obj['msg'] = "회원가입에 성공하였습니다. 관리자 승인 후 로그인 가능합니다";
                 obj['result'] = result;
                 res.send(obj);
             }
@@ -112,7 +112,7 @@ module.exports = {
             }
             else if(result.length===0){
                 obj["200"]= "OK";
-                obj["result"] = "회원가입을 요청한 사용자가 없습니다.";
+                obj["msg"] = "회원가입을 요청한 사용자가 없습니다.";
                 res.send(obj)
             }
 
@@ -140,7 +140,7 @@ module.exports = {
                 res.send(obj);
             } else {
                 obj["200"]= "OK";
-                obj["result"] = "아이디가 중복되지 않습니다.";
+                obj["msg"] = "아이디가 중복되지 않습니다.";
                 res.send(obj);
             }
         });
@@ -246,7 +246,7 @@ module.exports = {
 
             else if(result.length==0){
                 obj["200"]= "OK";
-                obj["result"] = "회원정보 데이터베이스의 값에 등록된 값이 없습니다"
+                obj["msg"] = "회원정보 데이터베이스의 값에 등록된 값이 없습니다"
                 res.send(obj);
             }
 

@@ -22,7 +22,7 @@ router.get('/myRepairView/:user_id/:repair_id',checkToken,checkOne,repairControl
 router.get('/RepairList',checkToken,checkMaster,repairController.RepairList);
 
 //미확인 수리요청 보기
-router.get('/notRepairList',checkToken,checkMaster,repairController.notRepairList);
+router.get('/notRepairList/:page/:pageLimit',checkToken,checkMaster,repairController.notRepairList);
 
 
 module.exports = router;

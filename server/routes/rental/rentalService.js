@@ -7,7 +7,7 @@ moment.tz.setDefault("Asia/Seoul");
 const schedule = require('node-schedule');
 const { resolve } = require('path');
 // update at 00:00
-schedule.scheduleJob({ hour: 0, minute: 1 }, () => {
+/*schedule.scheduleJob({ hour: 0, minute: 1 }, () => {
     const currentTime = moment().format("YYYY-MM-DD");
 
     Rental.findAll({
@@ -37,7 +37,7 @@ schedule.scheduleJob({ hour: 0, minute: 1 }, () => {
         .catch(err => {
             console.log(err);
         })
-})
+})*/
 
 module.exports = {
     rentalTool: (body) => {

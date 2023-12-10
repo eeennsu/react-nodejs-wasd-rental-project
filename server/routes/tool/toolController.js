@@ -274,7 +274,7 @@ module.exports = {
           }
           else if (result=="Null"){
             obj["200"] ="OK";
-            obj["result"]= `tool_name의 입력값이 잘못되었습니다.`;
+            obj["err"]= `tool_name의 입력값이 잘못되었습니다.`;
             res.send(obj);
           }
           else {
@@ -304,7 +304,7 @@ module.exports = {
           }
           else if (result=="Null"){
             obj["200"] ="OK";
-            obj["result"]= `tool_name의 입력값이 잘못되었습니다.`;
+            obj["err"]= `tool_name의 입력값이 잘못되었습니다.`;
             res.send(obj);
           }
           else {

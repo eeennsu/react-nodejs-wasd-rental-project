@@ -112,7 +112,7 @@ module.exports={
             let obj={};
             if(result==false){
                 obj["200"] = "OK"
-                obj["msg"] = errorCode.E00.message;
+                obj["msg"] = "대여중인 강의실이 없습니다";
                 res.send(obj)
             }
             else if(result=="err"){
@@ -194,7 +194,7 @@ module.exports={
             let obj = {};
             if (result == false) {
                 obj["200"]= "OK";
-                obj["result"] = "대여중인 기자재 / 강의실이 없습니다";
+                obj["msg"] = "대여중인 기자재 / 강의실이 없습니다";
                 res.send(obj);
             } else if (result == "err") {
                 obj["200"]= "OK";
@@ -217,7 +217,7 @@ module.exports={
 
             if(result.length==0){
                 obj['200'] = "OK";
-                obj['result'] = "대여한 기자재 및 강의실이 없습니다.";
+                obj['msg'] = "대여한 기자재 및 강의실이 없습니다.";
                 res.send(obj);
             }
             
@@ -243,7 +243,7 @@ module.exports={
             let obj = {};
             if (result == false) {
                 obj["200"]= "OK";
-                obj["result"] = "연체중인 기자재 / 강의실이 없습니다";
+                obj["msg"] = "연체중인 기자재 / 강의실이 없습니다";
                 res.send(obj);
             } else if (result == "err") {
                 obj["200"]= "OK";
@@ -264,7 +264,7 @@ module.exports={
 
             if (result == false) {
                 obj["200"]= "OK";
-                obj["result"] = "연체중인 사용자가 없습니다.";
+                obj["msg"] = "연체중인 사용자가 없습니다.";
                 res.send(obj);
             } 
             else if (result == "err") {
@@ -293,7 +293,7 @@ module.exports={
 
             else if(result.length==0){
                 obj["200"]= "OK";
-                obj["result"] = "대여 데이터베이스의 값에 등록된 값이 없습니다"
+                obj["msg"] = "대여 데이터베이스의 값에 등록된 값이 없습니다"
                 res.send(obj);
             }
 

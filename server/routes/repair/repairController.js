@@ -68,7 +68,7 @@ module.exports={
             let obj = {};
             if(result.length==0){
                 obj["200"] = "OK"
-                obj["result"] = "수리요청한 기자재가 없습니다."; 
+                obj["msg"] = "수리요청한 기자재가 없습니다."; 
                 res.send(obj);
             }
             else if(result=="err"){
@@ -96,7 +96,7 @@ module.exports={
             let obj = {};
             if(result==null){
                 obj["200"] = "OK"
-                obj["err"] = "user_id 혹은 repair_id값에 맞는 수리요청이 없거나 값이 입력되지 않았습니다."; 
+                obj["msg"] = "user_id 혹은 repair_id값에 맞는 수리요청이 없거나 값이 입력되지 않았습니다."; 
                 res.send(obj);
             }
             else if (result=="err"){
@@ -143,20 +143,23 @@ module.exports={
 
     notRepairList:(req,res)=>{
 
-        repairService.notRepairList()
+        const page = req.params.page 
+        const pageLimit = req.params.pageLimit 
+
+        repairService.notRepairList(page,pageLimit)
         .then((result)=>{
 
             let obj = {};
 
             if(result.length==0){
                 obj["200"] = "OK"
-                obj["result"] = '미확인인 수리요청 건이 존재하지 않습니다.';
+                obj["msg"] = '미확인인 수리요청 건이 존재하지 않습니다.';
                 res.send(obj)
             }
             
             else if (result=="err"){
                 obj["200"] = "OK"
-                obj["result"] = errorCode.E00.message;
+                obj["err"] = errorCode.E00.message;
                 res.send(obj)
             }
 

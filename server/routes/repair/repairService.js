@@ -152,12 +152,17 @@ module.exports={
         })
     },
 
-    notRepairList:()=>{
+    notRepairList:(page,pageLimit)=>{
+        page = parseInt(page);
+    pageLimit = parseInt(pageLimit);
+    const pageOffset = (page - 1) * pageLimit;
         return new Promise((resolve)=>{
             Repair.findAll({
                 where: {
                     repair_state: "미확인"
-                }
+                },
+                limit: pageLimit,
+                offset: pageOffset,
             })
             .then((result)=>{
                 resolve(result)
