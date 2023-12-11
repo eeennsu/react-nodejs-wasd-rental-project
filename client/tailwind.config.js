@@ -36,6 +36,9 @@ export default {
       },
       borderColor: {
         '01': '#3F5D7D',
+      },
+      colors: {
+        'err-red': '#F44336'
       }
     },
   },

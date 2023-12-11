@@ -23,7 +23,7 @@ export const rentalClassRoom_API = (rentalClassRoom: RentalClassroom) => axiosPr
 export const returnClassRoom_API = (returnClassRoom: ReturnClassroom) => axiosPri.post<ResReturnClassroom>('/rental/returnClassRoom', returnClassRoom);
 
 // 토큰 필요 x / 대여 중인 강의실 불러오기
-export const notClassroomCount_API = (classroomName: ClassRoomName) => axiosPub.get<ResNotClassroomCount>(`/rental/NotClassCount/${classroomName}`);
+export const notClassroomCount_API = (classroomName: ClassRoomName) => axiosPri.get<ResNotClassroomCount>(`/rental/NotClassCount/${classroomName}`);
 
 // 토큰 필요 x / 대여 중인 VR, 테블릿 모두 불러오기
 export const viewRental_API = () => axiosPri.get<ResViewRental>(`/rental/ViewRental/1`);

@@ -1,35 +1,45 @@
-import type { FC } from 'react';
+import { Tooltip } from 'antd';
+import type { FC, PropsWithChildren } from 'react';
+import { getToolName } from '../../utils/tables';
 
 type Props = {
-    item?: ExistCurRental;
+    item: ExistCurRental;
 }
 
-const DetailsItem: FC<Props> = ({ item }) => {
+const ListItem: FC<Props> = ({ item: { D_day, result } }) => {
 
-    const toolName = item?.result.tool.tool_name;
-    const title = toolName === '강의실' ? item?.result.tool_id : toolName === 'VR 실습기기' ? '오큘러스' : '타블렛';
+    const toolName = result.tool.tool_name;
+    const tooltipTitle = toolName === '강의실' ? result.tool_id : toolName === 'VR 실습기기' ? result.tool.tool_content : result.tool.tool_content;
+    const color = toolName === '강의실' ? 'orange' : toolName === 'VR 실습기기' ? 'geekblue' : '';
 
     return (
-        <li className='flex items-center justify-around w-full h-[29px] px-1.5 text-sm border-t border-t-[#00000080] font-[500] bg-03'>
-            {
-                item && (
-                    <>
-                        <span>
-                            {title}
-                        </span>
-                        <span className={`${(item.D_day === 'TODAY' || item.D_day === 'D+1') && 'font-extrabold'}`}>
-                            {item.D_day} 
-                        </span>
-                    </>
-                )
-            }      
-        </li>
+        <ItemTemplate>
+            <span className='w-1/2 font-semibold'>
+                <Tooltip placement='left' title={tooltipTitle} color={color}>
+                    {getToolName(result.tool.tool_name)}
+                </Tooltip>
+            </span>
+            <span className={`${(D_day === '미반납' ? 'text-err-red' : D_day === 'TODAY' ? 'font-extrabold' : '')} w-1/2`}>
+                {D_day} 
+            </span>
+        </ItemTemplate>
     );
 };
 
-export default DetailsItem;
+export default ListItem;
 
 
+
+export const ItemTemplate: FC<PropsWithChildren> = ({ children }) => {
+
+    return(
+        <li className='flex items-center w-full h-[34px] px-1.5 text-md border-t border-t-[#00000080] font-[500] bg-03 text-center'>
+           {children}
+        </li>
+    );
+}
+
+export const EmptyItem: FC = () => <ItemTemplate />
 
 export const Skeleton: FC = () => {
     

@@ -11,6 +11,7 @@ const axiosPri = axios.create({
 axiosPri.interceptors.request.use(
     (config) => {
         const authInfo = JSON.parse(sessionStorage.getItem(LOGIN_SESSION_STORAGE)!);
+
         if (authInfo) {
             const token = authInfo?.state?.token;
             
@@ -18,6 +19,7 @@ axiosPri.interceptors.request.use(
                 config.headers.token = token;
             }
         }
+        
         return config;
     },
     (err) => Promise.reject(err)

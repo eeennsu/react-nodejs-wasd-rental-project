@@ -23,11 +23,11 @@ const DescToolButtons: FC = () => {
     }
 
     return (
-        <footer role='modal-footer' className='flex justify-end gap-3'>
+        <footer role='modal-footer' className='flex justify-center gap-4 m-2 md:justify-end md:gap-5'>
             <Button bgColor='01' onClick={handleRepairStep}>
                 수리 요청
             </Button>
-            <Button bgColor='01' className={`${isNotRental && 'opacity-70'}`} onClick={handleRentStep} disabled={isNotRental}>
+            <Button bgColor='01' className={`${isNotRental && 'opacity-80'}`} onClick={handleRentStep} disabled={isNotRental}>
                 대여 하기
             </Button>
         </footer>   

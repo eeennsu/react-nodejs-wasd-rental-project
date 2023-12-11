@@ -7,7 +7,7 @@ type Props = {
 const UserButton: FC<PropsWithChildren<Props>> = ({ children, onClick }) => {
 
     return (
-        <button className='py-1 bg-[#F2F4F7] rounded-2lg font-[500] w-[100px] md:text-sm hover:brightness-105 active:brightness-90' onClick={onClick}>
+        <button className='py-1 bg-[#F2F4F7] rounded-2lg font-[500] w-[100px] text-sm hover:brightness-105 active:brightness-90' onClick={onClick}>
             {children}
         </button>
     );

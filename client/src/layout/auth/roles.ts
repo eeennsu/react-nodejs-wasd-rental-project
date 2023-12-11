@@ -1,4 +1,4 @@
-export const ROLES = {
-    'USER': 1 as const,
-    'ADMIN': 4 as const
-}
+export const ROLES: Record<string, UserLicense> = {
+    USER: 1,
+    ADMIN: 4 
+};

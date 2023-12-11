@@ -8,7 +8,7 @@ interface TooltipProps {
 }
 
 const OverdueListTooltip: FC<TooltipProps> = ({ showTooltip, toggleTooltip }) => {
-    const [overlental, setOverlental] = useState<RentalInfo[]>([]);
+    const [overlental, setOverlental] = useState<ExistCurRental[]>([]);
     const [clickedIndexs, setClickedIndexs] = useState<number | null>(null);
   
     useEffect(() => {
@@ -53,7 +53,7 @@ const OverdueListTooltip: FC<TooltipProps> = ({ showTooltip, toggleTooltip }) =>
                 <div className="fixed w-[300px] h-[76px] absolute mt-[-100px] left-[300px] z-[999] p-4 bg-gray-200 rounded shadow-md text-sm">
                   <div>
                     <p>기자재 이름: 이름</p>
-                    <p>대여자 정보: {overlental.user_id}</p>
+                    <p>대여자 정보: {overlental.result.user_id}</p>
 
                     {/* 수정해야함 */}
                   </div>

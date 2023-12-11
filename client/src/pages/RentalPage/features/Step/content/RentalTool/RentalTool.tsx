@@ -117,7 +117,7 @@ const RentalTool: FC = () => {
     }, []);
 
     return (  
-        <Template className='h-full mt-2'>
+        <Template className='h-full mt-7'>
              <form className='flex flex-col h-full gap-8' onSubmit={handleRentRequest}>    
                 <div className='grid flex-1 grid-cols-3 gap-8'>
                     <div className='h-full col-span-1'> 
@@ -133,7 +133,7 @@ const RentalTool: FC = () => {
                             </p>
                         </div>                                               
                     </div>
-                    <div className='grid col-span-2 grid-rows-2 gap-9'>
+                    <div className='grid col-span-2 grid-rows-2 '>
                         <InfoContainer>
                             <TitleContainer>
                                 기자재 설명
@@ -201,7 +201,7 @@ export default RentalTool;
 const InfoContainer: FC<PropsWithChildren> = ({ children }) => {
     
     return (
-        <div className='flex flex-col w-full border border-01'>
+        <div className='flex flex-col w-full border border-01 h-5/6'>
             {children}
         </div>
     );
@@ -210,7 +210,7 @@ const InfoContainer: FC<PropsWithChildren> = ({ children }) => {
 const TitleContainer: FC<PropsWithChildren> = ({ children }) => {
     
     return (
-        <h3 className='py-2.5 bg-02 text-lg font-semibold text-center text-black'>
+        <h3 className='py-2 text-lg font-semibold text-center text-black bg-02'>
             {children}
         </h3>
     )

@@ -150,7 +150,7 @@ interface ResMyLateRentalList {
 
 interface ResLateRentalList {
     '200': OK;
-    result?: ExistCurRental;
+    result?: ExistCurRental[];
     msg?: string;
 }
 

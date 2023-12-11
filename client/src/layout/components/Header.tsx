@@ -22,7 +22,7 @@ const Header: FC = () => {
         setUser(null);
         setToken('');
 
-        message.info('로그아웃하였습니다.');
+        message.success('로그아웃을 하였습니다.');
         navigate('/sampleLogin');
     }
 

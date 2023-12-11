@@ -19,3 +19,13 @@ export const getTabName = (tab: TabName | ActiveTab): string => {
         default: throw new Error(`Unknown tab value : ${tab}`);
     }
 }
+
+export const getToolName = (toolName: ToolName): string => {
+    switch(toolName) {
+        case 'VR 실습기기':
+            return '오큘러스'
+
+        default:    
+            return toolName;
+    }
+}

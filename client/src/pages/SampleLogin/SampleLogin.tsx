@@ -4,6 +4,7 @@ import { message } from 'antd';
 import { login_API } from '../../api/auth/authApi';
 import { useUserStore } from '../../zustand';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { shallow } from 'zustand/shallow';
 import Button from '../../components/Button';
 
 const SampleLogin: FC = () => {
@@ -14,8 +15,23 @@ const SampleLogin: FC = () => {
     const [id, setId] = useState<string>('');
     const [pw, setPw] = useState<string>('');
 
-    const { isLogin, setLogin, setToken, user, setUser} = useUserStore();
+    const { isLogin, setLogin, setToken, user, setUser} = useUserStore(state => ({
+        isLogin: state.isLogin, setLogin: state.setLogin,
+        setToken: state.setToken, user: state.user, setUser: state.setUser
+    }), shallow);
     
+    useEffect(() => {   
+        if (state) {
+            if (state.from.pathname === '/manager') {
+                message.info('관리자 인증이 필요합니다.');
+            }
+
+            else {
+                message.info('로그인이 필요합니다.');
+            }
+        }
+    }, [state]);
+
     const handleLoginTest = async () => {
         setIsLoading(true);
         
@@ -47,7 +63,11 @@ const SampleLogin: FC = () => {
                 setUser(rest);
                 setToken(response.data.token.token);
              
-                message.success('로그인에 성공하였습니다!');
+                if (rest.user_license === 4) {
+                    message.success('관리자 인증에 성공하였습니다!');
+                } else {
+                    message.success('로그인에 성공하였습니다!');
+                }
                 
                 const from = state?.from;
 
@@ -62,21 +82,13 @@ const SampleLogin: FC = () => {
         } catch (error) {
             console.log(error);
             message.error('서버 오류 or 안 켜진듯 윤태한테 얘기바람');
-
         } finally {
             setIsLoading(false);
         }
     }
 
-    useEffect(() => {
-        // console.log('state', state);        
-        if (state) {
-            message.info('로그인이 필요합니다');
-        }
-    }, [state]);
-
     return (
-        <div className='flex flex-col items-center justify-center flex-1 w-full gap-3 ounded-sm bg-slate-300'>
+        <div className='flex flex-col items-center justify-center flex-1 w-full gap-3 ounded-sm '>
             {
                 isLogin ? (
                     <div className='flex flex-col items-center w-full h-full gap-4'>
@@ -96,7 +108,7 @@ const SampleLogin: FC = () => {
                         </p>                         
                     </div>
                 ) : (
-                    <>
+                    <div className='flex flex-col items-center gap-2 p-11 bg-slate-300 rounded-2xl'>
                         <h3 className='text-3xl'>Sample Login</h3> 
                         <div className='flex gap-10'>
                             <div className='flex flex-col items-center'>
@@ -131,7 +143,7 @@ const SampleLogin: FC = () => {
                                 로그인
                             </Button>
                         </div>
-                    </>                  
+                    </div>                  
                 )
             }
         </div>

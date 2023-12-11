@@ -17,7 +17,7 @@ const Side: FC = () => {
                     나의 대여 목록
                 </h2>
             </section>  
-            <section className='flex gap-5 md:flex-col'>
+            <section className='flex gap-8 md:flex-col'>
                 <MyRentalInfo title='대여 현황' rentalInfos={curRental.data?.result} isLoading={curRental.isLoading} error={curRental.error}  />
                 <MyRentalInfo title='연체 현황' rentalInfos={lateRental.data?.result} isLoading={lateRental.isLoading} error={lateRental.error instanceof Error} /> 
             </section>            

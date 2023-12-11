@@ -26,7 +26,7 @@ const TabButton: FC<PropsWithChildren<Props>> = ({ children, idx }) => {
         return (
             <div className='relative'>
                 <button className='absolute md:w-[148px] w-[100px] h-10 -top-10 trapezoid' onClick={handleSetActiveTab}>
-                    <span className='flex items-center justify-center mt-4 text-sm font-semibold text-white'>
+                    <span className='flex items-center justify-center mt-4 text-xs font-semibold text-white md:text-sm'>
                         {children}
                     </span>
                 </button>
@@ -36,7 +36,7 @@ const TabButton: FC<PropsWithChildren<Props>> = ({ children, idx }) => {
     }
 
     return (
-        <button className='w-[100px] md:w-[148px] h-10 text-sm font-semibold bg-01 whitespace-nowrap text-white/60' onClick={handleSetActiveTab}>
+        <button className='w-[100px] md:w-[148px] h-10 text-xs md:text-sm font-semibold bg-01 whitespace-nowrap text-white/60' onClick={handleSetActiveTab}>
             {children}
         </button>
     );

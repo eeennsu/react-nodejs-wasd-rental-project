@@ -6,10 +6,18 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault('Asia/Seoul');
 
+export const getStrDateFormat = (date?: string): string => {
+    if (!date) return '';
+    
+    const _date = dayjs(date, 'YYYYMMDD').toISOString();
+
+    return getDateFormat(_date);
+}
+
 export const getDateFormat = (date?: string): string => {
     if (!date) return '';
 
-    const format = new Intl.DateTimeFormat('ko-KR', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(date));
+    const format = new Intl.DateTimeFormat('ko-KR', { dateStyle: 'short' }).format(new Date(date));
 
     return format;
 }
@@ -59,6 +67,5 @@ export const getOnlyWeekday = (): Dayjs => {
         defaultValue = now.add(2, 'day'); 
     }
 
-    return defaultValue;
     return defaultValue;
 }
