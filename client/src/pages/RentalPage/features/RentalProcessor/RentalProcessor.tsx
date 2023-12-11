@@ -6,7 +6,7 @@ import Template from '../Step/templates/Template';
 const RentalProcessor: FC = () => {
 
     return (
-        <Template className='flex flex-col-reverse mt-8 xl:flex-col xl:mt-14'>
+        <Template className='flex flex-col-reverse mt-8 xl:flex-col xl:mt-[70px]'>
             <section className='flex justify-end px-6 pb-6 md:p-0'>
                 <Search />
             </section>          

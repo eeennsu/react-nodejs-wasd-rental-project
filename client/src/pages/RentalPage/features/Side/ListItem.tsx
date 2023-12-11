@@ -1,5 +1,5 @@
-import { Tooltip } from 'antd';
 import type { FC, PropsWithChildren } from 'react';
+import { Tooltip } from 'antd';
 import { getToolName } from '../../utils/tables';
 
 type Props = {
@@ -10,7 +10,7 @@ const ListItem: FC<Props> = ({ item: { D_day, result } }) => {
 
     const toolName = result.tool.tool_name;
     const tooltipTitle = toolName === '강의실' ? result.tool_id : toolName === 'VR 실습기기' ? result.tool.tool_content : result.tool.tool_content;
-    const color = toolName === '강의실' ? 'orange' : toolName === 'VR 실습기기' ? 'geekblue' : '';
+    const color = toolName === '강의실' ? 'green' : toolName === 'VR 실습기기' ? 'cyan' : '';
 
     return (
         <ItemTemplate>

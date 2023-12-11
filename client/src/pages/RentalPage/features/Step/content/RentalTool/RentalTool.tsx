@@ -1,6 +1,6 @@
 import type { FC, ChangeEvent, FormEvent, PropsWithChildren, DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import { useStepStore, useTabsStore, useTimeStore, useToolStore, useUserStore } from '../../../../../../zustand';
-import { Input as AntdInput, message } from 'antd';
+import { Input as AntdInput, Spin, message, Image } from 'antd';
 import { useRef, useEffect, forwardRef } from 'react';
 import { shallow } from 'zustand/shallow';
 import { rentalTool_API } from '../../../../../../api/rental/rentalApi';
@@ -8,12 +8,14 @@ import Button from '../../../../../../components/Button';
 import Template from '../../templates/Template';
 import Picker from '../dates/DatePicker';
 import useStoreController from '../../../../../../hooks/commons/useStoreController';
+import useOneViewTool from '../../../../queries/tool/useOneViewTool';
+import FetchDatasError from '../../../RentalProcessor/Main/Datas/teplate/FetchDatasError';
 
 const { TextArea } = AntdInput;
 const regClassNum = /^\d{10}$/;
 
 const RentalTool: FC = () => { 
-    
+
     const activeTab = useTabsStore(state => state.activeTab);
     const { text, setText, } = useStepStore(state => ({
         text: state.text,
@@ -25,6 +27,8 @@ const RentalTool: FC = () => {
     const tool = useToolStore(state => state.tool);
     const setTool = useToolStore(state => state.setTool);
     
+    const { data, isLoading, error } = useOneViewTool(tool?.tool_id as string);
+
     const { setStepInit, setDateInit } = useStoreController();
     
     const refUserType = useRef<HTMLInputElement | null>(null);
@@ -86,6 +90,8 @@ const RentalTool: FC = () => {
         }
     }
 
+    const src = new URL(data?.result?.img?.img_url!, import.meta.env.VITE_LOCAL_SERVER_URL)?.href;
+
     const fetchRentalTool = async () => {
         if (tool?.tool_id && userId) {
             const rentalTool: RentalTool = {
@@ -117,23 +123,37 @@ const RentalTool: FC = () => {
     }, []);
 
     return (  
-        <Template className='h-full mt-7'>
-             <form className='flex flex-col h-full gap-8' onSubmit={handleRentRequest}>    
-                <div className='grid flex-1 grid-cols-3 gap-8'>
-                    <div className='h-full col-span-1'> 
+        <Template className='h-[94%] mt-5'>
+             <form className='flex flex-col h-full gap-3 md:gap-8' onSubmit={handleRentRequest}>    
+                <div className='flex-1 gap-8 md:grid md:grid-cols-3'>
+                    <div className='h-full md:col-span-1'> 
                         <div className='h-2/3'>
-                            <img src='' alt='이미지' className='h-full bg-slate-200 rounded-sm2' />
+                            {
+                                isLoading ? (
+                                    <ImageLoading />
+                                ) : error ? (
+                                    <FetchDatasError type='warning' msg='이미지를 불러오는데 실패하였습니다. 관리자에게 문의해 주세요.' />
+                                ) : (
+                                    <div className='flex items-center w-full h-full'>
+                                        {
+                                            data && (
+                                                <Image src={src} rootClassName='h-full' className='object-cover w-full rounded-md shadow-md' style={{ height: '100%' }} alt={`${tool?.tool_content} 이미지` } />
+                                            )
+                                        }                                       
+                                    </div> 
+                                )
+                            }                                   
                         </div>                 
-                        <div className='flex flex-col gap-3 h-1/3'>
-                            <h3 className='mt-2 text-xl font-semibold'>
+                        <div className='flex flex-col gap-3 px-5 max-md:w-10/12 h-1/4'>
+                            <h3 className='mt-2 text-xl font-semibold max-md:mt-4'>
                                 {tool?.tool_content}
                             </h3>
-                            <p className='h-full mt-2 overflow-y-auto font-semibold leading-4 text-ellipsis my-scr'> 
+                            <p className='h-full mt-2 font-semibold leading-4 md:overflow-y-auto md:text-ellipsis my-scr'> 
                                 {tool?.tool_spec} Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus velit possimus accusamus omnis, eos laudantium.
                             </p>
                         </div>                                               
                     </div>
-                    <div className='grid col-span-2 grid-rows-2 '>
+                    <div className='flex flex-col w-full md:grid md:grid-rows-2 md:col-span-2 max-md:mt-4 max-md:gap-4'>
                         <InfoContainer>
                             <TitleContainer>
                                 기자재 설명
@@ -166,12 +186,12 @@ const RentalTool: FC = () => {
                                 </DescBox>
                             </DescContainer>
                         </InfoContainer>
-                        <div className='flex justify-start w-full'>
+                        <div className='flex justify-start w-full max-md:px-3'>
                             <Picker type='range' />
                         </div>
                     </div>
                 </div>   
-                <div className='mt-6 3xl:mt-2'>
+                <div className='mt-6 3xl:mt-2 max-md:px-3'>
                     <TextArea 
                         className='h-full p-3 border-2 rounded-none bg-04 border-01 placeholder:text-02/80'
                         style={{ resize: 'none' }}
@@ -181,8 +201,8 @@ const RentalTool: FC = () => {
                         onChange={handleTextChange}
                     />
                 </div>       
-                <footer className='flex justify-end gap-4'>
-                    <Button onClick={handleBack} bgColor='01'>
+                <footer className='flex justify-center gap-4 mt-2 md:justify-end'>
+                    <Button onClick={handleBack} bgColor='02'>
                         돌아가기
                     </Button>
                     <Button bgColor='01' type='submit'>
@@ -201,7 +221,7 @@ export default RentalTool;
 const InfoContainer: FC<PropsWithChildren> = ({ children }) => {
     
     return (
-        <div className='flex flex-col w-full border border-01 h-5/6'>
+        <div className='flex flex-col border border-01 h-5/6 max-md:mx-3'>
             {children}
         </div>
     );
@@ -210,16 +230,16 @@ const InfoContainer: FC<PropsWithChildren> = ({ children }) => {
 const TitleContainer: FC<PropsWithChildren> = ({ children }) => {
     
     return (
-        <h3 className='py-2 text-lg font-semibold text-center text-black bg-02'>
+        <h3 className='py-1 text-lg font-semibold text-center text-black md:py-2 bg-02'>
             {children}
         </h3>
-    )
+    );
 }
 
 const DescContainer: FC<PropsWithChildren> = ({ children }) => {
 
     return (
-        <div className='grid grid-cols-3 w-full h-full font-semibold border-t-[1px] border-01 bg-04 place-items-center'>
+        <div className='grid grid-cols-3 h-full w-full max-md:text-sm font-semibold border-t-[1px] border-01 bg-04 md:place-items-center'>
             {children}
         </div>
     );
@@ -228,7 +248,7 @@ const DescContainer: FC<PropsWithChildren> = ({ children }) => {
 const DescBox: FC<PropsWithChildren<{ isCenter?: boolean }>> = ({ isCenter, children }) => {
     
     return (
-        <div className={`flex items-center justify-center w-full h-full ${isCenter && 'border-x-[1px] border-01'}`}>
+        <div className={`flex items-center justify-center w-full max-md:py-4 max-md:px-1.5 h-full ${isCenter && 'border-x-[1px] border-01'}`}>
             {children}
         </div>
     );
@@ -239,10 +259,19 @@ const Input = forwardRef<HTMLInputElement, DetailedHTMLProps<InputHTMLAttributes
 
         return (
             <input 
-                className={`w-full text-center outline-none placeholder:text-02/80 bg-inherit text-sm ${className}`} 
+                className={`w-full text-center outline-none placeholder:text-02/80 bg-inherit text-xs md:text-sm ${className}`} 
                 ref={ref} 
                 {...props} 
             />
         );
     }
 ); 
+
+const ImageLoading: FC = () => {
+
+    return (
+        <div className='flex items-center justify-center h-full'>
+            <Spin size='large' />         
+        </div>
+    );
+}

@@ -8,7 +8,6 @@ import ToolState from '../../templates/ToolState';
 import DescToolButtons from './DescToolButtons';
 import useOneViewTool from '../../../../queries/tool/useOneViewTool';
 import FetchDatasError from '../../../RentalProcessor/Main/Datas/teplate/FetchDatasError';
-import Image from 'antd/es/image/index';
 import Paragraph from './Paragraph';
 
 const DescTool: FC = () => {
@@ -30,14 +29,14 @@ const DescTool: FC = () => {
             <div className='flex h-full md:gap-8 max-md:flex-col'>
                 {
                     isLoading ? (
-                        <Loading />
+                        <ImageLoading />
                     ) : error ? (
                         <FetchDatasError type='warning' msg='이미지를 불러오는데 실패하였습니다. 관리자에게 문의해 주세요.' />
                     ) : (
                         <div className='flex items-center w-full h-full'>
                             {
                                 data && (
-                                    <Image src={src} className='object-cover w-full rounded-md shadow-xl' alt={`${tool?.tool_content} 이미지` } />
+                                    <img src={src} className='object-cover w-full h-full rounded-md shadow-xl' alt={`${tool?.tool_content} 이미지` } />
                                 )
                             }
                         </div> 
@@ -66,7 +65,7 @@ export default DescTool;
 
 
 
-const Loading: FC = () => {
+const ImageLoading: FC = () => {
 
     return (
         <div className='flex items-center justify-center h-full'>

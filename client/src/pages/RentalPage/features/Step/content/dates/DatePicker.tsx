@@ -54,13 +54,13 @@ const DatePicker: FC<Props> = ({ type }) => {
 
     else {
         return (
-            <AntdRangePicker 
+            <AntdRangePicker                 
                 presets={rangePresets}
                 disabledDate={disabledDate} 
                 onChange={handleRangeChange}          
                 placeholder={['대여 날짜를 선택해 주세요', '반납날짜를 선택해 주세요']}
                 format='MM-DD / ddd'
-                className='w-[464px] border rounded-none border-01 bg-04'
+                className='w-[464px] border rounded-none border-01 bg-04 '
             />
         );
     }

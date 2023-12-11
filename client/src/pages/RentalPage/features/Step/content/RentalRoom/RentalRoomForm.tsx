@@ -21,8 +21,6 @@ const RentalRoomForm: FC = () => {
             duration: 3
         });
     }, []);
-
-    console.log(error);
     
     return (
         <section className='flex flex-col w-full gap-4 px-[48px] py-[20px] mt-4 bg-04 h-full'>

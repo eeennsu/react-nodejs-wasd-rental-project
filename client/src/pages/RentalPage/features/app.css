@@ -112,3 +112,33 @@ div.ant-picker-input > input {
 .ant-input:hover, .ant-input:focus {
     border-color: initial;
 }
+
+@media (max-width: 768px) {
+    .ant-picker-panels {
+        flex-direction: column !important;
+        width: auto !important;
+    }
+
+    .ant-picker-presets {
+        display: none !important
+    }
+
+    .ant-picker-panel-container {
+        width: 100% !important;
+    }
+
+    .ant-picker-panel-layout {
+        width: 100% !important; 
+        padding: 0 !important;
+        margin: 0 !important;      
+        justify-content: center !important;
+    } 
+
+    .ant-picker-header{
+        width: 100% !important;
+    }
+
+    .ant-picker-body {
+        width: 100% !important;
+    }
+}

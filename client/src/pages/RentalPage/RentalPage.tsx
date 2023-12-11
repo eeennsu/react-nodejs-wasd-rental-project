@@ -7,7 +7,7 @@ import { approveUser_API } from '../../api/auth/authApi';
 
 const RentalPage: FC = () => {
 
-    // 로그인 여부 / 토큰 / 유저에 대한 정보 (이메일, 학번, 아이디 등등..)
+    // 로그인 여부 / 토큰 / 유저에 대한 정보 (이메일, 학번, 아이디 등등..) 얘는 필수 아님 (필요할 떄 선언하면 됨)
     const { isLogin, user, token } = useUserStore();
     
     // 만약 특정 버튼이 클릭할 때 이 api를 호출하고 싶다면? 버튼의 onClick 속성에 이 함수를 넣으면 됨.
@@ -36,10 +36,10 @@ const RentalPage: FC = () => {
     
     return (
         <div className='flex flex-col-reverse w-full h-full md:flex-row gap-x-6 md:mt-7'>            
-            <aside className='md:w-1/5'>
+            <aside className='mt-4 md:w-1/5'>
                 <Side />
             </aside>
-            <section className='md:mb-10 md:w-4/5 3xl:mb-0'>
+            <section className='md:w-4/5 3xl:mb-0'>
                 {getContent(systemStep)}
             </section>        
         </div>
