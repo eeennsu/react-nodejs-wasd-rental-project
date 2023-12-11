@@ -31,6 +31,13 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
                 type : DataTypes.BOOLEAN,  
             },
+
+            rental_reason : {
+                allowNull: true,
+                type : DataTypes.STRING(255),
+            }, 
+
+            
         },
         {
             charset: "utf8",
@@ -39,3 +46,4 @@ module.exports = (sequelize, DataTypes) => {
         }
     )
 }
+

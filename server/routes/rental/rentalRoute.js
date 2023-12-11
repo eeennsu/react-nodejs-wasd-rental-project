@@ -36,7 +36,7 @@ router.post('/rentalClassRoom',checkToken,checkOne,rentalController.rentalClassR
 router.post('/returnClassRoom',checkToken,checkOne,rentalController.returnClassRoom);
 
 //대여중인 강의실 
-router.get('/NotClassCount/:tool_id',checkToken,checkMaster,rentalController.NotClassCount);
+router.get('/NotClassCount/:tool_id',checkToken,checkOne,rentalController.NotClassCount);
 
 //대여중인 기자재 모두 불러오기
 router.get("/ViewRental/:department_id",checkToken,checkMaster,rentalController.ViewRental);
@@ -45,9 +45,8 @@ router.get("/ViewRental/:department_id",checkToken,checkMaster,rentalController.
 router.post('/rentalToolList',checkToken,checkMaster,rentalController.rentalToolList);
 
 //대여중인 강의실 불러오기
-//router.get('/ViewClassRoom/:tool_id',checkToken,checkMaster,rentalController.ViewClassRoom);
+router.get('/ViewClassRoom/:tool_id',checkToken,checkMaster,rentalController.ViewClassRoom);
 
-router.get('/ViewClassRoom/:tool_id',rentalController.ViewClassRoom);
 
 
 module.exports = router;

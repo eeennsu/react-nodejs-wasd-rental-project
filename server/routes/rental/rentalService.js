@@ -60,6 +60,7 @@ module.exports = {
                             rental_due_date: dueDate.format("YYYY-MM-DD"),
                             rental_state: "대여",
                             rental_extend: false,
+                            rental_reason: body.rental_reason,
 
                         })
                             .then((createResult) => {
@@ -141,6 +142,7 @@ module.exports = {
                 rental_due_date: rentalDueDate,
                 rental_state: "대여",
                 rental_extend: false,
+                rental_reason: body.rental_reason
             })
                 .then((createResult) => {
                    //console.log(createResult)
