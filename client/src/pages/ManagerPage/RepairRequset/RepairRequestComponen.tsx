@@ -24,16 +24,6 @@ const RepairRequestComponent : FC = () =>{
             </div>
           </Link>
            
-            {/* <div className="w-[400px] h-96 top-416 rounded-8 bg-02 p-4 pl-10 rounded-b-lg" >
-            <div className='w-80 h-11 top-91 left-30 bg-03 rounded-md text-[18px] p-1'>
-                <div onClick={openModal}>
-                 수리 건의사항1
-                </div>
-             
-            </div>
-          
-            </div>
-            <ModalComponent isOpen={isModalOpen} onClose={closeModal} /> */}
         </div>
     );
 

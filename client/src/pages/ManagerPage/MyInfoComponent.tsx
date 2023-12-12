@@ -16,9 +16,7 @@ const ManagerInformation : FC = () => {
         <Button bgColor='01'className='w-[96px] h-[26px] mt-[10px]'>
               정보 수정하기
         </Button>
-        {/* <div className="w-30 h-30 absolute top-36 ml-[150px] bg-01 rounded-md text-white">
-           정보 수정하기
-           </div> */}
+       
       </div>
       </div>
   // 관리자 정보 업데이트 되면 수정예정

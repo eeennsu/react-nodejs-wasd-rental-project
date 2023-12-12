@@ -42,7 +42,7 @@ const ApprovalComponent: FC = () => {
   };
 
   return (
-    <div className="overflow-y-auto w-[825px] h-52 absolute top-[140px] ml-[390px] bg-02 rounded-md">
+    <div className="overflow-y-auto [&::-webkit-scrollbar]:hidden w-[825px] h-52 absolute top-[140px] ml-[390px] bg-02 rounded-md">
       <table className="w-full h-full">
         <tbody>
           {users?.map((user, index) => (

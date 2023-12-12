@@ -1,10 +1,7 @@
 import { FC, useEffect, useState, ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import AddEquipmentComponent from './AddEquipment/AddEquipmentComponent';
-// interface AddEquipmentModalProps {
-//   isOpen: boolean;
-//   onClose: () => void;
-// }
+
 
 const ManagerToolStatus: FC = () => {
 
