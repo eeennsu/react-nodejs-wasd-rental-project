@@ -6,7 +6,7 @@ type SystemStep = 'INIT' | 'TOOL_REPAIR' | 'TOOL_RENT' | 'CLASSROOM_DESC' | 'CLA
 type ClassRoomName = '공학관 317-1호' | '공학관 317-2호' | '공학관 319호' | '공학관 320호' | '본관 504호' | '본관 505호' | '본관 506호' | '본관 507호';
 
 interface Tool {
-    department_id: number;
+    department_id: string;
     tool_code: string;
     tool_content: string;
     tool_division: string;          

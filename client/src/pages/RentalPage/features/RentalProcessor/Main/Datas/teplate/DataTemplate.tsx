@@ -1,4 +1,4 @@
-import type { DetailedHTMLProps, FC, HtmlHTMLAttributes, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
     onClick: () => void;

@@ -24,7 +24,7 @@ interface DetailUser {
     user_student_number: string;
     user_created_at: string;
     user_license: UserLicense;
-    department_id: number;
+    department_id: string;
     manager_approval: boolean;
 }
 

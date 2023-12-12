@@ -1,13 +1,17 @@
 import type { FC } from 'react';
 import { Empty } from 'antd';
 
-const EmptySearchResult: FC = () => {
+type Props = {
+    msg: string;
+}
+
+const EmptryResult: FC<Props> = ({ msg }) => {
 
     return (
         <div className='flex items-center justify-center flex-grow'>
-            <Empty description='검색 결과가 없습니다.' className='font-bold' />
+            <Empty description={msg} className='font-bold' />
         </div>
     );
 };
 
-export default EmptySearchResult;
+export default EmptryResult;

@@ -5,6 +5,7 @@ import { login_API } from '../../api/auth/authApi';
 import { useUserStore } from '../../zustand';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
+import { messages } from '../RentalPage/constants';
 import Button from '../../components/Button';
 
 const SampleLogin: FC = () => {
@@ -23,11 +24,11 @@ const SampleLogin: FC = () => {
     useEffect(() => {   
         if (state) {
             if (state.from.pathname === '/manager') {
-                message.info('관리자 인증이 필요합니다.');
+                message.info(messages.requireManager);
             }
 
             else {
-                message.info('로그인이 필요합니다.');
+                message.info(messages.requireLogin);
             }
         }
     }, [state]);
@@ -41,18 +42,16 @@ const SampleLogin: FC = () => {
                 user_pw: pw,
             });
     
-            // console.log(response.data);
-    
             if (response.data[200]) {    
                 
                 if (response.data.err) {
-                    message.error('아이디 혹은 비밀번호가 올바르지 않습니다.');
+                    message.error(messages.notFoundUser);
                     
                     return;
                 }
     
                 else if (!response.data.token?.token) {
-                    message.error('인증 토큰 받기에 실패하였습니다. 관리자에게 문의해주세요.');
+                    message.error(messages.failGetToken);
                     
                     return;
                 }
@@ -64,9 +63,9 @@ const SampleLogin: FC = () => {
                 setToken(response.data.token.token);
              
                 if (rest.user_license === 4) {
-                    message.success('관리자 인증에 성공하였습니다!');
+                    message.success(messages.sugManager);
                 } else {
-                    message.success('로그인에 성공하였습니다!');
+                    message.success(messages.sugLogin);
                 }
                 
                 const from = state?.from;
@@ -76,12 +75,12 @@ const SampleLogin: FC = () => {
                 }
                 
             } else {
-                message.error('서버 오류가 발생하였습니다. 관리자에게 문의해 주세요.');
+                message.error(messages.unknownErr);
             }
             
         } catch (error) {
             console.log(error);
-            message.error('서버 오류 or 안 켜진듯 윤태한테 얘기바람');
+            message.error(messages.unknownErr);
         } finally {
             setIsLoading(false);
         }

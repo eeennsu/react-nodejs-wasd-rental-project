@@ -4,6 +4,8 @@ import { Input as AntdInput, Spin, message, Image } from 'antd';
 import { useRef, useEffect, forwardRef } from 'react';
 import { shallow } from 'zustand/shallow';
 import { rentalTool_API } from '../../../../../../api/rental/rentalApi';
+import { getImgURL } from '../../../../utils/step';
+import { messages } from '../../../../constants';
 import Button from '../../../../../../components/Button';
 import Template from '../../templates/Template';
 import Picker from '../dates/DatePicker';
@@ -27,17 +29,15 @@ const RentalTool: FC = () => {
     const tool = useToolStore(state => state.tool);
     const setTool = useToolStore(state => state.setTool);
     
-    const { data, isLoading, error } = useOneViewTool(tool?.tool_id as string);
+    const { data, isLoading, error } = useOneViewTool(tool!.tool_id);
 
     const { setStepInit, setDateInit } = useStoreController();
     
     const refUserType = useRef<HTMLInputElement | null>(null);
     const refClassNum = useRef<HTMLInputElement | null>(null);
     const refUserName = useRef<HTMLInputElement | null>(null);
-    
-    useEffect(() => {
-        console.log(tool);
-    }, [tool]);
+
+    const src = getImgURL(new URL(data?.result?.img?.img_url!, import.meta.env.VITE_LOCAL_SERVER_URL)?.href);
 
     const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setText(e.target.value);
@@ -51,64 +51,63 @@ const RentalTool: FC = () => {
         const valUserName = refUserName.current?.value;
 
         if (valUserType!.length <= 0 || valClassNum!.length <=0 || valUserName!.length <= 0) {
-            message.warning('반출자 정보를  입력해 주세요.');
+            message.warning(messages.rentalUserInfo);
             
             return;
         }
 
         if (valClassNum && !regClassNum.test(valClassNum)) {
-            message.warning('잘못된 형식의 학번입니다.');
+            message.warning(messages.wrongClassNum);
             
             return;
         }
 
         if (!rentalDate) {
-            message.warning('대여할 날짜를 지정해주세요.');
+            message.warning(messages.selectRentalDate);
             
             return;
         }
 
         if (!returnDate) {
-            message.warning('반납할 날짜를 지정해주세요.');
+            message.warning(messages.selectRenturnDate);
             
             return;
         }
 
         if (text.length <= 0) {
-            message.warning('반출 사유를 입력해 주세요.');
+            message.warning(messages.textOneLength);
 
             return;
         }
 
-        try {
-            fetchRentalTool();         
-        } catch (error) {
-            console.log(error);
-            message.error('알수 없는 에러가 발생했습니다. 괸라자에게 문의해 주세요.');
-        } finally {
-            handleBack();
-        }
+ 
     }
 
-    const src = new URL(data?.result?.img?.img_url!, import.meta.env.VITE_LOCAL_SERVER_URL)?.href;
-
     const fetchRentalTool = async () => {
-        if (tool?.tool_id && userId) {
-            const rentalTool: RentalTool = {
-                tool_id: tool?.tool_id,
-                user_id: userId
-            };
-
-            const response = await rentalTool_API(rentalTool);
-
-            if (response.data[200] === 'OK') {
-                message.success('대여 요청이 완료되었습니다');    
-                console.log(response.data);
+        try {
+            if (tool && tool.tool_id && tool.department_id && userId) {
+                const rentalTool: RentalTool = {
+                    tool_id: tool.tool_id,
+                    user_id: userId,
+                    department_id: tool.department_id,
+                    rental_reason: text
+                };
+    
+                const { data } = await rentalTool_API(rentalTool);
+    
+                if (data[200] === 'OK') {
+                    message.success(messages.sugRental);    
+                } else {
+                    message.error(messages.failRental);
+                }   
             } else {
-                message.error('대여 요청에 실패하였습니다! 관리자에게 문의해 주세요');
-            }   
-        } else {
-            message.error('유저와 기자재 정보를 받아오지 못했습니다. 관리자에게 문의해 주세요!');
+                message.error(messages.noneUserToolInfo);
+            }      
+        } catch (error) {
+            console.log(error);
+            message.error(messages.unknownErr);
+        } finally {
+            handleBack();
         }
     }
 
@@ -149,7 +148,7 @@ const RentalTool: FC = () => {
                                 {tool?.tool_content}
                             </h3>
                             <p className='h-full mt-2 font-semibold leading-4 md:overflow-y-auto md:text-ellipsis my-scr'> 
-                                {tool?.tool_spec} Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus velit possimus accusamus omnis, eos laudantium.
+                                {tool?.tool_spec} 
                             </p>
                         </div>                                               
                     </div>
@@ -160,13 +159,13 @@ const RentalTool: FC = () => {
                             </TitleContainer> 
                             <DescContainer>
                                 <DescBox>
-                                    자산번호
+                                    {tool?.tool_code}
                                 </DescBox>
                                 <DescBox isCenter>
-                                    품명
+                                    {tool?.tool_name}
                                 </DescBox>
                                 <DescBox>
-                                    규격
+                                    {tool?.tool_standard}
                                 </DescBox>
                             </DescContainer>
                         </InfoContainer>
@@ -175,13 +174,13 @@ const RentalTool: FC = () => {
                                 반출자 설명
                             </TitleContainer>
                             <DescContainer>
-                                <DescBox>
+                                <DescBox isInputBox>
                                     <Input placeholder='소속을 입력해 주세요' ref={refUserType} />                                    
                                 </DescBox>
-                                <DescBox isCenter>
+                                <DescBox isCenter isInputBox>
                                     <Input className='input-classnumber' minLength={10} maxLength={10} type='number' placeholder='학번을 입력해 주세요' ref={refClassNum} />
                                 </DescBox>
-                                <DescBox>
+                                <DescBox isInputBox>
                                     <Input placeholder='이름을 입력해 주세요' ref={refUserName} />
                                 </DescBox>
                             </DescContainer>
@@ -245,11 +244,19 @@ const DescContainer: FC<PropsWithChildren> = ({ children }) => {
     );
 }
 
-const DescBox: FC<PropsWithChildren<{ isCenter?: boolean }>> = ({ isCenter, children }) => {
+const DescBox: FC<PropsWithChildren<{ isCenter?: boolean, isInputBox?: boolean }>> = ({ isCenter, isInputBox = false, children }) => {
     
     return (
-        <div className={`flex items-center justify-center w-full max-md:py-4 max-md:px-1.5 h-full ${isCenter && 'border-x-[1px] border-01'}`}>
-            {children}
+        <div className={`flex items-center text-center justify-center w-full max-md:py-4 max-md:px-1.5 h-full ${isCenter && 'border-x-[1px] border-01'}`}>
+            {
+                !isInputBox ? (   
+                    <span className='max-w-[120px]'>
+                        {children}
+                    </span>
+                ) : (
+                    children
+                )
+            }
         </div>
     );
 } 
@@ -259,7 +266,7 @@ const Input = forwardRef<HTMLInputElement, DetailedHTMLProps<InputHTMLAttributes
 
         return (
             <input 
-                className={`w-full text-center outline-none placeholder:text-02/80 bg-inherit text-xs md:text-sm ${className}`} 
+                className={`w-full text-center outline-none placeholder:text-02/80 bg-inherit max-md:text-xs text-lg ${className}`} 
                 ref={ref} 
                 {...props} 
             />

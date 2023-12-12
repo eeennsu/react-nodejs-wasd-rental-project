@@ -9,6 +9,7 @@ import DescToolButtons from './DescToolButtons';
 import useOneViewTool from '../../../../queries/tool/useOneViewTool';
 import FetchDatasError from '../../../RentalProcessor/Main/Datas/teplate/FetchDatasError';
 import Paragraph from './Paragraph';
+import { getImgURL } from '../../../../utils/step';
 
 const DescTool: FC = () => {
 
@@ -18,7 +19,7 @@ const DescTool: FC = () => {
     }), shallow);
 
     const { data, isLoading, error } = useOneViewTool(tool?.tool_id as string);
-    const src = new URL(data?.result?.img?.img_url!, import.meta.env.VITE_LOCAL_SERVER_URL)?.href;
+    const src = getImgURL(data?.result?.img?.img_url);
 
     useEffect(() => {
         data?.result?.img && setToolImg(data?.result?.img);
@@ -43,13 +44,13 @@ const DescTool: FC = () => {
                     )
                 }           
                 <div className='flex flex-col justify-between w-full h-full md:py-10'>
-                    <div className='flex flex-row md:flex-col max-md:justify-between'>
+                    <div className='flex flex-row md:flex-col max-md:justify-between max-md:mt-6'>
                         <h3 className='font-[800] text-lg flex max-md:items-center'>
                             {tool?.tool_name}
                         </h3>
                         <ToolState status={tool?.tool_state} />
                     </div>
-                    <div className='flex flex-col h-full gap-1 mt-8'>
+                    <div className='flex flex-col h-full gap-1 mt-8'>                
                         <Paragraph title='툴 standard' text={tool?.tool_standard} />
                         <Paragraph title='기자재 사양' text={tool?.tool_spec} />
                         <Paragraph title='업데이트 날짜' text={getDateFormat(tool?.tool_update_at)} />                     

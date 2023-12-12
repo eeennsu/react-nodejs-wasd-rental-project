@@ -2,7 +2,7 @@ import type { FC, ChangeEvent, FormEvent } from 'react';
 import { useState, useMemo } from 'react';
 import { Image, Input, Select, message } from 'antd';
 import { useStepStore, useTabsStore, useToolStore, useUserStore } from '../../../../../../zustand';
-import { repairResons } from '../../../../constants';
+import { messages, repairResons } from '../../../../constants';
 import { shallow } from 'zustand/shallow';
 import { getImgURL } from '../../../../utils/step';
 import { repairTool_API } from '../../../../../../api/repair/repairApi';
@@ -39,7 +39,7 @@ const RepairTool: FC = () => {
     const handleSelectChange = (value: string) => {
         setResonSelect(value);
     }
-    console.log(tool);
+ 
     const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setText(e.target.value);
     }
@@ -48,13 +48,13 @@ const RepairTool: FC = () => {
         e.preventDefault();
             
         if (!resonSelect) {
-            message.warning('수리 목록을 선택해주세요.');
+            message.warning(messages.noneRepairSelect);
 
             return;
         }
 
         if (text.length <= 0) {
-            message.warning('수리 사유를 입력해주세요.');
+            message.warning(messages.textOneLength);
 
             return;
         }
@@ -63,30 +63,30 @@ const RepairTool: FC = () => {
             fetchRepairTool();        
         } catch (error) {
             console.log(error);
-            message.error('서버 에러가 발생하였습니다. 괸리자에게 문의해 주세요');
+            message.error(messages.unknownErr);
         } finally {
             handleBack();
         }
     }
 
     const fetchRepairTool = async () => {
-        if (user_id && tool?.tool_id) {
+        if (user_id && tool?.tool_id && resonSelect) {
             const repairData: RepairTool = {
                 user_id: user_id,
                 tool_id: tool.tool_id,
-                repair_part: resonSelect!,
+                repair_part: resonSelect,
                 repair_reason: text
             }; 
 
-            const response = await repairTool_API(repairData);
+            const { data } = await repairTool_API(repairData);
 
-            if (response.data['200'] === 'OK') {
-                message.success('수리 요청이 완료되었습니다');    
+            if (data['200'] === 'OK') {
+                message.success(messages.sucRepair);    
             } else {
-                message.error('수리 요청에 실패하였습니다! 관리자에게 문의해 주세요');
+                message.error(messages.failRepiar);
             }
         } else {
-            message.error('프론트 오류가 발생하였습니다. 관리자에게 문의해 주세요!');
+            message.error(messages.noneUserToolInfo);
         }         
     }
 
@@ -107,7 +107,7 @@ const RepairTool: FC = () => {
                             {tool?.tool_content}
                         </p>
                         <div className='flex flex-col max-md:text-center'>
-                            <Paragraph title='standard' text={tool?.tool_standard} />
+                            <Paragraph title='기자재 품명' text={tool?.tool_standard} />
                             <Paragraph title='기자재 상태' text={tool?.tool_state} />  
                             <Paragraph title='기자재 사양' text={tool?.tool_spec} />                     
                             <Paragraph title='기자재 용도' text={tool?.tool_division} />                     

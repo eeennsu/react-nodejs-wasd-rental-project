@@ -5,6 +5,7 @@ import { useUserStore } from '../../zustand';
 import { message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
+import { messages } from '../../pages/RentalPage/constants';
 
 const Header: FC = () => {
 
@@ -22,7 +23,7 @@ const Header: FC = () => {
         setUser(null);
         setToken('');
 
-        message.success('로그아웃을 하였습니다.');
+        message.success(messages.logout);
         navigate('/sampleLogin');
     }
 

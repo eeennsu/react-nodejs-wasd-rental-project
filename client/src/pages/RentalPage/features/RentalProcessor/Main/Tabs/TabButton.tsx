@@ -1,6 +1,7 @@
 import type { FC, PropsWithChildren } from 'react';
 import { useSearchStore, useTabsStore, useToolStore } from '../../../../../../zustand';
 import { shallow } from 'zustand/shallow';
+import { motion } from 'framer-motion';
 
 type Props = {
     idx: number;
@@ -25,14 +26,20 @@ const TabButton: FC<PropsWithChildren<Props>> = ({ children, idx }) => {
     if (activeTab === idx) {
         return (
             <div className='relative'>
-                <button className='absolute md:w-[148px] w-[100px] h-10 -top-10 trapezoid' onClick={handleSetActiveTab}>
+                <motion.button 
+                    className='absolute md:w-[148px] w-[100px] h-10 -top-10 trapezoid' 
+                    onClick={handleSetActiveTab}
+                    initial={{ opacity: 0.3, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.25 }}
+                >
                     <span className='flex items-center justify-center mt-4 text-xs font-semibold text-white md:text-sm'>
                         {children}
                     </span>
-                </button>
+                </motion.button>
                 <div className='md:w-[148px] w-[100px]' />
             </div>
-        )
+        );
     }
 
     return (

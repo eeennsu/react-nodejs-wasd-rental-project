@@ -1,4 +1,4 @@
-import type { FC, DetailedHTMLProps, HtmlHTMLAttributes, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
     className?: string;

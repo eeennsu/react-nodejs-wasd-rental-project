@@ -1,20 +1,21 @@
 import type { FC } from 'react';
-import EmptySearchResult from '../../../Search/EmptySearchResult';
+import { messages } from '../../../../../constants';
+import EmptryResult from '../../../Search/EmptryResult';
 import DataRow from '../teplate/DataRow';
 
 type Props = {
-    results: Tool[]
+    results: Tool[];
 }
 
 const SearchedDatas: FC<Props> = ({ results }) => {
-    // console.log('results', results);
+
     return (
         results.length >= 1 ? (
             results.map((result) => (
                 <DataRow key={result.tool_id} data={result} />
             ))
         ) : (
-            <EmptySearchResult />
+            <EmptryResult msg={messages.noSearch} />
         )
     )
 };

@@ -6,7 +6,7 @@ type Props = {
     data: Tool;
 }
 
-const regex = /\d+번/; // 숫자(\d)가 하나 이상 있는 "숫자번" 패턴
+const regex = /\d+번/;
 
 const DataRow: FC<Props> = ({ data }) => {
 

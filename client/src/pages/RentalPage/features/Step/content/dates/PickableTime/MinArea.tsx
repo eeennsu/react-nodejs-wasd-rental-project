@@ -4,6 +4,7 @@ import { message } from 'antd';
 import { useState, useEffect, useMemo } from 'react';
 import { RentaledTime } from '../../../../../utils/timePicker';
 import { shallow } from 'zustand/shallow';
+import { messages } from '../../../../../constants';
 
 type Props = {
     startHour: number;
@@ -60,7 +61,7 @@ const MinArea: FC<Props> = ({ startHour, startMin, rentaledTimes }) => {
 
     const handleSelectRoom = () => {
         if (isRentaled) {
-            message.warning('이미 대여 중인 시간입니다.');
+            message.warning(messages.alreadyRental);
             
             return;
         }
@@ -83,7 +84,7 @@ const MinArea: FC<Props> = ({ startHour, startMin, rentaledTimes }) => {
                 break;
 
             case 'LAST_SELECT':
-                message.info('시간이 선택되었습니다. 대여를 진행해 주세요!');
+                message.info(messages.selectedTime);
 
                 break;
         }

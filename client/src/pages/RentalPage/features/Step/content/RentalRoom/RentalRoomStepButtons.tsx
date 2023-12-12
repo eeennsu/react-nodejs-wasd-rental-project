@@ -7,14 +7,15 @@ import { convertToKoreanTime } from '../../../../utils/timePicker';
 import { rentalClassRoom_API } from '../../../../../../api/rental/rentalApi';
 import Button from '../../../../../../components/Button';
 import useStoreController from '../../../../../../hooks/commons/useStoreController';
+import { messages } from '../../../../constants';
 
 const RentalRoomStepButtons: FC = () => {
 
     const { 
-        rentalReson, setText, 
+        text, setText, 
         selectedRoom, setSystemStep 
     } = useStepStore(state => ({
-        rentalReson: state.text, setText: state.setText,
+        text: state.text, setText: state.setText,
         selectedRoom: state.selectedRoom, setSystemStep: state.setSystemStep
     }), shallow);
 
@@ -37,7 +38,7 @@ const RentalRoomStepButtons: FC = () => {
 
     const handleDescRoomStep = () => {
         setSystemStep('CLASSROOM_DESC');    
-        rentalReson.length >= 1 && setText('');     
+        text.length >= 1 && setText('');     
         resetTimes();
     }
 
@@ -48,31 +49,31 @@ const RentalRoomStepButtons: FC = () => {
     
     const handleRentRoomRequest = async () => {
         if (!selectedRoom) {
-            message.error('강의실이 선택되지 않았습니다.');
+            message.error(messages.notSelectedRoom);
 
             return;
         }
 
         if (!rentalDateNum || !returnDateNum) {
-            message.warning('대여할 날짜를 지정해주세요.');
+            message.warning(messages.selectRentalDate);
 
             return;
         }
 
         if (!firstSelectHour || firstSelectMin === null || firstSelectMin === undefined) {
-            message.warning('대여를 시작할 시간을 지정해주세요.');
+            message.warning(messages.rentalStartTime);
         
             return;
         }
 
         if (!lastSelectHour || lastSelectMin === null || lastSelectMin === undefined) {
-            message.warning('대여를 마감할 시간을 입력해주세요.');
+            message.warning(messages.rentalEndTime);
 
             return;
         }
 
-        if (rentalReson.length  <= 0) {
-            message.warning('대여 사유를 입력해주세요.');
+        if (text.length <= 0) {
+            message.warning(messages.textOneLength);
 
             return;
         }
@@ -86,13 +87,14 @@ const RentalRoomStepButtons: FC = () => {
                 user_id,
                 rental_date,
                 rental_due_date,
-                department_id
+                department_id,
+                rental_reason: text,
             };
 
             const { data } = await rentalClassRoom_API(retnalClassroom);
 
             if (data) {
-                const rentalStart = `${firstSelectHour}시${firstSelectMin ? ` ${firstSelectMin}분` : ''}`;
+                const rentalStart = `${firstSelectHour}시${firstSelectMin ? `${firstSelectMin}분` : ''}`;
                 let rentalEnd = '';
                 
                 if (lastSelectMin + 10 === 60) {
@@ -104,11 +106,11 @@ const RentalRoomStepButtons: FC = () => {
                 const rentalMessage = `${selectedRoom}를 ${rentalStart} 부터 ${rentalEnd}까지 대여하였습니다`;
                 message.success(rentalMessage);
             } else {
-                message.error('강의실 대여에 실패하였습니다. 관리자에게 문의해 주세요.');
+                message.error(messages.failRental);
             }
         } catch (error) {
             console.log(error);
-            message.error('알 수 없는 에러가 발생했습니다. 괸라자에게 문의해 주세요.');
+            message.error(messages.unknownErr);
         } finally {
             handleInit();
         }

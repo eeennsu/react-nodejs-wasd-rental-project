@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useSearchStore, useTabsStore, useToolStore } from '../../../../../../zustand';
-import EmptySearchResult from '../../Search/EmptySearchResult';
+import EmptySearchResult from '../../Search/EmptryResult';
 import AllDatas from './datasByTab/AllDatas';
 import VRDatas from './datasByTab/VRDatas';
 import TabletDatas from './datasByTab/TabletDatas';

@@ -42,6 +42,8 @@ interface RentalInfo {
 interface RentalTool {
     tool_id: string;
     user_id: string;
+    rental_reason: string;
+    department_id: string;
 }
 
 interface ResRentalTool {
@@ -73,6 +75,7 @@ interface RentalClassroom {
     user_id: string;
     rental_date: string;
     rental_due_date: string;
+    rental_reason: string;
     department_id: string;
 }
 
