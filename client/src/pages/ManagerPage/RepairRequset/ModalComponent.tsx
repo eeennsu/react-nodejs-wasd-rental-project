@@ -3,7 +3,6 @@ import type { FC } from 'react';
 import Button from "../../../components/Button";
 import { myRepairView_API } from "../../../api/repair/repairApi";
 import { useUserStore } from "../../../zustand";
-import { string } from "prop-types";
 
 interface ModalProps {
   isOpen: boolean;
@@ -19,23 +18,7 @@ const ModalComponent: FC<ModalProps> = ({ isOpen, onClose }) => {
 
   const [repairs, setRepairs]= useState<ResMyRepairView[]>([]);
 
-  useEffect(() => {
-
-    const test = async () => {
-
-      try {
-        const response = await myRepairView_API(user!.user_id, repair_id)
   
-        console.log(response.data)
-      }
-  catch(err){
-    console.log(err)
-  }
-    };
-
-    test();
-    
-  },[]);
 
   // const test_2 = async (user_id)
 
