@@ -28,7 +28,7 @@ const Suggestions: FC = () => {
         if (Array.isArray(result)) {
           console.log(result, '받아온 데이터');
           setSuggestions(result);
-          setTotal(result.length); // 배열의 길이로 전체 아이템 수 계산
+          //setTotal(); // 배열의 길이로 전체 아이템 수 계산
         } else {
           console.error('데이터가 배열이 아닙니다.');
         }
@@ -44,8 +44,8 @@ const Suggestions: FC = () => {
     openModal();
     const response = await myRepairView_API(user_id, repair_id);
     const results = response.data.result;
-    console.log(results, '된다?');
-  };
+    console.log(results, '된다?adasdas');
+  };  
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -62,7 +62,7 @@ const Suggestions: FC = () => {
           <div
             key={index}
             onClick={() => handleSuggestions(suggestion.user_id, suggestion.repair_id)}
-            className='flex w-[1020px] h-[80px] bg-03 ml-[35px] rounded-md text-[18px] p-1'
+            className='flex w-[1020px] h-[80px] bg-03 ml-[35px] rounded-md text-[18px] p-1 cursor-pointer'
           >
             <h3 className="ml-[30px] mt-[20px] font-bold">{suggestion.repair_reason}</h3>
             <div className='ml-[550px] mt-[20px]'>{suggestion.user_id}</div>
@@ -71,7 +71,7 @@ const Suggestions: FC = () => {
         ))}
       </div>
       <ModalComponent isOpen={isModalOpen} onClose={closeModal} />
-      <Pagination curPage={curPage} setCurPage={setCurPage} total={total} />
+      <Pagination curPage={curPage} setCurPage={setCurPage} total={24} />
     </div>
   );
 };
