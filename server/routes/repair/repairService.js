@@ -100,7 +100,17 @@ module.exports={
             Repair.findAll({
                 where: {
                     user_id: userId 
-                }
+                },
+                include: [
+                    {
+                        model:User,
+                        attributes: ['user_name'],
+                    },
+                    {
+                        model:Tool,
+                        attributes: ['tool_content'],
+                    }
+                ]
             })
             .then((result)=>{
                 resolve(result)
