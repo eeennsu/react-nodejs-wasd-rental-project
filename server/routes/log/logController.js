@@ -22,7 +22,8 @@ module.exports = {
         res.send(obj);
       } else {
         obj["200"] = "OK";
-        obj["result"] = result;
+        obj['total'] = result.total
+        obj["result"] = result.logContents
         res.send(obj);
       }
     });

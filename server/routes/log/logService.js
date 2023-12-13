@@ -19,8 +19,9 @@ module.exports = {
         if (result.length === 0) {
           resolve("Null");
         } else {
+          let total = result.length
           const logContents = result.map((log) => log.log_content);
-          resolve(logContents);
+          resolve({logContents,total});
         }
       })
       .catch((err) => {

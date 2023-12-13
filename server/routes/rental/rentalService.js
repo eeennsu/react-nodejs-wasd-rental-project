@@ -442,6 +442,10 @@ module.exports = {
                     {
                         model: Tool,
                         attributes: ['tool_content', 'tool_state', 'tool_name'] // 'Tool' 테이블에서 불러올 컬럼 지정
+                    },
+                    {
+                        model: User,
+                        attributes: ['user_name']
                     }
                 ]
             })
