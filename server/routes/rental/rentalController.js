@@ -187,7 +187,9 @@ module.exports={
 
     myRentalList: (req,res)=>{
         const userId = req.params.user_id
-        rentalService.myRentalList(userId)
+        const page = req.params.page 
+        const pageLimit = req.params.pageLimit 
+        rentalService.myRentalList(userId,page,pageLimit)
         .then(result => {
             let obj = {};
             if (result == false) {
@@ -200,8 +202,10 @@ module.exports={
                 res.send(obj);
             } else {
                 obj["200"]= "OK";
-                obj["result"] = result;
-                res.status(200).json({ "200": "OK", result });
+                obj['total'] = result.total
+                obj["result"] = result.objs
+                res.send(obj)
+                //res.status(200).json({ "200": "OK", result:obj});
             }
             
         })
@@ -209,7 +213,10 @@ module.exports={
 
     myAllRentalList: (req,res)=>{
         const userId = req.params.user_id
-        rentalService.myAllRentalList(userId)
+        const page = req.params.page 
+        const pageLimit = req.params.pageLimit 
+        
+        rentalService.myAllRentalList(userId,page,pageLimit)
         .then((result)=>{
             let obj = {}
 
@@ -221,7 +228,8 @@ module.exports={
             
             else if (result.length!==0){
                 obj['200'] = "OK";
-                obj['result'] = result;
+                obj['total'] = result.total
+                obj['result'] = result.result
                 res.send(obj);
             }
 
