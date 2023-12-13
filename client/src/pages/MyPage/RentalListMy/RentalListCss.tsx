@@ -1,7 +1,7 @@
 import React from 'react';
-import RentalListComponent from '../../ManagerPage/RentalList/RentalListComponent';
+import type { FC } from 'react';
 
-const YourComponent: React.FC = () => {
+const RentalListCss: FC = () => {
   const outerBoxStyle: React.CSSProperties = {
     width: '300px',
     height: '300px',
@@ -38,4 +38,4 @@ const YourComponent: React.FC = () => {
   );
 };
 
-export default RentalListComponent;
+export default RentalListCss;

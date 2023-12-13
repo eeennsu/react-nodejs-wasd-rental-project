@@ -44,7 +44,7 @@ const App = () => {
                 </Route>                     
                    
                 <Route element={<RequireAuth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />}>
-                    <Route path='/my-page/:id' element={<MyPage />} />
+                    <Route path='/my-page' element={<MyPage />} />
                 </Route>         
 
                 <Route path='*' element={<NotFound />} />             

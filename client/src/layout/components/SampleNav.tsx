@@ -16,7 +16,7 @@ const SampleNav: FC = () => {
                 </Link>
             </li>
             <li className='underline'>
-                <Link to='/my-page/1'>
+                <Link to='/my-page'>
                     마이 페이지
                 </Link>
             </li>
