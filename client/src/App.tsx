@@ -44,9 +44,10 @@ const App = () => {
                 </Route>                     
                    
                 <Route element={<RequireAuth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />}>
-                    <Route path='/my-page/:id' element={<MyPage />} />
-                </Route>         
-
+                    <Route element={<RootLayout type='other' isLogo={false} />}>
+                        <Route path='/my-page' element={<MyPage />} />
+                    </Route>
+                </Route>
                 <Route path='*' element={<NotFound />} />             
             </Routes>
         </BrowserRouter>
