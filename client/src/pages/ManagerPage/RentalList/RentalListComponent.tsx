@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import React, { useState, useEffect } from 'react';
 import TooltipComponent from './TooltipComponent';
-import { myRentalList_API } from '../../../api/rental/rentalApi'
 
 const RentalListComponent: FC = () => {
   const [showTooltip, setShowTooltip] = useState(false);

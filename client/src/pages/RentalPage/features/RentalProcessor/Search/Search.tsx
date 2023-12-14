@@ -81,7 +81,7 @@ const Search: FC = () => {
     }, [curPage]);
 
     return (
-        <form className='flex w-full border-4 border-01 md:w-auto' onSubmit={handleSearchSubmit}>
+        <form className='flex w-full border-4 border-01 lg:w-auto' onSubmit={handleSearchSubmit}>
             {
                 <>
                     <input className={`flex-1 px-3 py-2 text-sm bg-white border-black rounded-sm outline-none w-52 hover:placeholder:text-gray-400 focus:placeholder:text-gray-400 placeholder:text-xs placeholder:text-gray-300`} value={searchTerm} onChange={handleChange} placeholder='오큘러스 / 타블렛 / 공학관 / 본관' disabled={isLoading}/>

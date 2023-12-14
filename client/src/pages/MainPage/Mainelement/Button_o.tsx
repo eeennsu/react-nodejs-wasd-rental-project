@@ -14,26 +14,23 @@ const Button_o: FC = () => {
       setActiveTab(3);
     }
 
-
-
     return (
-        <div className='w-full'>
-          <div className='max-w-4xl mx-auto'> 
-            <div className='flex flex-col items-center justify-center gap-4 mt-[40px]'>
-                <div className='justify-center gap-10 py-3 px-28 bg-02'>
-                  <Link to = {'/rental'} onClick={handleToolTab}>
-                  기자재 대여 바로 가기 &gt;
-                  </Link>
-                </div>
-                <div className='justify-center gap-10 py-3 px-28 bg-02'>
-                  <Link to = {'/rental'} onClick={handleClassRoomTab}>
-                    강의실 대여 바로 가기 &gt;
-                  </Link>
-                </div>
+      <div className='w-full'>
+        <div className='max-w-4xl mx-auto'> 
+          <div className='flex flex-col items-center justify-center gap-4 mt-[40px]'>
+            <div className='justify-center gap-10 py-3 px-28 bg-02'>
+              <Link to = {'/rental'} onClick={handleToolTab}>
+              기자재 대여 바로 가기 &gt;
+              </Link>
             </div>
-            
-          </div>           
-        </div>
+            <div className='justify-center gap-10 py-3 px-28 bg-02'>
+              <Link to = {'/rental'} onClick={handleClassRoomTab}>
+                강의실 대여 바로 가기 &gt;
+              </Link>
+            </div>
+          </div>            
+        </div>           
+      </div>
     );
 };
 

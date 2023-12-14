@@ -30,7 +30,7 @@ const RentalRoom: FC = () => {
             exit={{ y: -10, opacity: 0 }}
             transition={{ duration: 0.2 }}
         >
-            <Template className='h-full mb-5 3xl:mb-0'>         
+            <Template className='h-full mb-5 3xl:mb-0 max-md:mt-0 max-3xl:mt-10'>         
                 <div className='relative mx-9 md:mx-0 max-md:mt-4'>
                     <div className='absolute z-10 flex items-center justify-center w-full h-full transition-colors duration-300 cursor-pointer bg-black/50 group hover:bg-black/60 hover:shadow-sm' onClick={handleVisibleChange}>
                         <span className='text-xl font-bold tracking-wider text-white'>

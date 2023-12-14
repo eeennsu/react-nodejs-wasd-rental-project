@@ -125,6 +125,7 @@ interface ResViewRental {
 
 interface ResMyRentalList {
     '200': OK;
+    total?: number;
     result?: ExistCurRental[];
     msg?: string;
 }
@@ -141,6 +142,7 @@ interface ResDeleteTool {
 
 interface ResMyAllRentalList {
     '200': OK;
+    total?: number;
     result?: RentalInfo[];
     msg?: string;
 }
