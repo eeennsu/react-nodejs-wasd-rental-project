@@ -49,7 +49,7 @@ const TimePick: FC<Props> = ({ classroomRentalInfos }) => {
             }
         </div>
     );
-};
+}
 
 export default TimePick;
 

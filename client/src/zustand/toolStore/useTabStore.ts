@@ -1,6 +1,6 @@
+import type { ITabsStore } from './types';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { ITabsStore } from './types';
 
 const useTabsStore = create<ITabsStore>()(
     devtools(

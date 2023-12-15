@@ -50,6 +50,6 @@ const Header: FC = () => {
             </nav> 
         </header>
     );
-};
+}
 
 export default Header;

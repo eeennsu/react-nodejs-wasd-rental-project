@@ -12,6 +12,6 @@ const EmptryResult: FC<Props> = ({ msg }) => {
             <Empty description={msg} className='font-bold' />
         </div>
     );
-};
+}
 
 export default EmptryResult;

@@ -16,6 +16,6 @@ const ToolPagination: FC = () => {
     return (
         <Pagination curPage={curPage} setCurPage={setCurPage} total={total} />
     );
-};
+}
 
 export default ToolPagination;

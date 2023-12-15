@@ -47,6 +47,6 @@ const TabButton: FC<PropsWithChildren<Props>> = ({ children, idx }) => {
             {children}
         </button>
     );
-};
+}
 
 export default TabButton;

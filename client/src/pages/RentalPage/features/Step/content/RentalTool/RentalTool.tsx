@@ -211,7 +211,7 @@ const RentalTool: FC = () => {
             </form>                     
         </Template>
     );
-};
+}
 
 export default RentalTool;
 
@@ -272,7 +272,7 @@ const Input = forwardRef<HTMLInputElement, DetailedHTMLProps<InputHTMLAttributes
             />
         );
     }
-); 
+) 
 
 const ImageLoading: FC = () => {
 

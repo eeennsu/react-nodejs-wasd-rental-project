@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { useState } from 'react';
 import { useStepStore } from '../../../../../../zustand';
+import { motion } from 'framer-motion';
 import RoomList from './RoomList';
 import RentalRoomForm from './RentalRoomForm';
 import Template from '../../templates/Template';
@@ -8,7 +9,6 @@ import DescRoomButtons from './DescRoomStepButtons';
 import RentalRoomStepButtons from './RentalRoomStepButtons';
 import Image from 'antd/es/image/index';
 import timetable from '../../../../../../assets/images/timetable.png';
-import { motion } from 'framer-motion';
 
 const RentalRoom: FC = () => {
 
@@ -68,6 +68,6 @@ const RentalRoom: FC = () => {
             </Template>
         </motion.div>
     );
-};
+}
 
 export default RentalRoom;

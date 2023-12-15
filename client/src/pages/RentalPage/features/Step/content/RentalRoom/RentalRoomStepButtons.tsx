@@ -139,6 +139,6 @@ const RentalRoomStepButtons: FC = () => {
             </div>        
         </footer>
     );
-};
+}
 
 export default RentalRoomStepButtons;

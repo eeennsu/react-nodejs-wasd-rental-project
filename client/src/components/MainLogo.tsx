@@ -14,6 +14,6 @@ const MainLogo: FC = () => {
             </Link>
         </div>
     );
-};
+}
 
 export default MainLogo;

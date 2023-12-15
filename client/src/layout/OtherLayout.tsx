@@ -18,6 +18,6 @@ const OtherLayout: FC<Props> = ({ isLogo = true }) => {
             <Modal />
         </>                 
     );
-};
+}
 
 export default OtherLayout;

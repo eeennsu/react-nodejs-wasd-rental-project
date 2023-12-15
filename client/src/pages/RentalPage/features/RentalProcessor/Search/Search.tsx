@@ -96,6 +96,6 @@ const Search: FC = () => {
             }     
         </form>
     );
-};
+}
 
 export default Search;

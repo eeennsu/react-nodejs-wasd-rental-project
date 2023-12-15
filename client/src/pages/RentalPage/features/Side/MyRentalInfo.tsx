@@ -69,7 +69,7 @@ const MyRentalInfo: FC<Props> = ({ title, rentalInfos, isLoading, error }) => {
             }
         </div>
     );
-};
+}
 
 export default MyRentalInfo;
 

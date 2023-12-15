@@ -15,6 +15,6 @@ const RentalProcessor: FC = () => {
             </section>        
         </Template>
     );
-};
+}
 
 export default RentalProcessor;

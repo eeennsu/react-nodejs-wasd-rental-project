@@ -60,7 +60,7 @@ const DescTool: FC = () => {
             <DescToolButtons />   
         </section>
     );
-};
+}
 
 export default DescTool;
 

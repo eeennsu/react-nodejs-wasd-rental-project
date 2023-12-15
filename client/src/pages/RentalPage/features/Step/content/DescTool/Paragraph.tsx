@@ -1,6 +1,11 @@
 import type { FC } from 'react';
 
-const Paragraph: FC<{ title: string; text?: string }> = ({ title, text }) => {
+type Props = {
+    title: string; 
+    text?: string;
+}
+
+const Paragraph: FC<Props> = ({ title, text }) => {
     
     return (
         <p className='flex w-full gap-2'>

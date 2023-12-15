@@ -21,6 +21,6 @@ const RootLayout: FC<Props> = ({ type, isLogo = true }) => {
             }             
         </div>
     );
-};
+}
 
 export default RootLayout;

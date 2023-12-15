@@ -36,6 +36,6 @@ const DataRow: FC<Props> = ({ data }) => {
             </div>
         </DataTemplate>
     );
-};
+}
 
 export default DataRow;

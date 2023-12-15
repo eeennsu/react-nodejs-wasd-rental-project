@@ -33,6 +33,6 @@ const AllDatas: FC = () => {
             <EmptryResult msg={messages.noData} />
         )
     );
-};
+}
 
 export default AllDatas;

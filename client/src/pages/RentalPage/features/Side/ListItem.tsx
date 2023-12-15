@@ -24,7 +24,7 @@ const ListItem: FC<Props> = ({ item: { D_day, result } }) => {
             </span>
         </ItemTemplate>
     );
-};
+}
 
 export default ListItem;
 

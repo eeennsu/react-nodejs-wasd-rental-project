@@ -33,12 +33,15 @@ const RentalPage: FC = () => {
         }
     }
 
+
+    // 이 아래는 api랑 상관 없음
+
     const systemStep = useStepStore(state => state.systemStep);
 
     const content = useMemo(() => getContent(systemStep), [systemStep]);
 
     return (
-        <div className='flex flex-col-reverse w-full h-full lg:flex-row gap-x-6 max-md:mt-6 max-3xl:mt-0 mt-10 max-md:mb-0 max-3xl:mb-11 max-lg:px-10 max-md:px-0'>            
+        <div className='flex flex-col-reverse w-full h-full mt-10 lg:flex-row gap-x-6 max-md:mt-6 max-3xl:mt-0 max-md:mb-0 max-3xl:mb-11 max-lg:px-10 max-md:px-0'>            
             <aside className='mt-4 lg:w-1/5'>
                 <Side />
             </aside>
@@ -47,6 +50,6 @@ const RentalPage: FC = () => {
             </section>        
         </div>
     );
-};
+}
 
 export default RentalPage;

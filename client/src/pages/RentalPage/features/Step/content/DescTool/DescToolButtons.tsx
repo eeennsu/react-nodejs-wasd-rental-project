@@ -32,6 +32,6 @@ const DescToolButtons: FC = () => {
             </Button>
         </footer>   
     );
-};
+}
 
 export default DescToolButtons;

@@ -11,6 +11,6 @@ const Template: FC<PropsWithChildren<Props>> = ({ className, children }) => {
             {children}
         </div>
     );
-};
+}
 
 export default Template;

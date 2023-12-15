@@ -16,6 +16,6 @@ const Main: FC = () => {
             </div>   
         </> 
     );
-};
+}
 
 export default Main;

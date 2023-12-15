@@ -11,6 +11,6 @@ const DataTemplate: FC<PropsWithChildren<Props>> = ({ children, onClick }) => {
             {children}
         </li>
     );
-};
+}
 
 export default DataTemplate;

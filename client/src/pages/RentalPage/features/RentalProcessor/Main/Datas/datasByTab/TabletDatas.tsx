@@ -33,6 +33,6 @@ const TabletDatas: FC = () => {
             <EmptryResult msg={messages.noData} />
         )
     );
-};
+}
 
 export default TabletDatas;
