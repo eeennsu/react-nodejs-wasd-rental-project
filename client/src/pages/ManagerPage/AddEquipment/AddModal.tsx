@@ -1,5 +1,6 @@
-import React, { FC, useState, ChangeEvent } from 'react';
+import React, { FC, useState, ChangeEvent, useEffect } from 'react';
 import Button from '../../../components/Button';
+import {addTool_API} from '../../../api/tool/toolApi';
 
 interface ModalAddProps {
   isOpen: boolean;
@@ -16,46 +17,92 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
   const [equipmentCode, setEquipmentCode] = useState<string>('');
   const [purchaseType, setPurchaseType] = useState<string>('');
   const [purchaseDate, setPurchaseDate] = useState<string>('');
+  const [toolStandard, setToolStandard] = useState<string>('');
+  const [toolState, setToolState] = useState<string>('');
+  const [toolSpec, setToolSpec] = useState<string>('');
+
+  const currentDate = new Date();
+    const isoDate = currentDate.toISOString();
+
+
+
+
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      setUploadedFiles(Array.from(event.target.files));
-      // Assuming only one image is selected
-      const imageUrl = URL.createObjectURL(event.target.files[0]);
-      setSelectedImage(imageUrl);
+      const imageFile = event.target.files[0];
+      const imageUrl = URL.createObjectURL(imageFile);
+      const image = new Image();
+
+      image.onload = () => {
+        setSelectedImage(imageUrl);
+      };
+
+      image.src = imageUrl;
       console.log('Selected Image:', imageUrl);
     }
   };
-
   const isAddButtonDisabled = () => {
-    // Check if any of the required fields is empty
     return (
       !equipmentName ||
       !assetNumber ||
       !equipmentType ||
       !equipmentCode ||
       !purchaseType ||
-      !purchaseDate
+      !purchaseDate ||
+      !toolStandard ||
+      !toolState ||
+      !additionalContent ||
+      !toolSpec 
+
     );
   };
 
-  const handleAddEquipment = () => {
-    // Check if any of the required fields is empty
+  const handleAddEquipment = async () => {
     if (isAddButtonDisabled()) {
       alert('필수 항목을 모두 입력하세요.');
+      return;
     }
 
-    // Handle equipment addition logic here
-    console.log('Equipment Details:', {
-      equipmentName,
-      assetNumber,
-      equipmentType,
-      equipmentCode,
-      purchaseType,
-      purchaseDate,
-      additionalContent,
-      uploadedFiles,
-    });
+    const imageId = uploadedFiles.length + 1;
+
+
+    // const tool = {
+    //   department_id: '1',
+    //   tool_code: equipmentCode,
+    //   tool_content: additionalContent,
+    //   tool_division: equipmentType, 
+    //   tool_id: assetNumber, 
+    //   tool_name: equipmentName,
+    //   tool_purchase_date: purchaseDate,
+    //   tool_purchase_division: purchaseType,
+    //   tool_spec: toolSpec,
+    //   tool_standard: toolStandard, 
+    //   tool_state: toolState,
+    //   tool_update_at: isoDate,
+    //   img_id: imageId.toString(),
+    //   img_url: selectedImage || '',
+    // };
+
+
+
+    useEffect(() => {
+      const uploadedFiles = async (tool: Tool) => {
+        try {
+          const response = await addTool_API(tool);
+          const results = response.data.result;
+          console.log(results, '데이터 전송 성공');
+        } catch (error) {
+          console.error('데이터 전송 실패:', error);
+        }
+      };
+  
+      // uploadedFiles()
+    
+    }, []); 
+
+
+    console.log('Equipment Details:');
     onClose();
   };
 
@@ -63,20 +110,26 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
     <div>
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center">
-          {/* 모달 내용 */}
-          <div className="bg-white rounded-md p-6 w-[980px] h-[450px]">
-            <div
-              className="w-[270px] h-[270px] border-8 bg-04 border-gay-700 border-dotted"
-              style={{ backgroundImage: selectedImage ? `url(${selectedImage})` : 'none' }}
-            >
-              기자재 추가
+          <div className="bg-white rounded-md p-6 w-[980px] h-[700px] z-[99]">
+            <div className="w-[270px] h-[270px] border-8 bg-04 border-gay-700 border-dotted relative overflow-hidden">
+              {selectedImage && (
+                <img
+                  className="absolute inset-0 w-full h-full object-cover"
+                  src={selectedImage}
+                  alt="기자재 추가"
+                />
+              )}
+              {!selectedImage && (
+                <div className="w-full h-full flex items-center justify-center text-gray-500">
+                  기자재 추가
+                </div>
+              )}
             </div>
 
             <div className="flex mt-[30px] space-x-2">
-              {/* 이미지 업로드 버튼 */}
               <label
                 htmlFor="imageInput"
-                className="custom-file-upload  text-[15px]  px-3 py-2 rounded cursor-pointer"
+                className="custom-file-upload text-[15px] px-3 py-2 rounded cursor-pointer"
               >
                 이미지 파일 불러오기
                 <input
@@ -89,10 +142,9 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
                 />
               </label>
 
-              {/* 엑셀 파일 불러오기 버튼 */}
               <label
                 htmlFor="excelInput"
-                className="custom-file-upload  text-[15px]  px-4 py-2 rounded cursor-pointer"
+                className="custom-file-upload text-[15px] px-4 py-2 rounded cursor-pointer"
               >
                 Excel로 받기
                 <input
@@ -107,84 +159,134 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
             </div>
 
             <div className="ml-[300px] -mt-[320px] ">
-              {/* 기자재 명칭 입력 */}
               <div className="mb-4 text-[15px]">
-                <label htmlFor="equipmentName">기자재 명칭:</label>
-                <input
-                  type="text"
-                  id="equipmentName"
+                <label htmlFor="tool_name">품명:</label>
+                <select
+                  id="tool_name"
                   value={equipmentName}
                   onChange={(e) => setEquipmentName(e.target.value)}
-                />
+                >
+
+                  <option value="타블렛">타블렛</option>
+                  <option value="VR">VR</option>
+                  <option value="종류3">종류3</option>
+                  </select>
               </div>
 
-              {/* 자산번호 입력 */}
               <div className="mb-4 text-[15px]">
-                <label htmlFor="assetNumber">자산번호:</label>
+                <label htmlFor="tool_id">자산번호:</label>
                 <input
                   type="text"
-                  id="assetNumber"
+                  id="tool_id"
                   value={assetNumber}
                   onChange={(e) => setAssetNumber(e.target.value)}
                 />
               </div>
 
-              {/* 기자재 종류 선택 */}
               <div className="mb-4 text-[15px]">
-                <label htmlFor="equipmentType">기자재 종류:</label>
+                <label htmlFor="tool_division">구입 구분:</label>
                 <select
-                  id="equipmentType"
+                  id="tool_division"
                   value={equipmentType}
                   onChange={(e) => setEquipmentType(e.target.value)}
                 >
-                  <option value="선택안함">선택안함</option>
-                  <option value="종류1">타블렛</option>
-                  <option value="종류2">VR</option>
-                  <option value="종류3">종류3</option>
-                  {/* 다른 기자재 종류 옵션들 추가 */}
+                  <option value="선택안함"></option>
+                  <option value="교육용기자재">교육용기자재</option>
+
+                 
                 </select>
               </div>
 
-              {/* 기자재 코드 입력 */}
               <div className="mb-4 text-[15px]">
-                <label htmlFor="equipmentCode">기자재 코드:</label>
+                <label htmlFor="tool_code">기자재 코드:</label>
                 <input
                   type="text"
-                  id="equipmentCode"
+                  id="tool_code"
                   value={equipmentCode}
                   onChange={(e) => setEquipmentCode(e.target.value)}
                 />
               </div>
 
-              {/* 구입 구분 선택 */}
               <div className="mb-4 text-[15px]">
-                <label htmlFor="purchaseType">구입 구분:</label>
+                <label htmlFor="tool_purchase_division">구입 구분:</label>
                 <select
-                  id="purchaseType"
+                  id="tool_purchase_division"
                   value={purchaseType}
                   onChange={(e) => setPurchaseType(e.target.value)}
                 >
                   <option value="선택안함"></option>
-                  <option value="구매">등록금</option>
-                  {/* 다른 구입 구분 옵션들 추가 */}
+                  <option value="교비(등록금)">교비(등록금)</option>
                 </select>
               </div>
 
-              {/* 구매 날짜 입력 */}
               <div className="mb-4 text-[15px]">
-                <label htmlFor="purchaseDate">구매 날짜:</label>
+                <label htmlFor="tool_purchase_date">구매 날짜:</label>
                 <input
                   type="date"
-                  id="purchaseDate"
+                  id="tool_purchase_date"
                   value={purchaseDate}
                   onChange={(e) => setPurchaseDate(e.target.value)}
                 />
               </div>
+
+
+  {/* 대여 여부 선택 */}
+  <div className="mb-4 text-[15px]">
+    <label htmlFor="tool_state">대여 여부:</label>
+    <select
+      id="tool_state"
+      value={toolState}
+      onChange={(e) => setToolState(e.target.value)}
+    >
+      {/* 대여 여부 옵션들 추가 */}   
+                 <option value="선택안함"></option>
+                  <option value="대여 가능">대여 가능</option>
+                  <option value="보류">보류</option>
+                  <option value="대여 불가능">대여 불가능</option>
+    </select>
+  </div>
+
+
+  <div className="mb-4 text-[15px]">
+                <label htmlFor="tool_standard">품목 규격:</label>
+                <select
+                  id="tool_standard"
+                  value={toolStandard}
+                  onChange={(e) => setToolStandard(e.target.value)}
+                >
+                  <option value="선택안함"></option>
+                  <option value="규격1">1</option>
+                  <option value="규격2">2</option>
+                  <option value="규격3">3</option>
+
+                </select>
+              </div>
+                {/* 기자재 설명 입력 */}
+  <div className="mb-4 text-[15px]">
+    <label htmlFor="tool_content">기자재 설명:</label>
+    <input
+      type="text"
+      id="tool_content"
+      value={additionalContent}
+      onChange={(e) => setAdditionalContent(e.target.value)}
+    />
+  </div>
+
+
+  {/* 기자재 사양 입력 */}
+  <div className="mb-4 text-[15px]">
+    <label htmlFor="tool_spec">기자재 사양:</label>
+    <input
+      type="text"
+      id="tool_spec"
+      value={toolSpec}
+      onChange={(e) => setToolSpec(e.target.value)}
+    />
+  </div>
             </div>
 
-            {/* 추가 내용 전송 버튼 */}
             <div className="flex mt-[130px]">
-              <Button onClick={onClose} bgColor="01" className="ml-[705px]">
+              <Button onClick={onClose} bgColor="02" className="ml-[705px]">
                 뒤로가기
               </Button>
               <Button
