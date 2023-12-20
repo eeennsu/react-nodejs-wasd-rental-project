@@ -11,14 +11,14 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [additionalContent, setAdditionalContent] = useState<string>('');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [equipmentName, setEquipmentName] = useState<string>('');
+  const [equipmentName, setEquipmentName] = useState<ToolName | ''>('');
   const [assetNumber, setAssetNumber] = useState<string>('');
   const [equipmentType, setEquipmentType] = useState<string>('');
   const [equipmentCode, setEquipmentCode] = useState<string>('');
   const [purchaseType, setPurchaseType] = useState<string>('');
   const [purchaseDate, setPurchaseDate] = useState<string>('');
   const [toolStandard, setToolStandard] = useState<string>('');
-  const [toolState, setToolState] = useState<string>('');
+  const [toolState, setToolState] = useState<ToolState>('대여가능');
   const [toolSpec, setToolSpec] = useState<string>('');
 
   const currentDate = new Date();
@@ -44,7 +44,7 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
   };
   const isAddButtonDisabled = () => {
     return (
-      !equipmentName ||
+      equipmentName === '' ||
       !assetNumber ||
       !equipmentType ||
       !equipmentCode ||
@@ -66,40 +66,21 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
 
     const imageId = uploadedFiles.length + 1;
 
+    const addTool: AddedNewTool = {
+      department_id: '1',
+      tool_code: equipmentCode,
+      tool_content: additionalContent,
+      tool_division: equipmentType, 
+      tool_id: assetNumber, 
+      tool_name: equipmentName as ToolName,
+      tool_purchase_date: purchaseDate,
+      tool_purchase_division: purchaseType,
+      tool_spec: toolSpec,
+      tool_standard: toolStandard, 
+      image: imageId              // 이미지 들어가면 될듯 string 타입으로 (해결필요)
+    };
 
-    // const tool = {
-    //   department_id: '1',
-    //   tool_code: equipmentCode,
-    //   tool_content: additionalContent,
-    //   tool_division: equipmentType, 
-    //   tool_id: assetNumber, 
-    //   tool_name: equipmentName,
-    //   tool_purchase_date: purchaseDate,
-    //   tool_purchase_division: purchaseType,
-    //   tool_spec: toolSpec,
-    //   tool_standard: toolStandard, 
-    //   tool_state: toolState,
-    //   tool_update_at: isoDate,
-    //   img_id: imageId.toString(),
-    //   img_url: selectedImage || '',
-    // };
-
-
-
-    useEffect(() => {
-      const uploadedFiles = async (tool: Tool) => {
-        try {
-          const response = await addTool_API(tool);
-          const results = response.data.result;
-          console.log(results, '데이터 전송 성공');
-        } catch (error) {
-          console.error('데이터 전송 실패:', error);
-        }
-      };
-  
-      // uploadedFiles()
-    
-    }, []); 
+    const response = await addTool_API(addTool);            // 
 
 
     console.log('Equipment Details:');
@@ -114,13 +95,13 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
             <div className="w-[270px] h-[270px] border-8 bg-04 border-gay-700 border-dotted relative overflow-hidden">
               {selectedImage && (
                 <img
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 object-cover w-full h-full"
                   src={selectedImage}
                   alt="기자재 추가"
                 />
               )}
               {!selectedImage && (
-                <div className="w-full h-full flex items-center justify-center text-gray-500">
+                <div className="flex items-center justify-center w-full h-full text-gray-500">
                   기자재 추가
                 </div>
               )}

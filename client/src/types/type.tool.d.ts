@@ -6,18 +6,32 @@ type SystemStep = 'INIT' | 'TOOL_REPAIR' | 'TOOL_RENT' | 'CLASSROOM_DESC' | 'CLA
 type ClassRoomName = '공학관 317-1호' | '공학관 317-2호' | '공학관 319호' | '공학관 320호' | '본관 504호' | '본관 505호' | '본관 506호' | '본관 507호';
 
 interface Tool {
-    department_id: string;
-    tool_code: string;
-    tool_content: string;
-    tool_division: string;          
     tool_id: string;                            
+    tool_division: string;          
+    tool_code: string;
     tool_name: ToolName;
-    tool_purchase_date: string;
     tool_purchase_division: string;
+    tool_purchase_date: string;
     tool_spec: string;
-    tool_standard: string;
+    tool_content: string;
     tool_state: ToolState;
+    tool_standard: string;
+    department_id: string;
     tool_update_at: string;
+}
+
+interface AddedNewTool {
+    tool_id: string;                            
+    tool_division: string;          
+    tool_code: string;
+    tool_name: ToolName;
+    tool_purchase_division: string;
+    tool_purchase_date: string;
+    tool_spec: string;
+    tool_content: string;
+    tool_standard: string;
+    department_id: string;
+    image: string;
 }
 
 interface ToolImage {
