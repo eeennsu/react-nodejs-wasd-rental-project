@@ -59,32 +59,32 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
   };
 
   const handleAddEquipment = async () => {
-    if (isAddButtonDisabled()) {
-      alert('필수 항목을 모두 입력하세요.');
-      return;
-    }
+    // if (isAddButtonDisabled()) {
+    //   alert('필수 항목을 모두 입력하세요.');
+    //   return;
+    // }
 
-    const imageId = uploadedFiles.length + 1;
+    // const imageId = uploadedFiles.length + 1;
 
-    const addTool: AddedNewTool = {
-      department_id: '1',
-      tool_code: equipmentCode,
-      tool_content: additionalContent,
-      tool_division: equipmentType, 
-      tool_id: assetNumber, 
-      tool_name: equipmentName as ToolName,
-      tool_purchase_date: purchaseDate,
-      tool_purchase_division: purchaseType,
-      tool_spec: toolSpec,
-      tool_standard: toolStandard, 
-      image: imageId              // 이미지 들어가면 될듯 string 타입으로 (해결필요)
-    };
+    // const addTool: AddedNewTool = {
+    //   department_id: '1',
+    //   tool_code: equipmentCode,
+    //   tool_content: additionalContent,
+    //   tool_division: equipmentType, 
+    //   tool_id: assetNumber, 
+    //   tool_name: equipmentName as ToolName,
+    //   tool_purchase_date: purchaseDate,
+    //   tool_purchase_division: purchaseType,
+    //   tool_spec: toolSpec,
+    //   tool_standard: toolStandard, 
+    //   image: imageId              // 이미지 들어가면 될듯 string 타입으로 (해결필요)
+    // };
 
-    const response = await addTool_API(addTool);            // 
+    // const response = await addTool_API(addTool);            // 
 
 
-    console.log('Equipment Details:');
-    onClose();
+    // console.log('Equipment Details:');
+    // onClose();
   };
 
   return (
@@ -145,7 +145,7 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
                 <select
                   id="tool_name"
                   value={equipmentName}
-                  onChange={(e) => setEquipmentName(e.target.value)}
+                  // onChange={(e) => setEquipmentName(e.target.value)}
                 >
 
                   <option value="타블렛">타블렛</option>
@@ -217,7 +217,7 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
     <select
       id="tool_state"
       value={toolState}
-      onChange={(e) => setToolState(e.target.value)}
+      // onChange={(e) => setToolState(e.target.value)}
     >
       {/* 대여 여부 옵션들 추가 */}   
                  <option value="선택안함"></option>
