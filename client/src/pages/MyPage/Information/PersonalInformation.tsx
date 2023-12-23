@@ -1,11 +1,11 @@
 import type { FC } from 'react';
-import Button from '../../components/Button';
+import Button from '../../../components/Button';
 import { Link } from 'react-router-dom';
 
 const PersonalInformation : FC = () => {
   return (
     <div className="text-center">
-         <div className="w-[400px] h-52 absolute top-[140px] ml-[200px] bg-02 rounded-md ">
+         <div className="w-[400px] h-52 absolute top-[200px] ml-[10px] bg-02 rounded-md ">
         <div className="text-[36px] font-bold pt-3">
          이연우
          </div>

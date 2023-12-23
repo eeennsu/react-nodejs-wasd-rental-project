@@ -1,9 +1,8 @@
 import type { FC } from 'react';
 import ModifyInformation from './ModifyInformation';
-import Request from './Request';
+import RequestMy from './Request/RequestMy';
 import RentalListMy from './RentalListMy/RentalListMy';
-import RentalListCss from './RentalListMy/RentalListCss';
-import PersonalInformation from './PersonalInformation';
+import PersonalInformation from './Information/PersonalInformation';
 import RentalListBody from './RentalListMy/RentalListBody';
 
 const MyPage: FC = () => {
@@ -14,7 +13,7 @@ const MyPage: FC = () => {
             
             <RentalListBody/>
 
-            <Request/>
+            <RequestMy/>
  
             
 
