@@ -1,4 +1,4 @@
-const {Repair,Log,Tool} = require("../../models")
+const {Repair,Log,Tool,User} = require("../../models")
 const { Op } = require('sequelize');
 const moment = require("moment");
 require("moment-timezone");
@@ -100,7 +100,17 @@ module.exports={
             Repair.findAll({
                 where: {
                     user_id: userId 
-                }
+                },
+                include: [
+                    {
+                        model:User,
+                        attributes: ['user_name'],
+                    },
+                    {
+                        model:Tool,
+                        attributes: ['tool_content'],
+                    }
+                ]
             })
             .then((result)=>{
                 resolve(result)
@@ -119,7 +129,17 @@ module.exports={
             where: {
                 user_id: userId, 
                 repair_id:repairId,
-            }
+            },
+            include: [
+                {
+                    model:User,
+                    attributes: ['user_name'],
+                },
+                {
+                    model:Tool,
+                    attributes: ['tool_content'],
+                }
+            ]
         })
         .then((result)=>{
             resolve(result)
@@ -162,9 +182,20 @@ module.exports={
                 },
                 limit: pageLimit,
                 offset: pageOffset,
+                include: [
+                    {
+                        model:User,
+                        attributes: ['user_name'],
+                    },
+                    {
+                        model:Tool,
+                        attributes: ['tool_content'],
+                    }
+                ]
             })
             .then((result)=>{
-                resolve(result)
+                let total = result.length
+                resolve({result,total})
             })
             .catch((err)=>{
                 console.log(err)

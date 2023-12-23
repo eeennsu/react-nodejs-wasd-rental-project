@@ -37,6 +37,6 @@ const SampleNav: FC = () => {
             </li>
         </ul>
     );
-};
+}
 
 export default SampleNav;

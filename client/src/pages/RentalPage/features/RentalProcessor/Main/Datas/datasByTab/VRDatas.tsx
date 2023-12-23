@@ -33,6 +33,6 @@ const VRDatas: FC = () => {
             <EmptryResult msg={messages.noData} />
         )
     );
-};
+}
 
 export default VRDatas;

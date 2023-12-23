@@ -56,7 +56,7 @@ import Pagination from '../../../components/Pagination/Pagination';
     
       
         </div>
-        <Pagination curPage={curPage} setCurPage={setCurPage} total={total}/>
+        <Pagination curPage={curPage} setCurPage={setCurPage} total={24}/>
 
         
     </div>

@@ -24,7 +24,7 @@ const ListItem: FC<Props> = ({ item: { D_day, result } }) => {
             </span>
         </ItemTemplate>
     );
-};
+}
 
 export default ListItem;
 
@@ -33,7 +33,7 @@ export default ListItem;
 export const ItemTemplate: FC<PropsWithChildren> = ({ children }) => {
 
     return(
-        <li className='flex items-center w-full h-[34px] px-1.5 text-md border-t border-t-[#00000080] font-[500] bg-03 text-center'>
+        <li className='flex items-center w-full max-3xl:h-[32px] h-[34px] px-1.5 max-3xl:text-sm text-md border-t border-t-[#00000080] font-[500] bg-03 text-center'>
            {children}
         </li>
     );
@@ -44,8 +44,8 @@ export const EmptyItem: FC = () => <ItemTemplate />
 export const Skeleton: FC = () => {
     
     return (
-        <li className='h-[29px] px-1.5 text-sm bg-03 w-full'>
+        <li className='max-3xl:h-[28px] h-[34px] px-1.5 text-sm bg-03 w-full'>
             <div className='bg-04 h-[22px] animate-pulse' />
         </li>
-    )
+    );
 }

@@ -1,8 +1,8 @@
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';
-import { UserStoreType } from './types';
+import type { UserStoreType } from './types';
 import { createWithEqualityFn } from 'zustand/traditional';
 
-export const LOGIN_SESSION_STORAGE = 'login-session-storage';
+export const LOGIN_SESSION_STORAGE = 'login-session-storage' as const;
 
 const useUserStore = createWithEqualityFn<UserStoreType>()(
     devtools(

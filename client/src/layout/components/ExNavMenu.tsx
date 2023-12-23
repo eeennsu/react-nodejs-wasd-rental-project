@@ -21,6 +21,6 @@ const ExNavMenu: FC = () => {
             임시 내비게이션 페이지 가기
         </button>
     );
-};
+}
 
 export default ExNavMenu;

@@ -7,21 +7,6 @@ export interface ITabsStore {
 }
 
 export interface IToolStore {
-    // VRsData: VR[];
-    // setVRsData: (datas: VR[]) => void;
-    
-    // tabletsData: Tablet[];
-    // setTabletsData: (datas: Tablet[]) => void;
-
-    // classRoomsData: ClassRoom[];
-    // setClassRoomsData: (datas: ClassRoom[]) => void;
-
-    // resetAllDatas: () => void;
-
-    // paginatedDatas: VR[] | Tablet[] | ClassRoom[];
-    // setPaginatedDatas: (datas: VR[] | Tablet[] | ClassRoom[]) => void; 
-    // resetPaginatedDatas: () => void;
-    
     tool: Tool | null;
     setTool: (tool: Tool | null) => void;
 
@@ -41,36 +26,11 @@ export interface ISearchStore {
 
     searchedResults: Tool[] | null;
     setSearchedResults: (searchResults: Tool[] | null) => void;
-
-    // searchedVRs: VR[] | null;
-    // setSearchedVRs: (datas: VR[]) => void;
-
-    // searchedTablets: Tablet[] | null;
-    // setSearchedTablets: (datas: Tablet[]) => void;
-
-    // searchedClassRooms: ClassRoom[] | null;
-    // setSearchedClassRooms: (datas: ClassRoom[]) => void;
-    // searchedResults: AllSuppliesArr;
-    // setSearchedResults: (results: AllSuppliesArr) => void;
 }
 
 export interface IStepStore {
     isModalOpen: boolean;
     setIsModalOpen: (trigger: boolean) => void;
-
-    // detailTool: Tool | null;
-    // setDetailTool: (tool: Tool | null) => void
-
-    // detailVR: VR | null,
-    // setDetailVR: (vr: VR) => void;
-
-    // detailTablet: Tablet | null,
-    // setDetailTablet: (tablet: Tablet) => void;
-
-    // detailClassRoom: ClassRoom | null,
-    // setDetailClassRoom: (vr: ClassRoom | null) => void;
- 
-    // resetDetailValue: () => void;
 
     text: string;
     setText: (text: string) => void;

@@ -25,6 +25,6 @@ const ToolState: FC<Props> = ({ status }) => {
             </span>
         </p>
     );
-};
+}
 
 export default ToolState;

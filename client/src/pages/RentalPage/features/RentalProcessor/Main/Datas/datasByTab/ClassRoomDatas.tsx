@@ -33,6 +33,6 @@ const ClassRoomDatas: FC = () => {
             <EmptryResult msg={messages.noData} />
         )
     );
-};
+}
 
 export default ClassRoomDatas;

@@ -17,7 +17,7 @@ const SearchedDatas: FC<Props> = ({ results }) => {
         ) : (
             <EmptryResult msg={messages.noSearch} />
         )
-    )
-};
+    );
+}
 
 export default SearchedDatas;

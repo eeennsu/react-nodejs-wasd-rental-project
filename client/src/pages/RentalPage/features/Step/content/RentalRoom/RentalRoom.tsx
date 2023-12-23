@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { useState } from 'react';
 import { useStepStore } from '../../../../../../zustand';
+import { motion } from 'framer-motion';
 import RoomList from './RoomList';
 import RentalRoomForm from './RentalRoomForm';
 import Template from '../../templates/Template';
@@ -8,7 +9,6 @@ import DescRoomButtons from './DescRoomStepButtons';
 import RentalRoomStepButtons from './RentalRoomStepButtons';
 import Image from 'antd/es/image/index';
 import timetable from '../../../../../../assets/images/timetable.png';
-import { motion } from 'framer-motion';
 
 const RentalRoom: FC = () => {
 
@@ -30,7 +30,7 @@ const RentalRoom: FC = () => {
             exit={{ y: -10, opacity: 0 }}
             transition={{ duration: 0.2 }}
         >
-            <Template className='h-full mb-5 3xl:mb-0'>         
+            <Template className='h-full mb-5 3xl:mb-0 max-md:mt-0 max-3xl:mt-10'>         
                 <div className='relative mx-9 md:mx-0 max-md:mt-4'>
                     <div className='absolute z-10 flex items-center justify-center w-full h-full transition-colors duration-300 cursor-pointer bg-black/50 group hover:bg-black/60 hover:shadow-sm' onClick={handleVisibleChange}>
                         <span className='text-xl font-bold tracking-wider text-white'>
@@ -68,6 +68,6 @@ const RentalRoom: FC = () => {
             </Template>
         </motion.div>
     );
-};
+}
 
 export default RentalRoom;

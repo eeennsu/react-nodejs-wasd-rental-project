@@ -30,8 +30,8 @@ const MyRentalInfo: FC<Props> = ({ title, rentalInfos, isLoading, error }) => {
     }, [rentalInfos, defaultItems]);
 
     return (
-        <div className='flex flex-col items-center shadow-left w-[150px] md:w-40'>
-            <h2 className='w-full flex items-center justify-center h-[29px] text-sm font-semibold rounded-t-[4px] text-white bg-01'>
+        <div className='flex flex-col items-center shadow-left max-3xl:w-[146px] w-40'>
+            <h2 className='w-full flex items-center justify-center h-[30px] text-sm font-semibold rounded-t-[4px] text-white bg-01'>
                 {title}
             </h2>
             {
@@ -69,7 +69,7 @@ const MyRentalInfo: FC<Props> = ({ title, rentalInfos, isLoading, error }) => {
             }
         </div>
     );
-};
+}
 
 export default MyRentalInfo;
 
@@ -78,7 +78,7 @@ export default MyRentalInfo;
 const RentalList: FC<PropsWithChildren> = ({ children }) => {
     
     return (
-        <ul className='w-full overflow-x-auto overflow-y-auto list-none list-inside whitespace-nowrap h-[238px] my-scr'>
+        <ul className='w-full overflow-x-auto overflow-y-auto list-none rounded-b-[4px] list-inside whitespace-nowrap max-3xl:h-[224px] h-[238px] my-scr'>
             {children}
         </ul>
     );
@@ -87,10 +87,10 @@ const RentalList: FC<PropsWithChildren> = ({ children }) => {
 const EmptyContainer: FC<PropsWithChildren> = ({ children }) => {
 
     return (
-        <ul className='h-[203px] flex flex-col bg-03 w-full pt-2'>
+        <ul className='max-3xl:h-[224px] h-[238px] flex flex-col rounded-b-[4px] bg-03 w-full pt-2'>
             {children}
         </ul>
-    )
+    );
 }
 
 const DangerError: FC = () => {

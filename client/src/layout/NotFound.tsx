@@ -16,6 +16,6 @@ const NotFound: FC = () => {
             </Link>
         </main>
     );
-};
+}
 
 export default NotFound;

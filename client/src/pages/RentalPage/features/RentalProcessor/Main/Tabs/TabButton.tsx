@@ -27,7 +27,7 @@ const TabButton: FC<PropsWithChildren<Props>> = ({ children, idx }) => {
         return (
             <div className='relative'>
                 <motion.button 
-                    className='absolute md:w-[148px] w-[100px] h-10 -top-10 trapezoid' 
+                    className='absolute md:w-[148px] w-[100px] max-3xl:h-[38px] h-[42px] max-3xl:-top-[37px] -top-[42px] trapezoid' 
                     onClick={handleSetActiveTab}
                     initial={{ opacity: 0.3, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -43,10 +43,10 @@ const TabButton: FC<PropsWithChildren<Props>> = ({ children, idx }) => {
     }
 
     return (
-        <button className='w-[100px] md:w-[148px] h-10 text-xs md:text-sm font-semibold bg-01 whitespace-nowrap text-white/60' onClick={handleSetActiveTab}>
+        <button className='w-[100px] md:w-[148px] max-3xl:h-[38px] h-[42px] text-xs md:text-sm font-semibold bg-01 whitespace-nowrap text-white/60' onClick={handleSetActiveTab}>
             {children}
         </button>
     );
-};
+}
 
 export default TabButton;

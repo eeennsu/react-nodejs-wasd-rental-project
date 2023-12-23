@@ -22,6 +22,6 @@ const RequireAuth: FC<Props> = ({ allowedRoles }) => {
                 ? <Navigate to='/unauthorized' state={{ from: location }} replace />
                 : <Navigate to='/sampleLogin' state={{ from: location }} replace />
     );
-};
+}
 
 export default RequireAuth;

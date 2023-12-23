@@ -11,6 +11,6 @@ const UserButton: FC<PropsWithChildren<Props>> = ({ children, onClick }) => {
             {children}
         </button>
     );
-};
+}
 
 export default UserButton;

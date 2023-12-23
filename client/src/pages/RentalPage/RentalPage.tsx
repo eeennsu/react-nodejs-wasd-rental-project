@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { useMemo } from 'react';
 import { useStepStore, useUserStore } from '../../zustand';
 import { getContent } from './utils/step';
 import Side from './features/Side/Side';
@@ -7,7 +8,7 @@ import { approveUser_API } from '../../api/auth/authApi';
 
 const RentalPage: FC = () => {
 
-    // 로그인 여부 / 토큰 / 유저에 대한 정보 (이메일, 학번, 아이디 등등..) 얘는 필수 아님 (필요할 떄 선언하면 됨)
+    // 로그인 여부 / 토큰 / 유저에 대한 정보 (이메일, 학번, 아이디 등등..) 얘는 필수 아님 (필요할 때 선언하면 됨)
     const { isLogin, user, token } = useUserStore();
     
     // 만약 특정 버튼이 클릭할 때 이 api를 호출하고 싶다면? 버튼의 onClick 속성에 이 함수를 넣으면 됨.
@@ -32,18 +33,23 @@ const RentalPage: FC = () => {
         }
     }
 
+
+    // 이 아래는 api랑 상관 없음
+
     const systemStep = useStepStore(state => state.systemStep);
-    
+
+    const content = useMemo(() => getContent(systemStep), [systemStep]);
+
     return (
-        <div className='flex flex-col-reverse w-full h-full md:flex-row gap-x-6 md:mt-7'>            
-            <aside className='mt-4 md:w-1/5'>
+        <div className='flex flex-col-reverse w-full h-full mt-10 lg:flex-row gap-x-6 max-md:mt-6 max-3xl:mt-0 max-md:mb-0 max-3xl:mb-11 max-lg:px-10 max-md:px-0'>            
+            <aside className='mt-4 lg:w-1/5'>
                 <Side />
             </aside>
-            <section className='md:w-4/5 3xl:mb-0'>
-                {getContent(systemStep)}
+            <section className='lg:w-4/5 3xl:mb-0'>
+                {content}
             </section>        
         </div>
     );
-};
+}
 
 export default RentalPage;

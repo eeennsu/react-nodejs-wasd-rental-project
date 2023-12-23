@@ -6,7 +6,7 @@ import TabButton from './TabButton';
 const Tabs: FC = () => {
     
     return (
-        <div className='flex mt-2.5 bg-01'>
+        <div className='flex mt-3 bg-01'>
             {
                 tabs.map((tab, i) => (
                     <TabButton key={tab} idx={i}>
@@ -16,6 +16,6 @@ const Tabs: FC = () => {
             }
         </div>
     );
-};
+}
 
 export default Tabs;

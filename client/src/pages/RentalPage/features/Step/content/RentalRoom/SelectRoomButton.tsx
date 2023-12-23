@@ -3,7 +3,7 @@ import { useStepStore } from '../../../../../../zustand';
 import { shallow } from 'zustand/shallow';
 
 type Props = {
-    room: ClassRoomName
+    room: ClassRoomName;
 }
 
 const RoomButton: FC<Props> = ({ room }) => {
@@ -24,6 +24,6 @@ const RoomButton: FC<Props> = ({ room }) => {
             {roomNumber}
         </button>
     );
-};
+}
 
 export default RoomButton;

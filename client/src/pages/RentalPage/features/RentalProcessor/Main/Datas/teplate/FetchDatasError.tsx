@@ -18,6 +18,6 @@ const FetchDatasError: FC<Props> = ({ type = 'error', msg = '데이터를 불러
             />
         </div>
     );
-};
+}
 
 export default FetchDatasError;

@@ -15,10 +15,10 @@ router.post("/returnTool",checkToken,checkOne,rentalController.returnTool);
 router.post("/extensionTool",checkToken,checkOne,rentalController.extensionTool);
 
 //사용자의 현재 대여 목록
-router.get("/myRentalList/:user_id",checkToken,checkOne,rentalController.myRentalList)
+router.get("/myRentalList/:user_id/:page/:pageLimit",checkToken,checkOne,rentalController.myRentalList)
 
 //사용자의 역대 대여 목록
-router.get("/myAllRentalList/:user_id",checkToken,checkOne,rentalController.myAllRentalList);
+router.get("/myAllRentalList/:user_id/:page/:pageLimit",checkToken,checkOne,rentalController.myAllRentalList);
 
 //사용자의 현재 연체 목록
 router.get("/myLateRentalList/:user_id",checkToken,checkOne,rentalController.myLateRentalList);

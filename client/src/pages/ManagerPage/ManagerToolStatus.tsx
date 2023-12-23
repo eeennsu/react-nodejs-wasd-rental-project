@@ -1,6 +1,7 @@
 import { FC, useEffect, useState, ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import AddEquipmentComponent from './AddEquipment/AddEquipmentComponent';
+import {viewTools_API} from '../../api/tool/toolApi';
 
 
 const ManagerToolStatus: FC = () => {
@@ -24,6 +25,35 @@ const ManagerToolStatus: FC = () => {
   //   console.log('Adding equipment:', { image, description });
   //   onClose();
   // };
+
+  const [test, SetTest] = useState<Tool[]>([]);
+
+  useEffect( () => {
+
+    const tests = async(page : number) => {
+
+      try {
+
+        const response = await viewTools_API(page);
+
+        if(response.data.result){
+
+          SetTest(response.data.result)
+          console.log('기자재 정보가 있습니다')
+
+        }else{
+          console.log('업로드 된 기자재 정보 없음');
+          console.log(response.data[200]);
+        }
+
+
+      } catch (error) {
+        console.error('데이터 전송 실패:', error);
+      }
+      
+    };
+    // SetTest(total);
+    }, []);
 
    
     return (        

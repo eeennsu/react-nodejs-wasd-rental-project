@@ -16,6 +16,6 @@ const Unauthorized: FC = () => {
             </Link>
         </main>
     );
-};
+}
 
 export default Unauthorized;

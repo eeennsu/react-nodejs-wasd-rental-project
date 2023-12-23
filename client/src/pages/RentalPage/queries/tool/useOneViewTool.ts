@@ -15,5 +15,5 @@ const useOneViewTool = (tool_id: string) => {
     };
 }
 
-export default useOneViewTool;    ;
+export default useOneViewTool;
 

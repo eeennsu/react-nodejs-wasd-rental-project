@@ -123,8 +123,8 @@ const RentalRoomStepButtons: FC = () => {
     }
 
     return (
-        <footer className='flex items-center justify-center gap-3 p-4 md:gap-0 md:justify-between bg-04'>
-            <div>
+        <footer className='flex items-center justify-center gap-3 p-4 lg:gap-0 lg:justify-between bg-04 max-md:pt-0 max-lg:pt-10'>
+            <div className='max-lg'>
                 <Button onClick={handleResetTimes} bgColor='01'>
                     다시 선택
                 </Button>     
@@ -139,6 +139,6 @@ const RentalRoomStepButtons: FC = () => {
             </div>        
         </footer>
     );
-};
+}
 
 export default RentalRoomStepButtons;
