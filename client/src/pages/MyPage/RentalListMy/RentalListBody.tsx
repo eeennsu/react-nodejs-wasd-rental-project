@@ -57,8 +57,12 @@ const RentalListBody: FC = () => {
 
         {
           rentalRecords?.map((record) => (
-            <div key={record.rental_id} className='w-[700px] h-[50px] ml-[10px] bg-03 rounded-md flex items-center justify-center'>
-              {`${getToolNum(record.tool)}/${record.tool.tool_name}/${record.tool.tool_state}`}
+            <div key={record.rental_id} className='w-[700px] h-[50px] ml-[10px] mt-[8px] bg-03 rounded-md flex items-center justify-between'>
+              <div className='flex items-center'>
+                <div>{`${getToolNum(record.tool)}/${record.tool.tool_name}/${record.tool.tool_state}`}</div>
+                <Button bgColor='01' className='w-[20px] h-[30px] ml-[10px] rounded-md flex items-center justify-center text-white'>연장</Button>
+                <Button bgColor='01' className='w-[20px] h-[30px] ml-[10px] rounded-md flex items-center justify-center text-white'>반납</Button>
+              </div>
             </div>
           ))
         }
