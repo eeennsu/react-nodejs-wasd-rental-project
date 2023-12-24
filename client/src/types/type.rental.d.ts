@@ -34,7 +34,7 @@ interface RentalInfo {
     tool_id: string;
     tool: {
         tool_content: string;   // 오큘러스 퀘스트2 7번 기기
-        tool_state: string;     // 대여중
+        tool_state: ToolState;     // 대여중
         tool_name: ToolName;      // "VR 실습기기"
     }
 }

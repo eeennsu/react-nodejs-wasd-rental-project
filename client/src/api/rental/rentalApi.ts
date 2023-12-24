@@ -38,7 +38,7 @@ export const myRentalList_API_RENTAL_PAGE = (user_id: string) => axiosPri.get<Re
 export const deleteTool_API = (tool_id: string) => axiosPri.get<ResDeleteTool>(`/tool/deleteTool/${tool_id}`);
 
 // 유저 토큰 필요 / 사용자의 역대 대여 목록 (마이페이지는 페이지네이션이 필요하므로 이거 사용)
-export const myAllRentalList_API_MY_PAGE = (user_id: string, page: number) => axiosPri.get<ResMyAllRentalList>(`/rental/myAllRentalList/${user_id}/${page}/${PAGE_LIMIT}`); 
+export const myAllRentalList_API_MY_PAGE = (user_id: string, page: number) => axiosPri.get<ResMyAllRentalList>(`/rental/myAllRentalList/${user_id}/${page}/${10}`); 
 
 // 유저 토큰 필요 / 사용자의 현재 대여 목록 확인 (렌탈페이지는 페이지네이션이 필요 x)
 export const myAllRentalList_API_RENTAL_PAGE = (user_id: string) => axiosPri.get<ResMyAllRentalList>(`/rental/myAllRentalList/${user_id}/${1}/${1000}`); 

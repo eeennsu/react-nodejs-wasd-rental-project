@@ -1,12 +1,11 @@
 import type { FC } from 'react';
 import { useStepStore, useToolStore } from '../../../../../../../zustand';
 import DataTemplate from './DataTemplate';
+import { getToolNum } from '../../../../../utils/getToolNum';
 
 type Props = {
     data: Tool;
 }
-
-const regex = /\d+번/;
 
 const DataRow: FC<Props> = ({ data }) => {
 
@@ -19,12 +18,10 @@ const DataRow: FC<Props> = ({ data }) => {
         setTool(data);
     }
 
-    const match = data.tool_name !== '강의실' && data.tool_content.match(regex);
-
     return (
         <DataTemplate onClick={handleClick}>
             <div>
-                {data.tool_code !== 'x' ? `${match}` : data.tool_id}
+                {getToolNum(data)}
             </div>
             <div className='flex gap-1 mx-1'>               
                 {' / '}

@@ -11,7 +11,7 @@ const AllDatas: FC = () => {
 
     const curPage = useToolStore(state => state.curPage);
     const { data, isLoading, error } = useViewTool(curPage);
-
+    
     if (isLoading) {
         return (
             <DataLoading />
