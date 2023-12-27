@@ -7,38 +7,39 @@ interface ModalAddProps {
   onClose: () => void;
 }
 
-interface AddedNewTool {
-  department_id: string;
-  tool_code: string;
-  tool_content: string;
-  tool_division: string;
-  tool_id: string;
-  tool_name: ToolName;
-  tool_purchase_date: string;
-  tool_purchase_division: string;
-  tool_spec: string;
-  tool_standard: string;
-  tool_state: ToolState;
-  tool_update_at: string;
-  image: string; 
-}
+// 이거 아님 (주석 해제 x, AddedNewTool는 다른 곳에 정의 되어있음)
+// interface AddedNewTool {
+//   department_id: string;
+//   tool_code: string;
+//   tool_content: string;
+//   tool_division: string;
+//   tool_id: string;
+//   tool_name: ToolName;
+//   tool_purchase_date: string;
+//   tool_purchase_division: string;
+//   tool_spec: string;
+//   tool_standard: string;
+//   tool_state: ToolState;
+//   tool_update_at: string;
+//   image: string; 
+//}
 
 const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [additionalContent, setAdditionalContent] = useState<string>('');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [equipmentName, setEquipmentName] = useState<ToolName>();
+  const [equipmentName, setEquipmentName] = useState<ToolName | string>('');
   const [assetNumber, setAssetNumber] = useState<string>('');
   const [equipmentType, setEquipmentType] = useState<string>('');
   const [equipmentCode, setEquipmentCode] = useState<string>('');
   const [purchaseType, setPurchaseType] = useState<string>('');
   const [purchaseDate, setPurchaseDate] = useState<string>('');
   const [toolStandard, setToolStandard] = useState<string>('');
-  const [toolState, setToolState] = useState<ToolState>();
+  const [toolState, setToolState] = useState<ToolState | string>('');
   const [toolSpec, setToolSpec] = useState<string>('');
 
-  const currentDate = new Date();
-  const isoDate = currentDate.toISOString();
+  // const currentDate = new Date();
+  // const isoDate = currentDate.toISOString();
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -111,15 +112,14 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
         tool_purchase_division: purchaseType,
         tool_spec: toolSpec,
         tool_standard: toolStandard,
-        tool_state: toolState as ToolState ,
-        tool_update_at: isoDate,
+        // tool_state: toolState as ToolState ,
+        // tool_update_at: isoDate,
         image: imageBase64,
         
       };
 
+      console.log('imageBase64', imageBase64);
       const response = await addTool_API(addTool);
-
-  
 
       console.log('데이터 전송 성공:', response.data);
       onClose();
