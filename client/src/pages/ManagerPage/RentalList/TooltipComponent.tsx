@@ -23,7 +23,7 @@ const TooltipComponent: FC<TooltipProps> = ({ showTooltip, toggleTooltip }) => {
         if (response.data.result) {
           setRentalList(response.data.result);
         } else {
-          console.log('대여를 한 유저가 없음');
+          console.log(response.data.msg);
         }
       } catch (err) {
         console.error('데이터 불러오기 실패:', err);
@@ -60,7 +60,7 @@ const TooltipComponent: FC<TooltipProps> = ({ showTooltip, toggleTooltip }) => {
           <div key={index}>
             <div
               id={`tooltip-trigger-${index}`}
-              className={`w-80 h-11 top-91 bg-03 rounded-md text-[18px] p-1 ${
+              className={`w-80 h-11 top-91 bg-03 rounded-md text-[18px] p-1 cursor-pointer ${
                 showTooltip && clickedIndex === index ? 'bg-[#3F5D7D]' : ''
               }`}
               onClick={() => handleOnClick(index)}

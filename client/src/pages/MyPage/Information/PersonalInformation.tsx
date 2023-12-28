@@ -1,11 +1,11 @@
 import type { FC } from 'react';
-import Button from '../../components/Button';
+import Button from '../../../components/Button';
 import { Link } from 'react-router-dom';
 
-const ModifyInformation : FC = () => {
+const PersonalInformation : FC = () => {
   return (
     <div className="text-center">
-         <div className="w-[400px] h-52 absolute top-[140px] -ml-[35px] bg-02 rounded-md ">
+         <div className="w-[400px] h-52 absolute top-[200px] ml-[10px] bg-02 rounded-md ">
         <div className="text-[36px] font-bold pt-3">
          이연우
          </div>
@@ -15,8 +15,9 @@ const ModifyInformation : FC = () => {
         <div> test_id@naver.com</div>
         </div>
         <Button bgColor='01'className='w-[96px] h-[26px] mt-[10px]'>
-            <Link to = 'ModifyInformation'></Link>
+            <Link to = 'ModifyInformation'>
               정보 수정하기
+              </Link>
         </Button>
        
       </div>
@@ -27,4 +28,4 @@ const ModifyInformation : FC = () => {
 };
 
 
-export default ModifyInformation;
+export default PersonalInformation;

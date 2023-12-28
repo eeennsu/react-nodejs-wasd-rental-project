@@ -147,6 +147,6 @@ const SampleLogin: FC = () => {
             }
         </div>
     );
-};
+}
 
 export default SampleLogin;

@@ -355,13 +355,18 @@ module.exports = {
         });
     },
 
-    myRentalList: (userId) => {
+    myRentalList: (userId,page,pageLimit) => {
+        page = parseInt(page);
+        pageLimit = parseInt(pageLimit);
+        const pageOffset = (page - 1) * pageLimit;
         return new Promise((resolve) => {
             Rental.findAll({
                 where: {
                     user_id: userId,
                     rental_state: "대여" // "대여" 상태인 레코드만 조회
                 },
+                limit: pageLimit,
+                offset: pageOffset,
                 include: [
                     {
                         model: Tool,
@@ -370,6 +375,8 @@ module.exports = {
                 ]
             })
                 .then((result) => {
+                    let total = result.length
+                    console.log(total)
                     let objs = [];
 
                     //let days;
@@ -397,7 +404,7 @@ module.exports = {
 
                     }
 
-                    result !== null ? resolve(objs) : resolve(false);
+                    result !== null ? resolve({total,objs}) : resolve(false);
 
                 })
                 .catch((err) => {
@@ -407,13 +414,18 @@ module.exports = {
         });
     },
 
-    myAllRentalList: (userId) => {
+    myAllRentalList: (userId,page,pageLimit) => {
+        page = parseInt(page);
+        pageLimit = parseInt(pageLimit);
+        const pageOffset = (page - 1) * pageLimit;
         return new Promise((resolve) => {
             Rental.findAll({
                 where: {
                     user_id: userId,
                     rental_state: { [Op.or]: ["대여", "반납"] } // "대여" 상태인 레코드만 조회
                 },
+                limit: pageLimit,
+                offset: pageOffset,
                 include: [
                     {
                         model: Tool,
@@ -422,7 +434,8 @@ module.exports = {
                 ]
             })
                 .then((result) => {
-                    resolve(result);
+                    let total = result.length
+                    resolve({result,total});
                 })
                 .catch((err) => {
                     console.log(err);
@@ -442,6 +455,10 @@ module.exports = {
                     {
                         model: Tool,
                         attributes: ['tool_content', 'tool_state', 'tool_name'] // 'Tool' 테이블에서 불러올 컬럼 지정
+                    },
+                    {
+                        model: User,
+                        attributes: ['user_name']
                     }
                 ]
             })

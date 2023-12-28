@@ -1,6 +1,7 @@
 import { FC, useEffect, useState, ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import AddEquipmentComponent from './AddEquipment/AddEquipmentComponent';
+import {viewTools_API} from '../../api/tool/toolApi';
 
 
 const ManagerToolStatus: FC = () => {
@@ -25,48 +26,69 @@ const ManagerToolStatus: FC = () => {
   //   onClose();
   // };
 
+  const [test, SetTest] = useState<Tool[]>([]);
+
+  useEffect( () => {
+
+    const tests = async(page : number) => {
+
+      try {
+
+        const response = await viewTools_API(page);
+
+        if(response.data.result){
+
+          SetTest(response.data.result)
+          console.log('기자재 정보가 있습니다')
+
+        }else{
+          console.log('업로드 된 기자재 정보 없음');
+          console.log(response.data[200]);
+        }
+
+
+      } catch (error) {
+        console.error('데이터 전송 실패:', error);
+      }
+      
+    };
+    // SetTest(total);
+    }, []);
+
    
-    return (
-        
+    return (        
         <div className='w-[1300px] h-[750px] mt-[20px] -ml-[50px] bg-02 flex justify-between'>
          <div className='flex flex-col mt-[48px] ml-[80px] space-y-3 '>
+          {Array.from({ length: 4 }).map((_, index) => (
+            <div key={index} className='w-[558px] h-[140px] bg-04 rounded-md'>
+              
+              <div className='flex items-center'>
+                <img className='object-cover mr-4 w-128 h-128' src='' alt='기자재 이미지' />
+                <div>
+                  <h3 className='text-lg font-bold'>기자재명</h3>
+                  <p className='text-sm'>기자재 설명</p>
+                </div>
+              </div>
+              
+            </div>
+          ))}
 
+          </div>
 
-{Array.from({ length: 4 }).map((_, index) => (
-  <div key={index} className='w-[558px] h-[140px] bg-04 rounded-md'>
-    
-    <div className='flex items-center'>
-      <img className='object-cover mr-4 w-128 h-128' src='' alt='기자재 이미지' />
-      <div>
-        <h3 className='text-lg font-bold'>기자재명</h3>
-        <p className='text-sm'>기자재 설명</p>
-      </div>
-    </div>
-    
-  </div>
-))}
-
-</div>
-
-{/* 오른쪽 4개 박스 */}
-<div className='flex flex-col space-y-3 mt-[48px] mr-[80px]'>
-{Array.from({ length: 4 }).map((_, index) => (
-  <div key={index} className='w-[558px] h-[140px] bg-04 rounded-md'>
-    <div className='flex items-center'>
-      <img className='object-cover mr-4 w-128 h-128' src='사진주소' alt='기자재 이미지' />
-      <div>
-        <h3 className='text-lg font-bold'>기자재명</h3>
-        <p className='text-sm'>기자재 설명</p>
-      </div>
-    </div>
-  </div>
-))}
-</div>
-
-         
-
-          
-
+          {/* 오른쪽 4개 박스 */}
+          <div className='flex flex-col space-y-3 mt-[48px] mr-[80px]'>
+          {Array.from({ length: 4 }).map((_, index) => (
+            <div key={index} className='w-[558px] h-[140px] bg-04 rounded-md'>
+              <div className='flex items-center'>
+                <img className='object-cover mr-4 w-128 h-128' src='사진주소' alt='기자재 이미지' />
+                <div>
+                  <h3 className='text-lg font-bold'>기자재명</h3>
+                  <p className='text-sm'>기자재 설명</p>
+                </div>
+              </div>
+            </div>
+          ))}
+          </div>     
          <AddEquipmentComponent/>
 
             <div className='w-[400px] h-[117px] bg-01 rounded-md absolute top-[900px] ml-[450px] '>
@@ -85,8 +107,6 @@ const ManagerToolStatus: FC = () => {
             </div>
           
             </div>
-
-
         </div>
     );
 };

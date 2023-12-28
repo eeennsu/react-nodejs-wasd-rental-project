@@ -26,6 +26,6 @@ const Modal: FC = () => {
            <DescTool />  
         </AntdModal>
     );
-};
+}
 
 export default Modal;

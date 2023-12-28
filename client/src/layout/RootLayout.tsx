@@ -4,9 +4,10 @@ import Header from './components/Header';
 
 type Props = {
     type: 'main' | 'other'
+    isLogo?: boolean;
 }
 
-const RootLayout: FC<Props> = ({ type }) => {
+const RootLayout: FC<Props> = ({ type, isLogo = true }) => {
 
     return (
         <div className='flex flex-col min-h-screen'>
@@ -15,11 +16,11 @@ const RootLayout: FC<Props> = ({ type }) => {
                 type === 'main' ? (
                     <MainLayout />
                 ) : type === 'other' ? (
-                    <OtherLayout />
+                    <OtherLayout isLogo={isLogo} />
                 ) : null
             }             
         </div>
     );
-};
+}
 
 export default RootLayout;

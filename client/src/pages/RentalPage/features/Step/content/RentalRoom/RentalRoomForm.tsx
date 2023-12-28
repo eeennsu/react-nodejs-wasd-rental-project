@@ -13,7 +13,7 @@ const RentalRoomForm: FC = () => {
     
     const selectedRoom = useStepStore(state => state.selectedRoom);
        
-    const { data: rentalInfos, isLoading, error } = useNotClassroomCount(selectedRoom!);
+    const { data: rentalInfos, isLoading, error } = useNotClassroomCount(selectedRoom as ClassRoomName);
 
     useEffect(() => {
         notification.info({
@@ -56,7 +56,7 @@ const RentalRoomForm: FC = () => {
             }        
         </section>
     );
-};
+}
 
 export default RentalRoomForm;
 

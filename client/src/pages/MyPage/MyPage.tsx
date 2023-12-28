@@ -1,12 +1,23 @@
 import type { FC } from 'react';
 import ModifyInformation from './ModifyInformation';
+import RequestMy from './Request/RequestMy';
+import RentalListMy from './RentalListMy/RentalListMy';
+import PersonalInformation from './Information/PersonalInformation';
+import RentalListBody from './RentalListMy/RentalListBody';
 
 const MyPage: FC = () => {
 
     return (
         <div>
-            {/* ModifyInformation 컴포넌트를 여기에 렌더링합니다. */}
-      <ModifyInformation />
+            <PersonalInformation/>
+            
+            <RentalListBody/>
+
+            <RequestMy/>
+ 
+            
+
+      
         </div>
     );
 };

@@ -21,6 +21,6 @@ const RentalReson: FC = () => {
             rows={4}
         />
     );
-};
+}
 
 export default RentalReson;

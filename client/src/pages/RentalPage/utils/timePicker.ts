@@ -37,23 +37,14 @@ export const getHoursFormat = (date?: string): RentaledTime => {
     return {
         hour: +utcDate.format('HH'),
         min: +utcDate.format('mm'),
-    }
+    };
 }
-
-// export const getFullDate = (dayjsDate: Dayjs): Dayjs => {
-//     const year = dayjsDate.year();
-//     const month = dayjsDate.month() + 1;
-//     const date = dayjsDate.date();
-//     dayjsDate.format('yyyy-MM-dd');
-//     return dayjs(`${year}-${month}-${date}`);
-// }
 
 export const convertToKoreanTime = (dayjsObj: Dayjs, hour: number, min: number) => {
     const formattedDate = dayjs(dayjsObj.format('YYYY-MM-DD'));
 
     const combineTime = formattedDate.set('hour', hour).set('minute', min);
 
-    // return combineTime.utc().tz('Asia/Seoul').format();
     return dayjs.tz(combineTime, 'Asia/Seoul').format();
 }
 

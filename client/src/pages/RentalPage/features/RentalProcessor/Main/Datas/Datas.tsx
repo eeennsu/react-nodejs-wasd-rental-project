@@ -31,6 +31,6 @@ const Datas: FC = () => {
             }
         </ul>    
     );
-};
+}
 
 export default Datas;

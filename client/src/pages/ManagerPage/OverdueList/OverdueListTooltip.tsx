@@ -50,7 +50,7 @@ const OverdueListTooltip: FC<TooltipProps> = ({ showTooltip, toggleTooltip }) =>
 
   return (
     <div>
-      <div className="w-[400px] h-[560px] space-y-4 left-37 rounded-8 bg-02 p-4 pl-10 rounded-b-lg overflow-y-scroll [&::-webkit-scrollbar]:hidden">
+      <div className="w-[400px] h-[560px] space-y-4 cursor-pointer left-37 rounded-8 bg-02 p-4 pl-10 rounded-b-lg overflow-y-scroll [&::-webkit-scrollbar]:hidden">
         {overlental.map((overlental, index) => (
           <div key={index} style={{ position: 'relative' }}>
             <div

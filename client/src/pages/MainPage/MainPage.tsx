@@ -24,9 +24,9 @@ const MainPage: FC = () => {
                 회원가입 &gt;
               </Link>
             </Button>
-            </div>
-           </div>
-          </div>     
+          </div>
+        </div>
+      </div>     
     );
 };
 

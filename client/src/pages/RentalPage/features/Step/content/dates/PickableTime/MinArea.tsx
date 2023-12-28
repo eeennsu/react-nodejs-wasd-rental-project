@@ -185,6 +185,6 @@ const MinArea: FC<Props> = ({ startHour, startMin, rentaledTimes }) => {
             disabled={roomStatus === 'DISABLED' || (isPrevTimes || isOverTimes || (isCanNotRentalTime && !isRentaled))}
         />
     );
-};
+}
 
 export default MinArea;

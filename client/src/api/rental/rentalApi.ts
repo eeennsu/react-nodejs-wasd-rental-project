@@ -1,5 +1,5 @@
 import axiosPri from '../config/axiosPr';
-import axiosPub from '../config/axiosPu';
+import axiosPub, { PAGE_LIMIT } from '../config/axiosPu';
 
 /* 
     1. 유저 토큰 필요, 마스터 토큰 필요 이런거는 무시
@@ -28,14 +28,20 @@ export const notClassroomCount_API = (classroomName: ClassRoomName) => axiosPri.
 // 토큰 필요 x / 대여 중인 VR, 테블릿 모두 불러오기
 export const viewRental_API = () => axiosPri.get<ResViewRental>(`/rental/ViewRental/1`);
 
-// 유저 토큰 필요 / 사용자의 현재 대여 목록 확인
-export const myRentalList_API = (user_id: string) => axiosPri.get<ResMyRentalList>(`/rental/myRentalList/${user_id}`);
+// 유저 토큰 필요 / 사용자의 현재 대여 목록 확인 (마이페이지는 페이지네이션이 필요)
+export const myRentalList_API_MY_PAGE = (user_id: string) => axiosPri.get<ResMyRentalList>(`/rental/myRentalList/${user_id}`);
+
+// 유저 토큰 필요 / 사용자의 현재 대여 목록 확인 (렌탈페이지는 페이지네이션이 필요 x)
+export const myRentalList_API_RENTAL_PAGE = (user_id: string) => axiosPri.get<ResMyRentalList>(`/rental/myRentalList/${user_id}/${1}/${1000}`);
 
 // 마스터 토큰 필요 / 기자재 삭제 
 export const deleteTool_API = (tool_id: string) => axiosPri.get<ResDeleteTool>(`/tool/deleteTool/${tool_id}`);
 
-// 유저 토큰 필요 / 사용자의 역대 대여 목록
-export const myAllRentalList_API = (user_id: string) => axiosPri.get<ResMyAllRentalList>(`/rental/myAllRentalList/${user_id}`); 
+// 유저 토큰 필요 / 사용자의 역대 대여 목록 (마이페이지는 페이지네이션이 필요하므로 이거 사용)
+export const myAllRentalList_API_MY_PAGE = (user_id: string, page: number) => axiosPri.get<ResMyAllRentalList>(`/rental/myAllRentalList/${user_id}/${page}/${10}`); 
+
+// 유저 토큰 필요 / 사용자의 현재 대여 목록 확인 (렌탈페이지는 페이지네이션이 필요 x)
+export const myAllRentalList_API_RENTAL_PAGE = (user_id: string) => axiosPri.get<ResMyAllRentalList>(`/rental/myAllRentalList/${user_id}/${1}/${1000}`); 
 
 // 유저 토큰 필요 / 사용자의 연체 목록
 export const myLateRentalList_API = (user_id: string) => axiosPri.get<ResMyLateRentalList>(`/rental/myLateRentalList/${user_id}`);

@@ -30,6 +30,6 @@ const DescRoomButtons: FC = () => {
             </Button>           
         </footer>
     );
-};
+}
 
 export default DescRoomButtons;

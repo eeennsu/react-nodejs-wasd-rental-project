@@ -36,6 +36,6 @@ const Pagination: FC<Props> = ({ curPage, total, setCurPage }) => {
             showLessItems
         />      
     );
-};
+}
 
 export default Pagination;

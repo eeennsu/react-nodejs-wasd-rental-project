@@ -64,6 +64,6 @@ const DatePicker: FC<Props> = ({ type }) => {
             />
         );
     }
-};
+}
 
 export default DatePicker;

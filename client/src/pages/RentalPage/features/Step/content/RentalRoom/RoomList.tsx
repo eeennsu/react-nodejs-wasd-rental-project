@@ -33,6 +33,6 @@ const RoomList: FC = () => {
             </div>
         </section>
     );
-};
+}
 
 export default RoomList;

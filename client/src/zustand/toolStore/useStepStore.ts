@@ -1,6 +1,6 @@
-import { devtools } from 'zustand/middleware';
-import { IStepStore } from './types';
+import type { IStepStore } from './types';
 import { createWithEqualityFn } from 'zustand/traditional';
+import { devtools } from 'zustand/middleware';
 
 const useStepStore = createWithEqualityFn<IStepStore>()(
     devtools(
@@ -8,25 +8,8 @@ const useStepStore = createWithEqualityFn<IStepStore>()(
             isModalOpen: false,
             setIsModalOpen: (trigger) => set(() => ({ isModalOpen: trigger }), false, 'SET_IS_MODAL_OPEN'),
 
-            // detailTool: null,
-            // setDetailTool: (detailTool) => set(() => ({ detailTool }), false, 'SET_DETAIL_TOOL'),
-
-            // detailVR: null,
-            // setDetailVR: (detailVR) => set(() => ({ detailVR }), false, 'SET_DETAIL_VR'),
-
-            // detailTablet: null,
-            // setDetailTablet: (detailTablet) => set(() => ({ detailTablet }), false, 'SET_DETAIL_VR'),
-
-            // detailLectureRoom: null,
-            // setDetailLectureRoom: (detailLectureRoom) => set(() => ({ detailLectureRoom }), false, 'SET_DETAIL_VR'),
-
-            // resetDetailValue: () => set(() => ({ 
-            //     detailTool: null,
-            //     detailLectureRoom: null
-            // }), false, 'RESET_DETAIL_VALUE'),
-
             text: '',
-            setText: (text) => set(() => ({ text: text }), false, 'SET_TEXT'),
+            setText: (text) => set(() => ({ text }), false, 'SET_TEXT'),
 
             selectedRoom: null,
             setSelectedRoom: (selectedRoom) => set(() => ({ selectedRoom }), false, 'SET_SELECTED_ROOM'),

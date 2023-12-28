@@ -1,7 +1,6 @@
-import { devtools } from 'zustand/middleware';
-import { ITimeStore } from './types';
+import type { ITimeStore } from './types';
 import { createWithEqualityFn } from 'zustand/traditional';
-import dayjs from 'dayjs';
+import { devtools } from 'zustand/middleware';
 import { getOnlyWeekday } from '../../pages/RentalPage/utils/timePicker';
 
 const useTimeStore = createWithEqualityFn<ITimeStore>()(

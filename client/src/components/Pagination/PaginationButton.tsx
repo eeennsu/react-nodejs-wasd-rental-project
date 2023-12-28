@@ -11,6 +11,6 @@ const PGButton: FC<PropsWithChildren<Props>> = ({ curPage, children}) => {
             {children}
         </button>
     );
-};
+}
 
 export default PGButton;

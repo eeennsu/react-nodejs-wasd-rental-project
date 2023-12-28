@@ -24,6 +24,6 @@ const HourArea: FC <Props> = ({ startHour, rentaledTimes }) => {
             </span>
         </div>
     );
-};
+}
 
 export default HourArea;

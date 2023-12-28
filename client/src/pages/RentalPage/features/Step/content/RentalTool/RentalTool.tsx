@@ -80,7 +80,7 @@ const RentalTool: FC = () => {
             return;
         }
 
- 
+        fetchRentalTool();
     }
 
     const fetchRentalTool = async () => {
@@ -122,7 +122,7 @@ const RentalTool: FC = () => {
     }, []);
 
     return (  
-        <Template className='h-[94%] mt-5'>
+        <Template className='h-[94%] mt-5 max-3xl:mt-12'>
              <form className='flex flex-col h-full gap-3 md:gap-8' onSubmit={handleRentRequest}>    
                 <div className='flex-1 gap-8 md:grid md:grid-cols-3'>
                     <div className='h-full md:col-span-1'> 
@@ -211,7 +211,7 @@ const RentalTool: FC = () => {
             </form>                     
         </Template>
     );
-};
+}
 
 export default RentalTool;
 
@@ -266,13 +266,13 @@ const Input = forwardRef<HTMLInputElement, DetailedHTMLProps<InputHTMLAttributes
 
         return (
             <input 
-                className={`w-full text-center outline-none placeholder:text-02/80 bg-inherit max-md:text-xs text-lg ${className}`} 
+                className={`w-full text-center outline-none placeholder:text-02/80 bg-inherit max-md:text-xs max-3xl:text-sm text-md ${className}`} 
                 ref={ref} 
                 {...props} 
             />
         );
     }
-); 
+) 
 
 const ImageLoading: FC = () => {
 

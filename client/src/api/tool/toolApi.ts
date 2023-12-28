@@ -1,4 +1,4 @@
-import axiosPr from '../config/axiosPr';
+import axiosPr, { axiosPriImg } from '../config/axiosPr';
 import axiosPub, { PAGE_LIMIT } from '../config/axiosPu';
 
 /* 
@@ -8,7 +8,7 @@ import axiosPub, { PAGE_LIMIT } from '../config/axiosPu';
 */
 
 // 마스터 토큰 필요 / 기자재 추가
-export const addTool_API = (tool: Tool) => axiosPr.post<ResAddTool>('/tool/addTool', tool);
+export const addTool_API = (tool: AddedNewTool) => axiosPriImg.post<ResAddTool>('/tool/addTool', tool);
 
 // 마스터 토큰 필요 / 기자재 수정
 export const updateTool_API = (tool: Tool) => axiosPr.post<ResUpdateTool>('/tool/updateTool', tool);
