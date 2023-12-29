@@ -9,7 +9,7 @@ const Openchat: FC = () => {
     return (
         <div className='w-full'>
             <div className='max-w-4xl mx-auto h-40'>
-                <div className='flex justify-center gap-10 mt-6'>
+                <div className='flex justify-center gap-10 mt-6  h-36'>
                     <div className='flex flex-col items-center justify-center w-1/2 gap-10 bg-02'>
                         <h3>
                             실습 조교 오픈 채팅방

@@ -51,7 +51,11 @@ interface ResAddTool {
     200: 'OK';
     result?: {
         result: Tool;
-        image: ToolImage[];
+        image: Array<{
+            img_id: string;
+            img_url: string;
+            tool_id: string
+        }>;
     };
     err?: string;
 }

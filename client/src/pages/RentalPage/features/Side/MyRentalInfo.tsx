@@ -4,7 +4,7 @@ import ListItem, { EmptyItem, Skeleton } from './ListItem';
 
 type Props = {
     title: string;
-    rentalInfos?: ExistCurRental[] | string;
+    rentalInfos?: ExistCurRental[];
     isLoading: boolean;
     error: Error | unknown;
 }
@@ -16,7 +16,7 @@ const MyRentalInfo: FC<Props> = ({ title, rentalInfos, isLoading, error }) => {
     const defaultItems = Array.from({ length: MIN_LENGTH }, () => '');
 
     const minItems = useMemo(() => {
-        if (rentalInfos && Array.isArray(rentalInfos)) {
+        if (rentalInfos && Array.isArray(rentalInfos) && rentalInfos.length >= 1) {
             const items = rentalInfos as ExistCurRental[];
 
             if (items.length <= MIN_LENGTH) {

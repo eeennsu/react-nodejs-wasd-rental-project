@@ -1,32 +1,45 @@
-import React, { FC, useState, ChangeEvent, useEffect } from 'react';
+import React, { FC, useState, ChangeEvent } from 'react';
 import Button from '../../../components/Button';
-import {addTool_API} from '../../../api/tool/toolApi';
+import { addTool_API } from '../../../api/tool/toolApi';
 
 interface ModalAddProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+// 이거 아님 (주석 해제 x, AddedNewTool는 다른 곳에 정의 되어있음)
+// interface AddedNewTool {
+//   department_id: string;
+//   tool_code: string;
+//   tool_content: string;
+//   tool_division: string;
+//   tool_id: string;
+//   tool_name: ToolName;
+//   tool_purchase_date: string;
+//   tool_purchase_division: string;
+//   tool_spec: string;
+//   tool_standard: string;
+//   tool_state: ToolState;
+//   tool_update_at: string;
+//   image: string; 
+//}
+
 const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [additionalContent, setAdditionalContent] = useState<string>('');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [equipmentName, setEquipmentName] = useState<ToolName | ''>('');
+  const [equipmentName, setEquipmentName] = useState<ToolName | string>('');
   const [assetNumber, setAssetNumber] = useState<string>('');
   const [equipmentType, setEquipmentType] = useState<string>('');
   const [equipmentCode, setEquipmentCode] = useState<string>('');
   const [purchaseType, setPurchaseType] = useState<string>('');
   const [purchaseDate, setPurchaseDate] = useState<string>('');
   const [toolStandard, setToolStandard] = useState<string>('');
-  const [toolState, setToolState] = useState<ToolState>('대여가능');
+  const [toolState, setToolState] = useState<ToolState | string>('');
   const [toolSpec, setToolSpec] = useState<string>('');
 
-  const currentDate = new Date();
-    const isoDate = currentDate.toISOString();
-
-
-
-
+  // const currentDate = new Date();
+  // const isoDate = currentDate.toISOString();
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -40,51 +53,79 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
 
       image.src = imageUrl;
       console.log('Selected Image:', imageUrl);
+      setUploadedFiles([imageFile]);
     }
   };
-  const isAddButtonDisabled = () => {
-    return (
-      equipmentName === '' ||
-      !assetNumber ||
-      !equipmentType ||
-      !equipmentCode ||
-      !purchaseType ||
-      !purchaseDate ||
-      !toolStandard ||
-      !toolState ||
-      !additionalContent ||
-      !toolSpec 
 
-    );
+  const convertImageToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        const base64String = reader.result as string;
+        const [, base64Data] = base64String.split(',');
+
+        resolve(base64Data);
+      };
+
+      reader.onerror = (error) => {
+        reject(error);
+      };
+    });
   };
 
   const handleAddEquipment = async () => {
-    // if (isAddButtonDisabled()) {
-    //   alert('필수 항목을 모두 입력하세요.');
-    //   return;
-    // }
+    try {
+      if (!equipmentName ||
+          !assetNumber || 
+          !equipmentType || 
+          !equipmentCode || 
+          !purchaseType || 
+          !purchaseDate || 
+          !toolStandard ||
+          !additionalContent ||
+          !toolSpec        
+          ) 
+          
+          {
 
-    // const imageId = uploadedFiles.length + 1;
+        alert(`필수 항목을 모두 입력하세요. (equipmentName: ${equipmentName}, assetNumber: ${assetNumber})`);
+        return;
+      }
 
-    // const addTool: AddedNewTool = {
-    //   department_id: '1',
-    //   tool_code: equipmentCode,
-    //   tool_content: additionalContent,
-    //   tool_division: equipmentType, 
-    //   tool_id: assetNumber, 
-    //   tool_name: equipmentName as ToolName,
-    //   tool_purchase_date: purchaseDate,
-    //   tool_purchase_division: purchaseType,
-    //   tool_spec: toolSpec,
-    //   tool_standard: toolStandard, 
-    //   image: imageId              // 이미지 들어가면 될듯 string 타입으로 (해결필요)
-    // };
+      let imageBase64 = '';
 
-    // const response = await addTool_API(addTool);            // 
+      if (uploadedFiles.length > 0) {
+        const imageFile = uploadedFiles[0];
+        imageBase64 = await convertImageToBase64(imageFile);
+      }
 
+      const addTool: AddedNewTool = {
+        department_id: '1',
+        tool_code: equipmentCode,
+        tool_content: additionalContent,
+        tool_division: equipmentType,
+        tool_id: assetNumber,
+        tool_name: equipmentName as ToolName,
+        tool_purchase_date: purchaseDate,
+        tool_purchase_division: purchaseType,
+        tool_spec: toolSpec,
+        tool_standard: toolStandard,
+        // tool_state: toolState as ToolState ,
+        // tool_update_at: isoDate,
+        image: imageBase64,
+        
+      };
 
-    // console.log('Equipment Details:');
-    // onClose();
+      console.log('imageBase64', imageBase64);
+      const response = await addTool_API(addTool);
+
+      console.log('데이터 전송 성공:', response.data);
+      onClose();
+    } catch (error) {
+      console.error('데이터 전송 실패:', error);
+    }
   };
 
   return (
@@ -145,12 +186,13 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
                 <select
                   id="tool_name"
                   value={equipmentName}
-                  // onChange={(e) => setEquipmentName(e.target.value)}
-                >
 
+                  onChange={(e) => setEquipmentName(e.target.value as ToolName)}
+                >
+                  <option value="선택안함"></option>
+                  <option value="VR 실습기기">VR</option>
                   <option value="타블렛">타블렛</option>
-                  <option value="VR">VR</option>
-                  <option value="종류3">종류3</option>
+                  <option value="강의실">강의실</option>
                   </select>
               </div>
 
@@ -217,13 +259,13 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
     <select
       id="tool_state"
       value={toolState}
-      // onChange={(e) => setToolState(e.target.value)}
+      onChange={(e) => setToolState(e.target.value as ToolState)}
     >
       {/* 대여 여부 옵션들 추가 */}   
                  <option value="선택안함"></option>
-                  <option value="대여 가능">대여 가능</option>
-                  <option value="보류">보류</option>
-                  <option value="대여 불가능">대여 불가능</option>
+                  <option value="대여가능">대여가능</option>
+                  <option value="대여중">대여중</option>
+                  <option value="대여불가">대여불가</option>
     </select>
   </div>
 
@@ -274,7 +316,6 @@ const AddModal: FC<ModalAddProps> = ({ isOpen, onClose }) => {
                 onClick={handleAddEquipment}
                 bgColor="01"
                 className="ml-[10px]"
-                disabled={isAddButtonDisabled()}
               >
                 추가하기
               </Button>

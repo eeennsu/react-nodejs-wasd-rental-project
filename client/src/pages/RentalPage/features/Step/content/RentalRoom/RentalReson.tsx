@@ -14,7 +14,7 @@ const RentalReson: FC = () => {
     return (
         <Input.TextArea 
             className='h-full p-3 border-2 rounded-none bg-04 border-01 placeholder:text-02/80'        
-            value={text} 
+            value={text}
             onChange={handleTextChange} 
             style={{ resize: 'none' }}  
             placeholder='대여 사유를 입력해 주세요' 
