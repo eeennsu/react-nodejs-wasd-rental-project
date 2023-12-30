@@ -6,14 +6,15 @@ type Props = {
     curPage: number;                                    // 현재 페이지
     setCurPage: (curPage: number) => void;              // 페이지 변경하는 함수 (매개변수에는 변경할 페이지를 넣어주면 됨)
     total: number;                                      // 전체 페이지
+    color?: string;
 }
 
-const Pagination: FC<Props> = ({ curPage, total, setCurPage }) => {
+const Pagination: FC<Props> = ({ curPage, total, setCurPage, color }) => {
 
     const itemRender = (page: number, type: 'page' | 'prev' | 'next' | 'jump-prev' | 'jump-next', element: ReactNode): ReactNode => {
         if (type === 'page') {
             return (
-                <PaginationButton curPage={curPage}>
+                <PaginationButton curPage={curPage} color={color}>
                     {page}
                 </PaginationButton>
             );

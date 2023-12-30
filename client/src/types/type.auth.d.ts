@@ -31,9 +31,9 @@ interface DetailUser {
 // signUp API의 response           200, suc 타입 조정 필요
 interface ResSignUp {
     "200"?: OK;
-    suc: string | boolean;
     result?: DetailUser;
-    error?: string;
+    err?: string;
+    msg?: string;
 }
 
 // login API의 매개변수
@@ -78,7 +78,8 @@ interface ResSearchId {
 // checkId API의 response
 interface ResCheckId {
     '200': OK;
-    result: string;
+    msg?: string;
+    err?: string;
 }
 
 // changePW API의 매개변수
@@ -89,7 +90,8 @@ interface ChangePw {
 // changePW API의 response
 interface ResChangePw {
     '200': OK;
-    result: string;
+    msg?: string;
+    err?: string;
 }
 
 // 회원가입 신청 목록 API의 response, result 타입 조정 필요

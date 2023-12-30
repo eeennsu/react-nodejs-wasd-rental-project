@@ -5,7 +5,6 @@ import Suggestions from './ManagerPage/RepairRequset/Suggestions';
 import RentalLogPage from './ManagerPage/log/RentalLog';
 import MyPage from './MyPage/MyPage';
 import RentalPage from './RentalPage/RentalPage';
-import SignUpPage from './MainPage/SignUp';
 
 export {
     MainPage,
@@ -15,5 +14,4 @@ export {
     ManagerToolStatusPage,
     RentalLogPage,
     Suggestions,
-    SignUpPage
 }

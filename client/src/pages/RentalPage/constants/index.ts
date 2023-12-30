@@ -15,15 +15,19 @@ export const classRoom: {
     room_mainBuilding: ['본관 504호', '본관 505호', '본관 506호', '본관 507호']
 };
 
-export const repairResons: string[] = [
-    '이유 01',
-    '이유 02',
-    '이유 03',
-    '이유 04',
-    '이유 05',
-    '이유 06',
-    '이유 07',
-];
+export const repairResons = {
+    vr: [
+        '전원 버튼 고장',
+        '인터페이스 고장',
+        '컨트롤러 고장',
+        '기타'
+    ],
+    tablet: [
+        '터치팬 고장',
+        '터치패드 고장',
+        '기타'
+    ]
+};
 
 export const minutes: number[] = [0, 1, 2, 3, 4, 5];
 export const hours: number[] = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];

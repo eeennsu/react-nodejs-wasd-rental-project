@@ -26,7 +26,7 @@ export const changePw_API = (password: ChangePw) => axiosPu.post<ResChangePw>('/
 export const listPendingUsers_API = () => axiosPri.get<ResListPendingUsers>('/auth/listPendingUsers');
 
 // 이메일 인증
-export const sendMail = (email: SendMail) => axiosPu.post<ResSendMail>('/auth/sendMail', email);
+export const sendMail_API = (email: SendMail) => axiosPu.post<ResSendMail>('/auth/sendMail', email);
 
 // 마스터 토큰 필요 / userDB에 있는 모든 정보 불러오기
 export const userTableAll_API = () => axiosPri.get<ResUserTableAll>('/auth/UserTableAll');

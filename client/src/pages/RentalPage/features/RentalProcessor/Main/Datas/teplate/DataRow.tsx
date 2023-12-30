@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { useStepStore, useToolStore } from '../../../../../../../zustand';
 import DataTemplate from './DataTemplate';
-import { getToolNum } from '../../../../../utils/getToolNum';
+import { getToolNum2 } from '../../../../../utils/getToolNum';
 
 type Props = {
     data: Tool;
@@ -21,7 +21,7 @@ const DataRow: FC<Props> = ({ data }) => {
     return (
         <DataTemplate onClick={handleClick}>
             <div>
-                {getToolNum(data)}
+                {getToolNum2(data)}
             </div>
             <div className='flex gap-1 mx-1'>               
                 {' / '}

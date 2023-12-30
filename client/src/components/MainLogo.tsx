@@ -9,7 +9,7 @@ const MainLogo: FC = () => {
 
     return (
         <div className='flex justify-center w-full mt-3' onClick={setAllStoreInit}>
-            <Link to='/main'>
+            <Link to='/'>
                 <img src={logo} className='object-contain h-10'/> 
             </Link>
         </div>

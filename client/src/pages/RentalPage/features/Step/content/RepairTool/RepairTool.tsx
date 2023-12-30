@@ -31,10 +31,24 @@ const RepairTool: FC = () => {
 
     const [resonSelect, setResonSelect] = useState<string | null>(null);
     
-    const renderOptions =  useMemo(() => (repairResons.map((reson) => ({
-        label: reson,
-        value: reson
-    }))), [repairResons]);
+    // const renderOptions =  useMemo(() => (repairResons.tablet.map((reson) => ({
+    //     label: reson,
+    //     value: reson
+    // }))), [repairResons]);
+        
+    const renderOptions = useMemo(() => {
+        if (tool?.tool_name === 'VR 실습기기') {
+            return repairResons.vr.map((reson) => ({
+                label: reson,
+                value: reson
+            }));
+        } else if (tool?.tool_name === '타블렛') {
+            return repairResons.tablet.map((reson) => ({
+                label: reson,
+                value: reson
+            }));
+        }
+    }, []);
 
     const handleSelectChange = (value: string) => {
         setResonSelect(value);
@@ -119,7 +133,7 @@ const RepairTool: FC = () => {
                 </div>
                 <form className='flex flex-col w-full gap-6 md:gap-10' onSubmit={handleRepairRequest}>
                     <div className='flex flex-col items-end bg-01 rounded-[4px] max-md:mx-4'>
-                        <div className='w-28 h-full my-3.5 mr-3.5'>
+                        <div className='w-36 h-full my-3.5 mr-3.5'>
                             <Select                      
                                 placeholder='목록'
                                 onChange={handleSelectChange}
