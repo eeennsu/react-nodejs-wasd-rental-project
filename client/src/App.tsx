@@ -39,41 +39,37 @@ const App = () => {
                 </Route>
                 {/* </Route>           */}
 
-                <Route element={<RequireAuth allowedRoles={[ROLES.ADMIN]} />}>
-                    <Route element={<RootLayout type='other' />}>
-                        <Route
-                            index
-                            path='/manager'
-                            element={<ManagerPage />}
-                        />
-                        <Route
-                            path='/manager/tool-status'
-                            element={<ManagerToolStatusPage />}
-                        />
-                        <Route
-                            path='/manager/rental-log'
-                            element={<RentalLogPage />}
-                        />
-                        <Route
-                            path='/manager/suggestions'
-                            element={<Suggestions />}
-                        />
-                    </Route>
+                {/* <Route element={<RequireAuth allowedRoles={[ROLES.ADMIN]} />}> */}
+                <Route element={<RootLayout type='other' />}>
+                    <Route index path='/manager' element={<ManagerPage />} />
+                    <Route
+                        path='/manager/tool-status'
+                        element={<ManagerToolStatusPage />}
+                    />
+                    <Route
+                        path='/manager/rental-log'
+                        element={<RentalLogPage />}
+                    />
+                    <Route
+                        path='/manager/suggestions'
+                        element={<Suggestions />}
+                    />
                 </Route>
+                {/* </Route> */}
 
                 <Route element={<RootLayout type='other' />}>
                     <Route path='/sampleLogin' element={<SampleLogin />} />
                 </Route>
-
+                {/* 
                 <Route
                     element={
                         <RequireAuth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />
                     }
-                >
-                    <Route element={<RootLayout type='other' isLogo={false} />}>
-                        <Route path='/my-page' element={<MyPage />} />
-                    </Route>
+                > */}
+                <Route element={<RootLayout type='other' isLogo={false} />}>
+                    <Route path='/my-page' element={<MyPage />} />
                 </Route>
+                {/* </Route> */}
 
                 <Route path='/unauthorized' element={<Unauthorized />} />
                 <Route path='*' element={<NotFound />} />
